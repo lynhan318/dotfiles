@@ -1,0 +1,47 @@
+
+snippet fre "react function component"
+import React from 'react'
+
+type I$1Props = {};
+const $1 = (props: I$1Props) => {
+  return <div>this is home page</div>;
+};
+export default $1;
+
+endsnippet
+
+
+snippet uses "react useState"
+  const [$1,$2]=React.useState($3)
+endsnippet
+
+snippet usec "react useCallback"
+React.useCallback(()=>{
+	$1
+},[$2])
+endsnippet
+
+snippet usee "react useEffect"
+React.useEffect(()=>{
+	$1
+},[$2])
+endsnippet
+
+snippet constf "const function"
+const $1=($2)=>{
+	$3
+}
+endsnippet
+
+snippet func "default function"
+function $1(){
+$2
+}
+endsnippet
+
+snippet action "redux action"
+export const $1=(payload:any)=>dispatch=>dispatch({
+			type:$2,
+			payload
+		})
+endsnippet

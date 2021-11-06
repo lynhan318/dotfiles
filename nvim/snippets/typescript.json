@@ -1,0 +1,231 @@
+{
+  "filename": {
+    "prefix": ["fname"],
+    "body": "$TM_FILENAME_BASE"
+  },
+  "React Component Without PropTypes": {
+    "prefix": "crc",
+    "body": [],
+    "description": "Create React Component"
+  },
+  "useEffect": {
+    "prefix": "rue",
+    "body": "useEffect(() => {\n$0\n}, [$1])",
+    "description": "Adds use effect"
+  },
+  "useState": {
+    "prefix": "ust",
+    "body": "const [$1, set${1/(.*)/${1:/capitalize}/}] = useState($2);",
+    "description": "Adds use state"
+  },
+  "useRef": {
+    "prefix": "ure",
+    "body": "const ${1:ref} = useRef($2);",
+    "description": "Adds use ref"
+  },
+  "useMemo": {
+    "prefix": "rum",
+    "body": "const $1 = useMemo(() => {}, [$0]);",
+    "description": "Adds use memo"
+  },
+  "useCallback": {
+    "prefix": "ruc",
+    "body": "const $1 = useCallback(() => {}, [$0]);",
+    "description": "Adds use callback"
+  },
+  "const": {
+    "prefix": "cons",
+    "body": "const ${1:label}",
+    "description": "const"
+  },
+  "iifeFunction": {
+    "prefix": "iife",
+    "body": "((${1:params}) => {\n\t${2}\n})()",
+    "description": "IIFE Function"
+  },
+  "namedFunction": {
+    "prefix": "cf",
+    "body": "const ${1:name} = (${2:params}) => {\n\t${3}\n}",
+    "description": "Creates a named function in ES6 syntax"
+  },
+  "destructingObject": {
+    "prefix": "do",
+    "body": "const {${2:propertyName}} = ${1:objectToDestruct};",
+    "description": "Creates and assigns a local variable using object destructing"
+  },
+  "destructingArray": {
+    "prefix": "da",
+    "body": "const [${2:propertyName}] = ${1:arrayToDestruct};",
+    "description": "Creates and assigns a local variable using array destructing"
+  },
+  "promise": {
+    "prefix": "promise",
+    "body": "return new Promise((resolve, reject) => {\n\t${1}\n});",
+    "description": "Creates and returns a new Promise in the standard ES6 syntax"
+  },
+  "promiseResolve": {
+    "prefix": "presolve",
+    "body": "return Promise.resolve(${1});",
+    "description": "Return Promise.resolve"
+  },
+  "promiseReject": {
+    "prefix": "preject",
+    "body": "return Promise.reject(${1});",
+    "description": "Return Promise.reject"
+  },
+  "log": {
+    "prefix": ["clg"],
+    "body": "console.log('${1:$TM_SELECTED_TEXT}');"
+  },
+  "consoleLog": {
+    "prefix": "cll",
+    "body": "console.log(${1:object});",
+    "description": "Displays a message in the console"
+  },
+  "consoleLogObject": {
+    "prefix": "clo",
+    "body": "console.log('${1:object} :>> ', ${1:object});",
+    "description": "Displays an object in the console with its name"
+  },
+  "setInterval": {
+    "prefix": "interval",
+    "body": "setInterval(() => {\n\t${2}\n}, ${0:intervalInms});",
+    "description": "Executes the given function at specified intervals in ES6 syntax"
+  },
+  "setTimeOut": {
+    "prefix": "timeout",
+    "body": "setTimeout(() => {\n\t${2}\n}, ${1:delayInms});",
+    "description": "Executes the given function after the specified delay in ES6 syntax"
+  },
+  "import": {
+    "prefix": "imp",
+    "body": "import ${2:moduleName} from '${1:module}';$0",
+    "description": "Imports entire module statement in ES6 syntax"
+  },
+  "importNoModuleName": {
+    "prefix": "imn",
+    "body": "import '${1:module}';$0",
+    "description": "Imports entire module in ES6 syntax without module name"
+  },
+  "importDestructing": {
+    "prefix": "imd",
+    "body": "import { $2 } from '${1:module}';$0",
+    "description": "Imports only a portion of the module in ES6 syntax"
+  },
+  "importEverything": {
+    "prefix": "ime",
+    "body": "import * as ${2:alias} from '${1:module}';$0",
+    "description": "Imports everything as alias from the module in ES6 syntax"
+  },
+  "importAs": {
+    "prefix": "ima",
+    "body": "import { ${2:originalName} as ${3:alias} } from '${1:module}';$0",
+    "description": "Imports a specific portion of the module by assigning a local alias in ES6 syntax"
+  },
+  "require": {
+    "prefix": "require",
+    "body": "require('${1:package}');",
+    "description": "Require a package"
+  },
+  "requireToConst": {
+    "prefix": "crequire",
+    "body": "const ${1:packageName} = require('${1:package}');$0",
+    "description": "Require a package to const"
+  },
+  "exportDefaultFunction": {
+    "prefix": "exfunc",
+    "body": "export default function ${1:${TM_FILENAME_BASE}}(${2:params}) {\n\t$0\n};\n",
+    "description": "Export default function in ES6 syntax"
+  },
+  "exportDefault": {
+    "prefix": "exf",
+    "body": "export default ${1:className}",
+    "description": "Export default"
+  },
+  "While Statement": {
+    "prefix": "while",
+    "body": ["while (${1:condition}) {", "\t$0", "}"],
+    "description": "While Statement"
+  },
+  "Do-While Statement": {
+    "prefix": "dowhile",
+    "body": ["do {", "\t$0", "} while (${1:condition});"],
+    "description": "Do-While Statement"
+  },
+  "Try-Catch Statement": {
+    "prefix": "trycatch",
+    "body": ["try {", "\t$0", "} catch (${1:error}) {", "\t", "}"],
+    "description": "Try-Catch Statement"
+  },
+  "Switch Statement": {
+    "prefix": "switch",
+    "body": [
+      "switch (${1:key}) {",
+      "\tcase ${2:value}:",
+      "\t\t$0",
+      "\t\tbreak;",
+      "",
+      "\tdefault:",
+      "\t\tbreak;",
+      "}"
+    ],
+    "description": "Switch Statement"
+  },
+  "Throw Exception": {
+    "prefix": "throw",
+    "body": ["throw new Error(\"$1\");", "$0"],
+    "description": "Throw Exception"
+  },
+  "For Loop": {
+    "prefix": "for",
+    "body": [
+      "for (let ${1:index} = 0; ${1:index} < ${2:array}.length; ${1:index}++) {",
+      "\tconst ${3:element} = ${2:array}[${1:index}];",
+      "\t$0",
+      "}"
+    ],
+    "description": "For Loop"
+  },
+  "For-Each Loop using =>": {
+    "prefix": "foreach =>",
+    "body": ["${1:array}.forEach(${2:element} => {", "\t$0", "});"],
+    "description": "For-Each Loop using =>"
+  },
+  "For-In Loop": {
+    "prefix": "forin",
+    "body": [
+      "for (const ${1:key} in ${2:object}) {",
+      "\tif (Object.prototype.hasOwnProperty.call(${2:object}, ${1:key})) {",
+      "\t\tconst ${3:element} = ${2:object}[${1:key}];",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "For-In Loop"
+  },
+  "For-Of Loop": {
+    "prefix": "forof",
+    "body": ["for (const ${1:iterator} of ${2:object}) {", "\t$0", "}"],
+    "description": "For-Of Loop"
+  },
+  "For-Await-Of Loop": {
+    "prefix": "forawaitof",
+    "body": ["for await (const ${1:iterator} of ${2:object}) {", "\t$0", "}"],
+    "description": "For-Await-Of Loop"
+  },
+  "Function Statement": {
+    "prefix": "function",
+    "body": ["function ${1:name}(${2:params}:${3:type}) {", "\t$0", "}"],
+    "description": "Function Statement"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": ["if (${1:condition}) {", "\t$0", "}"],
+    "description": "If Statement"
+  },
+  "If-Else Statement": {
+    "prefix": "ifelse",
+    "body": ["if (${1:condition}) {", "\t$0", "} else {", "\t", "}"],
+    "description": "If-Else Statement"
+  }
+}
