@@ -2,9 +2,10 @@ configuration {
     modi: "drun,window";
     width: 600;
     sidebar-mode:   true;
+    drun-icon-theme: "Bonny_Light_Icons";
+    icon-theme: "Bonny_Light_Icons";
     lines: 10;
     show-icons:     true;
-    icon-theme: "Bonny-Light-Icons";
     fullscreen: false;
     show-match: false;
     separator-style: "solid";
