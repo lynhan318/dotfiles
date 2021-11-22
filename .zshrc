@@ -73,7 +73,7 @@ ZSH_THEME="spaceship"
 plugins=(git tmux zsh-syntax-highlighting zsh-autosuggestions autojump)
 
 source $ZSH/oh-my-zsh.sh
-
+source $HOME/.envrc
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
