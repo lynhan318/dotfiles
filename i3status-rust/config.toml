@@ -10,6 +10,10 @@ interval = 600
 format = "{pacman} updates available"
 format_singular = "{pacman} update available"
 format_up_to_date = "system up to date"
+[block.theme_overrides]
+idle_bg = "#a3be8c" # nord0
+idle_fg = "#2e3440" # light blue
+
 
 
 [[block]]
@@ -29,29 +33,29 @@ interval = 20
 
 [[block]]
 block = "memory"
+format_mem = "{mem_used}/{mem_total}"
 display_type = "memory"
-format_mem = "{mem_used_percents}"
-format_swap = "{swap_used_percents}"
+icons = true
+clickable = true
+interval = 5
+warning_mem = 80
+warning_swap = 80
+critical_mem = 95
+critical_swap = 95
 
 [[block]]
-block = "networkmanager"
-on_click = "alacritty -e nmtui"
-interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
-interface_name_include = []
+block = "cpu"
+interval = 1
 
-# [[block]]
-# block = "cpu"
-# interval = 1
-
-# [[block]]
-# block = "load"
-# interval = 1
-# format = "{1m}"
 
 [[block]]
 block = "time"
 interval = 60
 format = "%a %d/%m %R"
+[block.theme_overrides]
+idle_bg = "#8fbcbb" # nord0
+idle_fg = "#2e3440" # light blue
+
 
 [[block]]
 block = "sound"
@@ -68,9 +72,4 @@ interval = "once"
 [block.theme_overrides]
 idle_bg = "#bf616a" # nord0
 idle_fg = "#2e3440" # light blue
-
-
-
-
-
 
