@@ -4,10 +4,19 @@ name = "awesome5"
 [theme]
 name = "nord-dark"
 
-# [[block]]
-# block = "custom"
-# command = "echo '\uf0ac ' `curl -4 bot.whatismyipaddress.com`" # assumes fontawesome icons
-# interval = 60
+[[block]]
+block = "pacman"
+interval = 600
+format = "{pacman} updates available"
+format_singular = "{pacman} update available"
+format_up_to_date = "system up to date"
+
+
+[[block]]
+block = "bluetooth"
+mac = "D8:37:3B:58:F2:57"
+format = "JBL Extreme"
+hide_disconnected = true
 
 [[block]]
 block = "disk_space"
@@ -17,6 +26,7 @@ info_type = "available"
 unit = "GB"
 interval = 20
 
+
 [[block]]
 block = "memory"
 display_type = "memory"
@@ -24,16 +34,19 @@ format_mem = "{mem_used_percents}"
 format_swap = "{swap_used_percents}"
 
 [[block]]
-block = "cpu"
-interval = 1
+block = "networkmanager"
+on_click = "alacritty -e nmtui"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+interface_name_include = []
 
-[[block]]
-block = "load"
-interval = 1
-format = "{1m}"
+# [[block]]
+# block = "cpu"
+# interval = 1
 
-[[block]]
-block = "sound"
+# [[block]]
+# block = "load"
+# interval = 1
+# format = "{1m}"
 
 [[block]]
 block = "time"
@@ -41,6 +54,23 @@ interval = 60
 format = "%a %d/%m %R"
 
 [[block]]
+block = "sound"
+driver="pulseaudio"
+[block.theme_overrides]
+idle_bg = "#ebcb8b" # nord0
+idle_fg = "#2e3440" # light blue
+
+
+[[block]]
 block = "custom"
 command = "whoami"
 interval = "once"
+[block.theme_overrides]
+idle_bg = "#bf616a" # nord0
+idle_fg = "#2e3440" # light blue
+
+
+
+
+
+

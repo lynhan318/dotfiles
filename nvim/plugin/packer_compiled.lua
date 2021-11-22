@@ -177,7 +177,7 @@ _G.packer_plugins = {
     url = "https://github.com/kabouzeid/nvim-lspinstall"
   },
   ["nvim-transparent"] = {
-    config = { "\27LJ\1\2m\0\0\3\0\6\0\v4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0002\2\0\0:\2\4\0012\2\0\0:\2\5\1>\0\2\1G\0\1\0\fexclude\17extra_groups\1\0\1\venable\1\nsetup\16transparent\frequire\0" },
+    config = { "\27LJ\1\2m\0\0\3\0\6\0\v4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0002\2\0\0:\2\4\0012\2\0\0:\2\5\1>\0\2\1G\0\1\0\fexclude\17extra_groups\1\0\1\venable\2\nsetup\16transparent\frequire\0" },
     loaded = true,
     path = "/home/tiny/.local/share/nvim/site/pack/packer/start/nvim-transparent",
     url = "https://github.com/xiyaowong/nvim-transparent"
@@ -306,7 +306,7 @@ try_loadstring("\27LJ\1\2Ç\2\0\0\3\0\6\0\t4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\
 time([[Config for nvim-compe]], false)
 -- Config for: nvim-transparent
 time([[Config for nvim-transparent]], true)
-try_loadstring("\27LJ\1\2m\0\0\3\0\6\0\v4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0002\2\0\0:\2\4\0012\2\0\0:\2\5\1>\0\2\1G\0\1\0\fexclude\17extra_groups\1\0\1\venable\1\nsetup\16transparent\frequire\0", "config", "nvim-transparent")
+try_loadstring("\27LJ\1\2m\0\0\3\0\6\0\v4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0002\2\0\0:\2\4\0012\2\0\0:\2\5\1>\0\2\1G\0\1\0\fexclude\17extra_groups\1\0\1\venable\2\nsetup\16transparent\frequire\0", "config", "nvim-transparent")
 time([[Config for nvim-transparent]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
