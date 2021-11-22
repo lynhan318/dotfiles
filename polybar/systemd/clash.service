@@ -1,7 +1,0 @@
-[Unit]
-Description=Clash for Linux
-After=network.target
-
-[Service]
-ExecStart=/usr/bin/clash -d /home/yucklys/.config/clash
-Restart=always
