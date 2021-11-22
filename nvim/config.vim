@@ -23,7 +23,7 @@ vnoremap <silent> d d:call ClipboardYank()<cr>
 " nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 " nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-\ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+ \ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
 "multiple cursors cursor{{
 " highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
