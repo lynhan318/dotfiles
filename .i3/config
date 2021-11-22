@@ -346,6 +346,7 @@ set $base0F #fcc09e
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	# i3bar_command i3bar
+    output HDMI-0
     font pango:DejaVu Sans Mono, FontAwesome 12
 	status_command i3status-rs
 	position top
