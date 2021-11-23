@@ -10,11 +10,11 @@ interval = 600
 format = "{pacman} updates available"
 format_singular = "{pacman} update available"
 format_up_to_date = "system up to date"
-[block.theme_overrides]
-idle_bg = "#a3be8c" # nord0
-idle_fg = "#2e3440" # light blue
 
-
+[[block]]
+block = "custom"
+command = "ibus engine"
+interval = 10
 
 [[block]]
 block = "bluetooth"
@@ -29,6 +29,9 @@ alias = "/"
 info_type = "available"
 unit = "GB"
 interval = 20
+[block.theme_overrides]
+idle_bg = "#a3be8c" # nord0
+idle_fg = "#2e3440" # light blue
 
 
 [[block]]
@@ -42,10 +45,16 @@ warning_mem = 80
 warning_swap = 80
 critical_mem = 95
 critical_swap = 95
+[block.theme_overrides]
+idle_bg = "#a3be8c" # nord0
+idle_fg = "#2e3440" # light blue
 
 [[block]]
 block = "cpu"
 interval = 1
+[block.theme_overrides]
+idle_bg = "#a3be8c" # nord0
+idle_fg = "#2e3440" # light blue
 
 
 [[block]]
