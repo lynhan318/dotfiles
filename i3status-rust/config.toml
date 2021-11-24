@@ -5,6 +5,15 @@ name = "awesome5"
 name = "nord-dark"
 
 [[block]]
+block = "custom"
+interval = 1
+command = "xdotool getwindowfocus getwindowname"
+[block.theme_overrides]
+idle_bg = "#2E3440" # nord0
+idle_fg = "#B48EAD" # light blue
+
+
+[[block]]
 block = "pacman"
 interval = 600
 format = "{pacman} updates available"
