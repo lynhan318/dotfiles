@@ -140,7 +140,7 @@ return function() -- TODO figure out why this don't work
         },
         jsonls = {cmd = {'vscode-json-languageserver', '--stdio'}},
         rust_analyzer = {},
-        tsserver = {},
+        tsserver = { cmd = "tsserver",'--stdio'},
         vimls = {}
     }
 
