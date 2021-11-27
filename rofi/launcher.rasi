@@ -9,7 +9,7 @@
 
 
 configuration {
-	font:							"Ubuntu Nerd Font 13";
+	font:							"Fantasque iCursive Dk 15";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     display-drun: 					"";
@@ -40,7 +40,7 @@ prompt {
 	padding: 						14px 0px 14px 14px;
 	background-color: 				@bg;
 	text-color: 					@fg2;
-	font:							"Liga SFMono Nerd Font 14";
+	font:							"Fantasque iCursive Dk 15";
 }
 
 entry {
