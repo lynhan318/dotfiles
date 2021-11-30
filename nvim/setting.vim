@@ -38,6 +38,7 @@ set wildmenu
 set expandtab
 set completeopt=menuone,noselect
 set shortmess+=c
+set termguicolors
 
 "imap
 inoremap <silent> <c-l> <Right>
