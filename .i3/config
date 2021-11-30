@@ -270,7 +270,7 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id blurlock
 # Autostart applications
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec_always --no-startup-id polybar main
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 # Password promt for pamac
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1
