@@ -146,10 +146,10 @@ workspace 2 output HDMI-0
 workspace 3 output HDMI-0
 workspace 4 output DP-0
 
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
+set $ws1 "1: Home"
+set $ws2 "2: Dev"
+set $ws3 "3: Web"
+set $ws4 "4: Media"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -265,6 +265,7 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id blurlock
 # Autostart applications
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id polybar main
 exec --no-startup-id nitrogen --restore; sleep 1
 #exec --no-startup-id manjaro-hello
 # exec --no-startup-id nm-applet
@@ -273,7 +274,7 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id ibus-daemon
 exec --no-startup-id xautolock -time 10 -locker blurlock
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf -b
+exec_always --no-startup-id picom
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_green
@@ -331,37 +332,37 @@ set $base0F #fcc09e
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	# i3bar_command i3bar
-    output HDMI-0
-    font pango:DejaVu Sans Mono, FontAwesome 12
-	status_command i3status-rs
-	position top
-    # tray_padding 1
+#bar {
+#	# i3bar_command i3bar
+#    # output HDMI-0
+#    font pango:DejaVu Sans Mono, FontAwesome 12
+#	status_command i3status-rs
+#	position top
+#    # tray_padding 1
 
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-	tray_output none
-#	tray_output eDP1
+### please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+#	tray_output none
+##	tray_output eDP1
 
-	# bindsym button4 nop
-	# bindsym button5 nop
-#   font xft:URWGothic-Book 11
-	# strip_workspace_numbers yes
+#	# bindsym button4 nop
+#	# bindsym button5 nop
+##   font xft:URWGothic-Book 11
+#	# strip_workspace_numbers yes
 
     
-    colors {
-            separator  $base01
-            background $base01
-            statusline #81a1c1
+#    colors {
+#            separator  $base01
+#            background $base01
+#            statusline #81a1c1
               
-            #                   border  background text
-            focused_workspace  $base01 $base01    #81a1c1 
-            active_workspace   $base01 $base02    $base03
-            inactive_workspace $base01 $base01    #4c566a
-            urgent_workspace   $base01 $base01    $base08
-            binding_mode       $base01 #81a1c1    #2e3440
-    }
-}
+#            #                   border  background text
+#            focused_workspace  $base01 $base01    #81a1c1 
+#            active_workspace   $base01 $base02    $base03
+#            inactive_workspace $base01 $base01    #4c566a
+#            urgent_workspace   $base01 $base01    $base08
+#            binding_mode       $base01 #81a1c1    #2e3440
+#    }
+#}
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
