@@ -5,6 +5,14 @@ name = "awesome5"
 name = "nord-dark"
 
 [[block]]
+block = "custom"
+interval = 1
+command = "xdotool getwindowfocus getwindowname"
+[block.theme_overrides]
+idle_bg = "#2E3440" # nord0
+idle_fg = "#B48EAD" # light blue
+
+[[block]]
 block = "pacman"
 interval = 600
 format = "{pacman} updates available"
@@ -15,6 +23,18 @@ format_up_to_date = "system up to date"
 block = "custom"
 command = "ibus engine"
 interval = 10
+
+[[block]]
+block = "bluetooth"
+mac = "FC:A8:9A:79:2C:F0"
+format = "JBL HeadSet"
+hide_disconnected = true
+
+[[block]]
+block = "bluetooth"
+mac = "28:F0:33:A6:9E:5D"
+format = "AirPods Pro"
+hide_disconnected = true
 
 [[block]]
 block = "bluetooth"

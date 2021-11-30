@@ -5,7 +5,7 @@ font:
     # family: "MonoLisa"
     style: Regular
   bold:
-    family: "Recursive Code iCursive Cg"
+    family: "Cascadia Code iCursive Dk"
     style: Bold
   italic:
     family: "Recursive Code iCursive Cg"
