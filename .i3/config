@@ -206,8 +206,8 @@ for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 
 for_window [class="Steam"] floating enable
-for_window [class="dota2"] fullscreen enable
-assign [class="dota2"] workspace 3
+for_window [class="Dota 2"] fullscreen enable
+assign [class="Dota 2"] workspace 3
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -388,6 +388,8 @@ set $base0F #fcc09e
 ### settings for i3-gaps: ###
 #############################
 
+client.focused          #a7c080  #a7c080 #ffffff #81a1c1
+client.unfocused        #4b565c  #4b565c #888888 #2e3440
 # Set inner/outer gaps
 gaps inner 14
 gaps outer -2
