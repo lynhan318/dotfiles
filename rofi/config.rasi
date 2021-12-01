@@ -24,12 +24,12 @@ configuration {
     active-foreground:           @foreground;
     selected-active-foreground:  @foreground;
     alternate-active-background: rgba(46, 52, 64, 100%);
-    bordercolor:                 #81a1c1;
+    bordercolor:                 #a7c080;
     background:                  rgba(46, 52, 64, 100%);
     alternate-normal-foreground: @foreground;
     normal-background:           @background;
     selected-normal-background:  rgba(76, 86, 106, 100%);
-    border-color:                #81a1c1;
+    border-color:                #a7c080;
     spacing:                     2;
     separatorcolor:              @blue;
     urgent-background:           @background;

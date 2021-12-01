@@ -1,20 +1,21 @@
 /* colors */
 
 * {
- bg:#2E3440;
- bg1:#3B4252;
- bg2:#434C5E;
+ bg:#2b3339;
+ bg1:#4b565c;
+ bg2:#2f383e;
  bg3:#4C566A;
- fg:#ECEFF4;
+ fg:#d3c6aa;
  fg1:#E5E9F0;
  fg2:#D8DEE9;
-  red: #BF616A;
+ white:#d3c6aa;
+  red: #e67e80;
   orange:#D08770;
-  yellow:#EBCB8B;
-  magenta:#B48EAD;
-  cyan:#88C0D0;
-  blue:#81A1C1;
-  green:#A3BE8C;
+  yellow:#dbbc7f;
+  magenta:#d699b6;
+  cyan:#83c092;
+  blue:#7fbbb3;
+  green:#a7c080;
   transparent: #00000000;
 }
 

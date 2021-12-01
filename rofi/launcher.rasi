@@ -25,9 +25,9 @@ configuration {
 window {
     transparency:                   "real";
     background-color:               @bg;
-    text-color:                     @fg;
+    text-color:                     @white;
 	border:							3px;
-	border-color:					@bg3;
+	border-color:					@green;
     border-radius:                  8px;
 	width:							600px;
     location:                       center;
@@ -46,7 +46,7 @@ prompt {
 entry {
     background-color:               @bg;
     text-color:                     @fg2;
-    placeholder-color:              @bg2;
+    placeholder-color:              @white;
     expand:                         true;
     horizontal-align:               0;
     placeholder:                    " Search...";
@@ -90,7 +90,7 @@ mainbox {
 
 element {
     background-color:               @bg1;
-    text-color:                     @fg;
+    text-color:                     @white;
     orientation:                    horizontal;
     border-radius:                  0px;
 	padding: 						8px 8px 8px 20px;
@@ -100,7 +100,7 @@ element-icon {
     size:                           20px;
     border:                         0px;
     background-color:               @transparent;
-    text-color:                     @fg2;
+    text-color:                     @white;
 }
 
 element-text {
@@ -109,12 +109,12 @@ element-text {
     vertical-align:                 0.5;
     margin:                         0px 2.5px 0px 2.5px;
     background-color:               @transparent;
-    text-color:                     @fg2;
+    text-color:                     @white;
 }
 
 element selected {
     background-color:               @bg;
-    text-color:                     @fg;
+    text-color:                     @white;
 	border:							0 5px 0 5px;
     border-radius:                  0px;
     border-color:                  	@cyan;
