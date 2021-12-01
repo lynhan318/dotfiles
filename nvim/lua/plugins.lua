@@ -79,7 +79,7 @@ return require('packer').startup(function()
         config = function()
             require('lualine').setup {
                 options = {
-                    theme = 'nord',
+                    theme = 'everforest',
                     section_separators = {left = '', right = ''},
                     component_separators = {left = '', right = ''},
                     disabled_filetypes = {"defx"}
@@ -112,7 +112,7 @@ return require('packer').startup(function()
     --     requires = {'rktjmp/lush.nvim'},
     --     config = require 'plugins.theme'
     -- }
-    use {'arcticicestudio/nord-vim', config = require 'plugins.theme'}
+    use {'sainnhe/everforest', config = require 'plugins.theme'}
     -- use {'sainnhe/sonokai', config = require 'plugins.theme'}
 
     -- use {

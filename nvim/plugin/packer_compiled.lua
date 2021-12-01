@@ -57,7 +57,7 @@ end
 time([[Luarocks path setup]], false)
 time([[try_loadstring definition]], true)
 local function try_loadstring(s, component, name)
-  local success, result = pcall(loadstring(s))
+  local success, result = pcall(loadstring(s), name, _G.packer_plugins[name])
   if not success then
     vim.schedule(function()
       vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
@@ -93,6 +93,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/tiny/.local/share/nvim/site/pack/packer/start/defx.nvim",
     url = "https://github.com/Shougo/defx.nvim"
+  },
+  everforest = {
+    config = { "\27LJ\1\2¿\1\0\0\3\0\t\0\0194\0\0\0007\0\1\0\16\1\0\0%\2\2\0>\1\2\0014\1\0\0007\1\3\1%\2\5\0:\2\4\1\16\1\0\0%\2\6\0>\1\2\1\16\1\0\0%\2\a\0>\1\2\1\16\1\0\0%\2\b\0>\1\2\1G\0\1\0\22set termguicolors\27colorscheme everforest\24set background=dark\tsoft\26everforest_background\6g\14syntax on\bcmd\bvim\0" },
+    loaded = true,
+    path = "/home/tiny/.local/share/nvim/site/pack/packer/start/everforest",
+    url = "https://github.com/sainnhe/everforest"
   },
   ["formatter.nvim"] = {
     config = { "\27LJ\1\2€\1\0\0\4\0\6\1\n3\0\0\0003\1\1\0004\2\2\0007\2\3\0027\2\4\2'\3\0\0>\2\2\0<\2\0\0:\1\5\0H\0\2\0\targs\22nvim_buf_get_name\bapi\bvim\1\2\0\0\21--stdin-filepath\1\0\2\nstdin\2\bexe\rprettier\5€€À™\4D\0\0\2\0\3\0\0043\0\0\0003\1\1\0:\1\2\0H\0\2\0\targs\1\2\0\0\18--emit=stdout\1\0\2\nstdin\2\bexe\frustfmt(\0\0\1\0\1\0\0023\0\0\0H\0\2\0\1\0\2\bexe\15lua-format\nstdin\2Ï\4\1\0\a\0\25\00064\0\0\0%\1\1\0>\0\2\0021\1\2\0004\2\3\0007\2\4\0027\2\5\2%\3\6\0)\4\2\0>\2\3\0017\2\a\0003\3\b\0003\4\t\0002\5\3\0;\1\1\5:\5\n\0042\5\3\0;\1\1\5:\5\v\0042\5\3\0;\1\1\5:\5\f\0042\5\3\0;\1\1\5:\5\r\0042\5\3\0;\1\1\5:\5\14\0042\5\3\0;\1\1\5:\5\15\0042\5\3\0;\1\1\5:\5\16\0042\5\3\0;\1\1\5:\5\17\0042\5\3\0;\1\1\5:\5\18\0042\5\3\0;\1\1\5:\5\19\0042\5\3\0001\6\20\0;\6\1\5:\5\21\0042\5\3\0001\6\22\0;\6\1\5:\5\23\4:\4\24\3>\2\2\1G\0\1\0\rfiletype\blua\0\trust\0\rmarkdown\tyaml\tscss\tjson\bcss\thtml\15javascript\15typescript\20typescriptreact\20javascriptreact\1\0\0\1\0\1\flogging\1\nsetupÎ\1        augroup FormatAutogroup\n          autocmd!\n          autocmd BufWritePost *.js,*.mjs,*.ts,*.rs,*.lua,*.jsx,*.tsx,*.md,*.mdx,*.yml,*.json,*.css,*.scss,*.html FormatWrite\n        augroup END\n    \14nvim_exec\bapi\bvim\0\14formatter\frequire\0" },
@@ -131,16 +137,10 @@ _G.packer_plugins = {
     url = "https://github.com/rinx/lspsaga.nvim"
   },
   ["lualine.nvim"] = {
-    config = { "\27LJ\1\2Ö\1\0\0\4\0\f\0\0154\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\n\0003\2\3\0003\3\4\0:\3\5\0023\3\6\0:\3\a\0023\3\b\0:\3\t\2:\2\v\1>\0\2\1G\0\1\0\foptions\1\0\0\23disabled_filetypes\1\2\0\0\tdefx\25component_separators\1\0\2\tleft\5\nright\5\23section_separators\1\0\2\tleft\5\nright\5\1\0\1\ntheme\tnord\nsetup\flualine\frequire\0" },
+    config = { "\27LJ\1\2Ü\1\0\0\4\0\f\0\0154\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\n\0003\2\3\0003\3\4\0:\3\5\0023\3\6\0:\3\a\0023\3\b\0:\3\t\2:\2\v\1>\0\2\1G\0\1\0\foptions\1\0\0\23disabled_filetypes\1\2\0\0\tdefx\25component_separators\1\0\2\tleft\5\nright\5\23section_separators\1\0\2\tleft\5\nright\5\1\0\1\ntheme\15everforest\nsetup\flualine\frequire\0" },
     loaded = true,
     path = "/home/tiny/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
-  ["nord-vim"] = {
-    config = { "\27LJ\1\2Œ\1\0\0\3\0\6\0\0154\0\0\0007\0\1\0\16\1\0\0%\2\2\0>\1\2\1\16\1\0\0%\2\3\0>\1\2\1\16\1\0\0%\2\4\0>\1\2\1\16\1\0\0%\2\5\0>\1\2\1G\0\1\0\21colorscheme nord\24set background=dark\22set termguicolors\14syntax on\bcmd\bvim\0" },
-    loaded = true,
-    path = "/home/tiny/.local/share/nvim/site/pack/packer/start/nord-vim",
-    url = "https://github.com/arcticicestudio/nord-vim"
   },
   ["nvim-colorizer.lua"] = {
     config = { "\27LJ\1\2ƒ\1\0\0\3\0\5\0\b4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0003\2\4\0>\0\3\1G\0\1\0\1\0\b\vhsl_fn\2\vrgb_fn\2\rRRGGBBAA\2\nnames\1\bcss\2\bRGB\2\vcss_fn\2\vRRGGBB\2\1\2\0\0\6*\nsetup\14colorizer\frequire\0" },
@@ -308,26 +308,26 @@ time([[Config for nvim-compe]], false)
 time([[Config for nvim-transparent]], true)
 try_loadstring("\27LJ\1\2m\0\0\3\0\6\0\v4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0002\2\0\0:\2\4\0012\2\0\0:\2\5\1>\0\2\1G\0\1\0\fexclude\17extra_groups\1\0\1\venable\2\nsetup\16transparent\frequire\0", "config", "nvim-transparent")
 time([[Config for nvim-transparent]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-try_loadstring("\27LJ\1\2Ö\1\0\0\4\0\f\0\0154\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\n\0003\2\3\0003\3\4\0:\3\5\0023\3\6\0:\3\a\0023\3\b\0:\3\t\2:\2\v\1>\0\2\1G\0\1\0\foptions\1\0\0\23disabled_filetypes\1\2\0\0\tdefx\25component_separators\1\0\2\tleft\5\nright\5\23section_separators\1\0\2\tleft\5\nright\5\1\0\1\ntheme\tnord\nsetup\flualine\frequire\0", "config", "lualine.nvim")
-time([[Config for lualine.nvim]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 try_loadstring("\27LJ\1\2º\4\0\2\5\0\6\0\v7\2\0\0007\2\1\2\15\0\2\0T\3\6€4\2\2\0007\2\3\0027\2\4\2%\3\5\0)\4\1\0>\2\3\1G\0\1\0Ï\3          hi LspReferenceRead cterm=bold ctermbg=red guibg=#34495e\n          hi LspReferenceText cterm=bold ctermbg=red guibg=#34495e\n          hi LspReferenceWrite cterm=bold ctermbg=red guibg=#34495e\n          augroup lsp_document_highlight\n            autocmd! * <buffer>\n            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()\n            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()\n          augroup END\n        \14nvim_exec\bapi\bvim\23document_highlight\26resolved_capabilities~\0\0\3\0\6\0\t4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0003\2\4\0:\2\5\1>\0\2\1G\0\1\0\17handler_opts\1\0\1\vborder\vsingle\1\0\2\14doc_lines\3\2\tbind\2\14on_attach\18lsp_signature\frequireì\1\0\2\6\0\r\0\0307\2\0\1\15\0\2\0T\3\26€3\2\6\0003\3\1\0004\4\2\0007\4\3\0047\4\4\0047\5\0\0018\5\1\5>\4\2\2:\4\5\3:\3\a\0023\3\b\0004\4\2\0007\4\3\0047\4\4\0047\5\0\0018\5\2\5>\4\2\2:\4\5\3:\3\t\0024\3\n\0%\4\v\0>\3\2\0027\3\f\3\16\4\0\0\16\5\2\0@\3\3\0G\0\1\0\rin_range\20lsp-status/util\frequire\bend\1\0\1\14character\3\0\nstart\1\0\0\tline\14byte2line\afn\bvim\1\0\1\14character\3\0\15valueRange‹\1\1\1\4\1\a\0\r+\1\0\0007\1\0\0013\2\1\0004\3\2\0:\3\3\0021\3\4\0:\3\5\2>\1\2\1+\1\0\0007\1\6\1\16\2\0\0>\1\2\1G\0\1\0\0À\14on_attach\18select_symbol\0\16kind_labels\17kind_symbols\1\0\1\21current_function\1\vconfig§\6\0\0\2\0\r\0-4\0\0\0007\0\1\0%\1\2\0>\0\2\0014\0\0\0007\0\1\0%\1\3\0>\0\2\0014\0\0\0007\0\1\0%\1\4\0>\0\2\0014\0\0\0007\0\1\0%\1\5\0>\0\2\0014\0\0\0007\0\1\0%\1\6\0>\0\2\0014\0\0\0007\0\1\0%\1\a\0>\0\2\0014\0\0\0007\0\1\0%\1\b\0>\0\2\0014\0\0\0007\0\1\0%\1\t\0>\0\2\0014\0\0\0007\0\1\0%\1\n\0>\0\2\0014\0\0\0007\0\1\0%\1\v\0>\0\2\0014\0\0\0007\0\1\0%\1\f\0>\0\2\1G\0\1\0Tcommand! -nargs=0 LspVirtualTextToggle lua require(\"lsp/virtual_text\").toggle();nnoremap <silent> g] :Lspsaga diagnostic_jump_next<CR>>nnoremap <silent> g[ :Lspsaga show_cursor_diagnostics<CR>1nnoremap <silent> gh :Lspsaga lsp_finder<CR>5nnoremap <silent> gs :Lspsaga signature_help<CR>2nnoremap <silent> ca :Lspsaga code_action<CR>/nnoremap <silent> K :Lspsaga hover_doc<CR>;nnoremap <silent> rn <cmd>lua vim.lsp.buf.rename()<CR>Cnnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>?nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>?nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>\bcmd\bvim?\0\2\5\4\0\0\f+\2\0\0\16\3\0\0\16\4\1\0>\2\3\1+\2\1\0\16\3\0\0>\2\2\1+\2\2\0>\2\1\1+\2\3\0>\2\1\1G\0\1\0\4À\6À\5À\aÀ«\14\1\0\21\0>\0w4\0\0\0%\1\1\0>\0\2\0024\1\0\0%\2\2\0>\1\2\0024\2\0\0%\3\3\0>\2\2\0024\3\0\0%\4\4\0>\3\2\0023\4\6\0:\4\5\0014\4\a\0007\4\b\0047\4\t\4%\5\n\0003\6\v\0>\4\3\0014\4\a\0007\4\b\0047\4\t\4%\5\f\0003\6\r\0>\4\3\0014\4\a\0007\4\b\0047\4\t\4%\5\14\0003\6\15\0>\4\3\0014\4\a\0007\4\b\0047\4\t\4%\5\16\0003\6\17\0>\4\3\0017\4\18\0>\4\1\0017\4\19\0033\5\20\0>\4\2\0014\4\a\0007\4\21\0047\4\22\0044\5\a\0007\5\21\0057\5\24\0054\6\a\0007\6\21\0067\6\25\0067\6\26\0063\a\27\0>\5\3\2:\5\23\0041\4\28\0001\5\29\0001\6\30\0001\a\31\0001\b \0003\t$\0003\n\"\0003\v!\0:\v#\n:\n%\t3\n'\0003\v&\0:\v#\n:\n(\t3\n*\0003\v)\0:\v#\n:\n+\t2\n\0\0:\n,\t2\n\0\0:\n-\t2\n\0\0:\n.\t3\n4\0003\v2\0003\f0\0003\r/\0:\r1\f:\f3\v:\v5\n4\v6\0\16\f\t\0>\v\2\4D\14\24€4\0167\0\16\17\15\0>\16\2\2\a\0168\0T\16\3€\16\16\15\0>\16\1\2\16\15\16\0:\b9\0154\16\a\0007\16;\16%\17<\0007\18:\15\14\0\18\0T\19\1€2\18\0\0007\19:\0\16\20\n\0>\16\5\2:\16:\0156\16\14\0027\16=\16\16\17\15\0>\16\2\1B\14\3\3N\14æ0\0\0€G\0\1\0\nsetup\tkeep\20tbl_deep_extend\17capabilities\14on_attach\rfunction\ttype\npairs\17textDocument\1\0\1\15codeAction\2\15completion\1\0\0\19completionItem\1\0\0\1\0\1\19snippetSupport\2\nvimls\rtsserver\18rust_analyzer\vjsonls\1\0\0\1\3\0\0\31vscode-json-languageserver\f--stdio\thtml\1\0\0\1\3\0\0\24html-languageserver\f--stdio\ncssls\1\0\0\bcmd\1\0\0\1\3\0\0\23css-languageserver\f--stdio\0\0\0\0\0\1\0\4\14underline\2\nsigns\2\17virtual_text\1\21update_in_insert\1\27on_publish_diagnostics\15diagnostic\twith$textDocument/publishDiagnostics\rhandlers\blsp\1\0\1\29use_saga_diagnostic_sign\1\18init_lsp_saga\22register_progress\1\0\3\ttext\bïš\vtexthl\"LspDiagnosticsSignInformation\nnumhl\14WhiteSign\"LspDiagnosticsSignInformation\1\0\3\ttext\bïª\vtexthl\27LspDiagnosticsSignHint\nnumhl\rBlueSign\27LspDiagnosticsSignHint\1\0\3\ttext\bï±\vtexthl\30LspDiagnosticsSignWarning\nnumhl\15YellowSign\30LspDiagnosticsSignWarning\1\0\3\ttext\bï—\vtexthl\28LspDiagnosticsSignError\nnumhl\fRedSign\28LspDiagnosticsSignError\16sign_define\afn\bvim\1\26\0\0\18 ï’ž  (Text) \19 ïš¦  (Method)\21 ïž”  (Function)\24 ï¥  (Constructor)\18 ï´²  (Field)\21[îœ–] (Variable)\18 ï –  (Class)\22 ï°®  (Interface)\19 ï™¨  (Module)\20 ïª¶ (Property)\17 ï‘µ  (Unit)\18 ï¢Ÿ  (Value)\16 ï©— (Enum)\20 ï Š  (Keyword)\20 ïƒ„  (Snippet)\18 ï£—  (Color)\17 ïœ“  (File)\22 ïœœ  (Reference)\19 ïŠ  (Folder)\23 ï…  (EnumMember)\21 ï²€  (Constant)\19 ï³¤  (Struct)\18 ïƒ§  (Event)\21 ï—«  (Operator)\26 ïžƒ  (TypeParameter)\23CompletionItemKind\flspsaga\14lspconfig\21vim.lsp.protocol\15lsp-status\frequire\0", "config", "nvim-lspconfig")
 time([[Config for nvim-lspconfig]], false)
--- Config for: nvim-colorizer.lua
-time([[Config for nvim-colorizer.lua]], true)
-try_loadstring("\27LJ\1\2ƒ\1\0\0\3\0\5\0\b4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0003\2\4\0>\0\3\1G\0\1\0\1\0\b\vhsl_fn\2\vrgb_fn\2\rRRGGBBAA\2\nnames\1\bcss\2\bRGB\2\vcss_fn\2\vRRGGBB\2\1\2\0\0\6*\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
-time([[Config for nvim-colorizer.lua]], false)
+-- Config for: everforest
+time([[Config for everforest]], true)
+try_loadstring("\27LJ\1\2¿\1\0\0\3\0\t\0\0194\0\0\0007\0\1\0\16\1\0\0%\2\2\0>\1\2\0014\1\0\0007\1\3\1%\2\5\0:\2\4\1\16\1\0\0%\2\6\0>\1\2\1\16\1\0\0%\2\a\0>\1\2\1\16\1\0\0%\2\b\0>\1\2\1G\0\1\0\22set termguicolors\27colorscheme everforest\24set background=dark\tsoft\26everforest_background\6g\14syntax on\bcmd\bvim\0", "config", "everforest")
+time([[Config for everforest]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+try_loadstring("\27LJ\1\2Ü\1\0\0\4\0\f\0\0154\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\n\0003\2\3\0003\3\4\0:\3\5\0023\3\6\0:\3\a\0023\3\b\0:\3\t\2:\2\v\1>\0\2\1G\0\1\0\foptions\1\0\0\23disabled_filetypes\1\2\0\0\tdefx\25component_separators\1\0\2\tleft\5\nright\5\23section_separators\1\0\2\tleft\5\nright\5\1\0\1\ntheme\15everforest\nsetup\flualine\frequire\0", "config", "lualine.nvim")
+time([[Config for lualine.nvim]], false)
 -- Config for: ultisnips
 time([[Config for ultisnips]], true)
 try_loadstring("\27LJ\1\2J\0\0\3\0\5\0\a4\0\0\0007\0\1\0004\1\0\0007\1\2\1%\2\4\0:\2\3\1G\0\1\0\n<C-e>\27UltiSnipsExpandTrigger\6g\bcmd\bvim\0", "config", "ultisnips")
 time([[Config for ultisnips]], false)
--- Config for: nord-vim
-time([[Config for nord-vim]], true)
-try_loadstring("\27LJ\1\2Œ\1\0\0\3\0\6\0\0154\0\0\0007\0\1\0\16\1\0\0%\2\2\0>\1\2\1\16\1\0\0%\2\3\0>\1\2\1\16\1\0\0%\2\4\0>\1\2\1\16\1\0\0%\2\5\0>\1\2\1G\0\1\0\21colorscheme nord\24set background=dark\22set termguicolors\14syntax on\bcmd\bvim\0", "config", "nord-vim")
-time([[Config for nord-vim]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+try_loadstring("\27LJ\1\2ƒ\1\0\0\3\0\5\0\b4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0003\2\4\0>\0\3\1G\0\1\0\1\0\b\vhsl_fn\2\vrgb_fn\2\rRRGGBBAA\2\nnames\1\bcss\2\bRGB\2\vcss_fn\2\vRRGGBB\2\1\2\0\0\6*\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
+time([[Config for nvim-colorizer.lua]], false)
 if should_profile then save_profiles() end
 
 end)

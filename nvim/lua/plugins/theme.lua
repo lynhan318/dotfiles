@@ -6,9 +6,9 @@ return function()
     -- vim.g.sonokai_disable_italic_comment = 1
     -- cmd 'colorscheme sonokai'
 
-    -- vim.g.everforest_background = 'soft'
-    -- cmd 'set background=dark'
-    cmd 'colorscheme nord'
+    vim.g.everforest_background = 'soft'
+    cmd 'set background=dark'
+    cmd 'colorscheme everforest'
     cmd 'set termguicolors'
 
 end
