@@ -40,29 +40,14 @@ return require('packer').startup(function()
 
     -- LSP
     use {'neovim/nvim-lspconfig', config = require 'plugins.nvim-lspconfig'}
-    use {'nvim-lua/lsp-status.nvim'}
-    use {'rinx/lspsaga.nvim'}
-    use {'kabouzeid/nvim-lspinstall'}
-    use {'nvim-lua/lsp_extensions.nvim'}
+    -- use {'rinx/lspsaga.nvim'}
+    -- use {'nvim-lua/lsp_extensions.nvim'}
     -- use {'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons'}
-    use {
-        'ojroques/nvim-lspfuzzy',
-        config = require 'plugins.fzf',
-        requires = {
-            {'junegunn/fzf'}, {'junegunn/fzf.vim'} -- to enable preview (optional)
-        }
-    }
 
     -- Surround
     use {'tpope/vim-surround'}
     use {'windwp/nvim-ts-autotag'}
     use {'jiangmiao/auto-pairs'}
-    -- Telescope
-    -- use {
-    --   'nvim-telescope/telescope.nvim',
-    --   requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-    --   config = require'plugins.telescope'
-    -- }
 
     -- Treesitter
     use {
@@ -92,33 +77,24 @@ return require('packer').startup(function()
     use {
         'SirVer/ultisnips',
         requires = "honza/vim-snippets",
-        config = require "plugins.vim-vsnip"
+        config = function()
+            -- UltiSnips setting
+            vim.g.UltiSnipsExpandTrigger = "<C-o>"
+        end
     }
-    -- use {
-    --     "hrsh7th/vim-vsnip",
-    --     requires = "hrsh7th/vim-vsnip-integ",
-    --     config = require "plugins.vim-vsnip"
-    -- }
 
     -- Completion
-    use {'hrsh7th/nvim-compe', config = require 'plugins.nvim-compe'}
+    -- use {'hrsh7th/nvim-compe', config = require 'plugins.nvim-compe'}
+    use {'hrsh7th/cmp-nvim-lsp'}
+    use {'hrsh7th/cmp-buffer'}
+    use {'hrsh7th/cmp-path'}
+    use {'hrsh7th/cmp-cmdline'}
+    use {'hrsh7th/nvim-cmp', config = require 'plugins.nvim-compe'}
+    use {'quangnguyen30192/cmp-nvim-ultisnips'}
 
     -- Smooth scrollw
     use {'psliwka/vim-smoothie'}
-
-    -- Theme
-    -- use {
-    --     'MordechaiHadad/nvim-papadark',
-    --     requires = {'rktjmp/lush.nvim'},
-    --     config = require 'plugins.theme'
-    -- }
     use {'sainnhe/everforest', config = require 'plugins.theme'}
-    -- use {'sainnhe/sonokai', config = require 'plugins.theme'}
-
-    -- use {
-    --         "rktjmp/lush.nvim", 
-    --         config = require'plugins.lush'
-    --     }
 
     use {'rust-lang/rust.vim'}
     use {'mfussenegger/nvim-dap'}
@@ -137,11 +113,7 @@ return require('packer').startup(function()
     use {'easymotion/vim-easymotion'}
     -- Multi cursor
     use {'terryma/vim-multiple-cursors'}
-    -- airline
-    -- use {'vim-airline/vim-airline'};
-    -- use {'vim-airline/vim-airline-themes'};
     use {'mhartington/formatter.nvim', config = require 'plugins.prettier'}
-    use {'ray-x/lsp_signature.nvim'}
 
     -- indent line
     -- use {
@@ -165,4 +137,12 @@ return require('packer').startup(function()
 
     }
     use {'cespare/vim-toml', branch = "main"}
+
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {{'nvim-lua/plenary.nvim'}},
+        config = require 'plugins.telescope'
+    }
+
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 end)

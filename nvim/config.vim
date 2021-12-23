@@ -22,26 +22,12 @@ vnoremap <silent> d d:call ClipboardYank()<cr>
 " Goto previous/next diagnostic warning/error
 " nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 " nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-" autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-"  \ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
 "multiple cursors cursor{{
 " highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
 " highlight link multiple_cursors_visual Visual
 "}}
 
-"vim snippet {{
-imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-"}}
-"
-
-"fzf{{
-nmap <silent><leader>p :Files<CR>
-nmap <silent><leader>l :Rg<CR>
-nmap <silent><leader>bb :Buffers<CR>
-nmap <silent><leader>w :Windows<CR>
-"}}
 
 "rust {{
 let g:rustfmt_autosave = 1
