@@ -20,7 +20,7 @@ font:
     y: 0
   use_thin_strokes: true
 
-background_opacity: 1.0
+background_opacity: 0.98
 
 selection:
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'

@@ -59,8 +59,12 @@ return function() -- TODO figure out why this don't work
         vim.cmd("nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>")
         vim.cmd("nnoremap <silent> gr <cmd>Telescope lsp_references<CR>")
         vim.cmd("nnoremap <silent> gi <cmd>Telescope lsp_implementations<CR>")
-        vim.cmd("nnoremap <silent> ca <cmd>Telescope lsp_code_actions<CR>")
-        vim.cmd("nnoremap <silent> gD <cmd>Telescope diagnostics<CR>")
+        vim.cmd("nnoremap <silent> ca <cmd>lua vim.lsp.buf.code_action()<CR>")
+        -- vim.cmd("nnoremap <silent> gD <cmd>Telescope diagnostics<CR>")
+        -- vim.cmd("nnoremap <silent> ca <cmd>Telescope lsp_code_actions<CR>")
+        vim.cmd("nnoremap <silent> gD <cmd>lua vim.diagnostic.open_float()<CR>")
+        vim.cmd("nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>")
+        vim.cmd("nnoremap <silent> g] <cmd>lua vim.diagnostic.goto_next()<CR>")
 
         vim.cmd(
             'command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')

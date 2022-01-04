@@ -1,9 +1,10 @@
 function! ClipboardYank()
-    call system('xclip -sel clip',@@) 
+    call system('xclip -i -sel c',@@) 
 endfunction
-" function! ClipboardPaste() 
-"   let @@=system('xclip -o clip')
-" endfunction
+
+function! ClipboardPaste()
+  let @@=system('xclip -o -sel -c')
+endfunction
 
 inoremap <silent> <c-l> <Right>
 inoremap <silent><expr><Tab> pumvisible() ? "\<C-N>" : "\<Tab>"
