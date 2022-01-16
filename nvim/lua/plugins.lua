@@ -41,7 +41,10 @@ return require('packer').startup(function()
     -- LSP
     use {'neovim/nvim-lspconfig', config = require 'plugins.nvim-lspconfig'}
     -- use {'rinx/lspsaga.nvim'}
-    -- use {'nvim-lua/lsp_extensions.nvim'}
+    use {
+        'nvim-lua/lsp_extensions.nvim'
+        -- config = require 'plugins.lsp-extensions'
+    }
     -- use {'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
     -- Surround

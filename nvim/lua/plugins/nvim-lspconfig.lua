@@ -79,7 +79,11 @@ return function() -- TODO figure out why this don't work
         cssls = {cmd = {'css-languageserver', '--stdio'}},
         html = {cmd = {'html-languageserver', '--stdio'}},
         jsonls = {cmd = {'vscode-json-languageserver', '--stdio'}},
-        rust_analyzer = {},
+        rust_analyzer = {
+            settings = {
+                ["rust-analyzer"] = {checkOnSave = {command = "clippy"}}
+            }
+        },
         tsserver = {},
         vimls = {}
     }
