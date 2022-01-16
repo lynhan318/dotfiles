@@ -35,22 +35,17 @@ let g:rustfmt_autosave = 1
 "}}
 
 "vista {{
-" function! NearestMethodOrFunction() abort
-"   return get(b:, 'vista_nearest_method_or_function', '')
-" endfunction
-" let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-" let g:vista_sidebar_width = 40
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_sidebar_width = 40
 
-" " set statusline+=%{NearestMethodOrFunction()}
-" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-" nnoremap <silent><leader>vo :Vista<CR>
-" nnoremap <silent><leader>vc :Vista!<CR>
+set statusline+=%{NearestMethodOrFunction()}
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+nnoremap <silent><leader>v :Vista!!<CR>
 "}}
 
-" Tagbar{{
-nmap <silent>T :TagbarToggle<CR>
-" let g:tagbar_ctags_bin="/usr/local/bin/ctags"
-"}}
 
 " onedark vim{{
 let bufferline = get(g:, 'bufferline', {})
@@ -65,6 +60,10 @@ let bufferline.icon_close_tab_modified = '●'
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs
-\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+\ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+
+
+

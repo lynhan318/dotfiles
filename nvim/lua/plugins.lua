@@ -19,7 +19,7 @@ return require('packer').startup(function()
 
     -- Icons
     use {'ryanoasis/vim-devicons'}
-    use {'majutsushi/tagbar'}
+    use {'liuchengxu/vista.vim'}
     use {
         'kyazdani42/nvim-web-devicons',
         config = require('plugins.nvim-web-devicons')
@@ -41,10 +41,7 @@ return require('packer').startup(function()
     -- LSP
     use {'neovim/nvim-lspconfig', config = require 'plugins.nvim-lspconfig'}
     -- use {'rinx/lspsaga.nvim'}
-    use {
-        'nvim-lua/lsp_extensions.nvim'
-        -- config = require 'plugins.lsp-extensions'
-    }
+
     -- use {'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
     -- Surround
@@ -93,16 +90,18 @@ return require('packer').startup(function()
     use {'hrsh7th/cmp-path'}
     use {'hrsh7th/cmp-cmdline'}
     use {'hrsh7th/nvim-cmp', config = require 'plugins.nvim-compe'}
-    use {'quangnguyen30192/cmp-nvim-ultisnips'}
+    -- use {'quangnguyen30192/cmp-nvim-ultisnips'}
 
     -- Smooth scrollw
     use {'psliwka/vim-smoothie'}
     use {'sainnhe/everforest', config = require 'plugins.theme'}
 
     use {'rust-lang/rust.vim'}
-    use {'mfussenegger/nvim-dap'}
+    -- use {'simrat39/rust-tools.nvim', config = require 'plugins.rust'}
+    -- use {'mfussenegger/nvim-dap'}
     use {'nvim-lua/popup.nvim'}
     use {'nvim-lua/plenary.nvim'}
+    use {'nvim-lua/lsp_extensions.nvim'}
 
     -- Defx 
     use {'kristijanhusak/defx-icons'};
