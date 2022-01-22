@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/home/tiny/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-nvim-ultisnips"] = {
+    loaded = true,
+    path = "/home/tiny/.local/share/nvim/site/pack/packer/start/cmp-nvim-ultisnips",
+    url = "https://github.com/quangnguyen30192/cmp-nvim-ultisnips"
+  },
   ["cmp-path"] = {
     loaded = true,
     path = "/home/tiny/.local/share/nvim/site/pack/packer/start/cmp-path",
@@ -138,7 +143,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["nvim-cmp"] = {
-    config = { "\27LJ\1\2}\0\2\4\1\5\0\n+\2\0\0007\3\0\0016\2\3\2:\2\0\0013\2\2\0007\3\3\0007\3\4\0036\2\3\2:\2\1\1H\1\2\0\1�\tname\vsource\1\0\3\14ultisnips\14[Snippet]\rnvim_lsp\n[LSP]\vbuffer\r[Buffer]\tmenu\tkind�\a\1\0\a\0\22\0$4\0\0\0%\1\1\0>\0\2\0023\1\2\0007\2\3\0003\3\a\0002\4\4\0003\5\4\0;\5\1\0043\5\5\0;\5\2\0043\5\6\0;\5\3\4:\4\b\0033\4\f\0007\5\t\0007\5\n\0053\6\v\0>\5\2\2:\5\r\0047\5\t\0007\5\14\5>\5\1\2:\5\15\0047\5\t\0007\5\16\5>\5\1\2:\5\17\4:\4\t\0033\4\19\0001\5\18\0:\5\20\4:\4\21\3>\2\2\0010\0\0�G\0\1\0\15formatting\vformat\1\0\0\0\n<tab>\21select_next_item\f<s-tab>\21select_prev_item\t<cr>\1\0\0\1\0\1\vselect\2\fconfirm\fmapping\fsources\1\0\0\1\0\1\tname\vbuffer\1\0\1\tname\tpath\1\0\1\tname\rnvim_lsp\nsetup\1\0\25\tText\18   (Text) \rFunction\21   (Function)\rOperator\21   (Operator)\nColor\18   (Color)\nClass\18   (Class)\vModule\19   (Module)\rConstant\21 ﲀ  (Constant)\rProperty\20 襁 (Property)\vMethod\19   (Method)\15EnumMember\23   (EnumMember)\tUnit\17   (Unit)\14Interface\22 ﰮ  (Interface)\vStruct\19 ﳤ  (Struct)\rVariable\21[] (Variable)\fSnippet\20   (Snippet)\vFolder\19   (Folder)\nEvent\18   (Event)\nField\18 ﴲ  (Field)\18TypeParameter\26   (TypeParameter)\tFile\17   (File)\nValue\18   (Value)\16Constructor\24   (Constructor)\tEnum\16 練 (Enum)\fKeyword\20   (Keyword)\14Reference\22   (Reference)\bcmp\frequire\0" },
+    config = { "\27LJ\1\2:\0\1\3\0\4\0\0064\1\0\0007\1\1\0017\1\2\0017\2\3\0>\1\2\1G\0\1\0\tbody\19UltiSnips#Anon\afn\bvim}\0\2\4\1\5\0\n+\2\0\0007\3\0\0016\2\3\2:\2\0\0013\2\2\0007\3\3\0007\3\4\0036\2\3\2:\2\1\1H\1\2\0\1�\tname\vsource\1\0\3\14ultisnips\14[Snippet]\rnvim_lsp\n[LSP]\vbuffer\r[Buffer]\tmenu\tkind�\a\1\0\a\0\27\0*4\0\0\0%\1\1\0>\0\2\0023\1\2\0007\2\3\0003\3\b\0002\4\5\0003\5\4\0;\5\1\0043\5\5\0;\5\2\0043\5\6\0;\5\3\0043\5\a\0;\5\4\4:\4\t\0033\4\v\0001\5\n\0:\5\f\4:\4\r\0033\4\17\0007\5\14\0007\5\15\0053\6\16\0>\5\2\2:\5\18\0047\5\14\0007\5\19\5>\5\1\2:\5\20\0047\5\14\0007\5\21\5>\5\1\2:\5\22\4:\4\14\0033\4\24\0001\5\23\0:\5\25\4:\4\26\3>\2\2\0010\0\0�G\0\1\0\15formatting\vformat\1\0\0\0\n<tab>\21select_next_item\f<s-tab>\21select_prev_item\t<cr>\1\0\0\1\0\1\vselect\2\fconfirm\fmapping\fsnippet\vexpand\1\0\0\0\fsources\1\0\0\1\0\1\tname\14ultisnips\1\0\1\tname\vbuffer\1\0\1\tname\tpath\1\0\1\tname\rnvim_lsp\nsetup\1\0\24\tText\18   (Text) \rFunction\21   (Function)\rOperator\21   (Operator)\nColor\18   (Color)\nClass\18   (Class)\vModule\19   (Module)\rConstant\21 ﲀ  (Constant)\rProperty\20 襁 (Property)\vMethod\19   (Method)\15EnumMember\23   (EnumMember)\tUnit\17   (Unit)\14Interface\22 ﰮ  (Interface)\vStruct\19 ﳤ  (Struct)\rVariable\21[] (Variable)\nEvent\18   (Event)\vFolder\19   (Folder)\nField\18 ﴲ  (Field)\18TypeParameter\26   (TypeParameter)\tFile\17   (File)\nValue\18   (Value)\16Constructor\24   (Constructor)\tEnum\16 練 (Enum)\fKeyword\20   (Keyword)\14Reference\22   (Reference)\bcmp\frequire\0" },
     loaded = true,
     path = "/home/tiny/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
@@ -204,11 +209,6 @@ _G.packer_plugins = {
     path = "/home/tiny/.local/share/nvim/site/pack/packer/start/rust.vim",
     url = "https://github.com/rust-lang/rust.vim"
   },
-  tagbar = {
-    loaded = true,
-    path = "/home/tiny/.local/share/nvim/site/pack/packer/start/tagbar",
-    url = "https://github.com/majutsushi/tagbar"
-  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/home/tiny/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
@@ -270,6 +270,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/tiny/.local/share/nvim/site/pack/packer/start/vim-toml",
     url = "https://github.com/cespare/vim-toml"
+  },
+  ["vista.vim"] = {
+    loaded = true,
+    path = "/home/tiny/.local/share/nvim/site/pack/packer/start/vista.vim",
+    url = "https://github.com/liuchengxu/vista.vim"
   }
 }
 
@@ -284,7 +289,7 @@ try_loadstring("\27LJ\1\2�\3\0\0\4\0\17\0\0214\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1
 time([[Config for nvim-treesitter]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
-try_loadstring("\27LJ\1\2}\0\2\4\1\5\0\n+\2\0\0007\3\0\0016\2\3\2:\2\0\0013\2\2\0007\3\3\0007\3\4\0036\2\3\2:\2\1\1H\1\2\0\1�\tname\vsource\1\0\3\14ultisnips\14[Snippet]\rnvim_lsp\n[LSP]\vbuffer\r[Buffer]\tmenu\tkind�\a\1\0\a\0\22\0$4\0\0\0%\1\1\0>\0\2\0023\1\2\0007\2\3\0003\3\a\0002\4\4\0003\5\4\0;\5\1\0043\5\5\0;\5\2\0043\5\6\0;\5\3\4:\4\b\0033\4\f\0007\5\t\0007\5\n\0053\6\v\0>\5\2\2:\5\r\0047\5\t\0007\5\14\5>\5\1\2:\5\15\0047\5\t\0007\5\16\5>\5\1\2:\5\17\4:\4\t\0033\4\19\0001\5\18\0:\5\20\4:\4\21\3>\2\2\0010\0\0�G\0\1\0\15formatting\vformat\1\0\0\0\n<tab>\21select_next_item\f<s-tab>\21select_prev_item\t<cr>\1\0\0\1\0\1\vselect\2\fconfirm\fmapping\fsources\1\0\0\1\0\1\tname\vbuffer\1\0\1\tname\tpath\1\0\1\tname\rnvim_lsp\nsetup\1\0\25\tText\18   (Text) \rFunction\21   (Function)\rOperator\21   (Operator)\nColor\18   (Color)\nClass\18   (Class)\vModule\19   (Module)\rConstant\21 ﲀ  (Constant)\rProperty\20 襁 (Property)\vMethod\19   (Method)\15EnumMember\23   (EnumMember)\tUnit\17   (Unit)\14Interface\22 ﰮ  (Interface)\vStruct\19 ﳤ  (Struct)\rVariable\21[] (Variable)\fSnippet\20   (Snippet)\vFolder\19   (Folder)\nEvent\18   (Event)\nField\18 ﴲ  (Field)\18TypeParameter\26   (TypeParameter)\tFile\17   (File)\nValue\18   (Value)\16Constructor\24   (Constructor)\tEnum\16 練 (Enum)\fKeyword\20   (Keyword)\14Reference\22   (Reference)\bcmp\frequire\0", "config", "nvim-cmp")
+try_loadstring("\27LJ\1\2:\0\1\3\0\4\0\0064\1\0\0007\1\1\0017\1\2\0017\2\3\0>\1\2\1G\0\1\0\tbody\19UltiSnips#Anon\afn\bvim}\0\2\4\1\5\0\n+\2\0\0007\3\0\0016\2\3\2:\2\0\0013\2\2\0007\3\3\0007\3\4\0036\2\3\2:\2\1\1H\1\2\0\1�\tname\vsource\1\0\3\14ultisnips\14[Snippet]\rnvim_lsp\n[LSP]\vbuffer\r[Buffer]\tmenu\tkind�\a\1\0\a\0\27\0*4\0\0\0%\1\1\0>\0\2\0023\1\2\0007\2\3\0003\3\b\0002\4\5\0003\5\4\0;\5\1\0043\5\5\0;\5\2\0043\5\6\0;\5\3\0043\5\a\0;\5\4\4:\4\t\0033\4\v\0001\5\n\0:\5\f\4:\4\r\0033\4\17\0007\5\14\0007\5\15\0053\6\16\0>\5\2\2:\5\18\0047\5\14\0007\5\19\5>\5\1\2:\5\20\0047\5\14\0007\5\21\5>\5\1\2:\5\22\4:\4\14\0033\4\24\0001\5\23\0:\5\25\4:\4\26\3>\2\2\0010\0\0�G\0\1\0\15formatting\vformat\1\0\0\0\n<tab>\21select_next_item\f<s-tab>\21select_prev_item\t<cr>\1\0\0\1\0\1\vselect\2\fconfirm\fmapping\fsnippet\vexpand\1\0\0\0\fsources\1\0\0\1\0\1\tname\14ultisnips\1\0\1\tname\vbuffer\1\0\1\tname\tpath\1\0\1\tname\rnvim_lsp\nsetup\1\0\24\tText\18   (Text) \rFunction\21   (Function)\rOperator\21   (Operator)\nColor\18   (Color)\nClass\18   (Class)\vModule\19   (Module)\rConstant\21 ﲀ  (Constant)\rProperty\20 襁 (Property)\vMethod\19   (Method)\15EnumMember\23   (EnumMember)\tUnit\17   (Unit)\14Interface\22 ﰮ  (Interface)\vStruct\19 ﳤ  (Struct)\rVariable\21[] (Variable)\nEvent\18   (Event)\vFolder\19   (Folder)\nField\18 ﴲ  (Field)\18TypeParameter\26   (TypeParameter)\tFile\17   (File)\nValue\18   (Value)\16Constructor\24   (Constructor)\tEnum\16 練 (Enum)\fKeyword\20   (Keyword)\14Reference\22   (Reference)\bcmp\frequire\0", "config", "nvim-cmp")
 time([[Config for nvim-cmp]], false)
 -- Config for: nvim-web-devicons
 time([[Config for nvim-web-devicons]], true)
@@ -298,26 +303,26 @@ time([[Config for nvim-transparent]], false)
 time([[Config for lualine.nvim]], true)
 try_loadstring("\27LJ\1\2�\1\0\0\4\0\f\0\0154\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\n\0003\2\3\0003\3\4\0:\3\5\0023\3\6\0:\3\a\0023\3\b\0:\3\t\2:\2\v\1>\0\2\1G\0\1\0\foptions\1\0\0\23disabled_filetypes\1\2\0\0\tdefx\25component_separators\1\0\2\tleft\5\nright\5\23section_separators\1\0\2\tleft\5\nright\5\1\0\1\ntheme\15everforest\nsetup\flualine\frequire\0", "config", "lualine.nvim")
 time([[Config for lualine.nvim]], false)
--- Config for: nvim-colorizer.lua
-time([[Config for nvim-colorizer.lua]], true)
-try_loadstring("\27LJ\1\2�\1\0\0\3\0\5\0\b4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0003\2\4\0>\0\3\1G\0\1\0\1\0\b\vhsl_fn\2\vrgb_fn\2\rRRGGBBAA\2\nnames\1\bcss\2\bRGB\2\vcss_fn\2\vRRGGBB\2\1\2\0\0\6*\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
-time([[Config for nvim-colorizer.lua]], false)
--- Config for: everforest
-time([[Config for everforest]], true)
-try_loadstring("\27LJ\1\2�\1\0\0\3\0\t\0\0194\0\0\0007\0\1\0\16\1\0\0%\2\2\0>\1\2\0014\1\0\0007\1\3\1%\2\5\0:\2\4\1\16\1\0\0%\2\6\0>\1\2\1\16\1\0\0%\2\a\0>\1\2\1\16\1\0\0%\2\b\0>\1\2\1G\0\1\0\22set termguicolors\27colorscheme everforest\24set background=dark\tsoft\26everforest_background\6g\14syntax on\bcmd\bvim\0", "config", "everforest")
-time([[Config for everforest]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 try_loadstring("\27LJ\1\2�\5\0\2\5\0\t\0\0197\2\0\0007\2\1\2\15\0\2\0T\3\6�4\2\2\0007\2\3\0027\2\4\2%\3\5\0)\4\1\0>\2\3\0017\2\0\0007\2\6\2\15\0\2\0T\3\4�4\2\2\0007\2\a\2%\3\b\0>\2\2\1G\0\1\0Bautocmd CursorHoldI <buffer> lua vim.lsp.buf.signature_help()\bcmd\19signature_help�\3          hi LspReferenceRead cterm=bold ctermbg=red guibg=#34495e\n          hi LspReferenceText cterm=bold ctermbg=red guibg=#34495e\n          hi LspReferenceWrite cterm=bold ctermbg=red guibg=#34495e\n          augroup lsp_document_highlight\n            autocmd! * <buffer>\n            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()\n            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()\n          augroup END\n        \14nvim_exec\bapi\bvim\23document_highlight\26resolved_capabilities�\6\0\0\2\0\r\0-4\0\0\0007\0\1\0%\1\2\0>\0\2\0014\0\0\0007\0\1\0%\1\3\0>\0\2\0014\0\0\0007\0\1\0%\1\4\0>\0\2\0014\0\0\0007\0\1\0%\1\5\0>\0\2\0014\0\0\0007\0\1\0%\1\6\0>\0\2\0014\0\0\0007\0\1\0%\1\a\0>\0\2\0014\0\0\0007\0\1\0%\1\b\0>\0\2\0014\0\0\0007\0\1\0%\1\t\0>\0\2\0014\0\0\0007\0\1\0%\1\n\0>\0\2\0014\0\0\0007\0\1\0%\1\v\0>\0\2\0014\0\0\0007\0\1\0%\1\f\0>\0\2\1G\0\1\0Tcommand! -nargs=0 LspVirtualTextToggle lua require(\"lsp/virtual_text\").toggle()Annoremap <silent> g] <cmd>lua vim.diagnostic.goto_next()<CR>Annoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>Bnnoremap <silent> gD <cmd>lua vim.diagnostic.open_float()<CR>@nnoremap <silent> ca <cmd>lua vim.lsp.buf.code_action()<CR>@nnoremap <silent> gi <cmd>Telescope lsp_implementations<CR>;nnoremap <silent> gr <cmd>Telescope lsp_references<CR>9nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>Cnnoremap <silent> gs <cmd>lua vim.lsp.buf.signature_help()<CR>;nnoremap <silent> rn <cmd>lua vim.lsp.buf.rename()<CR>?nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>\bcmd\bvim'\0\2\5\2\0\0\a+\2\0\0\16\3\0\0\16\4\1\0>\2\3\1+\2\1\0>\2\1\1G\0\1\0\5�\6��\n\1\0\17\0=\0v4\0\0\0%\1\1\0>\0\2\0024\1\0\0%\2\2\0>\1\2\0024\2\3\0007\2\4\0023\3\5\0003\4\6\0004\5\3\0007\5\a\0057\5\b\5%\6\t\0003\a\n\0>\5\3\0014\5\3\0007\5\a\0057\5\b\5%\6\v\0003\a\f\0>\5\3\0014\5\3\0007\5\a\0057\5\b\5%\6\r\0003\a\14\0>\5\3\0014\5\3\0007\5\a\0057\5\b\5%\6\15\0003\a\16\0>\5\3\0017\5\17\0027\6\19\0027\a\17\0027\a\20\a\16\b\4\0>\6\3\2:\6\18\0057\5\17\0027\6\19\0027\a\17\0027\a\22\a\16\b\4\0>\6\3\2:\6\21\0057\5\17\0027\6\19\0024\a\3\0007\a\4\a7\a\24\a7\a\25\a3\b\26\0>\6\3\2:\6\23\0051\5\27\0001\6\28\0001\a\29\0003\b!\0003\t\31\0003\n\30\0:\n \t:\t\"\b3\t$\0003\n#\0:\n \t:\t%\b3\t'\0003\n&\0:\n \t:\t(\b3\t.\0003\n,\0003\v*\0003\f)\0:\f+\v:\v-\n:\n/\t:\t0\b2\t\0\0:\t1\b2\t\0\0:\t2\b4\t3\0\16\n\b\0>\t\2\4D\f\25�4\0144\0\16\15\r\0>\14\2\2\a\0145\0T\14\3�\16\14\r\0>\14\1\2\16\r\14\0:\a6\r4\14\3\0007\14\4\0147\0147\0147\0148\14>\14\1\0024\15\0\0%\16:\0>\15\2\0027\15;\15\16\16\14\0>\15\2\2:\0159\r6\15\f\0017\15<\15\16\16\r\0>\15\2\1B\f\3\3N\f�0\0\0�G\0\1\0\nsetup\24update_capabilities\17cmp_nvim_lsp\17capabilities\29make_client_capabilities\rprotocol\14on_attach\rfunction\ttype\npairs\nvimls\rtsserver\18rust_analyzer\rsettings\1\0\0\18rust-analyzer\1\0\0\16checkOnSave\1\0\0\1\0\1\fcommand\vclippy\vjsonls\1\0\0\1\3\0\0\31vscode-json-languageserver\f--stdio\thtml\1\0\0\1\3\0\0\24html-languageserver\f--stdio\ncssls\1\0\0\bcmd\1\0\0\1\3\0\0\23css-languageserver\f--stdio\0\0\0\1\0\4\14underline\2\nsigns\2\17virtual_text\1\21update_in_insert\1\27on_publish_diagnostics\15diagnostic$textDocument/publishDiagnostics\nhover\23textDocument/hover\19signature_help\twith\31textDocument/signatureHelp\rhandlers\1\0\2\ttext\b\vtexthl\23DiagnosticSignHint\23DiagnosticSignHint\1\0\2\ttext\b\vtexthl\23DiagnosticSignInfo\30DiagnosticSignInformation\1\0\2\ttext\6!\vtexthl\23DiagnosticSignWarn\23DiagnosticSignWarn\1\0\2\ttext\b✗\vtexthl\24DiagnosticSignError\24DiagnosticSignError\16sign_define\afn\1\0\3\14focusable\1\nscope\tline\vborder\frounded\1\0\2\fnoremap\2\vsilent\2\blsp\bvim\14lspconfig\21vim.lsp.protocol\frequire\0", "config", "nvim-lspconfig")
 time([[Config for nvim-lspconfig]], false)
--- Config for: ultisnips
-time([[Config for ultisnips]], true)
-try_loadstring("\27LJ\1\2>\0\0\2\0\4\0\0054\0\0\0007\0\1\0%\1\3\0:\1\2\0G\0\1\0\n<C-o>\27UltiSnipsExpandTrigger\6g\bvim\0", "config", "ultisnips")
-time([[Config for ultisnips]], false)
+-- Config for: everforest
+time([[Config for everforest]], true)
+try_loadstring("\27LJ\1\2�\1\0\0\3\0\t\0\0194\0\0\0007\0\1\0\16\1\0\0%\2\2\0>\1\2\0014\1\0\0007\1\3\1%\2\5\0:\2\4\1\16\1\0\0%\2\6\0>\1\2\1\16\1\0\0%\2\a\0>\1\2\1\16\1\0\0%\2\b\0>\1\2\1G\0\1\0\22set termguicolors\27colorscheme everforest\24set background=dark\tsoft\26everforest_background\6g\14syntax on\bcmd\bvim\0", "config", "everforest")
+time([[Config for everforest]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\1\2�\a\0\0\n\0,\0F4\0\0\0%\1\1\0>\0\2\0024\1\0\0%\2\2\0>\1\2\0024\2\0\0%\3\3\0>\2\2\0024\3\4\0007\3\5\3%\4\6\0>\3\2\0014\3\4\0007\3\5\3%\4\a\0>\3\2\0014\3\0\0%\4\b\0>\3\2\0027\3\t\0033\4\15\0003\5\v\0003\6\n\0:\6\f\0053\6\r\0:\6\14\5:\5\16\0043\5\17\0002\6\0\0:\6\18\0053\6\29\0003\a\20\0007\b\19\0:\b\21\a7\b\22\0:\b\23\a7\b\24\0:\b\25\a7\b\26\0007\t\22\0\30\b\t\b:\b\27\a7\b\26\0007\t\24\0\30\b\t\b:\b\28\a:\a\30\0063\a\31\0007\b\19\0:\b\21\a:\a \6:\6!\0053\6\"\0:\6#\5:\5$\0043\5&\0003\6%\0:\6'\0053\6(\0:\6)\5:\5*\4>\3\2\0014\3\0\0%\4\b\0>\3\2\0027\3+\3%\4'\0>\3\2\1G\0\1\0\19load_extension\15extensions\17file_browser\1\0\1\vhidden\2\bfzf\1\0\0\1\0\4\28override_generic_sorter\2\14case_mode\15smart_case\25override_file_sorter\2\nfuzzy\2\rdefaults\22vimgrep_arguments\1\t\0\0\arg\18--color=never\17--no-heading\20--with-filename\18--line-number\r--column\17--smart-case\r--hidden\rmappings\6n\1\0\0\6i\1\0\0\f<s-tab>\n<tab>\21toggle_selection\n<C-k>\28move_selection_previous\n<C-j>\24move_selection_next\n<esc>\1\0\0\nclose\18layout_config\1\0\0\fpickers\1\0\0\14live_grep\1\0\1\ntheme\bivy\15find_files\1\0\0\1\0\1\ntheme\bivy\nsetup\14telescope4nnoremap <Leader>l <cmd>Telescope live_grep<CR>5nnoremap <Leader>p <cmd>Telescope find_files<CR>\bcmd\bvim\20telescope.utils\28telescope.actions.state\22telescope.actions\frequire\0", "config", "telescope.nvim")
 time([[Config for telescope.nvim]], false)
+-- Config for: ultisnips
+time([[Config for ultisnips]], true)
+try_loadstring("\27LJ\1\2>\0\0\2\0\4\0\0054\0\0\0007\0\1\0%\1\3\0:\1\2\0G\0\1\0\n<C-o>\27UltiSnipsExpandTrigger\6g\bvim\0", "config", "ultisnips")
+time([[Config for ultisnips]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+try_loadstring("\27LJ\1\2�\1\0\0\3\0\5\0\b4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0003\2\4\0>\0\3\1G\0\1\0\1\0\b\vhsl_fn\2\vrgb_fn\2\rRRGGBBAA\2\nnames\1\bcss\2\bRGB\2\vcss_fn\2\vRRGGBB\2\1\2\0\0\6*\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
+time([[Config for nvim-colorizer.lua]], false)
 if should_profile then save_profiles() end
 
 end)
