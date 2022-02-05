@@ -31,6 +31,9 @@ bluetooth_print() {
     done
 }
 
+bluetooth_open() {
+    blueman-manager
+}
 bluetooth_toggle() {
     if bluetoothctl show | grep -q "Powered: no"; then
         bluetoothctl power on >> /dev/null
@@ -52,7 +55,7 @@ bluetooth_toggle() {
 
 case "$1" in
     --toggle)
-        bluetooth_toggle
+        bluetooth_open
         ;;
     *)
         bluetooth_print
