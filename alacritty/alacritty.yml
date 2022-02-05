@@ -20,8 +20,6 @@ font:
     y: 0
   use_thin_strokes: true
 
-background_opacity: 0.96
-
 selection:
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
   # When set to `true`, selected text will be copied to the primary clipboard.
@@ -69,6 +67,7 @@ window:
   # - transparent: title bar, transparent background and title bar buttons
   # - buttonless: title bar, transparent background, but no title bar buttons
   decorations: full
+  opacity: 0.96
 
   # Startup Mode (changes require restart)
   #
