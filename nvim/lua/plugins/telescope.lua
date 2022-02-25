@@ -30,14 +30,14 @@ return function()
             }
         },
         extensions = {
-            fzf = {
-                fuzzy = true, -- false will only do exact matching
-                override_generic_sorter = true,
-                override_file_sorter = true,
-                case_mode = "smart_case" -- this is default
-            },
+            -- fzf = {
+            --     fuzzy = true, -- false will only do exact matching
+            --     override_generic_sorter = true,
+            --     override_file_sorter = true,
+            --     case_mode = "smart_case" -- this is default
+            -- },
             file_browser = {hidden = true}
         }
     }
-    require("telescope").load_extension "fzf"
+    -- require("telescope").load_extension "fzf"
 end
