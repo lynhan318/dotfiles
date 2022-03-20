@@ -140,10 +140,15 @@ return require('packer').startup(function()
     }
     use {'cespare/vim-toml', branch = "main"}
 
+    -- use {
+    --     'nvim-telescope/telescope.nvim',
+    --     requires = {{'nvim-lua/plenary.nvim'}},
+    --     config = require 'plugins.telescope'
+    -- }
     use {
-        'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/plenary.nvim'}},
-        config = require 'plugins.telescope'
+        'ibhagwan/fzf-lua',
+        -- optional for icon support
+        requires = {'kyazdani42/nvim-web-devicons'}
     }
 
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
