@@ -66,4 +66,7 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs
 \ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
 
+" setup for lens.vim
+let g:lens#disabled_filetypes = ['nerdtree', 'fzf', 'defx']
+let g:lens#animate = 0
 
