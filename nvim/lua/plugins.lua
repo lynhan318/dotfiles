@@ -145,7 +145,7 @@ return require('packer').startup(function()
         config = require 'plugins.fzf',
         requires = {'kyazdani42/nvim-web-devicons'}
     }
-    use {'camspiers/animate.vim'}
+    -- use {'camspiers/animate.vim'}
     use {'camspiers/lens.vim'}
 
 end)
