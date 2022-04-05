@@ -81,7 +81,8 @@ return function() -- TODO figure out why this don't work
         jsonls = {cmd = {'vscode-json-languageserver', '--stdio'}},
         rust_analyzer = {
             settings = {
-                ["rust-analyzer"] = {checkOnSave = {command = "clippy"}}
+                ["rust-analyzer"] = {checkOnSave = {command = "clippy"}},
+                cargo = {allFeatures = true}
             }
         },
         tsserver = {},

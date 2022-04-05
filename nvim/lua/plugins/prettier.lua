@@ -12,7 +12,7 @@ return function()
     vim.api.nvim_exec([[
         augroup FormatAutogroup
           autocmd!
-          autocmd BufWritePost *.js,*.mjs,*.ts,*.rs,*.lua,*.jsx,*.tsx,*.md,*.mdx,*.yml,*.json,*.css,*.scss,*.html FormatWrite
+          autocmd BufWritePost *.js,*.mjs,*.ts,*.lua,*.jsx,*.tsx,*.md,*.mdx,*.yml,*.json,*.css,*.scss,*.html FormatWrite
         augroup END
     ]], true)
 
@@ -29,16 +29,16 @@ return function()
             scss = {prettier},
             yaml = {prettier},
             markdown = {prettier},
-            rust = {
-                -- Rustfmt
-                function()
-                    return {
-                        exe = "rustfmt",
-                        args = {"--emit=stdout"},
-                        stdin = true
-                    }
-                end
-            },
+            -- rust = {
+            --     -- Rustfmt
+            --     function()
+            --         return {
+            --             exe = "rustfmt",
+            --             args = {"--emit=stdout"},
+            --             stdin = true
+            --         }
+            --     end
+            -- },
             lua = {
                 -- luafmt
                 function()

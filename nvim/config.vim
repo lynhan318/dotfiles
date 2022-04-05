@@ -62,11 +62,12 @@ let g:python3_host_prog = '/usr/bin/python3'
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Enable type inlay hints
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs
-\ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+" autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs
+" \ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
 
 " setup for lens.vim
 let g:lens#disabled_filetypes = ['nerdtree', 'fzf', 'defx']
 let g:lens#animate = 0
 
+autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)

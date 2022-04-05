@@ -97,11 +97,10 @@ return require('packer').startup(function()
     use {'sainnhe/everforest', config = require 'plugins.theme'}
 
     use {'rust-lang/rust.vim'}
-    -- use {'simrat39/rust-tools.nvim', config = require 'plugins.rust'}
+    use {'simrat39/rust-tools.nvim', config = require 'plugins.rust'}
     -- use {'mfussenegger/nvim-dap'}
     use {'nvim-lua/popup.nvim'}
     use {'nvim-lua/plenary.nvim'}
-    use {'nvim-lua/lsp_extensions.nvim'}
 
     -- Defx 
     use {'kristijanhusak/defx-icons'};
@@ -147,5 +146,9 @@ return require('packer').startup(function()
     }
     -- use {'camspiers/animate.vim'}
     use {'camspiers/lens.vim'}
+    -- use {'ggandor/lightspeed.nvim'}
+    -- use {'lukas-reineke/indent-blankline.nvim'}
+    -- use {'glepnir/dashboard-nvim'}
+    -- use {'liuchengxu/vim-clap'}
 
 end)
