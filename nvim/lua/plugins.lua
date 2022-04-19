@@ -38,8 +38,6 @@ return require('packer').startup(function()
     -- Git
     use {'tpope/vim-fugitive'}
 
-    -- LSP
-    use {'neovim/nvim-lspconfig', config = require 'plugins.nvim-lspconfig'}
     -- use {'rinx/lspsaga.nvim'}
 
     -- use {'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons'}
@@ -97,7 +95,34 @@ return require('packer').startup(function()
     use {'sainnhe/everforest', config = require 'plugins.theme'}
 
     use {'rust-lang/rust.vim'}
-    use {'simrat39/rust-tools.nvim', config = require 'plugins.rust'}
+    -- LSP
+    use {'neovim/nvim-lspconfig', config = require 'plugins.nvim-lspconfig'}
+    use {
+        'simrat39/rust-tools.nvim',
+        config = function()
+            -- local nvim_lsp = require 'lspconfig'
+            local opts = {
+                tools = {
+                    autoSetHints = true,
+                    hover_with_actions = true,
+                    -- runnables = {use_telescope = true},
+                    inlay_hints = {
+                        show_parameter_hints = false,
+                        parameter_hints_prefix = " <-",
+                        other_hints_prefix = "» "
+                    }
+                }
+            }
+            require('rust-tools').setup(opts)
+        end
+    }
+    use({'ray-x/lsp_signature.nvim'})
+    use {
+        'saecki/crates.nvim',
+        tag = 'v0.1.0',
+        requires = {'nvim-lua/plenary.nvim'},
+        config = function() require('crates').setup() end
+    }
     -- use {'mfussenegger/nvim-dap'}
     use {'nvim-lua/popup.nvim'}
     use {'nvim-lua/plenary.nvim'}
@@ -145,7 +170,7 @@ return require('packer').startup(function()
         requires = {'kyazdani42/nvim-web-devicons'}
     }
     -- use {'camspiers/animate.vim'}
-    use {'camspiers/lens.vim'}
+    -- use {'camspiers/lens.vim'}
     -- use {'ggandor/lightspeed.nvim'}
     -- use {'lukas-reineke/indent-blankline.nvim'}
     -- use {'glepnir/dashboard-nvim'}

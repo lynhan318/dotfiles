@@ -30,7 +30,7 @@ return function()
     cmp.setup({
         sources = {
             {name = "nvim_lsp"}, {name = "path"}, {name = "buffer"},
-            {name = "ultisnips"}
+            {name = "ultisnips"}, {name = "crates"}
         },
         snippet = {
             -- REQUIRED - you must specify a snippet engine
