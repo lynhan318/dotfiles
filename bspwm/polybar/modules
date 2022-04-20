@@ -3,6 +3,17 @@
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
+[module/bluetooth]
+type = custom/script
+exec = ~/.config/bspwm/scripts/bluetooth.sh
+format = <label>
+format-prefix = ""
+format-prefix-font = 3
+format-prefix-foreground = ${color.CYAN}
+tail = true
+click-left = ~/.config/bspwm/scripts/bluetooth.sh --toggle &
+
+
 [module/volume]
 type = internal/pulseaudio
 
@@ -44,6 +55,25 @@ ramp-volume-foreground = ${color.BLUE}
 
 ramp-headphones-0 = 
 ramp-headphones-1 = 
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+[module/memory-info]
+type = custom/script
+exec = ~/.config/bspwm/scripts/memory.sh
+click-left = ~/.config/bspwm/scripts/memory.sh --popup
+format-prefix = " "
+format-prefix-font= 2
+format-prefix-foreground = ${color.BLUE}
+
+[module/cpu-info]
+type = custom/script
+exec = ~/.config/bspwm/scripts/cpu.sh
+click-left = ~/.config/bspwm/scripts/cpu.sh --popup
+format = <label>
+format-prefix = " "
+format-prefix-font = 2
+format-prefix-foreground = ${color.RED}
+interval=1.0
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -166,18 +196,18 @@ fuzzy-match = true
 
 ; ws-icon-[0-9]+ = label;icon
 ; Note that the label needs to correspond with the bspwm workspace name
-ws-icon-0 = I;
-ws-icon-1 = II;
-ws-icon-2 = III;
-ws-icon-3 = IV;
-ws-icon-4 = V;
-ws-icon-5 = VI;
-ws-icon-6 = VII;
-ws-icon-7 = VIII;
-ws-icon-default = 
+# ws-icon-0 = I;
+# ws-icon-1 = II;
+# ws-icon-2 = III;
+# ws-icon-3 = IV;
+# ws-icon-4 = V;
+# ws-icon-5 = VI;
+# ws-icon-6 = VII;
+# ws-icon-7 = VIII;
+# ws-icon-default = 
 
 format = <label-state>
-format-font = 2
+format-font = 1
 
 label-monitor = %name%
 
@@ -243,20 +273,15 @@ label-private = " | Private"
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/date]
-type = internal/date
+type = custom/script
+exec = ~/.config/bspwm/scripts/calendar.sh
+interval = 1
+click-left = ~/.config/bspwm/scripts/calendar.sh --popup
 
-interval = 1.0
+format-underline = ${colors.four}
+format-prefix= " "
+format-prefix-foreground=${colors.four}
 
-time = %I:%M %p
-time-alt = %A, %d %B %Y
-
-format = <label>
-format-prefix = " "
-format-prefix-font = 3
-format-prefix-foreground = ${color.RED}
-
-label = %time%
-label-font = 4
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
