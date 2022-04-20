@@ -5,21 +5,21 @@
 
 # Terminal (alacritty)
 alt + Return
-	bspterm
+	alacritty
 
 # Terminal (floating)
-alt + shift + Return
-	bspterm -f
+# alt + shift + Return
+# 	alacritty -f
 
 # Terminal (fullscreen)
-alt + t
-	bspterm -s	
+# alt + t
+# 	alacritty -s	
 
 ##---------- Rofi Launcher & Menus ----------##
 
 # Rofi App Launcher
-# super + F1
-#	sh ~/.config/bspwm/rofi/bin/launcher
+ # super + F1
+	# sh ~/.config/bspwm/rofi/bin/launcher
 
 # Rofi Network Menu
 alt + n
@@ -30,8 +30,8 @@ ctrl + alt + t
 	sh ~/.config/bspwm/rofi/bin/themes
 
 # Rofi Menus/Applets
-alt + {d,w,m,x,r,s}
-	sh ~/.config/bspwm/rofi/bin/{launcher,windows,mpd,powermenu,asroot,screenshot}
+alt + {d,w,m,x,s,slash}
+	sh ~/.config/bspwm/rofi/bin/{launcher,windows,mpd,powermenu,screenshot,sxhkd-help}
 
 ##---------- Applications ----------##
 
@@ -40,8 +40,8 @@ alt + shift + {f,w,e}
 	{thunar,firefox,geany}
 
 # Terminal Apps
-ctrl + alt + {v,r,h}
-	alacritty --config-file ~/.config/bspwm/alacritty/alacritty.yml -e {vim,ranger,htop}
+# ctrl + alt + {v,r,h}
+# 	alacritty --config-file ~/.config/bspwm/alacritty/alacritty.yml -e {vim,ranger,htop}
 
 # Color Picker
 alt + p
@@ -150,19 +150,19 @@ alt + {Tab,grave}
 
 # Send focused window to another workspace
 alt + {_,shift + }{1-8}
-	bspc {desktop -f,node -d} '^{1-8}'
+	bspc {desktop -f,node -d} '^{1-8}' --follow
 
 # Expanding windows
 alt + control + {Left,Right,Up,Down}
 	bspc node -z {left -20 0,right 20 0,top 0 -20,bottom 0 20}
 	
 ## Shrinking windows
-alt + alt + {Left,Right,Up,Down}
-	bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
+# alt + {Left,Right,Up,Down}
+# 	bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
 	
 ## Move floating windows
-alt + shift + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+# alt + shift + {Left,Down,Up,Right}
+# 	bspc node -v {-20 0,0 20,0 -20,20 0}
 # focus the next/previous desktop in the current monitor
 alt + {less,greater}
 	bspc desktop -f {prev,next}.local
@@ -188,11 +188,18 @@ alt + {_,shift + }{h,j,k,l}
 alt + shift + i
 	winmask		
 # send the newest marked node to the newest preselected node
-alt + y
-	bspc node newest.marked.local -n newest.!automatic.local
+# alt + y
+# 	bspc node newest.marked.local -n newest.!automatic.local
 
 # swap the current node and the biggest node
 alt + g
 	bspc node -s biggest.local
+
+# Expand/contract a window by moving one of its side outward/inward
+alt + r : {h,j,k,l}
+    STEP=30; SELECTION={1,2,3,4}; \
+    bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
+    bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
+
 #http://la-familia-grande.de/index.php?site=bspwm
 ##---------- EOF ----------##
