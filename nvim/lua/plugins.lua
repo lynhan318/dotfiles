@@ -100,7 +100,7 @@ return require('packer').startup(function()
     use {
         'simrat39/rust-tools.nvim',
         config = function()
-            -- local nvim_lsp = require 'lspconfig'
+            local nvim_lsp = require 'lspconfig'
             local opts = {
                 tools = {
                     autoSetHints = true,
@@ -116,7 +116,6 @@ return require('packer').startup(function()
             require('rust-tools').setup(opts)
         end
     }
-    use({'ray-x/lsp_signature.nvim'})
     use {
         'saecki/crates.nvim',
         tag = 'v0.1.0',
