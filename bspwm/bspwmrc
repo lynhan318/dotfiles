@@ -63,36 +63,36 @@ bspc rule -r *:*
 # bspc rule -a Alacritty desktop='^1' follow=on focus=on
 # bspc rule -a Xfce4-terminal desktop='^1' follow=on focus=on
 
-2 > web
-bspc rule -a firefox desktop='^2' follow=on focus=on
-bspc rule -a chromium desktop='^2' follow=on focus=on
+# 2 > web
+# bspc rule -a firefox desktop='^2' follow=on focus=on
+# bspc rule -a chromium desktop='^2' follow=on focus=on
 
 # 3 > files
-declare -a files=(Pcmanfm Thunar qBittorrent)
-for i in ${files[@]}; do
-   bspc rule -a $i desktop='^3' follow=on focus=on; done
+# declare -a files=(Pcmanfm Thunar qBittorrent)
+# for i in ${files[@]}; do
+#    bspc rule -a $i desktop='^3' follow=on focus=on; done
 
 # 4 > code
-declare -a code=(Geany code-oss)
-for i in ${code[@]}; do
-   bspc rule -a $i desktop='^4' follow=on focus=on; done
+# declare -a code=(Geany code-oss)
+# for i in ${code[@]}; do
+#    bspc rule -a $i desktop='^4' follow=on focus=on; done
 
 # 5 > office and docs
-declare -a office=(Gucharmap Atril Evince \
-libreoffice-writer libreoffice-calc libreoffice-impress \
-libreoffice-startcenter libreoffice Soffice *:libreofficedev *:soffice)
-for i in ${office[@]}; do
-   bspc rule -a $i desktop='^5' follow=on focus=on; done
+# declare -a office=(Gucharmap Atril Evince \
+# libreoffice-writer libreoffice-calc libreoffice-impress \
+# libreoffice-startcenter libreoffice Soffice *:libreofficedev *:soffice)
+# for i in ${office[@]}; do
+#    bspc rule -a $i desktop='^5' follow=on focus=on; done
 
 # 6 > Communication
-declare -a comm=(Thunderbird TelegramDesktop Hexchat)
-for i in ${comm[@]}; do
-   bspc rule -a $i desktop='^6' follow=on focus=on; done
+# declare -a comm=(Thunderbird TelegramDesktop Hexchat)
+# for i in ${comm[@]}; do
+#    bspc rule -a $i desktop='^6' follow=on focus=on; done
 
 # 7 > media
-declare -a media=(Audacity Music MPlayer Lxmusic Inkscape Gimp-2.10 obs)
-for i in ${media[@]}; do
-   bspc rule -a $i desktop='^7' state=floating follow=on focus=on; done
+# declare -a media=(Audacity Music MPlayer Lxmusic Inkscape Gimp-2.10 obs)
+# for i in ${media[@]}; do
+#    bspc rule -a $i desktop='^7' state=floating follow=on focus=on; done
 
 # 8 > settings
 bspc rule -a 'VirtualBox Manager' desktop='^8' follow=on focus=on

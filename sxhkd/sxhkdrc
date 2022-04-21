@@ -116,8 +116,8 @@ super + shift + {q,r}
 
 # Fullscreen or Monocle
 alt + f
-#	bspc desktop -l next
-    bspc node -t "~"fullscreen
+	bspc desktop -l next
+    # bspc node -t "~"fullscreen
 
 # Toggle beetwen floating & tiled
 alt + space
@@ -182,7 +182,7 @@ alt + {o,i}
 
 # focus the node in the given direction
 alt + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+	bspc node -{f,s} {west,south,north,east} --follow
 
 # Hide/Unhide Window
 alt + shift + i

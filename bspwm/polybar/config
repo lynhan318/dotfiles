@@ -48,8 +48,8 @@ font-2 = "google\-mdi:size=12;3"
 font-3 = "Iosevka:style=bold:"size=12;3"
 
 modules-left = mod sep bspwm
-modules-center = mpd
-modules-right = network ethernet sep
+# modules-center = mpd
+# modules-right = network sep ethernet
 
 separator =
 spacing = 0
@@ -76,6 +76,7 @@ enable-ipc = true
 ; bspwm
 ; scroll-up = bspc desktop -f prev.local
 ; scroll-down = bspc desktop -f next.local
+
 [bar/main]
 monitor = HDMI-0
 monitor-strict = false
@@ -110,9 +111,9 @@ font-1 = "Iosevka Nerd Font:size=12;3"
 font-2 = "google\-mdi:size=12;3"
 font-3 = "Iosevka:style=bold:"size=12;3"
 
-modules-left = mod sep bspwm
-# modules-center = mpd
-modules-right = volume sep cpu-info sep memory-info sep bluetooth sep date
+modules-left = mod sep bspwm sep
+modules-center = date
+modules-right = volume sep cpu-info sep memory-info sep bluetooth sep network sep ethernet
 
 separator =
 spacing = 0
