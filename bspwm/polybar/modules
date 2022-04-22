@@ -2,6 +2,45 @@
 ## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted = 🔇 muted
+label-muted-foreground = #666
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奄
+ramp-volume-2 = 奄
+ramp-volume-3 = 奔
+ramp-volume-4 = 奔
+ramp-volume-5 = 奔
+ramp-volume-6 = 墳
+ramp-volume-7 = 墳
+ramp-volume-8 = 墳
+ramp-volume-9 = 墳
+ramp-volume-font = 2
+ramp-volume-foreground = ${color.BLUE}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/bluetooth]
 type = custom/script
@@ -64,6 +103,22 @@ click-left = ~/.config/bspwm/scripts/memory.sh --popup
 format-prefix = " "
 format-prefix-font= 2
 format-prefix-foreground = ${color.BLUE}
+
+[module/cpu]
+type = internal/cpu
+warn-percentage = 95
+format-prefix = " "
+# label = %percentage%%
+; Seconds to sleep between updates
+; Default: 1
+format-prefix-font = 2
+format-prefix-foreground = ${color.RED}
+interval=1.0
+# click-left = ~/.config/bspwm/scripts/cpu.sh --popup
+click-left = "%{A1:alacrity -e htop:} clock here %{A}"
+
+; Default: 80
+; New in version 3.6.0
 
 [module/cpu-info]
 type = custom/script
@@ -282,8 +337,12 @@ format-underline = ${colors.four}
 format-prefix= " "
 format-prefix-foreground=${colors.four}
 
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+[module/docker]
+type = custom/script
+exec = docker ps -q | wc -l
+interval = 5
+label = Docker running: %output%
+format-underline = #16a085
 
 [module/mpd]
 type = internal/mpd

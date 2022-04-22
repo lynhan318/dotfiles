@@ -64,8 +64,7 @@ bspc rule -r *:*
 # bspc rule -a Xfce4-terminal desktop='^1' follow=on focus=on
 
 # 2 > web
-# bspc rule -a firefox desktop='^2' follow=on focus=on
-# bspc rule -a chromium desktop='^2' follow=on focus=on
+bspc rule -a dota2 desktop='^2' follow=on focus=on state=floating
 
 # 3 > files
 # declare -a files=(Pcmanfm Thunar qBittorrent)

@@ -97,25 +97,25 @@ return require('packer').startup(function()
     use {'rust-lang/rust.vim'}
     -- LSP
     use {'neovim/nvim-lspconfig', config = require 'plugins.nvim-lspconfig'}
-    use {
-        'simrat39/rust-tools.nvim',
-        config = function()
-            local nvim_lsp = require 'lspconfig'
-            local opts = {
-                tools = {
-                    autoSetHints = true,
-                    hover_with_actions = true,
-                    -- runnables = {use_telescope = true},
-                    inlay_hints = {
-                        show_parameter_hints = false,
-                        parameter_hints_prefix = " <-",
-                        other_hints_prefix = "» "
-                    }
-                }
-            }
-            require('rust-tools').setup(opts)
-        end
-    }
+    -- use {
+    --     'simrat39/rust-tools.nvim',
+    --     config = function()
+    --         local nvim_lsp = require 'lspconfig'
+    --         local opts = {
+    --             tools = {
+    --                 autoSetHints = true,
+    --                 hover_with_actions = true,
+    --                 -- runnables = {use_telescope = true},
+    --                 inlay_hints = {
+    --                     show_parameter_hints = false,
+    --                     parameter_hints_prefix = " <-",
+    --                     other_hints_prefix = "» "
+    --                 }
+    --             }
+    --         }
+    --         require('rust-tools').setup(opts)
+    --     end
+    -- }
     use {
         'saecki/crates.nvim',
         tag = 'v0.1.0',

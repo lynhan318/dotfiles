@@ -49,8 +49,7 @@ font-3 = "Iosevka:style=bold:"size=12;3"
 
 modules-left = mod sep bspwm
 # modules-center = mpd
-# modules-right = network sep ethernet
-
+modules-right = docker
 separator =
 spacing = 0
 
@@ -113,7 +112,7 @@ font-3 = "Iosevka:style=bold:"size=12;3"
 
 modules-left = mod sep bspwm sep
 modules-center = date
-modules-right = volume sep cpu-info sep memory-info sep bluetooth sep network sep ethernet
+modules-right = pulseaudio sep cpu sep memory-info sep bluetooth sep network sep ethernet
 
 separator =
 spacing = 0
@@ -123,7 +122,7 @@ dim-value = 1.0
 wm-name = bspwm
 locale = 
 
-tray-position = right
+tray-position = none
 tray-detached = false
 tray-maxsize = 16
 tray-transparent = false
