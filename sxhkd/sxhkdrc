@@ -8,8 +8,8 @@ alt + Return
 	alacritty
 
 # Terminal (floating)
-# alt + shift + Return
-# 	alacritty -f
+alt + shift + Return
+	bspterm -f
 
 # Terminal (fullscreen)
 # alt + t

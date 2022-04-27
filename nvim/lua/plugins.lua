@@ -87,6 +87,7 @@ return require('packer').startup(function()
     use {'hrsh7th/cmp-buffer'}
     use {'hrsh7th/cmp-path'}
     use {'hrsh7th/cmp-cmdline'}
+    use {'hrsh7th/cmp-nvim-lsp-signature-help'}
     use {'hrsh7th/nvim-cmp', config = require 'plugins.nvim-compe'}
     use {'quangnguyen30192/cmp-nvim-ultisnips'}
 
@@ -94,28 +95,13 @@ return require('packer').startup(function()
     use {'psliwka/vim-smoothie'}
     use {'sainnhe/everforest', config = require 'plugins.theme'}
 
+    use {'simrat39/rust-tools.nvim'}
     use {'rust-lang/rust.vim'}
     -- LSP
-    use {'neovim/nvim-lspconfig', config = require 'plugins.nvim-lspconfig'}
-    -- use {
-    --     'simrat39/rust-tools.nvim',
-    --     config = function()
-    --         local nvim_lsp = require 'lspconfig'
-    --         local opts = {
-    --             tools = {
-    --                 autoSetHints = true,
-    --                 hover_with_actions = true,
-    --                 -- runnables = {use_telescope = true},
-    --                 inlay_hints = {
-    --                     show_parameter_hints = false,
-    --                     parameter_hints_prefix = " <-",
-    --                     other_hints_prefix = "» "
-    --                 }
-    --             }
-    --         }
-    --         require('rust-tools').setup(opts)
-    --     end
-    -- }
+    use {'neovim/nvim-lspconfig',
+        require = {{ 'rust-tools' }},
+        config = require 'plugins.nvim-lspconfig'
+    }
     use {
         'saecki/crates.nvim',
         tag = 'v0.1.0',
@@ -174,5 +160,4 @@ return require('packer').startup(function()
     -- use {'lukas-reineke/indent-blankline.nvim'}
     -- use {'glepnir/dashboard-nvim'}
     -- use {'liuchengxu/vim-clap'}
-
 end)

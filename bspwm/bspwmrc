@@ -34,8 +34,8 @@ workspaces() {
 	#	bspc monitor ${monitor} -n "$name" -d '' '' '' '' '' '' '' ''
 	#	let name++
 	#done
-    bspc monitor HDMI-0 -d '1' '2'
-    bspc monitor DP-0 -d '3' '4'
+    bspc monitor HDMI-0 -d '1' '2' '3'
+    bspc monitor DP-0 -d '4' '5'
 }
 workspaces
 
@@ -143,6 +143,7 @@ xsetroot -cursor_name left_ptr
 # Start mpd
 exec nitrogen --restore &
 exec mpd &
+exec ibus-daemon -xdr &
 
 # Start bspwm scripts
 bspcolors

@@ -32,7 +32,7 @@ return function() -- TODO figure out why this don't work
         underline = true
     })
 
-    local function documentHighlight(client, bufnr)
+    local function documentHighlight(client)
         if client.resolved_capabilities.document_highlight then
             vim.api.nvim_exec([[
           hi LspReferenceRead cterm=bold ctermbg=red guibg=#34495e
@@ -46,10 +46,10 @@ return function() -- TODO figure out why this don't work
         ]], false)
         end
 
-        if client.resolved_capabilities.signature_help then
-            vim.cmd(
-                'autocmd CursorHoldI <buffer> lua vim.lsp.buf.signature_help()')
-        end
+        -- if client.resolved_capabilities.signature_help then
+        --     vim.cmd(
+        --         'autocmd CursorHoldI <buffer> lua vim.lsp.buf.signature_help()')
+        -- end
     end
 
     local function lspSetup()
@@ -70,21 +70,22 @@ return function() -- TODO figure out why this don't work
             'command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
     end
 
-    local function commonAttach(client, bufnr)
-        documentHighlight(client, bufnr)
+    local function commonAttach(client)
+        documentHighlight(client)
         lspSetup()
     end
 
     local servers = {
         cssls = {cmd = {'css-languageserver', '--stdio'}},
         html = {cmd = {'html-languageserver', '--stdio'}},
+        sumneko_lua = {cmd = {'lua-language-server', '--stdio'}},
         jsonls = {cmd = {'vscode-json-languageserver', '--stdio'}},
-        rust_analyzer = {
-            settings = {
-                ["rust-analyzer"] = {checkOnSave = {command = "clippy"}},
-                cargo = {allFeatures = true}
-            }
-        },
+        -- rust_analyzer = {
+        --     settings = {
+        --         ["rust-analyzer"] = {checkOnSave = {command = "clippy"}},
+        --         cargo = {allFeatures = true}
+        --     }
+        -- },
         tsserver = {},
         vimls = {}
     }
@@ -97,4 +98,42 @@ return function() -- TODO figure out why this don't work
 
         lspconfig[server].setup(config)
     end
+
+    -- setup rust-alanyzer with inlay_hints
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local opts = {
+        tools = {
+            autoSetHints = true,
+            hover_with_actions = true,
+            runnables = {
+                use_telescope = true
+            },
+            inlay_hints = {
+                show_parameter_hints = false,
+                parameter_hints_prefix = " <-",
+                other_hints_prefix = "» "
+
+            },
+        },
+
+        -- all the opts to send to nvim-lspconfig
+        -- these override the defaults set by rust-tools.nvim
+        -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
+        server = {
+            -- on_attach is a callback called when the language server attachs to the buffer
+            on_attach = commonAttach,
+            capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities), 
+            settings = {
+                -- to enable rust-analyzer settings visit:
+                -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+                ["rust-analyzer"] = {
+                    -- enable clippy on save
+                    checkOnSave = {
+                        command = "clippy"
+                    },
+                }
+            }
+        },
+    }
+    require('rust-tools').setup(opts)
 end
