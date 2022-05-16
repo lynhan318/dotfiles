@@ -1,0 +1,197 @@
+[character]
+success_symbol = "[~](bold green)"
+error_symbol = "[~](bold red)"
+vicmd_symbol = "[~](bold green)"
+
+[git_commit]
+tag_symbol = " tag "
+
+[git_status]
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+renamed = "»"
+deleted = "✘"
+stashed = "$"
+untracked = "?"
+[aws]
+symbol = "aws "
+
+[c]
+symbol = "C "
+
+[cobol]
+symbol = "cobol "
+
+[conda]
+symbol = "conda "
+
+[crystal]
+symbol = "cr "
+
+[cmake]
+symbol = "cmake "
+
+[dart]
+symbol = "dart "
+
+[deno]
+symbol = "deno "
+
+[dotnet]
+symbol = ".NET "
+
+[directory]
+read_only = " ro"
+
+[docker_context]
+symbol = "docker "
+
+[elixir]
+symbol = "exs "
+
+[elm]
+symbol = "elm "
+
+[git_branch]
+symbol = "git "
+
+[golang]
+symbol = "go "
+
+[hg_branch]
+symbol = "hg "
+
+[java]
+symbol = "java "
+
+[julia]
+symbol = "jl "
+
+[kotlin]
+symbol = "kt "
+
+[nodejs]
+symbol = "nodejs "
+
+[memory_usage]
+symbol = "memory "
+
+[nim]
+symbol = "nim "
+
+[nix_shell]
+symbol = "nix "
+
+[ocaml]
+symbol = "ml "
+
+[package]
+symbol = "pkg "
+
+[perl]
+symbol = "pl "
+
+[php]
+symbol = "php "
+
+[pulumi]
+symbol = "pulumi "
+
+[purescript]
+symbol = "purs "
+
+[python]
+symbol = "py "
+
+[ruby]
+symbol = "rb "
+
+[rust]
+symbol = "rs "
+
+[scala]
+symbol = "scala "
+
+[spack]
+symbol = "spack "
+
+[sudo]
+symbol = "sudo "
+
+[swift]
+symbol = "swift "
+
+
+#--------Powerline font-------
+# format = """
+# [](#9A348E)\
+# $username\
+# [](bg:#DA627D fg:#9A348E)\
+# $directory\
+# [](fg:#DA627D bg:#FCA17D)\
+# $git_branch\
+# $git_status\
+# [](fg:#FCA17D bg:#86BBD8)\
+# $nodejs\
+# $rust\
+# [](fg:#86BBD8 bg:#33658A)\
+# $time\
+# [ ](fg:#33658A)\
+# """
+
+# # Disable the blank line at the start of the prompt
+# # add_newline = false
+
+# # You can also replace your username with a neat symbol like  to save some space
+# [username]
+# show_always = true
+# style_user = "bg:#9A348E"
+# style_root = "bg:#9A348E"
+# format = '[$user ]($style)'
+
+# [directory]
+# style = "bg:#DA627D"
+# format = "[ $path ]($style)"
+# truncation_length = 3
+# truncation_symbol = "…/"
+
+# # Here is how you can shorten some long paths by text replacement
+# # similar to mapped_locations in Oh My Posh:
+# [directory.substitutions]
+# "Documents" = " "
+# "Downloads" = " "
+# "Music" = " "
+# "Pictures" = " "
+# # Keep in mind that the order matters. For example:
+# # "Important Documents" = "  "
+# # will not be replaced, because "Documents" was already substituted before.
+# # So either put "Important Documents" before "Documents" or use the substituted version:
+# # "Important  " = "  "
+
+# [git_branch]
+# symbol = ""
+# style = "bg:#FCA17D"
+# format = '[[ $symbol $branch ](bg:#FCA17D)]($style)'
+
+# [git_status]
+# style = "bg:#FCA17D"
+# format = '[[($all_status$ahead_behind )](bg:#FCA17D)]($style)'
+
+# [nodejs]
+# symbol = ""
+# style = "bg:#86BBD8"
+# format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
+
+# [rust]
+# symbol = ""
+# style = "bg:#86BBD8"
+# format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
+
+# [time]
+# disabled = false
+# time_format = "%R" # Hour:Minute Format
+# style = "bg:#33658A"
+# format = '[[ ♥ $time ](bg:#33658A)]($style)'
+
+#--------End of Powerline font-------#

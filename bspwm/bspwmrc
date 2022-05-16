@@ -143,7 +143,7 @@ xsetroot -cursor_name left_ptr
 # Start mpd
 exec nitrogen --restore &
 exec mpd &
-exec ibus-daemon -xdr &
+exec fcitx5 &
 
 # Start bspwm scripts
 bspcolors

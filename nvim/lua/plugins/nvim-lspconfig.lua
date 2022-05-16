@@ -87,7 +87,14 @@ return function() -- TODO figure out why this don't work
         --     }
         -- },
         tsserver = {},
-        vimls = {}
+        vimls = {},
+        denols = {
+          on_attach = commonAttach,
+          root_dir = lspconfig.util.root_pattern("deno.json"),
+          init_options = {
+            lint = true,
+          },
+        }
     }
     for server, config in pairs(servers) do
         if type(config) == 'function' then config = config() end

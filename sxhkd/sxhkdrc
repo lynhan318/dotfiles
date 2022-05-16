@@ -187,6 +187,10 @@ alt + {_,shift + }{h,j,k,l}
 # Hide/Unhide Window
 alt + shift + i
 	winmask		
+
+alt + {Left,Down,Up,Right}
+    bspc node --presel-dir \~{west,south,north,east}
+    
 # send the newest marked node to the newest preselected node
 # alt + y
 # 	bspc node newest.marked.local -n newest.!automatic.local
