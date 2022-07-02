@@ -154,6 +154,11 @@ return require('packer').startup(function()
         config = require 'plugins.fzf',
         requires = {'kyazdani42/nvim-web-devicons'}
     }
+    use {'othree/html5.vim'}
+    use {'posva/vim-vue'}
+    use {'evanleck/vim-svelte', config = function()
+        vim.g.svelte_preprocessors = "typescript";
+    end}
     -- use {'camspiers/animate.vim'}
     -- use {'camspiers/lens.vim'}
     -- use {'ggandor/lightspeed.nvim'}

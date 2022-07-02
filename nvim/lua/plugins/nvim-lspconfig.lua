@@ -87,7 +87,16 @@ return function() -- TODO figure out why this don't work
         --     }
         -- },
         tsserver = {},
+        vuels ={},
+        -- volar = {
+        --       init_options = {
+        --         typescript = {
+        --           serverPath = '/home/tiny/.nvm/versions/node/v16.14.2/lib/node_modules/typescript/lib/tsserverlibrary.js'
+        --         }
+        --       }
+        -- },
         vimls = {},
+        svelte = {},
         denols = {
           on_attach = commonAttach,
           root_dir = lspconfig.util.root_pattern("deno.json"),

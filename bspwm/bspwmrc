@@ -65,6 +65,7 @@ bspc rule -r *:*
 
 # 2 > web
 bspc rule -a dota2 desktop='^2' follow=on focus=on state=floating
+bspc rule -a app desktop='^4' follow=on focus=on state=filed
 
 # 3 > files
 # declare -a files=(Pcmanfm Thunar qBittorrent)
@@ -103,7 +104,7 @@ for i in ${settings[@]}; do
    bspc rule -a $i desktop='^8' state=floating follow=on focus=on; done
 
 # special rules
-declare -a floating=(alacritty-float Pcmanfm Thunar Onboard Yad 'Firefox:Places' \
+declare -a floating=(alacritty-float Pcmanfm Onboard Yad 'Firefox:Places' \
 Viewnior feh Nm-connection-editor)
 for i in ${floating[@]}; do
    bspc rule -a $i state=floating follow=on focus=on; done
@@ -143,7 +144,7 @@ xsetroot -cursor_name left_ptr
 # Start mpd
 exec nitrogen --restore &
 exec mpd &
-exec fcitx5 &
+exec ibus-daemon &
 
 # Start bspwm scripts
 bspcolors

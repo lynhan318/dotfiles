@@ -186,7 +186,7 @@ alt + {_,shift + }{h,j,k,l}
 
 # Hide/Unhide Window
 alt + shift + i
-	winmask		
+	winmask
 
 alt + {Left,Down,Up,Right}
     bspc node --presel-dir \~{west,south,north,east}

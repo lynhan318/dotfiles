@@ -1,10 +1,10 @@
 
 snippet fre "react function component"
-import React from 'react'
+import {FC} from 'react'
 
 type I$1Props = {};
-const $1 = (props: I$1Props) => {
-  return <div>this is home page</div>;
+const $1:FC<I$1Props> = (props) => {
+  return <div>implement new page here</div>;
 };
 export default $1;
 
@@ -12,17 +12,17 @@ endsnippet
 
 
 snippet uses "react useState"
-  const [$1,$2]=React.useState($3)
+  const [$1,$2]=useState($3)
 endsnippet
 
 snippet usec "react useCallback"
-React.useCallback(()=>{
+useCallback(()=>{
 	$1
 },[$2])
 endsnippet
 
 snippet usee "react useEffect"
-React.useEffect(()=>{
+useEffect(()=>{
 	$1
 },[$2])
 endsnippet
@@ -37,13 +37,6 @@ snippet func "default function"
 function $1(){
 $2
 }
-endsnippet
-
-snippet action "redux action"
-export const $1=(payload:any)=>dispatch=>dispatch({
-			type:$2,
-			payload
-		})
 endsnippet
 
 snippet log "create javascript logger"

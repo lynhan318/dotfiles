@@ -114,3 +114,4 @@ fpath=($fpath "/home/tiny/.zfunctions")
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 fpath=($fpath "/home/tiny/.zfunctions")
+export PATH="/home/tiny/.local/share/solana/install/active_release/bin:$PATH"
