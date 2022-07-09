@@ -65,7 +65,7 @@ return require('packer').startup(function()
                     theme = 'everforest',
                     section_separators = {left = '', right = ''},
                     component_separators = {left = '', right = ''},
-                    disabled_filetypes = {"defx"}
+                    disabled_filetypes = {"neo-tree"}
                 }
 
             }
@@ -98,8 +98,9 @@ return require('packer').startup(function()
     use {'simrat39/rust-tools.nvim'}
     use {'rust-lang/rust.vim'}
     -- LSP
-    use {'neovim/nvim-lspconfig',
-        require = {{ 'rust-tools' }},
+    use {
+        'neovim/nvim-lspconfig',
+        require = {{'rust-tools'}},
         config = require 'plugins.nvim-lspconfig'
     }
     use {
@@ -112,14 +113,6 @@ return require('packer').startup(function()
     use {'nvim-lua/popup.nvim'}
     use {'nvim-lua/plenary.nvim'}
 
-    -- Defx 
-    use {'kristijanhusak/defx-icons'};
-    use {'kristijanhusak/defx-git'};
-    use {
-        'Shougo/defx.nvim',
-        requires = {{'kristijanhusak/defx-icons'}, {'kristijanhusak/defx-git'}},
-        run = ':UpdateRemotePlugins'
-    };
     -- EasyMotion
     use {'easymotion/vim-easymotion'}
     -- Multi cursor
@@ -156,19 +149,56 @@ return require('packer').startup(function()
     }
     use {'othree/html5.vim'}
     use {'posva/vim-vue'}
-    use {'evanleck/vim-svelte', config = function()
-        vim.g.svelte_preprocessors = "typescript";
-    end}
+    use {
+        'evanleck/vim-svelte',
+        config = function() vim.g.svelte_preprocessors = "typescript"; end
+    }
     -- key binding ulti
     -- use { 'anuvyklack/hydra.nvim',config = function()
     --     local Hydra = require('hydra')
     -- end}
-    use { 'mrjones2014/smart-splits.nvim' ,config=function()
-        vim.keymap.set('n', '<S-h>', require('smart-splits').resize_left)
-        vim.keymap.set('n', '<S-j>', require('smart-splits').resize_down)
-        vim.keymap.set('n', '<S-k>', require('smart-splits').resize_up)
-        vim.keymap.set('n', '<S-l>', require('smart-splits').resize_right)
-    end}
+    use {
+        'mrjones2014/smart-splits.nvim',
+        config = function()
+            vim.keymap.set('n', '<S-h>', require('smart-splits').resize_left)
+            vim.keymap.set('n', '<S-j>', require('smart-splits').resize_down)
+            vim.keymap.set('n', '<S-k>', require('smart-splits').resize_up)
+            vim.keymap.set('n', '<S-l>', require('smart-splits').resize_right)
+        end
+    }
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+            "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim", {
+                -- only needed if you want to use the commands with "_with_window_picker" suffix
+                's1n7ax/nvim-window-picker',
+                tag = "1.*",
+                config = function()
+                    require'window-picker'.setup({
+                        autoselect_one = true,
+                        include_current = false,
+                        filter_rules = {
+                            -- filter using buffer options
+                            bo = {
+                                -- if the file type is one of following, the window will be ignored
+                                filetype = {
+                                    'neo-tree', "neo-tree-popup", "notify",
+                                    "quickfix"
+                                },
+
+                                -- if the buffer type is one of following, the window will be ignored
+                                buftype = {'terminal'}
+                            }
+                        },
+                        other_win_hl_color = '#e35e4f'
+                    })
+                end
+            }
+        },
+        config = require('plugins.neotree')
+    }
     -- use {'camspiers/animate.vim'
     -- use {'camspiers/lens.vim'}
     -- use {'ggandor/lightspeed.nvim'}
