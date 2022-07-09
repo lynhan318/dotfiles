@@ -56,7 +56,7 @@ return function() -- TODO figure out why this don't work
         vim.cmd("nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>")
         vim.cmd("nnoremap <silent> rn <cmd>lua vim.lsp.buf.rename()<CR>")
         vim.cmd('nnoremap <silent> gh <cmd>lua vim.lsp.buf.signature_help()<CR>')
-        vim.cmd("nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>")
+        vim.cmd("nnoremap <silent> D <cmd>lua vim.lsp.buf.hover()<CR>")
         vim.cmd("nnoremap <silent> gr <cmd>FzfLua lsp_references<CR>")
         vim.cmd("nnoremap <silent> gi <cmd>FzfLua lsp_implementations<CR>")
         vim.cmd("nnoremap <silent> ca <cmd>lua vim.lsp.buf.code_action()<CR>")

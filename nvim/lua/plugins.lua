@@ -159,7 +159,17 @@ return require('packer').startup(function()
     use {'evanleck/vim-svelte', config = function()
         vim.g.svelte_preprocessors = "typescript";
     end}
-    -- use {'camspiers/animate.vim'}
+    -- key binding ulti
+    -- use { 'anuvyklack/hydra.nvim',config = function()
+    --     local Hydra = require('hydra')
+    -- end}
+    use { 'mrjones2014/smart-splits.nvim' ,config=function()
+        vim.keymap.set('n', '<S-h>', require('smart-splits').resize_left)
+        vim.keymap.set('n', '<S-j>', require('smart-splits').resize_down)
+        vim.keymap.set('n', '<S-k>', require('smart-splits').resize_up)
+        vim.keymap.set('n', '<S-l>', require('smart-splits').resize_right)
+    end}
+    -- use {'camspiers/animate.vim'
     -- use {'camspiers/lens.vim'}
     -- use {'ggandor/lightspeed.nvim'}
     -- use {'lukas-reineke/indent-blankline.nvim'}
