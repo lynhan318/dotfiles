@@ -65,7 +65,7 @@ return require('packer').startup(function()
                     theme = 'everforest',
                     section_separators = {left = '', right = ''},
                     component_separators = {left = '', right = ''},
-                    disabled_filetypes = {"defx"}
+                    disabled_filetypes = {"neo-tree"}
                 }
 
             }
@@ -87,6 +87,7 @@ return require('packer').startup(function()
     use {'hrsh7th/cmp-buffer'}
     use {'hrsh7th/cmp-path'}
     use {'hrsh7th/cmp-cmdline'}
+    use {'hrsh7th/cmp-nvim-lsp-signature-help'}
     use {'hrsh7th/nvim-cmp', config = require 'plugins.nvim-compe'}
     use {'quangnguyen30192/cmp-nvim-ultisnips'}
 
@@ -94,29 +95,14 @@ return require('packer').startup(function()
     use {'psliwka/vim-smoothie'}
     use {'sainnhe/everforest', config = require 'plugins.theme'}
 
+    use {'simrat39/rust-tools.nvim'}
     use {'rust-lang/rust.vim'}
     -- LSP
-    use {'neovim/nvim-lspconfig', config = require 'plugins.nvim-lspconfig'}
     use {
-        'simrat39/rust-tools.nvim',
-        config = function()
-            -- local nvim_lsp = require 'lspconfig'
-            local opts = {
-                tools = {
-                    autoSetHints = true,
-                    hover_with_actions = true,
-                    -- runnables = {use_telescope = true},
-                    inlay_hints = {
-                        show_parameter_hints = false,
-                        parameter_hints_prefix = " <-",
-                        other_hints_prefix = "» "
-                    }
-                }
-            }
-            require('rust-tools').setup(opts)
-        end
+        'neovim/nvim-lspconfig',
+        require = {{'rust-tools'}},
+        config = require 'plugins.nvim-lspconfig'
     }
-    use({'ray-x/lsp_signature.nvim'})
     use {
         'saecki/crates.nvim',
         tag = 'v0.1.0',
@@ -127,14 +113,6 @@ return require('packer').startup(function()
     use {'nvim-lua/popup.nvim'}
     use {'nvim-lua/plenary.nvim'}
 
-    -- Defx 
-    use {'kristijanhusak/defx-icons'};
-    use {'kristijanhusak/defx-git'};
-    use {
-        'Shougo/defx.nvim',
-        requires = {{'kristijanhusak/defx-icons'}, {'kristijanhusak/defx-git'}},
-        run = ':UpdateRemotePlugins'
-    };
     -- EasyMotion
     use {'easymotion/vim-easymotion'}
     -- Multi cursor
@@ -169,11 +147,62 @@ return require('packer').startup(function()
         config = require 'plugins.fzf',
         requires = {'kyazdani42/nvim-web-devicons'}
     }
-    -- use {'camspiers/animate.vim'}
+    use {'othree/html5.vim'}
+    use {'posva/vim-vue'}
+    use {
+        'evanleck/vim-svelte',
+        config = function() vim.g.svelte_preprocessors = "typescript"; end
+    }
+    -- key binding ulti
+    -- use { 'anuvyklack/hydra.nvim',config = function()
+    --     local Hydra = require('hydra')
+    -- end}
+    use {
+        'mrjones2014/smart-splits.nvim',
+        config = function()
+            vim.keymap.set('n', '<S-h>', require('smart-splits').resize_left)
+            vim.keymap.set('n', '<S-j>', require('smart-splits').resize_down)
+            vim.keymap.set('n', '<S-k>', require('smart-splits').resize_up)
+            vim.keymap.set('n', '<S-l>', require('smart-splits').resize_right)
+        end
+    }
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+            "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim", {
+                -- only needed if you want to use the commands with "_with_window_picker" suffix
+                's1n7ax/nvim-window-picker',
+                tag = "1.*",
+                config = function()
+                    require'window-picker'.setup({
+                        autoselect_one = true,
+                        include_current = false,
+                        filter_rules = {
+                            -- filter using buffer options
+                            bo = {
+                                -- if the file type is one of following, the window will be ignored
+                                filetype = {
+                                    'neo-tree', "neo-tree-popup", "notify",
+                                    "quickfix"
+                                },
+
+                                -- if the buffer type is one of following, the window will be ignored
+                                buftype = {'terminal'}
+                            }
+                        },
+                        other_win_hl_color = '#e35e4f'
+                    })
+                end
+            }
+        },
+        config = require('plugins.neotree')
+    }
+    -- use {'camspiers/animate.vim'
     -- use {'camspiers/lens.vim'}
     -- use {'ggandor/lightspeed.nvim'}
     -- use {'lukas-reineke/indent-blankline.nvim'}
     -- use {'glepnir/dashboard-nvim'}
     -- use {'liuchengxu/vim-clap'}
-
 end)

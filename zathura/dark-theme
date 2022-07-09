@@ -1,0 +1,34 @@
+# -*- mode: conf-space -*-
+
+# Dark theme made in the spirit of 'alect-dark':
+# <https://github.com/alezost/alect-themes>.
+
+set default-bg "#4f4f4f"
+set default-fg "#d5d2be"
+set inputbar-bg "#464646"
+set inputbar-fg "#d5d2be"
+set statusbar-bg "#222222"
+set statusbar-fg "#d5d2be"
+
+set completion-bg "#464646"
+set completion-fg "#d5d2be"
+set completion-group-bg "#464646"
+set completion-group-fg "#099709"
+set completion-highlight-bg "#6f6f6f"
+set completion-highlight-fg "#d5d2be"
+
+set notification-bg "#464646"
+set notification-fg "#f6f0e1"
+set notification-warning-bg "#464646"
+set notification-warning-fg "#e8e815"
+set notification-error-bg "#c64242"
+set notification-error-fg "#f6f0e1"
+
+set index-bg "#3f3f3f"
+set index-fg "#d5d2be"
+set index-active-bg "#4f4f4f"
+set index-active-fg "#d5d2be"
+
+set recolor-lightcolor "#3f3f3f"
+set recolor-darkcolor "#d5d2be"
+
