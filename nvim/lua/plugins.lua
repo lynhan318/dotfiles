@@ -114,7 +114,7 @@ return require('packer').startup(function()
     use {'nvim-lua/plenary.nvim'}
 
     -- EasyMotion
-    use {'easymotion/vim-easymotion'}
+    -- use {'easymotion/vim-easymotion'}
     -- Multi cursor
     use {'terryma/vim-multiple-cursors'}
     use {'mhartington/formatter.nvim', config = require 'plugins.prettier'}
@@ -198,6 +198,18 @@ return require('packer').startup(function()
             }
         },
         config = require('plugins.neotree')
+    }
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v2', -- optional but strongly recommended
+        config = function()
+            -- you can configure Hop the way you like here; see :h hop-config
+            require'hop'.setup {keys = 'etovxqpdygfblzhckisuran'}
+            vim.keymap.set('n', 'fw', '<cmd>:HopChar2<cr>')
+            vim.keymap.set('n', 'fl', '<cmd>:HopLine<cr>')
+            vim.keymap.set('n', 'fe', '<cmd>:HopPattern<cr>')
+
+        end
     }
     -- use {'camspiers/animate.vim'
     -- use {'camspiers/lens.vim'}

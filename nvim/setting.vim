@@ -54,8 +54,8 @@ nnoremap S :%s//g<Left><Left>
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 noremap Y y$
-nmap <silent> ff <Plug>(easymotion-overwin-f2)
-nmap <silent> fl <Plug>(easymotion-overwin-line)
+" nmap <silent> ff <Plug>(easymotion-overwin-f2)
+" nmap <silent> fl <Plug>(easymotion-overwin-line)
 
 noremap <silent> <c-k> :wincmd k<CR>
 noremap <silent> <c-j> :wincmd j<CR>
