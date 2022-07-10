@@ -88,7 +88,7 @@ return require('packer').startup(function()
     use {'hrsh7th/cmp-path'}
     use {'hrsh7th/cmp-cmdline'}
     use {'hrsh7th/cmp-nvim-lsp-signature-help'}
-    use {'hrsh7th/nvim-cmp', config = require 'plugins.nvim-compe'}
+    use {'hrsh7th/nvim-cmp', config = require 'plugins.nvim-cmp'}
     use {'quangnguyen30192/cmp-nvim-ultisnips'}
 
     -- Smooth scrollw
