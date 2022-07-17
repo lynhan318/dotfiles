@@ -1,20 +1,19 @@
 # When true, bold text is drawn using the bright variant of colors.
 font:
   normal:
-    family: "Recursive Code iCursive Cg"
+    family: "Cascadia Code iCursive Cg"
     # family: "MonoLisa"
     style: Regular
   bold:
-    family: "Cascadia Code iCursive Dk"
+    family: "Cartograph CF"
     style: Bold
   italic:
-    family: "Recursive Code iCursive Cg"
+    family: "Cartograph CF"
     style: Italic
-  size: 13
+  size: 16
   offset:
     x: 0
     y: 0
-
   glyph_offset:
     x: 0
     y: 0
@@ -66,8 +65,8 @@ window:
   # - none: neither borders nor title bar
   # - transparent: title bar, transparent background and title bar buttons
   # - buttonless: title bar, transparent background, but no title bar buttons
-  decorations: full
-  opacity: 0.96
+  decorations: none
+  opacity: 1.0
 
   # Startup Mode (changes require restart)
   #

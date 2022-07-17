@@ -1,9 +1,9 @@
 function! ClipboardYank()
-    call system('xclip -i -sel c',@@) 
+    call system('pbcopy',@@) 
 endfunction
 
 function! ClipboardPaste()
-  let @@=system('xclip -o -sel -c')
+  let @@=system('pbpaste')
 endfunction
 
 inoremap <silent> <c-l> <Right>

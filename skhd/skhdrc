@@ -1,0 +1,85 @@
+# fast focus desktop
+cmd - 1 : yabai -m space --focus 1
+cmd - 2 : yabai -m space --focus 2
+cmd - 3 : yabai -m space --focus 3
+cmd - 4 : yabai -m space --focus 4
+
+# send window to desktop and follow focus
+shift + cmd - 1 : yabai -m window --space 1; yabai -m space --focus 1
+shift + cmd - 2 : yabai -m window --space 2; yabai -m space --focus 2
+shift + cmd - 3 : yabai -m window --space 3; yabai -m space --focus 3
+shift + cmd - 4 : yabai -m window --space 4; yabai -m space --focus 4
+
+# display settings for extend screen
+# ctrl + cmd - h : yabai -m display --focus west
+# ctrl + cmd - l : yabai -m display --focus east
+# focus window
+# send window to monitor and follow focus
+
+
+# move floating window
+# shift + ctrl - a : yabai -m window --move rel:-20:0
+# shift + ctrl - s : yabai -m window --move rel:0:20
+
+# increase window size
+# shift + alt - a : yabai -m window --resize left:-20:0
+# shift + alt - w : yabai -m window --resize top:0:-20
+
+# decrease window size
+# shift + cmd - s : yabai -m window --resize bottom:0:-20
+# shift + cmd - w : yabai -m window --resize top:0:20
+
+# space setting
+cmd - s : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" else "bsp" end')
+cmd - i : yabai -m window --focus stack.next
+cmd - o : yabai -m window --focus stack.prev
+# alt - r : yabai -m space --rotate 90
+
+# set insertion point in focused container
+# ctrl + alt - h : yabai -m window --insert west
+
+# window setting
+# cmd - d : yabai -m window --toggle zoom-parent
+cmd - f : yabai -m window --toggle zoom-fullscreen
+# cmd - return : yabai -m window --toggle zoom-fullscreen
+cmd - return : $HOME/.config/skhd/term.sh
+cmd + shift - return : alacritty
+cmd - k : yabai -m window --focus north
+cmd - j : yabai -m window --focus south
+cmd - h : yabai -m window --focus west
+cmd - l : yabai -m window --focus east
+# swap window
+cmd + shift - h : yabai -m window --swap west
+cmd + shift - l : yabai -m window --swap east
+cmd + shift - j : yabai -m window --swap south
+cmd + shift - k : yabai -m window --swap north
+
+# rebalance size
+cmd - 0 : yabai -m space --balance
+
+cmd - left : yabai -m window --resize left:-70:0; \
+                  yabai -m window --resize right:-70:0
+cmd - down : yabai -m window --resize bottom:0:70; \
+                  yabai -m window --resize top:0:70
+cmd - up : yabai -m window --resize top:0:-70; \
+                  yabai -m window --resize bottom:0:-70
+cmd - right : yabai -m window --resize right:70:0; \
+                  yabai -m window --resize left:70:0
+
+# Toggles floating window
+cmd - u : yabai -m window --toggle float; \
+        yabai -m window --grid 8:8:1:1:6:6
+
+# restart yabai
+hyper - r : \
+    brew services restart yabai; \
+    brew services restart skhd
+
+# rotate tree
+# cmd - r : yabai -m space --rotate 90
+
+# mirror tree y-axis
+# cmd - y : yabai -m space --mirror y-axis
+
+# mirror tree x-axis
+# cmd - x : yabai -m space --mirror x-axis

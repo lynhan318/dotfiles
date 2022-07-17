@@ -161,8 +161,8 @@ return require('packer').startup(function()
         'mrjones2014/smart-splits.nvim',
         config = function()
             vim.keymap.set('n', '<S-h>', require('smart-splits').resize_left)
-            vim.keymap.set('n', '<S-j>', require('smart-splits').resize_down)
-            vim.keymap.set('n', '<S-k>', require('smart-splits').resize_up)
+            -- vim.keymap.set('n', '<S-j>', require('smart-splits').resize_down)
+            -- vim.keymap.set('n', '<S-k>', require('smart-splits').resize_up)
             vim.keymap.set('n', '<S-l>', require('smart-splits').resize_right)
         end
     }
@@ -192,7 +192,7 @@ return require('packer').startup(function()
                                 buftype = {'terminal'}
                             }
                         },
-                        other_win_hl_color = '#e35e4f'
+                        other_win_hl_color = '#f3a14e'
                     })
                 end
             }
