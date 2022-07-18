@@ -56,7 +56,7 @@ return function() -- TODO figure out why this don't work
         vim.cmd("nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>")
         vim.cmd("nnoremap <silent> rn <cmd>lua vim.lsp.buf.rename()<CR>")
         vim.cmd('nnoremap <silent> gh <cmd>lua vim.lsp.buf.signature_help()<CR>')
-        vim.cmd("nnoremap <silent> D <cmd>lua vim.lsp.buf.hover()<CR>")
+        vim.cmd("nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>")
         vim.cmd("nnoremap <silent> gr <cmd>FzfLua lsp_references<CR>")
         vim.cmd("nnoremap <silent> gi <cmd>FzfLua lsp_implementations<CR>")
         vim.cmd("nnoremap <silent> ca <cmd>lua vim.lsp.buf.code_action()<CR>")
@@ -80,30 +80,10 @@ return function() -- TODO figure out why this don't work
         html = {cmd = {'html-languageserver', '--stdio'}},
         sumneko_lua = {cmd = {'lua-language-server', '--stdio'}},
         jsonls = {cmd = {'vscode-json-languageserver', '--stdio'}},
-        -- rust_analyzer = {
-        --     settings = {
-        --         ["rust-analyzer"] = {checkOnSave = {command = "clippy"}},
-        --         cargo = {allFeatures = true}
-        --     }
-        -- },
         tsserver = {},
-        vuels ={},
-        -- volar = {
-        --       init_options = {
-        --         typescript = {
-        --           serverPath = '/home/tiny/.nvm/versions/node/v16.14.2/lib/node_modules/typescript/lib/tsserverlibrary.js'
-        --         }
-        --       }
-        -- },
+        vuels = {},
         vimls = {},
-        svelte = {},
-        denols = {
-          on_attach = commonAttach,
-          root_dir = lspconfig.util.root_pattern("deno.json"),
-          init_options = {
-            lint = true,
-          },
-        }
+        svelte = {}
     }
     for server, config in pairs(servers) do
         if type(config) == 'function' then config = config() end
@@ -121,15 +101,13 @@ return function() -- TODO figure out why this don't work
         tools = {
             autoSetHints = true,
             hover_with_actions = true,
-            runnables = {
-                use_telescope = true
-            },
+            runnables = {use_telescope = true},
             inlay_hints = {
                 show_parameter_hints = false,
                 parameter_hints_prefix = " <-",
                 other_hints_prefix = "» "
 
-            },
+            }
         },
 
         -- all the opts to send to nvim-lspconfig
@@ -138,18 +116,17 @@ return function() -- TODO figure out why this don't work
         server = {
             -- on_attach is a callback called when the language server attachs to the buffer
             on_attach = commonAttach,
-            capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities), 
+            capabilities = require('cmp_nvim_lsp').update_capabilities(
+                capabilities),
             settings = {
                 -- to enable rust-analyzer settings visit:
                 -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
                 ["rust-analyzer"] = {
                     -- enable clippy on save
-                    checkOnSave = {
-                        command = "clippy"
-                    },
+                    checkOnSave = {command = "clippy"}
                 }
             }
-        },
+        }
     }
     require('rust-tools').setup(opts)
 end
