@@ -53,7 +53,9 @@ return function()
                 item.menu = ({
                     buffer = "[Buffer]",
                     nvim_lsp = "[LSP]",
-                    ultisnips = "[Snippet]"
+                    ultisnips = "[Snippet]",
+                    nvim_lua = "[Lua]",
+                    path = "[Path]"
                 })[entry.source.name]
 
                 return item

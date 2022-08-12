@@ -1,11 +1,12 @@
 return function()
 
     vim.cmd('nnoremap <Leader>p <cmd>FzfLua files<CR>')
-    vim.cmd('nnoremap <Leader>l <cmd>FzfLua live_grep<CR>')
+    vim.cmd('nnoremap <Leader>l <cmd>FzfLua live_grep_native<CR>')
+    vim.cmd('nnoremap <nowait><Leader>b <cmd>FzfLua buffers<CR>')
     -- vim.cmd('nnoremap <Leader>g <cmd>FzfLua git_files<CR>')
     vim.cmd('nnoremap <Leader>s <cmd>FzfLua git_status<CR>')
     require'fzf-lua'.setup {
-        -- fzf_bin         = 'sk',            -- use skim instead of fzf?
+        -- fzf_bin = 'sk', -- use skim instead of fzf?
         -- https://github.com/lotabout/skim
         global_resume = true, -- enable global `resume`?
         -- can also be sent individually:

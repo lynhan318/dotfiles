@@ -92,8 +92,8 @@ return function()
                 -- ["s"] = "vsplit_with_window_picker",
                 -- ["t"] = "open_tabnew",
                 -- ["o"] = "open_with_window_picker",
-                ["C"] = "close_node",
-                -- ["z"] = "close_all_nodes",
+                -- ["C"] = "close_node",
+                ["z"] = "close_node",
                 -- ["Z"] = "expand_all_nodes",
                 ["a"] = {
                     "add",

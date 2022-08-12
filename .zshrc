@@ -9,7 +9,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias vim="nvim"
 alias ls="exa"
-
+alias serve="simple-http-server"
 export EDITOR="nvim"
 
 eval "$(starship init zsh)"

@@ -1,3 +1,5 @@
+# TODO: Set Themes
+# https://legacy.docs.greatexpectations.io/en/latest/guides/how_to_guides/configuring_data_contexts/how_to_use_a_yaml_file_or_environment_variables_to_populate_credentials.html
 # When true, bold text is drawn using the bright variant of colors.
 font:
   normal:
@@ -215,7 +217,7 @@ schemes:
       white: "#dfddc8"
 
 # Apply
-colors: *everforest_dark_hard
+colors: *everforest_dark_soft
 
 draw_bold_text_with_bright_colors: false
 # draw_bold_text_with_bright_colors: false

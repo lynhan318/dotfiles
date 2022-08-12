@@ -211,6 +211,18 @@ return require('packer').startup(function()
 
         end
     }
+    use {
+        'chentoast/marks.nvim',
+        config = function() require'marks'.setup {} end
+    }
+    use {
+        'voldikss/vim-floaterm',
+        config = function()
+            -- vim.g.floaterm_keymap_new = '<Leader>n'
+            -- vim.g.floaterm_keymap_hide = '<Leader>m'
+            vim.g.floaterm_keymap_toggle = '<Leader>t'
+        end
+    }
     -- use {'camspiers/animate.vim'
     -- use {'camspiers/lens.vim'}
     -- use {'ggandor/lightspeed.nvim'}
