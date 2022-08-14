@@ -40,7 +40,8 @@ function! NearestMethodOrFunction() abort
 endfunction
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_sidebar_width = 40
-
+let g:vista_fzf_preview = ['right:50%']
+let g:vista_default_executive = 'ctags'
 set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 nnoremap <silent><leader>v :Vista!!<CR>

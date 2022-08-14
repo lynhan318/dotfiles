@@ -20,16 +20,10 @@ return require('packer').startup(function()
     -- Icons
     use {'ryanoasis/vim-devicons'}
     use {'liuchengxu/vista.vim'}
-    use {
-        'kyazdani42/nvim-web-devicons',
-        config = require('plugins.nvim-web-devicons')
-    }
+    use {'kyazdani42/nvim-web-devicons', config = require('plugins.devicons')}
 
     -- Colorizer
-    use {
-        'norcalli/nvim-colorizer.lua',
-        config = require 'plugins.nvim-colorizer'
-    }
+    use {'norcalli/nvim-colorizer.lua', config = require 'plugins.colorizer'}
 
     -- Comment
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
@@ -51,7 +45,7 @@ return require('packer').startup(function()
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        config = require 'plugins.nvim-treesitter'
+        config = require 'plugins.treesitter'
     }
 
     -- Barbar, bufferline
@@ -82,13 +76,13 @@ return require('packer').startup(function()
     }
 
     -- Completion
-    -- use {'hrsh7th/nvim-compe', config = require 'plugins.nvim-compe'}
+    -- use {'hrsh7th/nvim-compe', config = require 'plugins.compe'}
     use {'hrsh7th/cmp-nvim-lsp'}
     use {'hrsh7th/cmp-buffer'}
     use {'hrsh7th/cmp-path'}
     use {'hrsh7th/cmp-cmdline'}
     use {'hrsh7th/cmp-nvim-lsp-signature-help'}
-    use {'hrsh7th/nvim-cmp', config = require 'plugins.nvim-cmp'}
+    use {'hrsh7th/nvim-cmp', config = require 'plugins.cmp'}
     use {'quangnguyen30192/cmp-nvim-ultisnips'}
 
     -- Smooth scrollw
@@ -101,7 +95,7 @@ return require('packer').startup(function()
     use {
         'neovim/nvim-lspconfig',
         require = {{'rust-tools'}},
-        config = require 'plugins.nvim-lspconfig'
+        config = require 'plugins.lspconfig'
     }
     use {
         'saecki/crates.nvim',
@@ -220,9 +214,22 @@ return require('packer').startup(function()
         config = function()
             -- vim.g.floaterm_keymap_new = '<Leader>n'
             -- vim.g.floaterm_keymap_hide = '<Leader>m'
+            vim.g.floaterm_wintype = 'float'
+            vim.g.floaterm_position = 'bottomright'
+            vim.g.floaterm_width = 0.6
+            vim.g.floaterm_height = 0.5
             vim.g.floaterm_keymap_toggle = '<Leader>t'
+
         end
     }
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        config = require('plugins.saga')
+    })
+    -- install fzf
+    use {'junegunn/fzf'}
+    use {'junegunn/fzf.vim'}
     -- use {'camspiers/animate.vim'
     -- use {'camspiers/lens.vim'}
     -- use {'ggandor/lightspeed.nvim'}

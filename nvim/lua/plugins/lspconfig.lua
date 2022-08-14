@@ -33,7 +33,7 @@ return function() -- TODO figure out why this don't work
     })
 
     local function documentHighlight(client)
-        if client.resolved_capabilities.document_highlight then
+        if client.server_capabilities.document_highlight then
             vim.api.nvim_exec([[
           hi LspReferenceRead cterm=bold ctermbg=red guibg=#34495e
           hi LspReferenceText cterm=bold ctermbg=red guibg=#34495e
@@ -53,18 +53,18 @@ return function() -- TODO figure out why this don't work
     end
 
     local function lspSetup()
-        vim.cmd("nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>")
-        vim.cmd("nnoremap <silent> rn <cmd>lua vim.lsp.buf.rename()<CR>")
-        vim.cmd('nnoremap <silent> gh <cmd>lua vim.lsp.buf.signature_help()<CR>')
-        vim.cmd("nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>")
-        vim.cmd("nnoremap <silent> gr <cmd>FzfLua lsp_references<CR>")
-        vim.cmd("nnoremap <silent> gi <cmd>FzfLua lsp_implementations<CR>")
-        vim.cmd("nnoremap <silent> ca <cmd>lua vim.lsp.buf.code_action()<CR>")
+        vim.cmd("nnoremap <silent> gi <cmd>lua vim.lsp.buf.definition()<CR>")
+        vim.cmd("nnoremap <silent> rn <cmd>Lspsaga rename<CR>")
+        vim.cmd('nnoremap <silent> gh <cmd>Lspsaga signature_help<CR>')
+        vim.cmd("nnoremap <silent> K <cmd>Lspsaga hover_doc<CR>")
+        vim.cmd("nnoremap <silent> gr <cmd>Lspsaga lsp_finder<CR>")
+        vim.cmd("nnoremap <silent> gd <cmd>Lspsaga preview_definition<CR>")
+        vim.cmd("nnoremap <silent> ca <cmd>Lspsaga code_active<CR>")
         -- vim.cmd("nnoremap <silent> gD <cmd>FzfLua lsp_document_diagnostics<CR>")
         -- vim.cmd("nnoremap <silent> ca <cmd>Telescope lsp_code_actions<CR>")
-        vim.cmd("nnoremap <silent> gD <cmd>lua vim.diagnostic.open_float()<CR>")
-        vim.cmd("nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>")
-        vim.cmd("nnoremap <silent> g] <cmd>lua vim.diagnostic.goto_next()<CR>")
+        vim.cmd("nnoremap <silent> gD <cmd>Lspsaga show_cursor_diagnostics<CR>")
+        vim.cmd("nnoremap <silent> g[ <cmd>Lspsaga diagnostic_jump_prev<CR>")
+        vim.cmd("nnoremap <silent> g] <cmd>Lspsaga diagnostic_jump_next<CR>")
 
         vim.cmd(
             'command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
@@ -100,7 +100,6 @@ return function() -- TODO figure out why this don't work
     local opts = {
         tools = {
             autoSetHints = true,
-            hover_with_actions = true,
             runnables = {use_telescope = true},
             inlay_hints = {
                 show_parameter_hints = false,
