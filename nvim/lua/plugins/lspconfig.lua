@@ -59,10 +59,10 @@ return function() -- TODO figure out why this don't work
         vim.cmd("nnoremap <silent> K <cmd>Lspsaga hover_doc<CR>")
         vim.cmd("nnoremap <silent> gr <cmd>Lspsaga lsp_finder<CR>")
         vim.cmd("nnoremap <silent> gd <cmd>Lspsaga preview_definition<CR>")
-        vim.cmd("nnoremap <silent> ca <cmd>Lspsaga code_active<CR>")
-        -- vim.cmd("nnoremap <silent> gD <cmd>FzfLua lsp_document_diagnostics<CR>")
+        vim.cmd("nnoremap <silent> ca <cmd>Lspsaga code_action<CR>")
+        vim.cmd("nnoremap <silent> gD <cmd>lua vim.diagnostic.open_float()<CR>")
         -- vim.cmd("nnoremap <silent> ca <cmd>Telescope lsp_code_actions<CR>")
-        vim.cmd("nnoremap <silent> gD <cmd>Lspsaga show_cursor_diagnostics<CR>")
+        -- vim.cmd("nnoremap <silent> gD <cmd>Lspsaga show_cursor_diagnostics<CR>")
         vim.cmd("nnoremap <silent> g[ <cmd>Lspsaga diagnostic_jump_prev<CR>")
         vim.cmd("nnoremap <silent> g] <cmd>Lspsaga diagnostic_jump_next<CR>")
 

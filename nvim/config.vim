@@ -66,10 +66,6 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let g:lens#disabled_filetypes = ['nerdtree', 'fzf', 'defx', 'neo-tree']
 let g:lens#animate = 0
 
-autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
+autocmd BufWritePre *.rs lua vim.lsp.buf.format(nil, 200)
 
 
-" setp floaterm
-" let g:floaterm_keymap_new = '<Leader>n'
-" let g:floaterm_keymap_hide = '<Leader>m'
-" let g:floaterm_keymap_toggle = '<Leader>t'

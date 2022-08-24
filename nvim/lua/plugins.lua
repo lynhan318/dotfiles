@@ -42,8 +42,10 @@ return require('packer').startup(function()
     use {'jiangmiao/auto-pairs'}
 
     -- Treesitter
+    use {'nvim-treesitter/nvim-treesitter-textobjects'}
     use {
         'nvim-treesitter/nvim-treesitter',
+        requires = "nvim-treesitter/nvim-treesitter-textobjects",
         run = ':TSUpdate',
         config = require 'plugins.treesitter'
     }
@@ -135,12 +137,6 @@ return require('packer').startup(function()
 
     }
     use {'cespare/vim-toml', branch = "main"}
-
-    use {
-        'ibhagwan/fzf-lua',
-        config = require 'plugins.fzf',
-        requires = {'kyazdani42/nvim-web-devicons'}
-    }
     use {'othree/html5.vim'}
     use {'posva/vim-vue'}
     use {
@@ -218,7 +214,7 @@ return require('packer').startup(function()
             vim.g.floaterm_position = 'bottomright'
             vim.g.floaterm_width = 0.6
             vim.g.floaterm_height = 0.5
-            vim.g.floaterm_keymap_toggle = '<Leader>t'
+            vim.g.floaterm_keymap_toggle = '<C-\\>'
 
         end
     }
@@ -229,7 +225,7 @@ return require('packer').startup(function()
     })
     -- install fzf
     use {'junegunn/fzf'}
-    use {'junegunn/fzf.vim'}
+    use {'junegunn/fzf.vim', config = require('plugins.fzf')}
     -- use {'camspiers/animate.vim'
     -- use {'camspiers/lens.vim'}
     -- use {'ggandor/lightspeed.nvim'}
