@@ -1,9 +1,7 @@
 return function() -- TODO figure out why this don't work
-    local protocol = require('vim.lsp.protocol')
     local lspconfig = require('lspconfig')
     local lsp = vim.lsp
 
-    local map_opts = {silent = true, noremap = true}
     local border_opts = {border = 'rounded', focusable = false, scope = 'line'}
 
     vim.fn.sign_define('DiagnosticSignError',
@@ -53,12 +51,17 @@ return function() -- TODO figure out why this don't work
     end
 
     local function lspSetup()
-        vim.cmd("nnoremap <silent> gi <cmd>lua vim.lsp.buf.definition()<CR>")
+        -- vim.cmd("nnoremap <silent> gi <cmd>lua vim.lsp.buf.definition()<CR>")
         vim.cmd("nnoremap <silent> rn <cmd>Lspsaga rename<CR>")
         vim.cmd('nnoremap <silent> gh <cmd>Lspsaga signature_help<CR>')
         vim.cmd("nnoremap <silent> K <cmd>Lspsaga hover_doc<CR>")
         vim.cmd("nnoremap <silent> gr <cmd>Lspsaga lsp_finder<CR>")
-        vim.cmd("nnoremap <silent> gd <cmd>Lspsaga preview_definition<CR>")
+        vim.cmd(
+            "nnoremap <silent> gi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
+        vim.cmd(
+            "nnoremap <silent> gd <cmd>lua require('goto-preview').goto_preview_definition()<CR>")
+
+        -- vim.cmd("nnoremap <silent> gd <cmd>Lspsaga preview_definition<CR>")
         vim.cmd("nnoremap <silent> ca <cmd>Lspsaga code_action<CR>")
         vim.cmd("nnoremap <silent> gD <cmd>lua vim.diagnostic.open_float()<CR>")
         -- vim.cmd("nnoremap <silent> ca <cmd>Telescope lsp_code_actions<CR>")
