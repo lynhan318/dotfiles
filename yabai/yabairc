@@ -3,12 +3,6 @@ sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 #YABAI STUFF
 
-# bsp or float (default: bsp)
-yabai -m config layout bsp
-yabai -m config active_window_border_topmost on
-# floating windows are always on top (default: off)
-yabai -m config window_topmost on
-
 # My custom space names for my 3 monitor setup. These names are used in some of my scripts.
 yabai -m space 1 --label one
 yabai -m space 2 --label two
@@ -16,20 +10,40 @@ yabai -m space 3 --label three
 yabai -m space 4 --label four
 yabai -m space 5 --label five
 
+# bsp or float (default: bsp)
+yabai -m config layout bsp
+yabai -m config window_gap 8
+yabai -m config top_padding 8
+yabai -m config bottom_padding 8
+yabai -m config left_padding 8
+yabai -m config right_padding 8
+yabai -m config active_window_border_topmost on
+yabai -m config window_topmost on
+
+yabai -m config --space 4 layout stack
+yabai -m config --space 4 left_padding 32
+yabai -m config --space 4 right_padding 32
+yabai -m config --space 4 top_padding 32
+yabai -m config --space 4 bottom_padding 32
+# floating windows are always on top (default: off)
+
+
+
+
 # float system preferences. Most of these just diable Yabai form resizing them.
 yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
-# yabai -m rule --add app="^Telegram$" sticky=on layer=above manage=off
-# yabai -m rule --add app="^Slack$" ticky=on layer=above manage=off
-# yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Messages$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Alfred Preferences$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Telegram$" space=^four
+yabai -m rule --add app="^Slack$" space=^four
+yabai -m rule --add app="^Finder$" space=^four
+yabai -m rule --add app="^brave$" space=^four
+yabai -m rule --add app="^1Password$" space=^four
+yabai -m rule --add app="^Calendar" space=^four
+yabai -m rule --add app="^Spotify$" space=^four
 yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
 yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Skype" manage=off
-yabai -m rule --add app="^Calendar" manage=off
 yabai -m rule --add app="^CleanMyMac X$" manage=off
-yabai -m rule --add app="^Spotify$" manage=off
 yabai -m rule --add app="^Private Internet Access$" manage=off
 
 #find ~/Library/Parallels/Applications\ Menus/ -maxdepth 3 -type f | awk -F'/' '{ print $NF; }' | awk '{$1=$1};1' | sort | uniq | tr "\n" "\0" | xargs -0 -I{} yabai -m rule --add app="^{}\$" title=".*" manage=on
@@ -41,7 +55,6 @@ yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          autofocus
 # New window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config window_placement second_child
-yabai -m config window_topmost off
 #yabai -m config window_shadow float
 yabai -m config window_opacity off
 yabai -m config window_opacity_duration 0.00
@@ -71,17 +84,6 @@ yabai -m config mouse_action1 move
 #yabai -m config --space 3 layout             float
 
 ## Change how yabai looks
-yabai -m config layout bsp
-yabai -m config window_gap 8
-yabai -m config top_padding 8
-yabai -m config bottom_padding 8
-yabai -m config left_padding 8
-yabai -m config right_padding 8
-
-yabai -m config --space 4 left_padding 32
-yabai -m config --space 4 right_padding 32
-yabai -m config --space 4 top_padding 32
-yabai -m config --space 4 bottom_padding 32
 
 echo "yabai configuration loaded.."
 
