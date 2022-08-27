@@ -19,8 +19,8 @@ yabai -m space 5 --label five
 # float system preferences. Most of these just diable Yabai form resizing them.
 yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
 # yabai -m rule --add app="^Telegram$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Slack$" layer=above manage=off
-yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
+# yabai -m rule --add app="^Slack$" ticky=on layer=above manage=off
+# yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Messages$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Alfred Preferences$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
@@ -74,27 +74,10 @@ yabai -m config mouse_action1 move
 yabai -m config layout bsp
 yabai -m config top_padding 8
 yabai -m config bottom_padding 8
-yabai -m config left_padding 8
+yabai -m config left_padding 32
 yabai -m config right_padding 8
 yabai -m config window_gap 8
 
-## yabai indicator
-yabai -m signal --add event=mission_control_exit action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=display_added action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=display_removed action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_created action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_destroyed action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_focused action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_moved action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_resized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_minimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_deminimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
-
-## handle ymsp 
-yabai -m signal --add event=window_created action='ymsp window-created'
-yabai -m signal --add event=application_launched action='ymsp window-created'
-yabai -m signal --add event=window_moved action='ymsp window-moved'
-ymsp on-yabai-start
 echo "yabai configuration loaded.."
 
 #END
