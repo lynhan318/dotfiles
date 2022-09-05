@@ -218,8 +218,33 @@ schemes:
       cyan: "#35a77c"
       white: "#dfddc8"
 
+      colors:
+  sonokai_atlantic: &sonokai_atlantic
+    primary:
+      background: "0x2a2f38"
+      foreground: "0xe1e3e4"
+
+    normal:
+      black: "0x181a1c"
+      red: "0xff6578"
+      green: "0x9dd274"
+      yellow: "0xeacb64"
+      blue: "0x72cce8"
+      magenta: "0xba9cf3"
+      cyan: "0xf69c5e"
+      white: "0xe1e3e4"
+
+    bright:
+      black: "0x828a9a"
+      red: "0xff6578"
+      green: "0x9dd274"
+      yellow: "0xeacb64"
+      blue: "0x72cce8"
+      magenta: "0xba9cf3"
+      cyan: "0xf69c5e"
+      white: "0xe1e3e4"
 # Apply
-colors: *everforest_dark_soft
+colors: *everforest_dark_medium
 
 draw_bold_text_with_bright_colors: false
 # draw_bold_text_with_bright_colors: false

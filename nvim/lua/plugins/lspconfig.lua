@@ -54,7 +54,7 @@ return function() -- TODO figure out why this don't work
         -- vim.cmd("nnoremap <silent> gi <cmd>lua vim.lsp.buf.definition()<CR>")
         vim.cmd("nnoremap <silent> rn <cmd>Lspsaga rename<CR>")
         vim.cmd('nnoremap <silent> gh <cmd>Lspsaga signature_help<CR>')
-        vim.cmd("nnoremap <silent> K <cmd>Lspsaga hover_doc<CR>")
+        vim.cmd("nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>")
         vim.cmd("nnoremap <silent> gr <cmd>Lspsaga lsp_finder<CR>")
         vim.cmd(
             "nnoremap <silent> gi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
@@ -84,6 +84,7 @@ return function() -- TODO figure out why this don't work
         sumneko_lua = {cmd = {'lua-language-server', '--stdio'}},
         jsonls = {cmd = {'vscode-json-languageserver', '--stdio'}},
         tsserver = {},
+        tailwindcss = {cmd = {'tailwindcss-language-server', '--stdio'}},
         vuels = {},
         vimls = {},
         svelte = {}

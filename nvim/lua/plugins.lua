@@ -32,8 +32,6 @@ return require('packer').startup(function()
     -- Git
     use {'tpope/vim-fugitive'}
 
-    -- use {'rinx/lspsaga.nvim'}
-
     -- use {'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
     -- Surround
@@ -42,10 +40,8 @@ return require('packer').startup(function()
     use {'jiangmiao/auto-pairs'}
 
     -- Treesitter
-    use {'nvim-treesitter/nvim-treesitter-textobjects'}
     use {
         'nvim-treesitter/nvim-treesitter',
-        requires = "nvim-treesitter/nvim-treesitter-textobjects",
         run = ':TSUpdate',
         config = require 'plugins.treesitter'
     }
@@ -58,7 +54,7 @@ return require('packer').startup(function()
         config = function()
             require('lualine').setup {
                 options = {
-                    theme = 'everforest',
+                    -- theme = 'everforest',
                     section_separators = {left = '', right = ''},
                     component_separators = {left = '', right = ''},
                     disabled_filetypes = {"neo-tree"}
@@ -232,6 +228,55 @@ return require('packer').startup(function()
     -- install fzf
     use {'junegunn/fzf'}
     use {'junegunn/fzf.vim', config = require('plugins.fzf')}
+    use {
+        'kevinhwang91/nvim-hlslens',
+        config = function()
+
+            local kopts = {noremap = true, silent = true}
+
+            vim.api.nvim_set_keymap('n', 'n',
+                                    [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+                                    kopts)
+            vim.api.nvim_set_keymap('n', 'N',
+                                    [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+                                    kopts)
+            vim.api.nvim_set_keymap('n', '*',
+                                    [[*<Cmd>lua require('hlslens').start()<CR>]],
+                                    kopts)
+            vim.api.nvim_set_keymap('n', '#',
+                                    [[#<Cmd>lua require('hlslens').start()<CR>]],
+                                    kopts)
+            vim.api.nvim_set_keymap('n', 'g*',
+                                    [[g*<Cmd>lua require('hlslens').start()<CR>]],
+                                    kopts)
+            vim.api.nvim_set_keymap('n', 'g#',
+                                    [[g#<Cmd>lua require('hlslens').start()<CR>]],
+                                    kopts)
+
+            vim.api.nvim_set_keymap('n', '<Leader>l', ':noh<CR>', kopts)
+        end
+    }
+    use {
+        "petertriho/nvim-scrollbar",
+        config = function()
+            require("scrollbar").setup()
+            require("scrollbar.handlers.search").setup()
+        end
+    }
+
+    use {
+        'yamatsum/nvim-cursorline',
+        config = function()
+            require('nvim-cursorline').setup {
+                cursorline = {enable = true, timeout = 1000, number = false},
+                cursorword = {
+                    enable = true,
+                    min_length = 3,
+                    hl = {underline = true}
+                }
+            }
+        end
+    }
     -- use {'camspiers/animate.vim'
     -- use {'camspiers/lens.vim'}
     -- use {'ggandor/lightspeed.nvim'}
