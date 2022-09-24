@@ -54,10 +54,12 @@ return require('packer').startup(function()
         config = function()
             require('lualine').setup {
                 options = {
-                    -- theme = 'everforest',
+                    theme = 'everforest',
                     section_separators = {left = '', right = ''},
                     component_separators = {left = '', right = ''},
-                    disabled_filetypes = {"neo-tree"}
+                    disabled_filetypes = {"neo-tree", 'winbar', 'statusline'},
+                    extensions = {'quickfix'},
+                    refresh = {statusline = 1000, tabline = 1000, winbar = 1000}
                 }
 
             }
@@ -222,7 +224,7 @@ return require('packer').startup(function()
     }
     use({
         "glepnir/lspsaga.nvim",
-        branch = "main",
+        -- branch = "main",
         config = require('plugins.saga')
     })
     -- install fzf
@@ -256,25 +258,17 @@ return require('packer').startup(function()
             vim.api.nvim_set_keymap('n', '<Leader>l', ':noh<CR>', kopts)
         end
     }
-    use {
-        "petertriho/nvim-scrollbar",
-        config = function()
-            require("scrollbar").setup()
-            require("scrollbar.handlers.search").setup()
-        end
-    }
 
     use {
-        'yamatsum/nvim-cursorline',
+        'jose-elias-alvarez/null-ls.nvim',
         config = function()
-            require('nvim-cursorline').setup {
-                cursorline = {enable = true, timeout = 1000, number = false},
-                cursorword = {
-                    enable = true,
-                    min_length = 3,
-                    hl = {underline = true}
+            require("null-ls").setup({
+                sources = {
+                    require("null-ls").builtins.formatting.stylua,
+                    require("null-ls").builtins.diagnostics.eslint,
+                    require("null-ls").builtins.completion.spell
                 }
-            }
+            })
         end
     }
     -- use {'camspiers/animate.vim'

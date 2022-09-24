@@ -1,7 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # Path to your oh-my-zsh installation.
-plugins=(git tmux zsh-syntax-highlighting zsh-autosuggestions autojump zsh-vi-mode)
+plugins=(git git-open tmux zsh-syntax-highlighting zsh-autosuggestions autojump zsh-vi-mode)
 
 # ZSH_THEME="robbyrussell"
 
@@ -17,6 +17,7 @@ eval "$(starship init zsh)"
 # Set Spaceship ZSH as a prompt
 
 export FZF_DEFAULT_COMMAND='rg --files'
+export BAT_THEME='base16'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -26,3 +27,8 @@ export DENO_INSTALL="/Users/kevin/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export GPG_TTY=$(tty)
 
+
+# pnpm
+export PNPM_HOME="/Users/kevin/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end

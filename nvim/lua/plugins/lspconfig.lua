@@ -5,13 +5,13 @@ return function() -- TODO figure out why this don't work
     local border_opts = {border = 'rounded', focusable = false, scope = 'line'}
 
     vim.fn.sign_define('DiagnosticSignError',
-                       {text = '✗', texthl = 'DiagnosticSignError'})
+                       {text = '', texthl = 'DiagnosticSignError'})
     vim.fn.sign_define('DiagnosticSignWarn',
-                       {text = '!', texthl = 'DiagnosticSignWarn'})
+                       {text = '', texthl = 'DiagnosticSignWarn'})
     vim.fn.sign_define('DiagnosticSignInformation',
-                       {text = '', texthl = 'DiagnosticSignInfo'})
+                       {text = '', texthl = 'DiagnosticSignInfo'})
     vim.fn.sign_define('DiagnosticSignHint',
-                       {text = '', texthl = 'DiagnosticSignHint'})
+                       {text = 'ﴞ', texthl = 'DiagnosticSignHint'})
 
     -- handlers
     lsp.handlers['textDocument/signatureHelp'] =
@@ -57,9 +57,12 @@ return function() -- TODO figure out why this don't work
         vim.cmd("nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>")
         vim.cmd("nnoremap <silent> gr <cmd>Lspsaga lsp_finder<CR>")
         vim.cmd(
-            "nnoremap <silent> gi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
+            "nnoremap <silent> gi <cmd>lua vim.lsp.buff.implementation()<CR>")
+
+        vim.cmd("nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>")
+
         vim.cmd(
-            "nnoremap <silent> gd <cmd>lua require('goto-preview').goto_preview_definition()<CR>")
+            "nnoremap <silent> gp <cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 
         -- vim.cmd("nnoremap <silent> gd <cmd>Lspsaga preview_definition<CR>")
         vim.cmd("nnoremap <silent> ca <cmd>Lspsaga code_action<CR>")

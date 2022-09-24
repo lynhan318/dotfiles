@@ -40,6 +40,7 @@ set completeopt=menuone,noselect
 set shortmess+=c
 set updatetime=3000
 set termguicolors
+set signcolumn=yes:1
 
 "imap
 inoremap <silent> <c-l> <Right>

@@ -20,14 +20,28 @@ yabai -m config right_padding 8
 yabai -m config active_window_border_topmost on
 yabai -m config window_topmost on
 
-yabai -m config --space 4 layout stack
-yabai -m config --space 4 left_padding 32
-yabai -m config --space 4 right_padding 32
-yabai -m config --space 4 top_padding 32
-yabai -m config --space 4 bottom_padding 32
-# floating windows are always on top (default: off)
+## Some random global settings
+#yabai -m config focus_follows_mouse          autoraise
+#yabai -m config focus_follows_mouse          on
+yabai -m config mouse_follows_focus          on
+yabai -m config focus_follows_mouse          autofocus
+# New window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config window_placement second_child
+yabai -m config window_shadow float
+yabai -m config window_opacity off
+yabai -m config window_opacity_duration 0.00
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.97
 
+## WTIH SIP DISABLED (Limelight build into Yabai, enable it here)
+yabai -m config window_border on
+yabai -m config window_border_width 3
+yabai -m config normal_window_border_color #00FFFFFF
+yabai -m config insert_feedback_color        #ffd75f5f
+yabai -m config active_window_border_color   #ff1abc9c
+yabai -m config insert_window_border_color   #ff8E83B8
 
+yabai -m config --space 4 layout float
 
 
 # float system preferences. Most of these just diable Yabai form resizing them.
@@ -43,31 +57,12 @@ yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
 yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Skype" manage=off
+yabai -m rule --add app="^Authy" layer=above manage=off
 yabai -m rule --add app="^CleanMyMac X$" manage=off
 yabai -m rule --add app="^Private Internet Access$" manage=off
 
 #find ~/Library/Parallels/Applications\ Menus/ -maxdepth 3 -type f | awk -F'/' '{ print $NF; }' | awk '{$1=$1};1' | sort | uniq | tr "\n" "\0" | xargs -0 -I{} yabai -m rule --add app="^{}\$" title=".*" manage=on
 
-## Some random global settings
-#yabai -m config focus_follows_mouse          autoraise
-#yabai -m config focus_follows_mouse          on
-yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          autofocus
-# New window spawns to the right if vertical split, or bottom if horizontal split
-yabai -m config window_placement second_child
-#yabai -m config window_shadow float
-yabai -m config window_opacity off
-yabai -m config window_opacity_duration 0.00
-yabai -m config active_window_opacity 1.0
-# yabai -m config normal_window_opacity 0.97
-
-## WTIH SIP DISABLED (Limelight build into Yabai, enable it here)
-yabai -m config window_border on
-yabai -m config window_border_width 3
-yabai -m config normal_window_border_color 0x00FFFFFF
-yabai -m config insert_feedback_color        0xffd75f5f
-yabai -m config active_window_border_color   0xff1abc9c
-yabai -m config insert_window_border_color   0xff8E83B8
 
 ## some other settings
 yabai -m config auto_balance off

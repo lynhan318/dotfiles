@@ -38,7 +38,7 @@ shift + cmd - 5 : yabai -m window --space 5; yabai -m space --focus 5
 
 # window setting
 # cmd - d : yabai -m window --toggle zoom-parent
-cmd - f : yabai -m window --toggle zoom-fullscreen
+cmd - g : yabai -m window --toggle zoom-fullscreen
 # cmd - return : yabai -m window --toggle zoom-fullscreen
 cmd - return : $HOME/.config/skhd/term.sh
 cmd + shift - return : alacritty
@@ -84,7 +84,7 @@ hyper - r : \
 
 # stack mode
 # space setting: https://github.com/koekeishiya/yabai/issues/203
-cmd - s : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" else "bsp" end')
+# cmd - s : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" else "bsp" end')
 cmd - i : yabai -m window --focus stack.next
 cmd - o : yabai -m window --focus stack.prev
 # forward

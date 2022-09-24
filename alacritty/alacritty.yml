@@ -85,6 +85,78 @@ window:
 env:
   TERM: xterm-256color
 schemes:
+  one-dark: &one-dark # Default colors
+    primary:
+      background: "#282c34"
+      foreground: "#abb2bf"
+    cursor:
+      text: CellBackground
+      cursor: "#528bff" # syntax-cursor-color
+    selection:
+      text: CellForeground
+      background: "#3e4451" # syntax-selection-color
+    normal:
+      black: "#5c6370" # mono-3
+      red: "#e06c75" # red 1
+      green: "#98c379"
+      yellow: "#e5c07b" # orange 2
+      blue: "#61afef"
+      magenta: "#c678dd"
+      cyan: "#56b6c2"
+      white: "#828997" # mono-2
+  tokyo-night: &tokyo-night # Default colors
+    primary:
+      background: "0x1a1b26"
+      foreground: "0xa9b1d6"
+
+    # Normal colors
+    normal:
+      black: "0x32344a"
+      red: "0xf7768e"
+      green: "0x9ece6a"
+      yellow: "0xe0af68"
+      blue: "0x7aa2f7"
+      magenta: "0xad8ee6"
+      cyan: "0x449dab"
+      white: "0x787c99"
+
+    # Bright colors
+    bright:
+      black: "0x444b6a"
+      red: "0xff7a93"
+      green: "0xb9f27c"
+      yellow: "0xff9e64"
+      blue: "0x7da6ff"
+      magenta: "0xbb9af7"
+      cyan: "0x0db9d7"
+      white: "0xacb0d0"
+
+  tokyo-night-storm: &tokyo-night-storm # Default colors
+    primary:
+      background: "0x24283b"
+      foreground: "0xa9b1d6"
+
+    # Normal colors
+    normal:
+      black: "0x32344a"
+      red: "0xf7768e"
+      green: "0x9ece6a"
+      yellow: "0xe0af68"
+      blue: "0x7aa2f7"
+      magenta: "0xad8ee6"
+      cyan: "0x449dab"
+      white: "0x9699a8"
+
+    # Bright colors
+    bright:
+      black: "0x444b6a"
+      red: "0xff7a93"
+      green: "0xb9f27c"
+      yellow: "0xff9e64"
+      blue: "0x7da6ff"
+      magenta: "0xbb9af7"
+      cyan: "0x0db9d7"
+      white: "0xacb0d0"
   everforest_dark_hard: &everforest_dark_hard
     primary:
       background: "#2b3339"
@@ -244,7 +316,7 @@ schemes:
       cyan: "0xf69c5e"
       white: "0xe1e3e4"
 # Apply
-colors: *everforest_dark_medium
+colors: *everforest_dark_hard
 
 draw_bold_text_with_bright_colors: false
 # draw_bold_text_with_bright_colors: false

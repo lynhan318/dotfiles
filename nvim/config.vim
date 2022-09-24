@@ -58,8 +58,8 @@ let bufferline.icon_close_tab_modified = '●'
 "}}
 
 " setup for python
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python_host_prog = '/opt/homebrew/bin/python3'
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " setup for lens.vim
@@ -67,5 +67,10 @@ let g:lens#disabled_filetypes = ['nerdtree', 'fzf', 'defx', 'neo-tree']
 let g:lens#animate = 0
 
 autocmd BufWritePre *.rs lua vim.lsp.buf.format(nil, 200)
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
 
