@@ -23,23 +23,22 @@ yabai -m config window_topmost on
 ## Some random global settings
 #yabai -m config focus_follows_mouse          autoraise
 #yabai -m config focus_follows_mouse          on
-yabai -m config mouse_follows_focus          on
-yabai -m config focus_follows_mouse          autofocus
+yabai -m config mouse_follows_focus          off
+# yabai -m config focus_follows_mouse          autofocus
 # New window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config window_placement second_child
-yabai -m config window_shadow float
+yabai -m config window_shadow off
 yabai -m config window_opacity off
 yabai -m config window_opacity_duration 0.00
 yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.97
+yabai -m config normal_window_opacity 1.0
 
 ## WTIH SIP DISABLED (Limelight build into Yabai, enable it here)
 yabai -m config window_border on
-yabai -m config window_border_width 3
-yabai -m config normal_window_border_color #00FFFFFF
-yabai -m config insert_feedback_color        #ffd75f5f
-yabai -m config active_window_border_color   #ff1abc9c
-yabai -m config insert_window_border_color   #ff8E83B8
+yabai -m config window_border_width 2
+yabai -m config active_window_border_color 0xFFA7C080
+# yabai -m config normal_window_border_color 0x002E3440
+yabai -m config insert_feedback_color 0xFFA3BE8C
 
 yabai -m config --space 4 layout float
 
@@ -53,6 +52,7 @@ yabai -m rule --add app="^brave$" space=^four
 yabai -m rule --add app="^1Password$" space=^four
 yabai -m rule --add app="^Calendar" space=^four
 yabai -m rule --add app="^Spotify$" space=^four
+yabai -m rule --add app="^NextEditor$" space=^two
 yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
 yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
