@@ -86,16 +86,19 @@ return function() -- TODO figure out why this don't work
         html = {cmd = {'html-languageserver', '--stdio'}},
         sumneko_lua = {cmd = {'lua-language-server', '--stdio'}},
         jsonls = {cmd = {'vscode-json-languageserver', '--stdio'}},
-        tsserver = {},
+        tsserver = {root_dir = lspconfig.util.root_pattern("package.json")},
         tailwindcss = {cmd = {'tailwindcss-language-server', '--stdio'}},
+        denols = {root_dir = lspconfig.util.root_pattern("deno.json")},
         vuels = {},
         vimls = {},
         svelte = {}
     }
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+
     for server, config in pairs(servers) do
         if type(config) == 'function' then config = config() end
         config.on_attach = commonAttach
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
         config.capabilities = require('cmp_nvim_lsp').update_capabilities(
                                   capabilities)
 
@@ -103,7 +106,6 @@ return function() -- TODO figure out why this don't work
     end
 
     -- setup rust-alanyzer with inlay_hints
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
     local opts = {
         tools = {
             autoSetHints = true,
@@ -115,24 +117,24 @@ return function() -- TODO figure out why this don't work
 
             }
         },
-
-        -- all the opts to send to nvim-lspconfig
-        -- these override the defaults set by rust-tools.nvim
-        -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
         server = {
-            -- on_attach is a callback called when the language server attachs to the buffer
             on_attach = commonAttach,
             capabilities = require('cmp_nvim_lsp').update_capabilities(
                 capabilities),
             settings = {
-                -- to enable rust-analyzer settings visit:
-                -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-                ["rust-analyzer"] = {
-                    -- enable clippy on save
-                    checkOnSave = {command = "clippy"}
-                }
+                ["rust-analyzer"] = {checkOnSave = {command = "clippy"}}
             }
         }
     }
     require('rust-tools').setup(opts)
+
+    -- setup for deno
+    -- require('deno-nvim').setup({
+    --     server = {
+    --         on_attach = commonAttach,
+    --         capabilities = capabilities,
+    --         root_dir = lspconfig.util.root_pattern("deno.json")
+    --     },
+    --     root_dir = lspconfig.util.root_pattern("deno.json")
+    -- })
 end

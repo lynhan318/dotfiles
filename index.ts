@@ -1,4 +1,3 @@
-
-const test = ()=>{
-	return 'hallo'
-}
+const test = () => {
+  return "hallo";
+};

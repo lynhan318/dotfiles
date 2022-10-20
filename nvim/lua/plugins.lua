@@ -103,43 +103,17 @@ return require('packer').startup(function()
         require = {{'rust-tools'}},
         config = require 'plugins.lspconfig'
     }
+    use {'sigmasd/deno-nvim'}
     use {
         'saecki/crates.nvim',
         tag = 'v0.1.0',
         requires = {'nvim-lua/plenary.nvim'},
         config = function() require('crates').setup() end
     }
-    -- use {'mfussenegger/nvim-dap'}
     use {'nvim-lua/popup.nvim'}
     use {'nvim-lua/plenary.nvim'}
-
-    -- EasyMotion
-    -- use {'easymotion/vim-easymotion'}
-    -- Multi cursor
     use {'terryma/vim-multiple-cursors'}
     use {'mhartington/formatter.nvim', config = require 'plugins.prettier'}
-
-    -- indent line
-    -- use {
-    --         'lukas-reineke/indent-blankline.nvim',
-    --         branch='lua'
-    --     }
-    -- transparent
-    use {
-        'xiyaowong/nvim-transparent',
-        config = function()
-            require("transparent").setup({
-                enable = false, -- boolean: enable transparent
-                extra_groups = { -- table/string: additional groups that should be clear
-                    -- In particular, when you set it to 'all', that means all avaliable groups
-
-                    -- example of akinsho/nvim-bufferline.lua
-                },
-                exclude = {} -- table: groups you don't want to clear
-            })
-        end
-
-    }
     use {'cespare/vim-toml', branch = "main"}
     use {'othree/html5.vim'}
     use {'posva/vim-vue'}
@@ -147,16 +121,10 @@ return require('packer').startup(function()
         'evanleck/vim-svelte',
         config = function() vim.g.svelte_preprocessors = "typescript"; end
     }
-    -- key binding ulti
-    -- use { 'anuvyklack/hydra.nvim',config = function()
-    --     local Hydra = require('hydra')
-    -- end}
     use {
         'mrjones2014/smart-splits.nvim',
         config = function()
             vim.keymap.set('n', '<S-h>', require('smart-splits').resize_left)
-            -- vim.keymap.set('n', '<S-j>', require('smart-splits').resize_down)
-            -- vim.keymap.set('n', '<S-k>', require('smart-splits').resize_up)
             vim.keymap.set('n', '<S-l>', require('smart-splits').resize_right)
         end
     }
@@ -200,7 +168,6 @@ return require('packer').startup(function()
             -- you can configure Hop the way you like here; see :h hop-config
             require'hop'.setup {keys = 'etovxqpdygfblzhckisuran'}
             vim.keymap.set('n', 'fw', '<cmd>:HopChar2<cr>')
-            vim.keymap.set('n', 'fl', '<cmd>:HopLine<cr>')
             vim.keymap.set('n', 'fe', '<cmd>:HopPattern<cr>')
 
         end
@@ -262,52 +229,31 @@ return require('packer').startup(function()
     use {
         'jose-elias-alvarez/null-ls.nvim',
         config = function()
-            require("null-ls").setup({
-                sources = {
-                    require("null-ls").builtins.formatting.stylua,
-                    require("null-ls").builtins.diagnostics.eslint,
-                    require("null-ls").builtins.completion.spell
-                }
-            })
+            -- require("null-ls").setup({
+            --     sources = {
+            --         require("null-ls").builtins.formatting.stylua,
+            --         require("null-ls").builtins.diagnostics.eslint,
+            --         require("null-ls").builtins.completion.spell
+            --     }
+            -- })
         end
     }
-    use {'rcarriga/nvim-notify'}
     use({
         "vuki656/package-info.nvim",
         requires = "MunifTanjim/nui.nvim",
         config = function()
             require('package-info').setup()
-
-            -- Show dependency versions
             vim.keymap.set({"n"}, "<LEADER>ns", require("package-info").show,
                            {silent = true, noremap = true})
-
-            -- Hide dependency versions
             vim.keymap.set({"n"}, "<LEADER>nc", require("package-info").hide,
                            {silent = true, noremap = true})
 
-            -- Update dependency on the line
             vim.keymap.set({"n"}, "<LEADER>nu", require("package-info").update,
                            {silent = true, noremap = true})
-
-            -- Delete dependency on the line
-            -- vim.keymap.set({"n"}, "<LEADER>nd", require("package-info").delete,
-            --                {silent = true, noremap = true})
-
-            -- Install a new dependency
             vim.keymap.set({"n"}, "<LEADER>ni", require("package-info").install,
                            {silent = true, noremap = true})
 
-            -- Install a different dependency version
-            -- vim.keymap.set({"n"}, "<LEADER>np",
-            --                require("package-info").change_version,
-            --                {silent = true, noremap = true})
         end
     })
-    -- use {'camspiers/animate.vim'
-    -- use {'camspiers/lens.vim'}
-    -- use {'ggandor/lightspeed.nvim'}
-    -- use {'lukas-reineke/indent-blankline.nvim'}
     -- use {'glepnir/dashboard-nvim'}
-    -- use {'liuchengxu/vim-clap'}
 end)

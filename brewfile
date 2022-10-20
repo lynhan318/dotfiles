@@ -1,0 +1,30 @@
+cask_args appdir: '/Applications'
+
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+tap "homebrew/bundle"
+tap "homebrew/services"
+
+
+# Homebrew essentials
+brew "luarocks"
+brew "bash"
+brew "bash-completion"
+brew "bat"
+brew "fzf"
+brew "git"
+brew "jq"
+brew "lazygit"
+brew "mkcert"
+brew "neovim"
+brew "ripgrep"
+brew "skhd"
+brew "starship"
+brew "tmux"
+brew "tmuxinator-fzf-start"
+brew "wget"
+brew "yabai"
+brew "cmake"
+brew "zoxide"
+brew "just"

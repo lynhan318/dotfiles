@@ -1,7 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # Path to your oh-my-zsh installation.
-plugins=(git git-open tmux zsh-syntax-highlighting zsh-autosuggestions autojump zsh-vi-mode)
+plugins=(git git-open tmux zsh-syntax-highlighting zsh-autosuggestions zsh-vi-mode)
 
 # ZSH_THEME="robbyrussell"
 
@@ -13,6 +13,7 @@ alias serve="simple-http-server"
 export EDITOR="nvim"
 
 eval "$(starship init zsh)"
+eval "$(zoxide init --cmd j zsh)"
 
 # Set Spaceship ZSH as a prompt
 
@@ -32,3 +33,9 @@ export GPG_TTY=$(tty)
 export PNPM_HOME="/Users/kevin/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+# bun completions
+[ -s "/Users/kevin/.bun/_bun" ] && source "/Users/kevin/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
