@@ -1,3 +1,13 @@
+function push() {
+
+    echo "value is $1"
+    git status
+    git add .
+    echo "New commit message set to: $1\n"
+    git commit -m "$1"
+    git push
+}
+
 export ZSH="$HOME/.oh-my-zsh"
 
 # Path to your oh-my-zsh installation.
@@ -10,6 +20,14 @@ source $ZSH/oh-my-zsh.sh
 alias vim="nvim"
 alias ls="exa"
 alias serve="simple-http-server"
+
+# alias pnpm 
+alias p="pnpm"
+alias pi="pnpm install"
+alias pd="pnpm run dev"
+alias pb="pnpm run build"
+alias push=push
+
 export EDITOR="nvim"
 
 eval "$(starship init zsh)"

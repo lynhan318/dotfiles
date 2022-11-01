@@ -200,7 +200,7 @@ return require('packer').startup(function()
     use {
         'kevinhwang91/nvim-hlslens',
         config = function()
-
+            require('hlslens').setup()
             local kopts = {noremap = true, silent = true}
 
             vim.api.nvim_set_keymap('n', 'n',
@@ -229,13 +229,13 @@ return require('packer').startup(function()
     use {
         'jose-elias-alvarez/null-ls.nvim',
         config = function()
-            -- require("null-ls").setup({
-            --     sources = {
-            --         require("null-ls").builtins.formatting.stylua,
-            --         require("null-ls").builtins.diagnostics.eslint,
-            --         require("null-ls").builtins.completion.spell
-            --     }
-            -- })
+            require("null-ls").setup({
+                -- sources = {
+                --     require("null-ls").builtins.formatting.stylua,
+                --     require("null-ls").builtins.diagnostics.eslint,
+                --     require("null-ls").builtins.completion.spell
+                -- }
+            })
         end
     }
     use({
@@ -255,5 +255,14 @@ return require('packer').startup(function()
 
         end
     })
+    -- Packer
+    -- use({
+    --     "folke/noice.nvim",
+    --     config = function() require("noice").setup() end,
+    --     requires = {
+    --         "MunifTanjim/nui.nvim", -- OPTIONAL:
+    --         "rcarriga/nvim-notify"
+    --     }
+    -- })
     -- use {'glepnir/dashboard-nvim'}
 end)
