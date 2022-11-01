@@ -1,6 +1,4 @@
 function push() {
-
-    echo "value is $1"
     git status
     git add .
     echo "New commit message set to: $1\n"
