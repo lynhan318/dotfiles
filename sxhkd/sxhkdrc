@@ -22,18 +22,19 @@ alt + shift + Return
 	# sh ~/.config/bspwm/rofi/bin/launcher
 
 # Rofi Network Menu
-alt + n
-	nmd
-
-# Rofi Themes Menu
-ctrl + alt + t
-	sh ~/.config/bspwm/rofi/bin/themes
+# alt + n
+# 	nmd
 
 # Rofi Menus/Applets
-alt + {d,w,m,x,s,slash}
-	sh ~/.config/bspwm/rofi/bin/{launcher,windows,mpd,powermenu,screenshot,sxhkd-help}
+alt + d
+	rofi -modi drun -show drun -line-padding 4 \
+                -columns 2 -padding 50 -hide-scrollbar -terminal alacritty \
+                -show-icons -drun-icon-theme "Qogir-dark" -font "Droid Sans Regular 10"
 
 ##---------- Applications ----------##
+
+alt + shift + e
+     ~/.config/rofi/powermenu.sh
 
 # Launch Apps
 alt + shift + {f,w,e}
@@ -98,12 +99,18 @@ alt + {_,shift + }q
 #alt + Escape
 #	pkill -USR1 -x sxhkd
 
+alt + }
+	bspc desktop --focus next
+
+super + {
+	bspc desktop --focus prev
+
 # kill window
 alt + ctrl + Escape
     xkill
 
 # Quit/Restart bspwm
-super + shift + {q,r}
+alt + shift + {q,r}
 	bspc {quit,wm -r}
 	
 # Split horizontal, vertical or cancel
@@ -124,7 +131,7 @@ alt + space
     bspc node -t "~"{floating,tiled}
 
 # Pseudo Tiled & tiled mode
-alt + shift + space
+# alt + shift + space
 #super + {p,t}
 #    bspc node -t "~"{pseudo_tiled,tiled}
 
@@ -175,10 +182,10 @@ alt + shift + Tab
 	bspc desktop -f last
 
 # focus the older or newer node in the focus history
-alt + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
+# alt + {o,i}
+# 	bspc wm -h off; \
+# 	bspc node {older,newer} -f; \
+# 	bspc wm -h on
 
 # focus the node in the given direction
 alt + {_,shift + }{h,j,k,l}
@@ -198,6 +205,14 @@ alt + {Left,Down,Up,Right}
 # swap the current node and the biggest node
 alt + g
 	bspc node -s biggest.local
+
+# rotate current node 90 degree
+alt + o
+    bspc node @/ -R 90
+
+# rotate current node -90 degree
+alt + shift + o
+    bspc node @/ -R -90
 
 # Expand/contract a window by moving one of its side outward/inward
 alt + r : {h,j,k,l}

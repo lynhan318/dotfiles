@@ -87,9 +87,9 @@ return function() -- TODO figure out why this don't work
         sumneko_lua = {cmd = {'lua-language-server', '--stdio'}},
         jsonls = {cmd = {'vscode-json-languageserver', '--stdio'}},
         tsserver = {root_dir = lspconfig.util.root_pattern("package.json")},
-        tailwindcss = {cmd = {'tailwindcss-language-server', '--stdio'}},
-        denols = {root_dir = lspconfig.util.root_pattern("deno.json")},
-        vuels = {},
+        -- tailwindcss = {cmd = {'tailwindcss-language-server', '--stdio'}},
+        -- denols = {root_dir = lspconfig.util.root_pattern("deno.json")},
+        -- vuels = {},
         vimls = {},
         svelte = {}
     }

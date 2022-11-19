@@ -9,9 +9,9 @@ function push() {
 export ZSH="$HOME/.oh-my-zsh"
 
 # Path to your oh-my-zsh installation.
-plugins=(git git-open tmux zsh-syntax-highlighting zsh-autosuggestions zsh-vi-mode)
+plugins=(git git-open tmux zsh-autosuggestions zsh-vi-mode F-Sy-H)
 
-# ZSH_THEME="robbyrussell"
+# ZSH_THEME="spaceship"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -28,8 +28,6 @@ alias push=push
 
 export EDITOR="nvim"
 
-eval "$(starship init zsh)"
-eval "$(zoxide init --cmd j zsh)"
 
 # Set Spaceship ZSH as a prompt
 
@@ -55,3 +53,8 @@ export PATH="$PNPM_HOME:$PATH"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+eval "$(zoxide init --cmd j zsh)"
+eval "$(starship init zsh)"
+
