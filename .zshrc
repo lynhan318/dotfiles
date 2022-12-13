@@ -6,6 +6,10 @@ function push() {
     git push
 }
 
+function thanos(){
+    kill -9 $(lsof -t -i:$1)
+}
+
 export ZSH="$HOME/.oh-my-zsh"
 
 # Path to your oh-my-zsh installation.
@@ -25,6 +29,7 @@ alias pi="pnpm install"
 alias pd="pnpm run dev"
 alias pb="pnpm run build"
 alias push=push
+alias thanos=thanos
 
 export EDITOR="nvim"
 
@@ -35,10 +40,6 @@ eval "$(zoxide init --cmd j zsh)"
 
 export FZF_DEFAULT_COMMAND='rg --files'
 export BAT_THEME='base16'
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export DENO_INSTALL="/Users/kevin/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
@@ -55,3 +56,9 @@ export PATH="$PNPM_HOME:$PATH"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+source /Users/kevin/.config/broot/launcher/bash/br
+
+export PATH="$PATH:/Users/kevin/.foundry/bin"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

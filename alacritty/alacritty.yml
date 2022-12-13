@@ -14,7 +14,7 @@ font:
   italic:
     family: "Cartograph CF"
     style: Italic
-  size: 17
+  size: 16
   offset:
     x: 0
     y: 0
@@ -315,7 +315,7 @@ schemes:
       cyan: "0xf69c5e"
       white: "0xe1e3e4"
 # Apply
-colors: *everforest_dark_hard
+colors: *everforest_dark_soft
 
 draw_bold_text_with_bright_colors: false
 # draw_bold_text_with_bright_colors: false

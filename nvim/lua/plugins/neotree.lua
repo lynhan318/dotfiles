@@ -1,18 +1,6 @@
 return function()
     vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
-    -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-    -- vim.fn.sign_define("DiagnosticSignError",
-    --                    {text = " ", texthl = "DiagnosticSignError"})
-    -- vim.fn.sign_define("DiagnosticSignWarn",
-    --                    {text = " ", texthl = "DiagnosticSignWarn"})
-    -- vim.fn.sign_define("DiagnosticSignInfo",
-    --                    {text = " ", texthl = "DiagnosticSignInfo"})
-    -- vim.fn.sign_define("DiagnosticSignHint",
-    --                    {text = "", texthl = "DiagnosticSignHint"})
-    -- NOTE: this is changed from v1.x, which used the old style of highlight groups
-    -- in the form "LspDiagnosticsSignWarning"
-
     require("neo-tree").setup({
         close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
         popup_border_style = "rounded",
@@ -20,13 +8,6 @@ return function()
         enable_diagnostics = false,
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
         sort_function = nil, -- use a custom function for sorting files and directories in the tree 
-        -- sort_function = function (a,b)
-        --       if a.type == b.type then
-        --           return a.path > b.path
-        --       else
-        --           return a.type > b.type
-        --       end
-        --   end , -- this sorts files and directories descendantly
         default_component_configs = {
             container = {enable_character_fade = true},
             indent = {
@@ -88,13 +69,7 @@ return function()
                 ["S"] = "open_split",
                 ["s"] = "open_vsplit",
                 ["o"] = "open",
-                -- ["S"] = "split_with_window_picker",
-                -- ["s"] = "vsplit_with_window_picker",
-                -- ["t"] = "open_tabnew",
-                -- ["o"] = "open_with_window_picker",
-                -- ["C"] = "close_node",
                 ["z"] = "close_node",
-                -- ["Z"] = "expand_all_nodes",
                 ["a"] = {
                     "add",
                     -- some commands may take optional config options, see `:h neo-tree-mappings` for details
@@ -108,14 +83,6 @@ return function()
                 ["c"] = "copy_to_clipboard",
                 ["m"] = "cut_to_clipboard",
                 ["p"] = "paste_from_clipboard",
-                -- ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
-                -- ["c"] = {
-                --  "copy",
-                --  config = {
-                --    show_path = "none" -- "none", "relative", "absolute"
-                --  }
-                -- }
-                -- ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
                 ["q"] = "close_window",
                 ["R"] = "refresh",
                 ["?"] = "show_help"
@@ -140,15 +107,9 @@ return function()
                 }
             },
             follow_current_file = true, -- This will find and focus the file in the active buffer every
-            -- time the current file is changed while the tree is open.
             group_empty_dirs = false, -- when true, empty folders will be grouped together
             hijack_netrw_behavior = "open_current", -- netrw disabled, opening a directory opens neo-tree
-            -- in whatever position is specified in window.position
-            -- "open_current",  -- netrw disabled, opening a directory opens within the
-            -- window like netrw would, regardless of window.position
-            -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
             use_libuv_file_watcher = tru, -- This will use the OS level file watchers to detect changes
-            -- instead of relying on nvim autocmd events.
             window = {
                 mappings = {
                     ["U"] = "navigate_up",
@@ -165,7 +126,6 @@ return function()
         },
         buffers = {
             follow_current_file = true, -- This will find and focus the file in the active buffer every
-            -- time the current file is changed while the tree is open.
             group_empty_dirs = true, -- when true, empty folders will be grouped together
             show_unloaded = true,
             window = {

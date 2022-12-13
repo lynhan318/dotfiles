@@ -1,6 +1,16 @@
 return function()
     local formatter = require('formatter')
 
+    local function rome()
+        return {
+            exe = "rome format",
+            args = {
+                "--stdin-file-path", vim.api.nvim_buf_get_name(0), '--write'
+            },
+            stdin = true
+        }
+    end
+
     local function prettier()
         return {
             exe = "prettier",
