@@ -9,7 +9,7 @@ FIELDS=SSID,SECURITY
 POSITION=0
 YOFF=0
 XOFF=0
-FONT="DejaVu Sans Mono 8"
+FONT="Recursive"
 
 if [ -r "$DIR/config" ]; then
 	source "$DIR/config"

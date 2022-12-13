@@ -44,13 +44,13 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/bluetooth]
 type = custom/script
-exec = ~/.config/bspwm/scripts/bluetooth.sh
+exec = ~/.config/polybar/scripts/bluetooth.sh
 format = <label>
 format-prefix = ""
 format-prefix-font = 3
 format-prefix-foreground = ${color.CYAN}
 tail = true
-click-left = ~/.config/bspwm/scripts/bluetooth.sh --toggle &
+click-left = ~/.config/polybar/scripts/bluetooth.sh --toggle &
 
 
 [module/volume]
@@ -98,8 +98,8 @@ ramp-headphones-1 = 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 [module/memory-info]
 type = custom/script
-exec = ~/.config/bspwm/scripts/memory.sh
-click-left = ~/.config/bspwm/scripts/memory.sh --popup
+exec = ~/.config/polybar/scripts/memory.sh
+click-left = ~/.config/polybar/scripts/memory.sh --popup
 format-prefix = " "
 format-prefix-font= 2
 format-prefix-foreground = ${color.BLUE}
@@ -114,7 +114,7 @@ format-prefix = " "
 format-prefix-font = 2
 format-prefix-foreground = ${color.RED}
 interval=1.0
-# click-left = ~/.config/bspwm/scripts/cpu.sh --popup
+# click-left = ~/.config/scripts/cpu.sh --popup
 click-left = "%{A1:alacrity -e htop:} clock here %{A}"
 
 ; Default: 80
@@ -122,8 +122,8 @@ click-left = "%{A1:alacrity -e htop:} clock here %{A}"
 
 [module/cpu-info]
 type = custom/script
-exec = ~/.config/bspwm/scripts/cpu.sh
-click-left = ~/.config/bspwm/scripts/cpu.sh --popup
+exec = ~/.config/scripts/cpu.sh
+click-left = ~/.config/scripts/cpu.sh --popup
 format = <label>
 format-prefix = " "
 format-prefix-font = 2
@@ -329,9 +329,9 @@ label-private = " | Private"
 
 [module/date]
 type = custom/script
-exec = ~/.config/bspwm/scripts/calendar.sh
+exec = ~/.config/polybar/scripts/calendar.sh
 interval = 1
-click-left = ~/.config/bspwm/scripts/calendar.sh --popup
+click-left = ~/.config/polybar/scripts/calendar.sh --popup
 
 format-underline = ${colors.four}
 format-prefix= " "
