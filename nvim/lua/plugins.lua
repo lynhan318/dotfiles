@@ -174,11 +174,6 @@ return require('packer').startup(function()
 
         end
     }
-    use({
-        "glepnir/lspsaga.nvim",
-        -- branch = "main",
-        config = require('plugins.saga')
-    })
     -- install fzf
     use { 'junegunn/fzf' }
     use { 'junegunn/fzf.vim', config = require('plugins.fzf') }
@@ -230,7 +225,7 @@ return require('packer').startup(function()
         "williamboman/mason.nvim",
         config = function() require("mason").setup() end
     }
-    use { 'sunjon/shade.nvim', config = require('plugins.shade') }
+    -- use { 'sunjon/shade.nvim', config = require('plugins.shade') }
     use { "lukas-reineke/indent-blankline.nvim" , config = function ()
         require("indent_blankline").setup({
             show_current_context = true,
@@ -240,5 +235,11 @@ return require('packer').startup(function()
         })
         vim.g.indent_blankline_char = "∘"
     end}
+
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        config = require('plugins.saga')
+    })
 
 end)

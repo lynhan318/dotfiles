@@ -5,7 +5,7 @@
 # https://github.com/sainnhe/icursive-nerd-font
 font:
   normal:
-    family: "Cascursive"
+    family: "Recursive"
     style: Regular
   bold:
     family: "Recursive"

@@ -59,3 +59,5 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 eval "$(zoxide init --cmd j zsh)"
 eval "$(starship init zsh)"
+# bun completions
+[ -s "/home/tiny/.bun/_bun" ] && source "/home/tiny/.bun/_bun"

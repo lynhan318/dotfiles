@@ -6,7 +6,9 @@ return function()
 	local sources = {
 		formatting.stylua,
 		diagnostics.eslint,
-		formatting.prettier,
+        formatting.prettierd.with {
+            extra_filetypes = { "svelte" }
+        },
 		-- formatting.latexindent,
 	}
 
