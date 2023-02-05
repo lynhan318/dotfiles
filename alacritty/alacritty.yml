@@ -13,7 +13,7 @@ font:
   italic:
     family: "Recursive"
     style: Italic
-  size: 13
+  size: 16
   offset:
     x: 0
     y: 0
