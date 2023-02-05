@@ -58,11 +58,11 @@ nitrogen --restore &
 # Dex
 dex -a -s /etc/xdg/autostart/:~/.config/autostart/  &
 # Picom
-picom -b &
+picom --experimental-backends --config /home/tiny/.config/picom/picom.conf-b  &
 # Network Applet
 nm-applet --indicator &
 # Cursor
 xsetroot -cursor_name left_ptr &
 # ~/.config/eww/arin/launch_bar &
 # Low battery notifier
-~/.config/bspwm/scripts/low_bat_notifier.sh 
+~/.config/bspwm/scripts/low_bat_notifier.sh
