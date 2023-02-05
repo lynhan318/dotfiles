@@ -450,6 +450,14 @@ content-background = ${color.BACKGROUND}
 content-foreground = ${color.BLACK}
 content-padding = 2
 
+[module/polywins]
+type = custom/script
+exec = ~/.config/polybar/scripts/windows.sh 2>/dev/null
+format = <label>
+label = %output%
+label-padding = 1
+tail = true
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;;	    __________  ______
 ;;	   / ____/ __ \/ ____/
