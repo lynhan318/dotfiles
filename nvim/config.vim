@@ -1,9 +1,9 @@
 function! ClipboardYank()
-    call system('xclip -sel clip',@@) 
+    call system('pbcopy',@@) 
 endfunction
 
 function! ClipboardPaste()
-  let @@=system('xclip -selection clipboard')
+  let @@=system('pbpaste')
 endfunction
 
 inoremap <silent> <c-l> <Right>
@@ -58,8 +58,9 @@ let bufferline.icon_close_tab_modified = '●'
 "}}
 
 " setup for python
-let g:python_host_prog = '/usr/bin/python3'
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python_host_prog = '/opt/homebrew/bin/python3'
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
+
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " setup for lens.vim

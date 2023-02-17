@@ -4,16 +4,17 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 #YABAI STUFF
 
 # My custom space names for my 3 monitor setup. These names are used in some of my scripts.
-yabai -m space 1 --label Sky
-yabai -m space 2 --label Mavis
-yabai -m space 3 --label In
-yabai -m space 4 --label Your
-yabai -m space 5 --label Area
+yabai -m space 1 --label 1
+yabai -m space 2 --label 2
+yabai -m space 3 --label 3
+yabai -m space 4 --label 4
+yabai -m space 5 --label 5
 
 # bsp or float (default: bsp)
+yabai -m config window_border_radius 0
 yabai -m config layout bsp
 yabai -m config window_gap 8
-yabai -m config top_padding 36
+yabai -m config top_padding 40
 yabai -m config bottom_padding 8
 yabai -m config left_padding 8
 yabai -m config right_padding 8

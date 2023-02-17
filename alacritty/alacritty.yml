@@ -68,7 +68,7 @@ window:
   # - transparent: title bar, transparent background and title bar buttons
   # - buttonless: title bar, transparent background, but no title bar buttons
   decorations: None
-  opacity: 0.94
+  opacity: 0.95
 
   # Startup Mode (changes require restart)
   #
@@ -216,7 +216,7 @@ schemes:
       cyan: "#35a77c"
       white: "#d8d3ba"
 # Apply
-colors: *everforest_dark_medium
+colors: *everforest_dark_soft
 
 draw_bold_text_with_bright_colors: false
 # draw_bold_text_with_bright_colors: false

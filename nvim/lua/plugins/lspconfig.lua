@@ -95,7 +95,7 @@ return function() -- TODO figure out why this don't work
 	local servers = {
 		cssls = { cmd = { "css-languageserver", "--stdio" } },
 		html = { cmd = { "html-languageserver", "--stdio" } },
-		sumneko_lua = { cmd = { "lua-language-server", "--stdio" } },
+		lua_ls = { cmd = { "lua-language-server", "--stdio" } },
 		jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
 		tsserver = { root_dir = lspconfig.util.root_pattern("package.json") },
 		tailwindcss = { cmd = { "tailwindcss-language-server", "--stdio" } },
