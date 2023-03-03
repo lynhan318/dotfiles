@@ -13,8 +13,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	"folke/which-key.nvim",
-	"folke/neodev.nvim",
+	-- "folke/which-key.nvim",
+	-- "folke/neodev.nvim",
 	{ "nvim-tree/nvim-web-devicons", config = require("plugins.devicons") },
 	-- Colorizer
 	{ "norcalli/nvim-colorizer.lua", config = require("plugins.colorizer") },
@@ -36,7 +36,7 @@ require("lazy").setup({
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		--build = ':TSUpdate',
+		build = ":TSUpdate",
 		config = require("plugins.treesitter"),
 	},
 	{
@@ -129,14 +129,18 @@ require("lazy").setup({
 			vim.keymap.set("n", "fe", "<cmd>:HopPattern<cr>")
 		end,
 	},
-	{
-		"chentoast/marks.nvim",
-		config = function()
-			require("marks").setup({})
-		end,
-	},
+	-- {
+	-- 	"chentoast/marks.nvim",
+	-- 	config = function()
+	-- 		require("marks").setup({})
+	-- 	end,
+	-- },
 	{
 		"voldikss/vim-floaterm",
+		-- keys = {
+		-- 	{ "<C-\\>", "<cmd>FloatermToggle<cr>" },
+		-- 	{ "<C-\\>", "<cmd>FloatermToggle<cr>", { mode = "tnoremap", desc = "Floaterm" } },
+		-- },
 		config = function()
 			vim.g.floaterm_wintype = "float"
 			vim.g.floaterm_position = "bottomright"

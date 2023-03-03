@@ -66,6 +66,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " setup for lens.vim
 let g:lens#disabled_filetypes = ['nerdtree', 'fzf', 'defx', 'neo-tree']
 let g:lens#animate = 0
+let g:floaterm_keymap_toggle = "<C-\\"
 
 autocmd BufWritePre *.rs lua vim.lsp.buf.format(nil, 200)
 
@@ -73,5 +74,6 @@ command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
+
 
 

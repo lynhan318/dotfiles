@@ -109,7 +109,7 @@ return function() -- TODO figure out why this don't work
 		if type(config) == "function" then
 			config = config()
 		end
-		config.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+		config.capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 		config.on_attach = commonAttach
 		lspconfig[server].setup(config)
 	end
@@ -127,7 +127,7 @@ return function() -- TODO figure out why this don't work
 		},
 		server = {
 			on_attach = commonAttach,
-			capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities),
+			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities),
 			settings = {
 				["rust-analyzer"] = { checkOnSave = { command = "clippy" } },
 			},
