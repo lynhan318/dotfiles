@@ -5,6 +5,7 @@ local M = {}
 M.ui = {
   theme_toggle = { "everforest", "everforest_light" },
   theme = "everforest", -- default theme
+  transparency = true,
 
 }
 
