@@ -1,3 +1,1 @@
-local opt = vim.opt
-
-opt.nowrap = true
+vim.wo.wrap = false

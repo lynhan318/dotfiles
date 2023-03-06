@@ -5,6 +5,7 @@
 # https://github.com/sainnhe/icursive-nerd-font
 font:
   normal:
+    # family: "CaskaydiaCove Nerd Font"
     family: "Recursive"
     style: Regular
   bold:
@@ -216,7 +217,7 @@ schemes:
       cyan: "#35a77c"
       white: "#d8d3ba"
 # Apply
-colors: *everforest_dark_hard
+colors: *everforest_dark_medium
 
 draw_bold_text_with_bright_colors: false
 # draw_bold_text_with_bright_colors: false
