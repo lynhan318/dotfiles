@@ -29,12 +29,13 @@ alt + shift + Return
 alt + d
 	rofi -modi drun -show drun -line-padding 4 \
                 -columns 2 -padding 50 -hide-scrollbar -terminal alacritty \
-                -show-icons -drun-icon-theme "Qogir-dark" -font "Droid Sans Regular 10"
+                -show-icons -theme $HOME/.config/rofi/themes/launcher.rasi
+
 
 ##---------- Applications ----------##
 
 alt + shift + e
-     ~/.config/rofi/powermenu.sh
+     ~/.config/rofi/bin/powermenu.sh
 
 # Launch Apps
 alt + shift + {f,w,e}

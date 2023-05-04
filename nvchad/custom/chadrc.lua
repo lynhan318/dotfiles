@@ -7,13 +7,10 @@ local highlights = require("custom.highlights")
 M.ui = {
 	theme = "everforest",
 	theme_toggle = { "everforest", "everforest_light" },
-
-	hl_override = highlights.override,
-	hl_add = highlights.add,
-	transparency = false,
-	statusline = {
-		theme = "minimal",
-	},
+	-- transparency = true,
+	-- statusline = {
+	-- 	theme = "minimal",
+	-- },
 }
 
 M.plugins = "custom.plugins"

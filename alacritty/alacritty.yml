@@ -14,7 +14,7 @@ font:
   italic:
     family: "JetBrainsMono Nerd Font"
     style: Italic
-  size: 17
+  size: 14
   offset:
     x: 0
     y: 0
@@ -68,7 +68,7 @@ window:
   # - none: neither borders nor title bar
   # - transparent: title bar, transparent background and title bar buttons
   # - buttonless: title bar, transparent background, but no title bar buttons
-  decorations: buttonless
+  decorations: none
   opacity: 1.0
 
   # Startup Mode (changes require restart)

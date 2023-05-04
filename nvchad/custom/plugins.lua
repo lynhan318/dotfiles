@@ -38,8 +38,8 @@ local plugins = { -- Override plugin definition options
 	},
 	{
 		"utilyre/barbecue.nvim",
-		version = "*",
 		lazy = false,
+		version = "*",
 		dependencies = {
 			"SmiteshP/nvim-navic",
 			"nvim-tree/nvim-web-devicons", -- optional dependency
@@ -48,13 +48,13 @@ local plugins = { -- Override plugin definition options
 			require("barbecue").setup()
 		end,
 	},
-	{
-		"lvimuser/lsp-inlayhints.nvim",
-		config = function()
-			require("lsp-inlayhints").setup()
-			vim.cmd([[hi LspInlayHint guifg=#5c6a72 guibg=NONE ]])
-		end,
-	},
+	-- {
+	-- 	"lvimuser/lsp-inlayhints.nvim",
+	-- 	config = function()
+	-- 		require("lsp-inlayhints").setup()
+	-- 		vim.cmd([[hi LspInlayHint guifg=#5c6a72 guibg=NONE ]])
+	-- 	end,
+	-- },
 	{ "rafamadriz/friendly-snippets" },
 	{
 		"mg979/vim-visual-multi",
@@ -131,6 +131,114 @@ local plugins = { -- Override plugin definition options
 			vim.keymap.set("i", "<c-x>", function()
 				return vim.fn["codeium#Clear"]()
 			end, { expr = true })
+		end,
+	},
+	{
+		"rust-lang/rust.vim",
+		ft = "rust",
+		init = function()
+			vim.g.rustfmt_autosave = 1
+			vim.g.rust_clip_command = "xclip -selection clipboard"
+		end,
+	},
+	{
+		"simrat39/rust-tools.nvim",
+		ft = "rust",
+		dependencies = "neovim/nvim-lspconfig",
+		opts = function()
+			return require("custom.configs.rust-tools")
+		end,
+		config = function(_, opts)
+			require("rust-tools").setup(opts)
+		end,
+	},
+	{
+		"saecki/crates.nvim",
+		ft = { "rust", "toml" },
+		config = function(_, opts)
+			local crates = require("crates")
+			crates.setup(opts)
+			crates.show()
+		end,
+	},
+	{
+		"hrsh7th/nvim-cmp",
+		opts = function()
+			local M = require("plugins.configs.cmp")
+			table.insert(M.sources, { name = "crates" })
+			return M
+		end,
+	},
+	{
+		"mfussenegger/nvim-dap",
+		config = function()
+			local dap = require("dap")
+			dap.adapters.lldb = {
+				type = "executable",
+				command = "/usr/bin/codelldb", -- adjust as needed, must be absolute path
+				name = "lldb",
+			}
+			dap.configurations.cpp = {
+				{
+					name = "Launch",
+					type = "lldb",
+					request = "launch",
+					program = function()
+						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+					end,
+					cwd = "${workspaceFolder}",
+					stopOnEntry = false,
+					args = {},
+				},
+			}
+			dap.configurations.rust = dap.configurations.cpp
+		end,
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = "mfussenegger/nvim-dap",
+		config = function()
+			local opts = {
+				layouts = {
+					{
+						elements = {
+							{
+								id = "scopes",
+								size = 0.25,
+							},
+							{
+								id = "breakpoints",
+								size = 0.25,
+							},
+							{
+								id = "stacks",
+								size = 0.25,
+							},
+							-- {
+							-- 	id = "watches",
+							-- 	size = 0.25,
+							-- },
+						},
+						position = "right",
+						size = 40,
+					},
+					{
+						elements = {
+							{
+								id = "repl",
+								size = 0.5,
+							},
+							{
+								id = "console",
+								size = 0.5,
+							},
+						},
+						position = "bottom",
+						size = 10,
+					},
+				},
+			}
+			require("dapui").setup(opts)
 		end,
 	},
 }

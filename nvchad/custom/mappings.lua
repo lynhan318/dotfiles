@@ -55,6 +55,20 @@ M.telescope = {
 		},
 	},
 }
+M.dap = {
+	n = {
+		["<leader>db"] = {
+			"<cmd>lua require'dap'.toggle_breakpoint()<CR>",
+			"toggle breakpoint",
+		},
+		["<leader>dui"] = {
+			function()
+				require("dapui").toggle()
+			end,
+			"Open debugging sidebar",
+		},
+	},
+}
 
 return M
 -- Quickfix override

@@ -58,7 +58,7 @@ nitrogen --restore &
 # Dex
 dex -a -s /etc/xdg/autostart/:~/.config/autostart/  &
 # Picom
-picom --experimental-backends --config /home/tiny/.config/picom/picom.conf -b  &
+picom --experimental-backends --config /home/kevin/.config/picom/picom.conf -b  &
 # Network Applet
 nm-applet --indicator &
 # Cursor

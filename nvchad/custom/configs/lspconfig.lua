@@ -3,8 +3,6 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require("lspconfig")
 
-vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
-
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 	virtual_text = false,
 	signs = true,
@@ -34,20 +32,21 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = "LspAttach_inlayhints",
-	callback = function(args)
-		if not (args.data and args.data.client_id) then
-			return
-		end
+-- vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+-- vim.api.nvim_create_autocmd("LspAttach", {
+-- 	group = "LspAttach_inlayhints",
+-- 	callback = function(args)
+-- 		if not (args.data and args.data.client_id) then
+-- 			return
+-- 		end
+--
+-- 		local bufnr = args.buf
+-- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
+-- 		require("lsp-inlayhints").on_attach(client, bufnr)
+-- 	end,
+-- })
 
-		local bufnr = args.buf
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		require("lsp-inlayhints").on_attach(client, bufnr)
-	end,
-})
-
-local servers = { "html", "cssls", "rust_analyzer", "tsserver", "svelte", "jsonls", "eslint" }
+local servers = { "html", "cssls", "tsserver", "svelte", "jsonls", "eslint" }
 
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({

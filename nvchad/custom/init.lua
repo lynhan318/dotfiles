@@ -7,3 +7,5 @@
 -- })
 
 vim.wo.wrap = false
+-- vim.wo.foldmethod = "expr"
+-- vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
