@@ -8,9 +8,9 @@ M.ui = {
 	theme = "everforest",
 	theme_toggle = { "everforest", "everforest_light" },
 	-- transparency = true,
-	-- statusline = {
-	-- 	theme = "minimal",
-	-- },
+	statusline = {
+		theme = "minimal",
+	},
 }
 
 M.plugins = "custom.plugins"
