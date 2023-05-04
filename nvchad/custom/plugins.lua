@@ -119,7 +119,7 @@ local plugins = { -- Override plugin definition options
 		"Exafunction/codeium.vim",
 		lazy = false,
 		config = function()
-			vim.keymap.set("i", "<Tab>", function()
+			vim.keymap.set("i", "<c-g>", function()
 				return vim.fn["codeium#Accept"]()
 			end, { expr = true })
 			vim.keymap.set("i", "<c-;>", function()
