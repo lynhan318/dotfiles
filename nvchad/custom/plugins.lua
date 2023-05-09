@@ -241,6 +241,11 @@ local plugins = { -- Override plugin definition options
 			require("dapui").setup(opts)
 		end,
 	},
+	{
+		"mg979/vim-visual-multi",
+		branch = "master",
+		lazy = false,
+	},
 }
 
 return plugins

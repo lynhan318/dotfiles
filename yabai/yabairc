@@ -12,37 +12,28 @@ yabai -m space 3 --label 3
 yabai -m space 4 --label 4
 yabai -m space 5 --label 5
 
-yabai -m config external_bar all:35:0 \
-	window_border on \
-	mouse_follows_focus off \
-	focus_follows_mouse off \
-	window_zoom_persist off \
-	window_placement second_child \
-	window_topmost off \
-	window_shadow float \
-	window_opacity off \
-	window_opacity_duration 0.0 \
-	active_window_opacity 1.0 \
-	normal_window_opacity 0.0 \
-	window_border_width 2 \
-	window_border_hidpi off \
-	window_border_radius 11 \
-	window_border_blur off \
-	active_window_border_color 0xffa7c080 \
-	normal_window_border_color 0xff494d64 \
-	insert_feedback_color 0xff9dd274 \
-	split_ratio 0.50 \
-	auto_balance off \
-	mouse_modifier fn \
-	mouse_action1 move \
-	mouse_action2 resize \
-	mouse_drop_action swap \
-	\
-	top_padding 10 \
-	bottom_padding 4 \
-	left_padding 4 \
-	right_padding 4 \
-	window_gap 6
+yabai -m config window_border_radius 0
+yabai -m config layout bsp
+yabai -m config window_gap 8
+yabai -m config top_padding 40
+yabai -m config bottom_padding 8
+yabai -m config left_padding 8
+yabai -m config right_padding 8
+yabai -m config active_window_border_topmost off
+yabai -m config window_topmost off
+yabai -m config window_opacity off
+yabai -m config window_shadow float
+yabai -m config focus_follows_mouse off
+yabai -m config mouse_follows_focus off
+yabai -m config split_ratio 0.50
+yabai -m config window_placement second_child
+yabai -m config window_opacity_duration 0.00
+yabai -m config active_window_opacity 0.9
+yabai -m config normal_window_opacity 0.9
+yabai -m config window_border on
+yabai -m config window_border_width 2
+yabai -m config active_window_border_color 0xFFA7C080
+yabai -m config insert_feedback_color 0xFFA3BE8C
 
 # Exclude problematic apps from being managed:
 yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor)$" manage=off

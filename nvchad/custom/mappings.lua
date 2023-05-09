@@ -18,7 +18,9 @@ M.custom = {
 		},
 	},
 	n = {
-
+		["S"] = {
+			":%s//g<Left><Left>",
+		},
 		[";"] = {
 			":",
 			"enter cmdline",
