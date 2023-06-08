@@ -246,6 +246,7 @@ local plugins = { -- Override plugin definition options
 		branch = "master",
 		lazy = false,
 	},
+	-- { "Bekaboo/dropbar.nvim", lazy = false },
 }
 
 return plugins
