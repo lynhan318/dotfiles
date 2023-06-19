@@ -1,0 +1,81 @@
+snippet log "console.log($1)"
+console.log("$1",$1) 
+endsnippet
+
+snippet query "generate grapql"
+    const query = \`
+        query $1(\$$2: $2) {
+            $1 ($2: \$$2){}
+        }
+      \`;
+endsnippet
+
+snippet mutation "generate grapql"
+    const mutation = \`
+        mutation $1(\$$2: $2) {
+            $1 ($2: \$$2){}
+        }
+      \`;
+endsnippet
+
+snippet .img "react function component"
+const $1 = styled.div``
+endsnippet
+
+snippet .span "react function component"
+const $1 = styled.div``
+endsnippet
+
+snippet .div "react function component"
+
+const $1 = styled.div``
+
+endsnippet
+
+snippet fre "react function component"
+import React from 'react'
+
+
+const $1 = (props) => {
+  return <div>$2</div>;
+};
+export default $1;
+
+endsnippet
+
+
+snippet uses "react useState"
+  const [$1,$2]=React.useState($3)
+endsnippet
+
+snippet usee "react useEffect"
+React.useEffect(()=>{
+	$1
+},[$2])
+endsnippet
+
+snippet constf "const function"
+const $1=($2)=>{
+	$3
+}
+endsnippet
+
+snippet func "default function"
+function $1(){
+	$2
+}
+endsnippet
+
+snippet action "redux action"
+export const $1=(payload:any)=>dispatch=>dispatch({
+			type:$2,
+			payload
+		})
+endsnippet
+
+snippet dis "disable eslint"
+/* eslint-disable-next-line */
+endsnippet
+snippet cl "import default"
+console.log("$1", $2 )
+endsnippet

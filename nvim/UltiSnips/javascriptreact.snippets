@@ -1,0 +1,122 @@
+snippet fre "react function component"
+import React from 'react'
+import T from 'prop-types';
+
+const $1 = (props) => {
+  return <div>$2</div>;
+};
+
+$1.propTypes = {
+};
+
+
+export default $1;
+
+endsnippet
+
+
+snippet uses "react useState"
+  const [$1,$2]=React.useState($3)
+endsnippet
+
+snippet usee "react useEffect"
+React.useEffect(()=>{
+	$1
+},[$2])
+endsnippet
+
+snippet constf "const function"
+const $1=($2)=>{
+	$3
+}
+endsnippet
+
+snippet func "default function"
+function $1(){
+	$2
+}
+endsnippet
+
+snippet action "redux action"
+export const $1=(payload:any)=>dispatch=>dispatch({
+			type:$2,
+			payload
+		})
+endsnippet
+
+snippet usec "react useCallback"
+React.useCallback(()=>{
+	$1
+},[$2])
+endsnippet
+
+snippet imm "description"
+import {$1} from '$2'
+endsnippet
+
+snippet im "import default"
+import $1 from '$2'
+endsnippet
+
+snippet imcore "import core"
+import $1 from '@tbox/core/$2'
+endsnippet
+
+snippet imcomp "import comp"
+import $1 from '@tbox/host/components/$2'
+endsnippet
+
+
+snippet imt "import default"
+import $1 from '@tbox/$2'
+endsnippet
+
+snippet exd "import default"
+export {default as $1} from '$2'
+endsnippet
+
+snippet cl "import default"
+console.log("$1", $1 )
+endsnippet
+
+snippet dis "disable eslint"
+/* eslint-disable-next-line */
+endsnippet
+
+snippet click "onClick"
+onClick={$1}
+endsnippet
+
+snippet change "onChange"
+onChange={$1}
+endsnippet
+
+
+snippet rtest "description"
+
+import 'jest-styled-components';
+import React from 'react';
+import { create } from 'react-test-renderer';
+
+import $1 from '.';
+
+describe('core::$1', () => {
+  test('should match snapshoot', () => {
+    const render = create(<$1 />);
+    const tree = render.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
+endsnippet
+
+snippet des "description"
+describe('$1', () => {
+  test('$2', () => {
+  });
+});
+endsnippet
+
+snippet test "description"
+  test('$1', () => {
+  });
+endsnippet

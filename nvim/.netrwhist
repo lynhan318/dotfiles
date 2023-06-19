@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/Users/lap00822/Desktop/nextlint-web/packages/client/common/components'
+let g:netrw_dirhist_6='/Users/lap00822/.tiki'
+let g:netrw_dirhist_5='/Users/lap00822/.theia'
+let g:netrw_dirhist_4='/Users/lap00822'
+let g:netrw_dirhist_3='/Users/lap00822/.theia'
+let g:netrw_dirhist_2='/Users/lap00822/Desktop/playground/theia-hello-world-extension/theia-playground'
+let g:netrw_dirhist_1='/Users/lap00822/Desktop/tiki-studio'
+let g:netrw_dirhist_0='/Users/lap00822/Desktop/tiki-studio/app/src/store/product'
+let g:netrw_dirhist_9='/Users/lap00822/Desktop/tiki-studio/storybook'
+let g:netrw_dirhist_8='/Users/lap00822/Desktop/nextlint-web/packages/client/common/components/Editor/components/RenderBlocks'
