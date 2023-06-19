@@ -1,105 +1,129 @@
 {
-    "layer": "top",
-    "position": "top",
-    "mod": "dock",
-    "exclusive": true,
-    "passthrough": false,
-    "gtk-layer-shell": true,
-    "height": 0,
-    "modules-left": [
-        "clock",
-        "wlr/workspaces"
-    ],
-    "modules-center": ["hyprland/window"],
-    "modules-right": [
-        "tray",
-        "cpu",
-        "memory",
-        "custom/updates",
-        "custom/language",
-        "battery",
-        "backlight",
-        "pulseaudio",
-        "pulseaudio#microphone"
-    ],
-    "memory": {
-        "interval": 30,
-        "format": "{}%󱃤",
-        "max-length": 20
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 0,
+  "modules-left": ["clock", "wlr/workspaces"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": [
+    "tray",
+    "cpu",
+    "memory",
+    "bluetooth",
+    "custom/language",
+    "battery",
+    "backlight",
+    "pulseaudio",
+    "pulseaudio#microphone"
+  ],
+  "memory": {
+    "interval": 30,
+    "format": "{}%󱃤",
+    "max-length": 20
+  },
+  "cpu": {
+    "interval": 10,
+    "format": "{}%󰘚",
+    "max-length": 20
+  },
+  "hyprland/window": {
+    "format": "{}"
+  },
+  "wlr/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": ""
     },
-    "cpu": {
-        "interval": 10,
-        "format": "{}%󰘚",
-        "max-length": 20
-    },
-    "hyprland/window": {
-        "format": "{}"
-    },
-    "wlr/workspaces": {
-        "on-click": "activate",
-        "format": "{icon}"
-    },
-    "custom/updates": {
-        "format": "󱧢 {}",
-        "interval": 7200,                     // every two hours
-        "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'",       // # of updates and tooltip details
-        "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "alacritty -e sudo pacman -Syu", // update system
-        "signal": 8
-    },
-    "tray": {
-        "icon-size": 13,
-        "spacing": 10
-    },
-    "clock": {
-        "format": "{: %R   %d/%m}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "{icon} {percent}%",
-        "format-icons": ["󱩎", "󱩒", "󱩖"],
-        "on-scroll-up": "brightnessctl set 5%+",
-        "on-scroll-down": "brightnessctl set 5%-",
-        "min-length": 6
-    },
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["󰁺", "󰁻", "󰁻", "󰁾", "󰁾", "󰁿", "󰁿", "󰂀", "󰂁", "󰂂", "󰂄"]
-    },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "tooltip": false,
-        "format-muted": " Muted",
-        "on-click": "pamixer -t",
-        "on-scroll-up": "pamixer -i 5",
-        "on-scroll-down": "pamixer -d 5",
-        "scroll-step": 5,
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        }
-    },
-    "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "format-source": "󰕾 {volume}%",
-        "format-source-muted": "󰖁 Muted",
-        "on-click": "pamixer --default-source -t",
-        "on-scroll-up": "pamixer --default-source -i 5",
-        "on-scroll-down": "pamixer --default-source -d 5",
-        "scroll-step": 5
+    "sort-by-number": true,
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
     }
+  },
+  "bluetooth": {
+    "format": "{icon}",
+    "format-alt": "bluetooth: {status}",
+    "interval": 30,
+    "format-icons": {
+      "enabled": "",
+      "disabled": ""
+    },
+    "on-click": "alacritty --class float -e bluetuith",
+    "tooltip-format": "{status}"
+  },
+  "custom/updates": {
+    "format": "󱧢 {}",
+    "interval": 7200, // every two hours
+    "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'", // # of updates and tooltip details
+    "exec-if": "exit 0", // always run; consider advanced run conditions
+    "on-click": "alacritty -e sudo pacman -Syu", // update system
+    "signal": 8
+  },
+  "tray": {
+    "icon-size": 13,
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{: %R   %d/%m}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "on-click": "alacritty --class float -e calcurse"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󱩎", "󱩒", "󱩖"],
+    "on-scroll-up": "brightnessctl set 5%+",
+    "on-scroll-down": "brightnessctl set 5%-",
+    "min-length": 6
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["󰁺", "󰁻", "󰁻", "󰁾", "󰁾", "󰁿", "󰁿", "󰂀", "󰂁", "󰂂", "󰂄"]
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "tooltip": false,
+    "format-muted": " Muted",
+    "on-click": "pamixer -t",
+    "on-scroll-up": "pamixer -i 5",
+    "on-scroll-down": "pamixer -d 5",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    }
+  },
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "󰕾 {volume}%",
+    "format-source-muted": "󰖁 Muted",
+    "on-click": "pamixer --default-source -t",
+    "on-scroll-up": "pamixer --default-source -i 5",
+    "on-scroll-down": "pamixer --default-source -d 5",
+    "scroll-step": 5
+  }
 }
