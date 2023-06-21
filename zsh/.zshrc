@@ -21,7 +21,7 @@ export ZSH="$ZDOTDIR/ohmyzsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-plugins=(git git-open zsh-autosuggestions zsh-vi-mode F-Sy-H)
+plugins=(git tmux git-open zsh-autosuggestions zsh-vi-mode F-Sy-H)
 
 source $ZSH/oh-my-zsh.sh
 
