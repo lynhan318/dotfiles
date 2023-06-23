@@ -7,5 +7,6 @@
 -- })
 
 vim.wo.wrap = false
+vim.g.vscode_snippets_path = "./snippets.json"
 -- vim.wo.foldmethod = "expr"
 -- vim.wo.foldexpr = "nvim_treesitter#foldexpr()"

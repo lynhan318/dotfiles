@@ -1,0 +1,6 @@
+* {
+lightbg: #141a1b;
+background: #141a1b;
+lightfg: #16a085;
+foreground: #eeeeee;
+}

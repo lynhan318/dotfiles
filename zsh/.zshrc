@@ -9,19 +9,13 @@ function push() {
 function thanos(){
     kill -9 $(lsof -t -i:$1)
 }
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+export ZSH="$HOME/.config/zsh/ohmyzsh"
 
 # Path to your oh-my-zsh installation.
-export ZSH="$ZDOTDIR/ohmyzsh"
+plugins=(git git-open zsh-autosuggestions zsh-vi-mode F-Sy-H)
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-
-plugins=(git tmux git-open zsh-autosuggestions zsh-vi-mode F-Sy-H)
+# ZSH_THEME="spaceship"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,14 +38,11 @@ export EDITOR="nvim"
 
 export FZF_DEFAULT_COMMAND='rg --files'
 export BAT_THEME='base16'
+export GPG_TTY=$(tty)
+
 eval "$(zoxide init --cmd j zsh)"
-export ATUIN_NOBIND="true"
+eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
-
-bindkey '^r' _atuin_search
-bindkey '^[[A' _atuin_search
-bindkey '^[OA' _atuin_search
-
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
+eval "$(atuin init zsh)"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

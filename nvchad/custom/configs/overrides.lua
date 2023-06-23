@@ -29,6 +29,8 @@ M.mason = {
 		"css-lsp",
 		"json-lsp",
 		"html-lsp",
+		"eslint-lsp",
+		"prettierd",
 		"rust-analyzer",
 		"svelte-language-server",
 	},

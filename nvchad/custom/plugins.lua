@@ -59,6 +59,7 @@ local plugins = { -- Override plugin definition options
 	{
 		"mg979/vim-visual-multi",
 		branch = "master",
+		lazy = false,
 	},
 	{ "tpope/vim-surround", lazy = false },
 	{

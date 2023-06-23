@@ -13,7 +13,7 @@ function thanos(){
 export ZSH="$HOME/.oh-my-zsh"
 
 # Path to your oh-my-zsh installation.
-plugins=(git git-open zsh-autosuggestions zsh-vi-mode F-Sy-H atuin)
+plugins=(git git-open zsh-autosuggestions zsh-vi-mode F-Sy-H)
 
 # ZSH_THEME="spaceship"
 
@@ -42,5 +42,4 @@ export GPG_TTY=$(tty)
 
 eval "$(zoxide init --cmd j zsh)"
 eval "$(starship init zsh)"
-eval "$(atuin init zsh)"
 eval "$(atuin init zsh)"
