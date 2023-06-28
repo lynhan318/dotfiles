@@ -15,6 +15,10 @@ M.ui = {
 
 M.plugins = "custom.plugins"
 
+M.default_plugin_remove = {
+	nvim_tree = true,
+}
+
 -- check core.mappings for table structure
 M.mappings = require("custom.mappings")
 

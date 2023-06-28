@@ -95,13 +95,13 @@ local plugins = { -- Override plugin definition options
 	},
 	{
 		"roobert/search-replace.nvim",
+		lazy = false,
 		config = function()
 			require("search-replace").setup({
 				-- optionally override defaults
 				default_replace_single_buffer_options = "gcI",
 				default_replace_multi_buffer_options = "egcI",
 			})
-			vim.api.nvim_set_keymap("n", "<leader>ro", "<CMD>SearchReplaceSingleBufferOpen<CR>", opts)
 		end,
 	},
 	{
@@ -157,6 +157,10 @@ local plugins = { -- Override plugin definition options
 			table.insert(M.sources, { name = "crates" })
 			return M
 		end,
+	},
+	-- You can use any plugin specification from lazy.nvim
+	{
+		"Pocco81/TrueZen.nvim",
 	},
 	{
 		"mfussenegger/nvim-dap",
@@ -230,6 +234,13 @@ local plugins = { -- Override plugin definition options
 			require("dapui").setup(opts)
 		end,
 	},
+	default_plugin_remove = {
+		nvim_tree = true,
+	},
+}
+
+plugins.default_plugin_remove = {
+	"nvim-tree/nvim-tree.lua",
 }
 
 return plugins

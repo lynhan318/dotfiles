@@ -18,7 +18,6 @@ M.custom = {
 		},
 	},
 	n = {
-
 		[";"] = {
 			":",
 			"enter cmdline",
@@ -33,15 +32,10 @@ M.custom = {
 			end,
 			"close buffer",
 		},
+		["<C-b>"] = { "<cmd> Neotree toggle <CR>", "toggle neotree" },
 	},
 }
-M.nvimtree = {
-	plugin = true,
-	n = {
-		["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
-		["<leader>j"] = { "<cmd> HopChar2 <CR>", "Hope auto jump" },
-	},
-}
+
 M.telescope = {
 	plugin = true,
 	i = {
