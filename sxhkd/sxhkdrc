@@ -9,8 +9,10 @@ alt + Return
 
 # Terminal (floating)
 alt + shift + Return
-	bspterm -f
+	alacrity --class "floating"
 
+alt + shift + s
+	flameshot gui
 # Terminal (fullscreen)
 # alt + t
 # 	alacritty -s	
@@ -30,12 +32,18 @@ alt + d
 	rofi -modi drun -show drun -line-padding 4 \
                 -columns 2 -padding 50 -hide-scrollbar -terminal alacritty \
                 -show-icons -theme $HOME/.config/rofi/themes/launcher.rasi
+                
+alt + p
+	rofi -show power-menu -modi power-menu:rofi-power-menu \
+       -show-icons \
+       -theme $HOME/.config/rofi/themes/launcher.rasi
 
 
 ##---------- Applications ----------##
+#
+alt + e
+     ~/.config/eww/dashboard/launch_dashboard
 
-alt + shift + e
-     ~/.config/rofi/bin/powermenu.sh
 
 # Launch Apps
 alt + shift + {f,w,e}
@@ -123,7 +131,7 @@ alt + shift + {q,r}
 #	bspc node -o 0.{1-9}
 
 # Fullscreen or Monocle
-alt + f
+alt + w
 	bspc desktop -l next
     # bspc node -t "~"fullscreen
 

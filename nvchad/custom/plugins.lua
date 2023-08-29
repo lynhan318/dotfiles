@@ -234,6 +234,40 @@ local plugins = { -- Override plugin definition options
 			require("dapui").setup(opts)
 		end,
 	},
+  { 
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+        require('indent_blankline').setup({
+          space_char_blankline = " ",
+          show_current_context = true,
+          show_current_context_start = true,
+      })
+    end
+  },
+  {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/notes",
+              },
+            },
+          },
+        },
+      }
+    end,
+  },
+  {
+    "tpope/vim-fugitive"
+  },
 	default_plugin_remove = {
 		nvim_tree = true,
 	},

@@ -14,7 +14,7 @@ font:
   italic:
     family: "JetBrainsMonoNerdFont"
     style: Italic
-  size: 12.5
+  size: 13
   offset:
     x: 0
     y: 0

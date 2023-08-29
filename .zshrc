@@ -43,3 +43,12 @@ export GPG_TTY=$(tty)
 eval "$(zoxide init --cmd j zsh)"
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+# bun completions
+[ -s "/home/kevin/.bun/_bun" ] && source "/home/kevin/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
