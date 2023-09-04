@@ -18,6 +18,13 @@ M.custom = {
 		},
 	},
 	n = {
+		["S"] = {
+			":%s//g<Left><Left>",
+			"search and replace",
+			opts = {
+				nowait = true,
+			},
+		},
 		[";"] = {
 			":",
 			"enter cmdline",
