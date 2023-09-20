@@ -41,8 +41,8 @@ alt + p
 
 ##---------- Applications ----------##
 #
-alt + e
-     ~/.config/eww/dashboard/launch_dashboard
+# alt + e
+#      ~/.config/eww/dashboard/launch_dashboard
 
 
 # Launch Apps

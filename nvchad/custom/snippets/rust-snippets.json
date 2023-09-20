@@ -1,0 +1,7 @@
+{
+  "conn": {
+    "prefix": "conn",
+    "body": ["let mut conn = ctx.data::<AsyncPgPool>()?.get().await?;"],
+    "description": "Get Pg Pool Connection"
+  }
+}

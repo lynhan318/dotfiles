@@ -1,0 +1,20 @@
+{
+  "name": "kevin-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "rust"
+        ],
+        "path": "./rust-snippets.json"
+      },
+      {
+        "language": [
+          "typescript",
+          "javascript"
+        ],
+        "path": "./rust-snippets.json"
+      }
+    ]
+  }
+}

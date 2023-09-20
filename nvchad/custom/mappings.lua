@@ -18,13 +18,23 @@ M.custom = {
 		},
 	},
 	n = {
-    ["S"]={
+		["gp"] = {
+			"<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+			"Goto Preview Definition",
+			opts = { nowait = true },
+		},
+		["gq"] = {
+			"<cmd>lua require('goto-preview').close_all_win()<CR>",
+			"Close All Previews",
+			opts = { nowait = true },
+		},
+		["S"] = {
 			":%s//g<Left><Left>",
 			"Search and replace",
 			opts = {
 				nowait = true,
 			},
-  },
+		},
 		[";"] = {
 			":",
 			"enter cmdline",

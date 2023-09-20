@@ -7,7 +7,7 @@
 -- })
 
 vim.wo.wrap = false
-vim.g.vscode_snippets_path = "./snippets.json"
+vim.g.vscode_snippets_path = "./snippets/package.json"
 -- vim.wo.foldmethod = "expr"
 local opts = {}
 vim.o.inccommand = "split"

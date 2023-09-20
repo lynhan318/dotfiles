@@ -57,6 +57,13 @@ local plugins = { -- Override plugin definition options
 	-- },
 	{ "rafamadriz/friendly-snippets" },
 	{
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		version = "2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
+	},
+	{
 		"mg979/vim-visual-multi",
 		branch = "master",
 		lazy = false,
@@ -234,40 +241,47 @@ local plugins = { -- Override plugin definition options
 			require("dapui").setup(opts)
 		end,
 	},
-  { 
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-        require('indent_blankline').setup({
-          space_char_blankline = " ",
-          show_current_context = true,
-          show_current_context_start = true,
-      })
-    end
-  },
-  {
-    "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers",
-    lazy = false,
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("neorg").setup {
-        load = {
-          ["core.defaults"] = {}, -- Loads default behaviour
-          ["core.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.dirman"] = { -- Manages Neorg workspaces
-            config = {
-              workspaces = {
-                notes = "~/notes",
-              },
-            },
-          },
-        },
-      }
-    end,
-  },
-  {
-    "tpope/vim-fugitive"
-  },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("indent_blankline").setup({
+				space_char_blankline = " ",
+				show_current_context = true,
+				show_current_context_start = true,
+			})
+		end,
+	},
+	{
+		"nvim-neorg/neorg",
+		build = ":Neorg sync-parsers",
+		lazy = false,
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("neorg").setup({
+				load = {
+					["core.defaults"] = {}, -- Loads default behaviour
+					["core.concealer"] = {}, -- Adds pretty icons to your documents
+					["core.dirman"] = { -- Manages Neorg workspaces
+						config = {
+							workspaces = {
+								notes = "~/notes",
+							},
+						},
+					},
+				},
+			})
+		end,
+	},
+	{
+		"tpope/vim-fugitive",
+		lazy = false,
+	},
+	{
+		"rmagatti/goto-preview",
+		config = function()
+			require("goto-preview").setup({})
+		end,
+	},
 	default_plugin_remove = {
 		nvim_tree = true,
 	},
