@@ -7,7 +7,7 @@
   "passthrough": false,
   "gtk-layer-shell": true,
   "height": 0,
-  "modules-left": ["wlr/workspaces"],
+  "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
   "modules-right": [
     "tray",
@@ -37,7 +37,7 @@
   "hyprland/window": {
     "format": "{}"
   },
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {

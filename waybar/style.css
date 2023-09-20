@@ -45,8 +45,7 @@ tooltip {
 /*Tray {{*/
 #tray {
   margin-right: 10px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-radius: 8px;
 }
 #bluetooth {
   border-radius: 0px;
