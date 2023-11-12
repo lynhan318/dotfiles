@@ -40,7 +40,7 @@ M.custom = {
 M.nvimtree = {
 	plugin = true,
 	n = {
-		["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
+		["<C-b>"] = { "<cmd> Neotree toggle <CR>", "toggle neotree" },
 		["<leader>j"] = { "<cmd> HopChar2 <CR>", "Hope auto jump" },
 	},
 }

@@ -5,16 +5,16 @@
 # https://github.com/sainnhe/icursive-nerd-font
 font:
   normal:
-    # family: "CaskaydiaCove Nerd Font"
-    family: "JetBrainsMono Nerd Font"
+    family: "CaskaydiaCove Nerd Font"
     style: Regular
   bold:
-    family: "JetBrainsMono Nerd Font"
+    family: "CaskaydiaCove Nerd Font"
     style: Bold
   italic:
-    family: "JetBrainsMono Nerd Font"
+    family: "CaskaydiaCove Nerd Font"
     style: Italic
-  size: 16
+  size: 15
+
   offset:
     x: 0
     y: 0
@@ -68,8 +68,8 @@ window:
   # - none: neither borders nor title bar
   # - transparent: title bar, transparent background and title bar buttons
   # - buttonless: title bar, transparent background, but no title bar buttons
-  decorations: none
-  opacity: 1.0
+  decorations: buttonless
+  opacity: 0.97
 
   # Startup Mode (changes require restart)
   #

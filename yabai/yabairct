@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
+
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
 #YABAI STUFF
 
 # My custom space names for my 3 monitor setup. These names are used in some of my scripts.

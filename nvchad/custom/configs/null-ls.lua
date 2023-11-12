@@ -13,9 +13,7 @@ local sources = { -- webdev stuff
 	b.formatting.prettierd.with({
 		extra_filetypes = { "svelte" },
 	}),
-	b.formatting.rustfmt, -- Shell
 	b.formatting.shfmt,
-	b.formatting.rome,
 	b.diagnostics.shellcheck.with({
 		diagnostics_format = "#{m} [#{c}]",
 	}),

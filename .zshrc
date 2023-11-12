@@ -40,27 +40,11 @@ export EDITOR="nvim"
 export FZF_DEFAULT_COMMAND='rg --files'
 export BAT_THEME='base16'
 
-export DENO_INSTALL="/Users/kevin/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export GPG_TTY=$(tty)
 
-
-# pnpm
-export PNPM_HOME="/Users/kevin/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-# bun completions
-[ -s "/Users/kevin/.bun/_bun" ] && source "/Users/kevin/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$PATH:/Users/kevin/.foundry/bin"
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
 eval "$(zoxide init --cmd j zsh)"
 eval "$(starship init zsh)"
-# bun completions
-[ -s "/home/tiny/.bun/_bun" ] && source "/home/tiny/.bun/_bun"
 eval "$(atuin init zsh)"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
