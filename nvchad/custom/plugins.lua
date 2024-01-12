@@ -1,5 +1,4 @@
 local overrides = require("custom.configs.overrides")
-
 ---@type NvPluginSpec[]
 local plugins = { -- Override plugin definition options
 	{
@@ -247,6 +246,9 @@ local plugins = { -- Override plugin definition options
 		lazy = false,
 	},
 	-- { "Bekaboo/dropbar.nvim", lazy = false },
+	{
+		"github/copilot.vim",
+	},
 }
 
 return plugins

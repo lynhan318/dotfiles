@@ -1,15 +1,15 @@
 # fast focus desktop
-# cmd - 1 : yabai -m space --focus 1
-# cmd - 2 : yabai -m space --focus 2
-# cmd - 3 : yabai -m space --focus 3
-# cmd - 4 : yabai -m space --focus 4
-# cmd - 5 : yabai -m space --focus 5
+cmd - 1 : yabai -m space --focus 1
+cmd - 2 : yabai -m space --focus 2
+cmd - 3 : yabai -m space --focus 3
+cmd - 4 : yabai -m space --focus 4
+cmd - 5 : yabai -m space --focus 5
 
-cmd - 1 : skhd -k "alt - 1" && yabai -m space --focus 1
-cmd - 2 : skhd -k "alt - 2" &&  yabai -m space --focus 2
-cmd - 3 : skhd -k "alt - 3" && yabai -m space --focus 3
-cmd - 4 : skhd -k "alt - 4" && yabai -m space --focus 4
-cmd - 5 : skhd -k "alt - 5" && yabai -m space --focus 5
+# cmd - 1 : skhd -k "alt - 1" && yabai -m space --focus 1
+# cmd - 2 : skhd -k "alt - 2" &&  yabai -m space --focus 2
+# cmd - 3 : skhd -k "alt - 3" && yabai -m space --focus 3
+# cmd - 4 : skhd -k "alt - 4" && yabai -m space --focus 4
+# cmd - 5 : skhd -k "alt - 5" && yabai -m space --focus 5
 
 
 # send window to desktop and follow focus

@@ -31,6 +31,8 @@ alias pb="pnpm run build"
 alias hs="atuin search"
 alias push=push
 alias thanos=thanos
+alias ariga-dev="kubectl config use-context arn:aws:eks:us-east-1:352056394569:cluster/nebula-dev && k9s -n default"
+alias ariga-prod="kubectl config use-context arn:aws:eks:us-east-1:844442413632:cluster/nebula-prod && k9s -n default"
 
 export EDITOR="nvim"
 
@@ -48,3 +50,11 @@ eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# bun completions
+[ -s "/Users/nhanly/.bun/_bun" ] && source "/Users/nhanly/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

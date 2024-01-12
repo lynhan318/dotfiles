@@ -46,7 +46,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- 	end,
 -- })
 
-local servers = { "html", "cssls", "tsserver", "svelte", "jsonls", "eslint" }
+local servers = { "html", "cssls", "tsserver", "svelte", "jsonls", "eslint", "tailwindcss" }
 
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
