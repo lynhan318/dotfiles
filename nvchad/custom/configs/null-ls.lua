@@ -4,22 +4,11 @@ if not present then
 	return
 end
 
-local b = null_ls.builtins
-
-local sources = { -- webdev stuff
-	-- b.formatting.rome,
-	-- Lua
-	b.formatting.stylua,
-	b.formatting.prettierd.with({
-		extra_filetypes = { "svelte" },
-	}),
-	b.formatting.shfmt,
-	b.diagnostics.shellcheck.with({
-		diagnostics_format = "#{m} [#{c}]",
-	}),
-}
-
 null_ls.setup({
-	debug = true,
-	sources = sources,
+	sources = {
+		require("none-ls.formatting.jq"),
+		require("none-ls.formatting.rustfmt"),
+		-- require("none-ls.formatting.eslint_d"),
+		require("none-ls.code_actions.eslint_d"),
+	},
 })

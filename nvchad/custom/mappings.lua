@@ -21,6 +21,10 @@ M.custom = {
 		["S"] = {
 			":%s//g<Left><Left>",
 		},
+		["<leader>1"] = { "1gt", "goto tab 1", nowait = true },
+		["<leader>2"] = { "2gt", "goto tab 2", nowait = true },
+		["<leader>3"] = { "3gt", "goto tab 3", nowait = true },
+		["<leader>4"] = { "4gt", "goto tab 4", nowait = true },
 		[";"] = {
 			":",
 			"enter cmdline",
@@ -28,7 +32,6 @@ M.custom = {
 				nowait = true,
 			},
 		},
-		["<leader>j"] = { "<cmd> HopChar2 <CR>", "Hope auto jump" },
 		["<leader>x"] = {
 			function()
 				require("nvchad_ui.tabufline").close_buffer()
@@ -37,13 +40,7 @@ M.custom = {
 		},
 	},
 }
-M.nvimtree = {
-	plugin = true,
-	n = {
-		["<C-b>"] = { "<cmd> Neotree toggle <CR>", "toggle neotree" },
-		["<leader>j"] = { "<cmd> HopChar2 <CR>", "Hope auto jump" },
-	},
-}
+
 M.telescope = {
 	plugin = true,
 	i = {
@@ -57,31 +54,5 @@ M.telescope = {
 		},
 	},
 }
-M.dap = {
-	n = {
-		["<leader>db"] = {
-			"<cmd>lua require'dap'.toggle_breakpoint()<CR>",
-			"toggle breakpoint",
-		},
-		["<leader>dui"] = {
-			function()
-				require("dapui").toggle()
-			end,
-			"Open debugging sidebar",
-		},
-	},
-}
 
 return M
--- Quickfix override
--- configs/telescope.lua
--- mappings = {
---   i = {
---     ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
---   },
---   n = {
---     ["q"] = require("telescope.actions").close,
---     ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
---   },
--- },
---

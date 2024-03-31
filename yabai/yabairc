@@ -5,7 +5,7 @@ sudo yabai --load-sa
 
 $HOME/.config/yabai/create_spaces.sh
 
-borders active_color=0xffa7c080 inactive_color=0xff272e33 width=5.0 2>/dev/null 1>&2 &
+borders active_color=0xffa7c080 width=3.0 2>/dev/null 1>&2 &
 
 yabai -m config window_gap 12
 yabai -m config top_padding 8

@@ -3,7 +3,7 @@ function push() {
     git add .
     echo "New commit message set to: $1\n"
     git commit -m "$1"
-    git push
+    git push origin -u $(git rev-parse --abbrev-ref HEAD)
 }
 
 function thanos(){
@@ -33,6 +33,8 @@ alias push=push
 alias thanos=thanos
 alias ariga-dev="kubectl config use-context arn:aws:eks:us-east-1:352056394569:cluster/nebula-dev && k9s -n default"
 alias ariga-prod="kubectl config use-context arn:aws:eks:us-east-1:844442413632:cluster/nebula-prod && k9s -n default"
+alias ariga-prod="kubectl config use-context arn:aws:eks:us-east-1:844442413632:cluster/nebula-prod && k9s -n default"
+alias lg="lazygit"
 
 export EDITOR="nvim"
 
