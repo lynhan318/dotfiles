@@ -3,17 +3,6 @@ local overrides = require("custom.configs.overrides")
 local plugins = { -- Override plugin definition options
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = { -- format & linting
-			{
-				"nvimtools/none-ls.nvim",
-				dependencies = {
-					"nvimtools/none-ls-extras.nvim",
-				},
-				config = function()
-					require("custom.configs.null-ls")
-				end,
-			},
-		},
 		config = function()
 			require("plugins.configs.lspconfig")
 			require("custom.configs.lspconfig")
@@ -148,7 +137,7 @@ local plugins = { -- Override plugin definition options
 		ft = "rust",
 		init = function()
 			vim.g.rustfmt_autosave = 1
-			vim.g.rust_clip_command = "xclip -selection clipboard"
+			vim.g.rust_clip_command = "pbcopy"
 		end,
 	},
 	{
@@ -175,8 +164,7 @@ local plugins = { -- Override plugin definition options
 		"hrsh7th/nvim-cmp",
 		opts = function()
 			local M = require("plugins.configs.cmp")
-			table.insert(M.sources, { name = "crates", "" })
-			table.insert(M.sources, { name = "copilot", group_index = 2 })
+			table.insert(M.sources, { name = "codeium", group_index = 2 })
 			return M
 		end,
 	},
@@ -186,50 +174,35 @@ local plugins = { -- Override plugin definition options
 		event = "BufReadPost",
 	},
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
+		"Exafunction/codeium.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+		},
 		config = function()
-			require("copilot").setup({
-				panel = {
-					enabled = true,
-					auto_refresh = false,
-				},
-				suggestion = {
-					enabled = true,
-					auto_trigger = true,
-					debounce = 75,
-					keymap = {
-						accept = "<C-l>",
-						accept_word = false,
-						accept_line = false,
-						next = "<M-]>",
-						prev = "<M-[>",
-						dismiss = "<C-]>",
-					},
-				},
-				filetypes = {
-					rs = true,
-					javascript = true,
-					typescript = true,
-					typescriptreact = true,
-					javascriptreact = true,
-					svelte = true,
-					css = true,
-					scss = true,
-					json = true,
-					markdown = true,
-					["*"] = false,
-				},
-				copilot_node_command = "node", -- Node.js version must be > 18.x
-				server_opts_overrides = {},
-			})
+			require("codeium").setup()
+			vim.keymap.set("i", "<c-n>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true })
 		end,
 	},
 	{
-		"zbirenbaum/copilot-cmp",
+		"mfussenegger/nvim-lint",
+		event = { "BufWritePre" },
 		config = function()
-			require("copilot_cmp").setup()
+			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+				callback = function()
+					-- try_lint without arguments runs the linters defined in `linters_by_ft`
+					-- for the current filetype
+					require("lint").linters_by_ft = {
+						javascript = { "biomejs" },
+						typescript = { "biomejs" },
+						json = { "biomejs" },
+					}
+					require("lint").try_lint()
+				end,
+			})
 		end,
 	},
 	{
@@ -239,7 +212,12 @@ local plugins = { -- Override plugin definition options
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
-				["*"] = { { "prettierd" } },
+				go = { "gofmt" },
+				typescript = { "biome" },
+				javascript = { "biome" },
+				typescriptreact = { "biome" },
+				javascriptreact = { "biome" },
+				["*"] = { "prettierd" },
 			},
 			format_on_save = { timeout_ms = 500, lsp_fallback = false },
 		},
@@ -259,6 +237,107 @@ local plugins = { -- Override plugin definition options
 		},
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
+	{
+		"ray-x/go.nvim",
+		dependencies = { -- optional packages
+			"ray-x/guihua.lua",
+			"neovim/nvim-lspconfig",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			require("go").setup()
+		end,
+		event = { "CmdlineEnter" },
+		ft = { "go", "gomod" },
+		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+	},
+	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000, -- We'd like this plugin to load first out of the rest
+		config = true, -- This automatically runs `require("luarocks-nvim").setup()`
+	},
+	{
+		"nvim-neorg/neorg",
+		dependencies = { "luarocks.nvim" },
+		lazy = false,
+		build = ":Neorg sync-parsers",
+		-- put any other flags you wanted to pass to lazy here!
+		config = function()
+			require("neorg").setup({
+				load = {
+					["core.defaults"] = {},
+					["core.concealer"] = {},
+					["core.dirman"] = {
+						config = {
+							workspaces = {
+								notes = "~/notes",
+								wow3 = "~/wow3",
+							},
+							default_workspace = "notes",
+						},
+					},
+				},
+			})
+
+			vim.wo.foldlevel = 99
+			vim.wo.conceallevel = 2
+		end,
+	},
+	{
+		"tpope/vim-fugitive",
+		lazy = false,
+	},
+	{
+		"andymass/vim-matchup",
+		lazy = false,
+	},
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require("copilot").setup({
+	-- 			panel = {
+	-- 				enabled = true,
+	-- 				auto_refresh = false,
+	-- 			},
+	-- 			suggestion = {
+	-- 				enabled = true,
+	-- 				auto_trigger = true,
+	-- 				debounce = 75,
+	-- 				keymap = {
+	-- 					accept = "<C-l>",
+	-- 					accept_word = false,
+	-- 					accept_line = false,
+	-- 					next = "<M-]>",
+	-- 					prev = "<M-[>",
+	-- 					dismiss = "<C-]>",
+	-- 				},
+	-- 			},
+	-- 			filetypes = {
+	-- 				rs = true,
+	-- 				javascript = true,
+	-- 				typescript = true,
+	-- 				typescriptreact = true,
+	-- 				javascriptreact = true,
+	-- 				svelte = true,
+	-- 				css = true,
+	-- 				scss = true,
+	-- 				json = true,
+	-- 				markdown = true,
+	-- 				["*"] = false,
+	-- 			},
+	-- 			copilot_node_command = "node", -- Node.js version must be > 18.x
+	-- 			server_opts_overrides = {},
+	-- 		})
+	-- 	end,
+	-- },
+	-- {
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup()
+	-- 	end,
+	-- },
 }
 
 return plugins

@@ -10,7 +10,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 	underline = true,
 })
 
-local servers = { "html", "cssls", "tsserver", "svelte", "jsonls", "eslint", "tailwindcss", "gopls" }
+local servers = { "html", "cssls", "tsserver", "svelte", "jsonls", "eslint", "tailwindcss", "gopls", "biome" }
 
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({

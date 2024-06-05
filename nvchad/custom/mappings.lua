@@ -9,6 +9,14 @@ M.custom = {
 				nowait = true,
 			},
 		},
+		["<C-h>"] = {
+			"<Left>",
+			"move left",
+		},
+		["<C-l>"] = {
+			"<Right>",
+			"move right",
+		},
 		["jk"] = {
 			"<ESC>",
 			"escape insert mode",

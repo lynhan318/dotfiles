@@ -9,6 +9,6 @@ null_ls.setup({
 		require("none-ls.formatting.jq"),
 		require("none-ls.formatting.rustfmt"),
 		-- require("none-ls.formatting.eslint_d"),
-		require("none-ls.code_actions.eslint_d"),
+		-- require("none-ls.code_actions.eslint_d"),
 	},
 })
