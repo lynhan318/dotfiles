@@ -12,7 +12,28 @@ M.treesitter = {
 		"c",
 		"markdown",
 		"rust",
-		"go",
+	},
+	textobjects = {
+		select = {
+			enable = true,
+			lookahead = true,
+			keymaps = {
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ic"] = "@conditional.inner",
+				["ac"] = "@conditional.outer",
+				["il"] = "@loop.inner",
+				["al"] = "@loop.outer",
+				["ib"] = "@block.inner",
+				["ab"] = "@block.outer",
+			},
+			selection_modes = {
+				["@parameter.outer"] = "v", -- charwise
+				["@function.outer"] = "V", -- linewise
+				["@class.outer"] = "<c-v>", -- blockwise
+			},
+			include_surrounding_whitespace = true,
+		},
 	},
 	indent = {
 		enable = true,
@@ -36,19 +57,5 @@ M.mason = {
 }
 
 -- git support in nvimtree
-M.nvimtree = {
-	git = {
-		enable = false,
-	},
-
-	renderer = {
-		highlight_git = false,
-		icons = {
-			show = {
-				git = false,
-			},
-		},
-	},
-}
 
 return M

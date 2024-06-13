@@ -18,7 +18,6 @@ local opts = {
 			["<cr>"] = "open",
 			["S"] = "split_with_window_picker",
 			["s"] = "vsplit_with_window_picker",
-			["o"] = "open",
 			["z"] = "close_node",
 			["a"] = {
 				"add",
@@ -32,6 +31,8 @@ local opts = {
 			["r"] = "rename",
 			["c"] = "copy_to_clipboard",
 			["m"] = "cut_to_clipboard",
+			["t"] = "open_tabnew",
+			["w"] = "open_with_window_picker",
 			["p"] = "paste_from_clipboard",
 			["q"] = "close_window",
 			["R"] = "refresh",

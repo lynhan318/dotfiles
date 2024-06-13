@@ -10,6 +10,7 @@ local plugins = { -- Override plugin definition options
 	}, -- overrde plugin configs
 	{
 		"nvim-treesitter/nvim-treesitter",
+		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 		opts = overrides.treesitter,
 	},
 	{
@@ -40,7 +41,17 @@ local plugins = { -- Override plugin definition options
 		"mg979/vim-visual-multi",
 		branch = "master",
 	},
-	{ "tpope/vim-surround", event = "BufReadPost" },
+	{
+		"kylechui/nvim-surround",
+		version = "*",
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	},
+	{
+		"kevinhwang91/nvim-bqf",
+	},
 	{
 		"phaazon/hop.nvim",
 		keys = {
@@ -57,49 +68,7 @@ local plugins = { -- Override plugin definition options
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
-		opts = {
-			close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
-			popup_border_style = "rounded",
-			enable_git_status = true,
-			enable_diagnostics = true,
-			sort_case_insensitive = false, -- used when sorting files and directories in the tree
-			open_files_do_not_replace_types = { "terminal", "trouble", "qf" },
-			window = {
-				position = "left",
-				width = 40,
-				mapping_options = { noremap = true, nowait = true },
-				mappings = {
-					["<space>"] = {
-						"toggle_node",
-						nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
-					},
-					["<2-LeftMouse>"] = "open",
-					["<cr>"] = "open",
-					["S"] = "split_with_window_picker",
-					["s"] = "vsplit_with_window_picker",
-					["z"] = "close_node",
-					["a"] = {
-						"add",
-						-- some commands may take optional config options, see `:h neo-tree-mappings` for details
-						config = {
-							show_path = "none", -- "none", "relative", "absolute"
-						},
-					},
-					["n"] = "add_directory", -- also accepts the optional config.show_path option like "add".
-					["d"] = "delete",
-					["r"] = "rename",
-					["c"] = "copy_to_clipboard",
-					["m"] = "cut_to_clipboard",
-					["t"] = "open_tabnew",
-					["w"] = "open_with_window_picker",
-					["p"] = "paste_from_clipboard",
-					["q"] = "close_window",
-					["R"] = "refresh",
-					["?"] = "show_help",
-				},
-			},
-			nesting_rules = {},
-		},
+		opts = require("custom.configs.neotree"),
 		keys = {
 			{ "<C-b>", "<CMD>Neotree toggle<CR>", { desc = "Toggle neotree" } },
 			{ ".", "<CMD>Neotree reveal<CR>", { desc = "Reveal neotree at current relative path" } },
@@ -127,9 +96,6 @@ local plugins = { -- Override plugin definition options
 					})
 				end,
 			},
-			-- config = function()
-			-- 	require("configs.neotree")
-			-- end,
 		},
 	},
 	{
@@ -164,7 +130,6 @@ local plugins = { -- Override plugin definition options
 		"hrsh7th/nvim-cmp",
 		opts = function()
 			local M = require("plugins.configs.cmp")
-			table.insert(M.sources, { name = "codeium", group_index = 2 })
 			return M
 		end,
 	},
@@ -172,20 +137,6 @@ local plugins = { -- Override plugin definition options
 		"mg979/vim-visual-multi",
 		branch = "master",
 		event = "BufReadPost",
-	},
-	{
-		"Exafunction/codeium.nvim",
-		lazy = false,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"hrsh7th/nvim-cmp",
-		},
-		config = function()
-			require("codeium").setup()
-			vim.keymap.set("i", "<c-n>", function()
-				return vim.fn["codeium#Accept"]()
-			end, { expr = true })
-		end,
 	},
 	{
 		"mfussenegger/nvim-lint",
@@ -217,7 +168,7 @@ local plugins = { -- Override plugin definition options
 				javascript = { "biome" },
 				typescriptreact = { "biome" },
 				javascriptreact = { "biome" },
-				["*"] = { "prettierd" },
+				-- ["*"] = { "prettierd" },
 			},
 			format_on_save = { timeout_ms = 500, lsp_fallback = false },
 		},
@@ -236,20 +187,6 @@ local plugins = { -- Override plugin definition options
 			{ "-", "<cmd>Oil<cr>", desc = "NeoTree", mode = "n" },
 		},
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
-	{
-		"ray-x/go.nvim",
-		dependencies = { -- optional packages
-			"ray-x/guihua.lua",
-			"neovim/nvim-lspconfig",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		config = function()
-			require("go").setup()
-		end,
-		event = { "CmdlineEnter" },
-		ft = { "go", "gomod" },
-		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 	},
 	{
 		"vhyrro/luarocks.nvim",
@@ -288,56 +225,78 @@ local plugins = { -- Override plugin definition options
 		lazy = false,
 	},
 	{
-		"andymass/vim-matchup",
-		lazy = false,
+		"rmagatti/goto-preview",
+		opts = require("custom.configs.preview"),
+		keys = {
+			{
+				"gpd",
+				"<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+				desc = "Preview Definition",
+				mode = "n",
+			},
+			{
+				"gpi",
+				"<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
+				desc = "Preview Implement",
+				mode = "n",
+			},
+			{
+				"gpD",
+				"<cmd>lua require('goto-preview').close_all_win()<CR>",
+				desc = "Delete All Preview",
+				mode = "n",
+			},
+		},
 	},
-	-- {
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	cmd = "Copilot",
-	-- 	event = "InsertEnter",
-	-- 	config = function()
-	-- 		require("copilot").setup({
-	-- 			panel = {
-	-- 				enabled = true,
-	-- 				auto_refresh = false,
-	-- 			},
-	-- 			suggestion = {
-	-- 				enabled = true,
-	-- 				auto_trigger = true,
-	-- 				debounce = 75,
-	-- 				keymap = {
-	-- 					accept = "<C-l>",
-	-- 					accept_word = false,
-	-- 					accept_line = false,
-	-- 					next = "<M-]>",
-	-- 					prev = "<M-[>",
-	-- 					dismiss = "<C-]>",
-	-- 				},
-	-- 			},
-	-- 			filetypes = {
-	-- 				rs = true,
-	-- 				javascript = true,
-	-- 				typescript = true,
-	-- 				typescriptreact = true,
-	-- 				javascriptreact = true,
-	-- 				svelte = true,
-	-- 				css = true,
-	-- 				scss = true,
-	-- 				json = true,
-	-- 				markdown = true,
-	-- 				["*"] = false,
-	-- 			},
-	-- 			copilot_node_command = "node", -- Node.js version must be > 18.x
-	-- 			server_opts_overrides = {},
-	-- 		})
-	-- 	end,
-	-- },
-	-- {
-	-- 	"zbirenbaum/copilot-cmp",
-	-- 	config = function()
-	-- 		require("copilot_cmp").setup()
-	-- 	end,
-	-- },
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		opts = require("custom.configs.copilot"),
+	},
+	{
+		"zbirenbaum/copilot-cmp",
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	},
+	{
+		"folke/trouble.nvim",
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>xx",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+			{
+				"<leader>xX",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{
+				"<leader>cs",
+				"<cmd>Trouble symbols toggle focus=false<cr>",
+				desc = "Symbols (Trouble)",
+			},
+			{
+				"<leader>cl",
+				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				desc = "LSP Definitions / references / ... (Trouble)",
+			},
+			{
+				"<leader>xL",
+				"<cmd>Trouble loclist toggle<cr>",
+				desc = "Location List (Trouble)",
+			},
+			{
+				"<leader>xQ",
+				"<cmd>Trouble qflist toggle<cr>",
+				desc = "Quickfix List (Trouble)",
+			},
+		},
+	},
 }
 
 return plugins
