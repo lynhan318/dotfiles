@@ -4,7 +4,7 @@ local plugins = { -- Override plugin definition options
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			require("plugins.configs.lspconfig")
+			-- require("plugins.configs.lspconfig")
 			require("custom.configs.lspconfig")
 		end, -- Override to setup mason-lspconfig
 	}, -- overrde plugin configs
@@ -14,27 +14,8 @@ local plugins = { -- Override plugin definition options
 		opts = overrides.treesitter,
 	},
 	{
-		"max397574/better-escape.nvim",
-		event = "InsertEnter",
-		config = function()
-			require("better_escape").setup()
-		end,
-	},
-	{
 		"williamboman/mason.nvim",
 		opts = overrides.mason,
-	},
-	{
-		"utilyre/barbecue.nvim",
-		lazy = false,
-		version = "*",
-		dependencies = {
-			"SmiteshP/nvim-navic",
-			"nvim-tree/nvim-web-devicons", -- optional dependency
-		},
-		config = function()
-			require("barbecue").setup()
-		end,
 	},
 	{ "rafamadriz/friendly-snippets" },
 	{
@@ -48,55 +29,6 @@ local plugins = { -- Override plugin definition options
 		config = function()
 			require("nvim-surround").setup({})
 		end,
-	},
-	{
-		"kevinhwang91/nvim-bqf",
-	},
-	{
-		"phaazon/hop.nvim",
-		keys = {
-			{ "f", "<cmd>HopChar1CurrentLine<cr>", desc = "Hop Char 1", mode = "n" },
-			{ "F", "<cmd>HopChar2<cr>", desc = "Hop Char 2", mode = "n" },
-		},
-		branch = "v2", -- optional but strongly recommended
-		config = function()
-			require("hop").setup({
-				keys = "etovxqpdygfblzhckisuran",
-			})
-		end,
-	},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		opts = require("custom.configs.neotree"),
-		keys = {
-			{ "<C-b>", "<CMD>Neotree toggle<CR>", { desc = "Toggle neotree" } },
-			{ ".", "<CMD>Neotree reveal<CR>", { desc = "Reveal neotree at current relative path" } },
-		},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			{
-				"s1n7ax/nvim-window-picker",
-				version = "2.*",
-				config = function()
-					require("window-picker").setup({
-						filter_rules = {
-							include_current_win = false,
-							autoselect_one = true,
-							-- filter using buffer options
-							bo = {
-								-- if the file type is one of following, the window will be ignored
-								filetype = { "neo-tree", "neo-tree-popup", "notify" },
-								-- if the buffer type is one of following, the window will be ignored
-								buftype = { "terminal", "quickfix" },
-							},
-						},
-					})
-				end,
-			},
-		},
 	},
 	{
 		"rust-lang/rust.vim",
@@ -149,6 +81,9 @@ local plugins = { -- Override plugin definition options
 					require("lint").linters_by_ft = {
 						javascript = { "biomejs" },
 						typescript = { "biomejs" },
+						typescriptreact = { "biomejs" },
+						javascriptreact = { "biomejs" },
+						css = { "biomejs" },
 						json = { "biomejs" },
 					}
 					require("lint").try_lint()
@@ -168,7 +103,8 @@ local plugins = { -- Override plugin definition options
 				javascript = { "biome" },
 				typescriptreact = { "biome" },
 				javascriptreact = { "biome" },
-				-- ["*"] = { "prettierd" },
+				css = { "biome" },
+				["*"] = { "prettierd" },
 			},
 			format_on_save = { timeout_ms = 500, lsp_fallback = false },
 		},
@@ -182,43 +118,61 @@ local plugins = { -- Override plugin definition options
 	},
 	{
 		"stevearc/oil.nvim",
-		opts = {},
+		opts = {
+			default_file_explorer = true,
+			float = {
+				-- Padding around the floating window
+				padding = 10,
+				max_width = 300,
+				max_height = 300,
+				border = "rounded",
+				win_options = {
+					winblend = 0,
+				},
+				preview_split = "auto",
+				override = function(conf)
+					return conf
+				end,
+			},
+		},
 		keys = {
-			{ "-", "<cmd>Oil<cr>", desc = "NeoTree", mode = "n" },
+			{ "-", "<cmd>Oil --float<cr>", desc = "OilTree", mode = "n" },
 		},
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+	{
+		"mikavilpas/yazi.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		event = "VeryLazy",
+		keys = {
+			-- 👇 in this section, choose your own keymappings!
+			{
+				"<leader>-",
+				function()
+					require("yazi").yazi()
+				end,
+				desc = "Open the file manager",
+			},
+			{
+				-- Open in the current working directory
+				"<leader>cw",
+				function()
+					require("yazi").yazi(nil, vim.fn.getcwd())
+				end,
+				desc = "Open the file manager in nvim's working directory",
+			},
+		},
+		---@type YaziConfig
+		opts = {
+			open_for_directories = false,
+		},
 	},
 	{
 		"vhyrro/luarocks.nvim",
 		priority = 1000, -- We'd like this plugin to load first out of the rest
 		config = true, -- This automatically runs `require("luarocks-nvim").setup()`
-	},
-	{
-		"nvim-neorg/neorg",
-		dependencies = { "luarocks.nvim" },
-		lazy = false,
-		build = ":Neorg sync-parsers",
-		-- put any other flags you wanted to pass to lazy here!
-		config = function()
-			require("neorg").setup({
-				load = {
-					["core.defaults"] = {},
-					["core.concealer"] = {},
-					["core.dirman"] = {
-						config = {
-							workspaces = {
-								notes = "~/notes",
-								wow3 = "~/wow3",
-							},
-							default_workspace = "notes",
-						},
-					},
-				},
-			})
-
-			vim.wo.foldlevel = 99
-			vim.wo.conceallevel = 2
-		end,
 	},
 	{
 		"tpope/vim-fugitive",
@@ -270,32 +224,37 @@ local plugins = { -- Override plugin definition options
 				"<cmd>Trouble diagnostics toggle<cr>",
 				desc = "Diagnostics (Trouble)",
 			},
+		},
+	},
+	{
+		"nvimdev/lspsaga.nvim",
+		opts = require("custom.configs.saga"),
+		cmd = "Lspsaga",
+		keys = {
 			{
-				"<leader>xX",
-				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-				desc = "Buffer Diagnostics (Trouble)",
-			},
-			{
-				"<leader>cs",
-				"<cmd>Trouble symbols toggle focus=false<cr>",
-				desc = "Symbols (Trouble)",
-			},
-			{
-				"<leader>cl",
-				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-				desc = "LSP Definitions / references / ... (Trouble)",
-			},
-			{
-				"<leader>xL",
-				"<cmd>Trouble loclist toggle<cr>",
-				desc = "Location List (Trouble)",
-			},
-			{
-				"<leader>xQ",
-				"<cmd>Trouble qflist toggle<cr>",
-				desc = "Quickfix List (Trouble)",
+				"ca",
+				"<cmd>Lspsaga code_action<cr>",
+				desc = "Code Action",
+				mode = "n",
 			},
 		},
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter", -- optional
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
+	},
+	{
+		"phaazon/hop.nvim",
+		keys = {
+			{ "f", "<cmd>HopChar1CurrentLine<cr>", desc = "Hop Char 1", mode = "n" },
+			{ "F", "<cmd>HopChar2<cr>", desc = "Hop Char 2", mode = "n" },
+		},
+		branch = "v2", -- optional but strongly recommended
+		config = function()
+			require("hop").setup({
+				keys = "etovxqpdygfblzhckisuran",
+			})
+		end,
 	},
 }
 

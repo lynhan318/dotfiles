@@ -1,24 +1,49 @@
-return function()
-	local cmd = vim.cmd
-	cmd("syntax on")
-	cmd("set termguicolors")
-	cmd("set background=dark")
-
-	-- sonokai theme
-	-- cmd 'colorscheme sonokai'
-	-- vim.g.sonokai_style = 'maia'
-	-- vim.g.sonokai_enable_italic = 0
-	-- vim.g.sonokai_disable_italic_comment = 1
-
-	-- everforest theme
-	vim.g.everforest_background = "soft"
-	vim.g.everforest_better_performance = 1
-	vim.g.everforest_enable_italic = 1
-	vim.g.everforest_disable_italic_comment = 0
-	vim.g.everforest_transparent_background = 1
-	cmd("colorscheme everforest")
-	-- tokyonighit
-	-- cmd 'set background=dark'
-	-- cmd 'set termguicolors'
-	-- cmd 'colorscheme tokyonight'
-end
+return {
+  "catppuccin/nvim",
+  name = "catppuccin",
+  priority = 1000,
+  config = function()
+    require("catppuccin").setup {
+      -- latte / mocha / frappe /macchiato
+      flavour = "macchiato",
+      transparent_background = true,
+      no_italic = false, -- Force no italic
+      no_bold = false, -- Force no bold
+      no_underline = false, -- Force no underline
+      integrations = {
+        hop = false,
+        lsp_saga = false,
+        indent_blankline = {
+          enabled = true,
+          scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
+          colored_indent_levels = false,
+        },
+        telescope = {
+          enabled = true,
+        },
+        treesitter = true,
+        native_lsp = {
+          enabled = true,
+          virtual_text = {
+            errors = { "italic" },
+            hints = { "italic" },
+            warnings = { "italic" },
+            information = { "italic" },
+            ok = { "italic" },
+          },
+          underlines = {
+            errors = { "underline" },
+            hints = { "underline" },
+            warnings = { "underline" },
+            information = { "underline" },
+            ok = { "underline" },
+          },
+          inlay_hints = {
+            background = true,
+          },
+        },
+      },
+    }
+    vim.cmd.colorscheme "catppuccin"
+  end,
+}

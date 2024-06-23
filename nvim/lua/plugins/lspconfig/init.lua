@@ -15,21 +15,25 @@ local M = {
       "b0o/SchemaStore.nvim",
       version = false,
     },
-    "ray-x/lsp_signature.nvim",
     {
       "nvimdev/lspsaga.nvim",
       cmd = "Lspsaga",
-      opts = {
-        lightbulb = {
-          enable = false,
-        },
-        symbol_in_winbar = {
-          enable = false,
-        },
-        diagnostic = {
-          border_follow = false,
-        },
-      },
+      config = function()
+        require("lspsaga").setup {
+          lightbulb = {
+            enable = false,
+          },
+          symbol_in_winbar = {
+            enable = false,
+          },
+          diagnostic = {
+            border_follow = false,
+          },
+          ui = {
+            kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+          },
+        }
+      end,
     },
     "SmiteshP/nvim-navic",
   },
@@ -37,11 +41,7 @@ local M = {
     diagnostics = {
       underline = true,
       update_in_insert = false,
-      virtual_text = {
-        spacing = 4,
-        source = "if_many",
-        prefix = "●",
-      },
+      virtual_text = false,
       serverity_sort = true,
     },
     inlay_hints = {
@@ -83,7 +83,13 @@ local M = {
         },
       },
       tailwindcss = {},
-      tsserver = {},
+      tsserver = {
+        init_options = {
+          enabledFeatures = {
+            foldingRange = true,
+          },
+        },
+      },
       cssls = {},
       biome = {},
       vimls = {},
@@ -98,8 +104,14 @@ function M.config(_, opts)
     if client.server_capabilities.documentSymbolProvider then
       require("nvim-navic").attach(client, bufnr)
     end
-    require("plugins.lspconfig.configs").setup(client, bufnr)
+    local config = require "plugins.lspconfig.configs"
+    config.setup(client, bufnr)
   end
+
+  vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
+  vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
+  vim.fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
+  -- vim.fn.sign_define("DiagnosticSignHint", { text = "i", texthl = "DiagnosticSignHint" })
 
   vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
@@ -155,7 +167,6 @@ function M.config(_, opts)
 
   require("mason-lspconfig").setup { ensure_installed = ensure_installed }
   require("mason-lspconfig").setup_handlers { setup }
-  require("lsp_signature").setup()
 end
 
 return M

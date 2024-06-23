@@ -1,43 +1,143 @@
-return function()
-    local actions = require('telescope.actions')
-    local action_state = require "telescope.actions.state"
-    local utils = require "telescope.utils"
+local M = {
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    version = false,
+    dependencies = {{
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make"
+    }, "benfowler/telescope-luasnip.nvim", "neanias/telescope-lines.nvim", "molecule-man/telescope-menufacture",
+                    "johmsalas/text-case.nvim"},
+    keys = {{
+        "<leader>fb",
+        "<cmd>Telescope buffers<cr>",
+        desc = "Find recent buffers"
+    }, {
+        "<leader>fd",
+        function()
+            require("telescope").extensions.menufacture.find_files()
+        end,
+        desc = "find files in dir"
+    }, {
+        "<leader>ff",
+        function()
+            require("telescope").extensions.menufacture.find_files()
+        end,
+        desc = "Find files in dir"
+    }, {
+        "<leader>fg",
+        function()
+            require("telescope").extensions.menufacture.live_grep()
+        end,
+        desc = "Grep through the project dir"
+    }, {
+        "<leader>fh",
+        "<cmd>Telescope help_tags<cr>",
+        desc = "Search for help tags"
+    }, {
+        "<leader>fj",
+        "<cmd>Telescope jumplist<cr>",
+        desc = "Search through jumplist"
+    }, {
+        "<leader>fl",
+        "<cmd>Telescope current_buffer_fuzzy_find<cr>",
+        desc = "Search through lines in the buffer"
+    }, {
+        "<leader>fm",
+        "<cmd>Telescope man_pages<cr>",
+        desc = "Search through the man pages"
+    }, {
+        "<leader>fo",
+        "<cmd>Telescope oldfiles only_cwd=true<cr>",
+        desc = "Search through recently opened files"
+    }, {
+        "<leader>fp",
+        "<cmd>Telescope neoclip<cr>",
+        desc = "Search through the clipboard to reassign the current paste"
+    }, {
+        "<leader>fr",
+        "<cmd>Telescope resume<cr>",
+        desc = "Resume last Telescope picker"
+    }, {
+        "<leader>fs",
+        "<cmd>Telescope search_history<cr>",
+        desc = "Lists recent search history"
+    }, {
+        "<leader>ft",
+        "<cmd>Telescope treesitter<cr>",
+        desc = "Search through treesitter tags"
+    }, {
+        "<leader>fv",
+        "<Cmd>Telescope vim_options<cr>",
+        desc = "Show vim options"
+    }, {
+        "<leader>fw",
+        function()
+            require("telescope").extensions.menufacture.grep_string()
+        end,
+        desc = "Searches for the word under the cursor"
+    }}
+}
 
-    vim.cmd('nnoremap <Leader>p <cmd>Telescope find_files<CR>')
-    vim.cmd('nnoremap <Leader>l <cmd>Telescope live_grep<CR>')
+function M.config()
+    local telescope = require("telescope")
+    local actions = require("telescope.actions")
+    local open_with_trouble = require("trouble.sources.telescope").open
 
-    require('telescope').setup {
-        pickers = {find_files = {theme = "ivy"}, live_grep = {theme = "ivy"}},
+    telescope.setup({
         defaults = {
-            -- Default configuration for telescope goes here:
-            -- config_key = value,
-            layout_config = {},
             mappings = {
                 i = {
-                    ["<esc>"] = actions.close,
-                    ["<C-j>"] = actions.move_selection_next,
-                    ["<C-k>"] = actions.move_selection_previous,
-                    ["<tab>"] = actions.toggle_selection +
-                        actions.move_selection_next,
-                    ["<s-tab>"] = actions.toggle_selection +
-                        actions.move_selection_previous
-                },
-                n = {["<esc>"] = actions.close}
+                    ["<ESC>"] = actions.close,
+                    ["<C-U>"] = false
+                }
+            }
+        },
+        pickers = {
+            live_grep = {
+                mappings = {
+                    i = {
+                        ["<C-T>"] = open_with_trouble
+                    }
+                }
             },
-            vimgrep_arguments = {
-                "rg", "--color=never", "--no-heading", "--with-filename",
-                "--line-number", "--column", "--smart-case", "--hidden"
+            buffers = {
+                sort_lastused = true,
+                mappings = {
+                    i = {
+                        ["<c-d>"] = actions.delete_buffer + actions.move_to_top
+                    }
+                }
             }
         },
         extensions = {
-            -- fzf = {
-            --     fuzzy = true, -- false will only do exact matching
-            --     override_generic_sorter = true,
-            --     override_file_sorter = true,
-            --     case_mode = "smart_case" -- this is default
-            -- },
-            file_browser = {hidden = true}
+            menufacture = {
+                mappings = {
+                    main_menu = {
+                        [{"i", "n"}] = "<C-f>"
+                    }
+                }
+            }
         }
-    }
-    -- require("telescope").load_extension "fzf"
+    })
+
+    telescope.load_extension("fzf")
+    telescope.load_extension("luasnip")
+    telescope.load_extension("menufacture")
+    telescope.load_extension("textcase")
+
+    local telescope_augroup_id = vim.api.nvim_create_augroup("telescope", {
+        clear = true
+    })
+    vim.api.nvim_create_autocmd("FileType", {
+        group = telescope_augroup_id,
+        pattern = "TelescopePrompt",
+        callback = function()
+            vim.keymap.set("i", "<C-R>", "<C-R>", {
+                silent = true,
+                buffer = true
+            })
+        end
+    })
 end
+
+return M

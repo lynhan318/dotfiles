@@ -35,47 +35,10 @@ function M.config()
             },
             globalstatus = true
         },
-        extensions = {"nvim-tree", "fugitive", "lazy"},
+        extensions = {"fugitive", "lazy"},
         sections = {
             lualine_a = {"mode"},
             lualine_b = {"branch"},
-            lualine_c = {{
-                function()
-                    return require("nvim-navic").get_location()
-                end,
-                cond = function()
-                    return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
-                end
-            }},
-            lualine_x = {{
-                function()
-                    return require("noice").api.status.command.get()
-                end,
-                cond = function()
-                    return package.loaded["noice"] and require("noice").api.status.command.has()
-                end
-            }, {
-                function()
-                    return require("noice").api.status.mode.get()
-                end,
-                cond = function()
-                    return package.loaded["noice"] and require("noice").api.status.mode.has()
-                end
-            }, {
-                function()
-                    return require("noice").api.status.search.get()
-                end,
-                cond = function()
-                    return package.loaded["noice"] and require("noice").api.status.search.has()
-                end
-            }},
-            lualine_y = {{
-                require("lazy.status").updates,
-                cond = require("lazy.status").has_updates
-            }},
-            lualine_z = {function()
-                return " " .. os.date("%d/%m")
-            end}
         },
         inactive_sections = {
             lualine_a = {},

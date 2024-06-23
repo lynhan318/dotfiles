@@ -40,12 +40,6 @@ M.custom = {
 				nowait = true,
 			},
 		},
-		["<leader>x"] = {
-			function()
-				require("nvchad_ui.tabufline").close_buffer()
-			end,
-			"close buffer",
-		},
 	},
 }
 

@@ -3,12 +3,12 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require("lspconfig")
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	virtual_text = false,
-	signs = true,
-	update_in_insert = false,
-	underline = true,
-})
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+-- 	virtual_text = false,
+-- 	signs = false,
+-- 	update_in_insert = false,
+-- 	underline = false,
+-- })
 
 local servers = { "html", "cssls", "tsserver", "svelte", "jsonls", "eslint", "tailwindcss", "gopls", "biome" }
 

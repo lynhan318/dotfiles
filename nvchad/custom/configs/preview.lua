@@ -1,6 +1,6 @@
 local opts = {
 	width = 120, -- Width of the floating window
-	height = 15, -- Height of the floating window
+	height = 24, -- Height of the floating window
 	border = { "↖", "─", "┐", "│", "┘", "─", "└", "│" }, -- Border characters of the floating window
 	default_mappings = false, -- Bind default mappings
 	debug = false, -- Print debug information
