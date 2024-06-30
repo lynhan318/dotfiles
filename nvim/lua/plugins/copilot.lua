@@ -10,9 +10,9 @@ return {
     suggestion = {
       enabled = true,
       auto_trigger = true,
-      debounce = 0,
+      debounce = 25,
       keymap = {
-        accept = "<C-'>",
+        accept = "<C-w>",
         accept_word = false,
         accept_line = false,
         next = "<C-]>",

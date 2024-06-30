@@ -111,7 +111,7 @@ function M.config(_, opts)
   vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
   vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
   vim.fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
-  -- vim.fn.sign_define("DiagnosticSignHint", { text = "i", texthl = "DiagnosticSignHint" })
+  vim.fn.sign_define("DiagnosticSignHint", { text = "i", texthl = "DiagnosticSignHint" })
 
   vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)

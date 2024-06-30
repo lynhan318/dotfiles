@@ -16,19 +16,15 @@ vim.o.grepformat = "%f:%l:%c:%m"
 -----------------------------------------------------------
 -- Enable fold for nvim-ufo
 -----------------------------------------------------------
-vim.o.foldlevel = 99
-vim.o.foldcolumn = "1"
-vim.wo.foldnestmax = 1
-vim.wo.foldminlines = 1
+-- Folding
+-- Enable fold for nvim-ufo
 vim.o.foldenable = true
+-- Set high foldlevel for nvim-ufo
+vim.o.foldlevel = 99
+-- Start with all code unfolded
 vim.o.foldlevelstart = 99
--- vim.o.foldtext =
---   [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').' ... ' . '(' . (v:foldend - v:foldstart + 1) . ' lines)']]
-vim.wo.foldmethod = "syntax"
--- vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
--- vim.cmd "highlight Folded ctermbg=NONE guibg=NONE"
--- vim.cmd "highlight FoldColumn ctermfg=NONE guifg=NONE"
+vim.o.foldcolumn = "0"
+vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵]]
 
 -----------------------------------------------------------
 -- Neovim UI
