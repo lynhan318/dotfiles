@@ -15,7 +15,7 @@ unfocused_hollow = true
 TERM = "xterm-256color"
 
 [font]
-size = 15
+size = 12
 
 [font.bold]
 family = "CaskaydiaCove Nerd Font"

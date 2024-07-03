@@ -1,3 +1,5 @@
+ELECTRON_OZONE_PLATFORM_HINT=auto
+
 function push() {
     git status
     git add .
