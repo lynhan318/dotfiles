@@ -1,6 +1,5 @@
 import = [
-    "~/.config/alacritty/catppuccin-macchiato.toml",
-    #"~/.config/alacritty/catppuccin-latte.toml"
+    "~/.config/alacritty/catppuccin-macchiato.toml"
 ]
 live_config_reload = true
 
@@ -18,7 +17,7 @@ TERM = "xterm-256color"
 size = 12
 
 [font.bold]
-family = "CaskaydiaCove Nerd Font"
+family = "Agave Nerd Font"
 style = "Bold"
 
 [font.glyph_offset]
@@ -26,11 +25,12 @@ x = 0
 y = 0
 
 [font.italic]
-family = "CaskaydiaCove Nerd Font"
+family = "Agave Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "CaskaydiaCove Nerd Font"
+# family = "CaskaydiaCove Nerd Font"
+family = "Agave Nerd Font"
 style = "Regular"
 
 [font.offset]
@@ -671,7 +671,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 [window]
 decorations = "buttonless"
 dynamic_padding = false
-opacity = 0.97
+opacity = 0.95
 startup_mode = "Windowed"
 
 [window.padding]
