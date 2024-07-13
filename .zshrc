@@ -23,7 +23,6 @@ source $ZSH/oh-my-zsh.sh
 
 alias vim="nvim"
 alias ls="exa"
-alias serve="simple-http-server"
 
 # alias pnpm 
 alias p="pnpm"

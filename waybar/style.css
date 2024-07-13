@@ -1,1 +1,147 @@
-/home/kevin/.config/HyprV/waybar/style/v3-style-dark.css
+* {
+  border: none;
+  font-family: CaskaydiaCove Nerd Font;
+  font-size: 14px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: #24273a;
+  color: @color8;
+  opacity: 0.95;
+}
+
+tooltip {
+  background: @base;
+  border-color: @crust;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+#backlight,
+#cpu,
+#custom-swaync,
+#memory,
+#network,
+#pulseaudio,
+#tray,
+#clock,
+#window,
+#mpris,
+#workspaces {
+  background: @crust;
+  border-radius: 8px;
+  border: 1px solid @crust;
+  font-weight: 600;
+  margin: 6px 0 6px 0;
+}
+
+#tray {
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#workspaces {
+  font-weight: Bold;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 3.5px;
+  padding-right: 3.5px;
+}
+
+#workspaces :nth-child(5) {
+  margin-right: 0px;
+}
+
+#workspaces button {
+  border-radius: 6px;
+  color: @color9;
+  margin-right: 5px;
+}
+
+#workspaces button.active {
+  background: @color2;
+  color: @color8;
+}
+
+#workspaces button.focused {
+  background: @color7;
+  color: @color8;
+}
+
+#workspaces button.urgent {
+  background: @color4;
+  color: @color8;
+}
+
+#workspaces button:hover {
+  background: @crust;
+  color: @color7;
+}
+
+#window {
+  background: transparent;
+  border-radius: 10px;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+#cpu,
+#memory {
+  color: @color1;
+}
+
+#cpu {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+#memory {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-right: 10px;
+}
+
+#mpris {
+  color: @color7;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+#clock {
+  border-right: 0px;
+  color: @color6;
+  font-weight: 600;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#custom-swaync {
+  color: @color1;
+  margin-right: 10px;
+  margin-right: 10px;
+  padding-right: 18px;
+  padding-left: 18px;
+}
+
+#network {
+  color: @color3;
+  padding-left: 10px;
+  margin-right: 10px;
+  padding-right: 10px;
+}
+
+#pulseaudio {
+  border-left: 0px;
+  border-right: 0px;
+  color: @color5;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: 10px;
+}

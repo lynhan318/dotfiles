@@ -1,0 +1,15 @@
+@define-color base      #24273a;
+@define-color crust     #181926	;
+
+@define-color color0    #eed49f;
+@define-color color1    #ee99a0	;
+@define-color color2    #a6da95;
+@define-color color3    @color0;
+@define-color color4    #e67e80;
+@define-color color5    #8aadf4;
+@define-color color6    @color4;
+@define-color color7    @color2;
+@define-color color8    @crust;
+@define-color color9    #495156;
+
+@import "../style.css";
