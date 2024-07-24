@@ -1,0 +1,30 @@
+return {
+  "williamboman/mason.nvim",
+  opts = {
+    ensure_installed = {
+      "lua-language-server",
+      "stylua",
+      "typescript-language-server",
+      "css-lsp",
+      "json-lsp",
+      "html-lsp",
+      "rust-analyzer",
+      "svelte-language-server",
+      "woke",
+    },
+  },
+  config = function(_, opts)
+    require("mason").setup(opts)
+    local mr = require "mason-registry"
+    for _, tool in ipairs(opts.ensure_installed) do
+      local p = mr.get_package(tool)
+      if not p:is_installed() then
+        p:install()
+      end
+    end
+
+    require("mason-lspconfig").setup {
+      automatic_installation = true,
+    }
+  end,
+}

@@ -1,4 +1,9 @@
-ELECTRON_OZONE_PLATFORM_HINT=auto
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+export QT_QPA_PLATFORM=wayland
+export XDG_SESSION_DESKTOP=hyprland
+export XDG_CURRENT_DESKTOP=hyprland
+export GDK_BACKEND="wayland,x11"
+export MOZ_ENABLE_WAYLAND=1
 
 function push() {
     git status

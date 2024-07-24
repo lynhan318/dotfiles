@@ -12,13 +12,13 @@
         "memory"
     ],
     "modules-center": [
-        "mpris"
+        "clock"
     ],
     "modules-right": [
         "tray",
         "network",
         "pulseaudio",
-        "clock",
+        "battery",
         "custom/swaync"
     ],
     "hyprland/window": {
@@ -34,7 +34,10 @@
             "urgent": "󰊠"
         },
         "persistent_workspaces": {
-            "*": 5
+            "1": "HDMI-A-1",
+            "2": "HDMI-A-1",
+            "3": "HDMI-A-1",
+            "4": "eDP-1"
         }
     },
     "cpu": {
@@ -62,6 +65,31 @@
         "icon-size": 15,
         "tooltip": false,
         "spacing": 10
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+        "rotate": 0,
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ]
     },
     "clock": {
         "format": "{:%H:%M}  ",

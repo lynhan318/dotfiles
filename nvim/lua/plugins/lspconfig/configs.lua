@@ -3,13 +3,15 @@ local M = {}
 function M.setup(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set("n", "gD", "<cmd>Lspsaga finder<cr>", bufopts)
-  vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<cr>", bufopts)
   vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<cr>", bufopts)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+  vim.keymap.set("n", "gv", "<cmd>vs<CR><cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
+  vim.keymap.set("n", "gs", "<cmd>sp<CR><cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
   vim.keymap.set("n", "<leader>lf", "<cmd>Lspsaga show_cursor_diagnostics<cr>", bufopts)
-  vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", bufopts)
-  vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", bufopts)
   vim.keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<cr>", bufopts)
 
   if client.server_capabilities.documentHighlightProvider then

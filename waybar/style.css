@@ -29,6 +29,7 @@ tooltip {
 #clock,
 #window,
 #mpris,
+#battery,
 #workspaces {
   background: @crust;
   border-radius: 8px;
@@ -112,6 +113,14 @@ tooltip {
   padding-left: 10px;
 }
 
+#battery {
+  color: @color7;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 #clock {
   border-right: 0px;
   color: @color6;
@@ -143,5 +152,4 @@ tooltip {
   color: @color5;
   padding-right: 10px;
   padding-left: 10px;
-  margin-right: 10px;
 }
