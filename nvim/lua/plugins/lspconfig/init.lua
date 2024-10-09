@@ -67,68 +67,86 @@ return {
     },
     "SmiteshP/nvim-navic",
   },
-  opts = {
-    diagnostics = {
-      underline = true,
-      update_in_insert = false,
-      virtual_text = false,
-      serverity_sort = true,
-    },
-    inlay_hints = {
-      enabled = false,
-    },
-    format = {
-      formatting_options = nil,
-      timeout_ms = nil,
-    },
-    servers = {
-      jsonls = {
-        -- lazy-load schemastore when needed
-        on_new_config = function(new_config)
-          new_config.settings.json.schemas = new_config.settings.json.schemas or {}
-          vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
-        end,
-        settings = {
-          json = {
-            format = {
-              enable = true,
-            },
-            validate = {
-              enable = true,
-            },
-          },
-        },
-      },
-      rust_analyzer = {
-        settings = {
-          ["rust-analyzer"] = {
-            cargo = {
-              allFeatures = true,
-            },
-            checkOnSave = {
-              command = "clippy",
-              extraArgs = { "--no-deps" },
-            },
-          },
-        },
-      },
-      tailwindcss = {},
-      tsserver = {
-        init_options = {
-          enabledFeatures = {
-            foldingRange = true,
-          },
-        },
-      },
-      cssls = {},
-      biome = {},
-      vimls = {},
-    },
-  },
-  config = function(_, opts)
+  config = function(_)
     require "mason"
+    local nvim_lsp = require "lspconfig"
+    local opts = {
+      diagnostics = {
+        underline = true,
+        update_in_insert = false,
+        virtual_text = false,
+        serverity_sort = true,
+      },
+      inlay_hints = {
+        enabled = true,
+      },
+      format = {
+        formatting_options = nil,
+        timeout_ms = nil,
+      },
+      servers = {
+        jsonls = {
+          -- lazy-load schemastore when needed
+          on_new_config = function(new_config)
+            new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+            vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
+          end,
+          settings = {
+            json = {
+              format = {
+                enable = true,
+              },
+              validate = {
+                enable = true,
+              },
+            },
+          },
+        },
+        rust_analyzer = {
+          settings = {
+            ["rust-analyzer"] = {
+              cargo = {
+                allFeatures = true,
+              },
+              checkOnSave = {
+                command = "clippy",
+                extraArgs = { "--no-deps" },
+              },
+            },
+          },
+        },
+        tailwindcss = {},
+        ts_ls = {
+          init_options = {
+            enabledFeatures = {
+              foldingRange = true,
+            },
+          },
+          root_dir = nvim_lsp.util.root_pattern "package.json",
+          single_file_support = false,
+        },
+        cssls = {},
+        biome = {},
+        vimls = {},
+        svelte = {},
+        denols = {
+          root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+        },
+      },
+    }
 
-    local function on_attach(client, bufnr)
+    local on_attach = function(client, bufnr)
+      if client.name == "svelte" then
+        vim.api.nvim_create_autocmd("BufWritePost", {
+          pattern = { "*.js", "*.ts" },
+          group = vim.api.nvim_create_augroup("svelte_ondidchangetsorjsfile", { clear = true }),
+          callback = function(ctx)
+            -- Here use ctx.match instead of ctx.file
+            client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+          end,
+        })
+      end
+
       if client.server_capabilities.documentSymbolProvider then
         require("nvim-navic").attach(client, bufnr)
       end
@@ -174,7 +192,7 @@ return {
         capabilities = vim.deepcopy(capabilities),
       }, servers[server] or {})
 
-      require("lspconfig")[server].setup(server_opts)
+      nvim_lsp[server].setup(server_opts)
     end
 
     local mlsp = require "mason-lspconfig"

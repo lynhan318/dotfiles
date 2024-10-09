@@ -47,7 +47,7 @@ shift + cmd - 5 : yabai -m window --space 5; yabai -m space --focus 5
 # cmd - d : yabai -m window --toggle zoom-parent
 cmd - g : yabai -m window --toggle zoom-fullscreen
 # cmd - return : yabai -m window --toggle zoom-fullscreen
-cmd - return : $HOME/.config/skhd/term.sh
+cmd - return : alacritty
 cmd + shift - return : alacritty
 cmd - k : yabai -m window --focus north
 cmd - j : yabai -m window --focus south
@@ -72,8 +72,8 @@ cmd - right : yabai -m window --resize right:70:0; \
                   yabai -m window --resize left:70:0
 
 # Toggles floating window
-# cmd - u : yabai -m window --toggle float; \
-#         yabai -m window --grid 8:8:1:1:6:6
+cmd - x : yabai -m window --toggle float; \
+        yabai -m window --grid 8:8:1:1:6:6
 
 # restart yabai
 hyper - r : \

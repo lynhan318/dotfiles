@@ -1,14 +1,22 @@
 #!/usr/bin/env sh
 
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+# Unload the macOS WindowManager process
+launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist > /dev/null 2>&1 &
+
 sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
+yabai -m signal --add event=display_added action="sleep 2 && $HOME/.config/yabai/create_spaces.sh"
+yabai -m signal --add event=display_removed action="sleep 1 && $HOME/.config/yabai/create_spaces.sh"
+yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
+yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
 $HOME/.config/yabai/create_spaces.sh
 
-# borders active_color=0xffa7c080 width=3.0 2>/dev/null 1>&2 &
-borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
-yabai -m config window_gap 12
-yabai -m config top_padding 8
+borders active_color=0xffeff1f5 width=4.0 2>/dev/null 1>&2 &
+
+yabai -m config window_gap 8
+yabai -m config top_padding 40
 yabai -m config bottom_padding 8
 yabai -m config left_padding 8
 yabai -m config right_padding 8
@@ -24,19 +32,24 @@ yabai -m config mouse_drop_action swap
 yabai -m config window_opacity             on             
 yabai -m config window_opacity_duration    0.2            
 yabai -m config active_window_opacity      1.0            
-yabai -m config window_border_radius       4.0            
-
+yabai -m config window_border_radius       2.0            
 # yabai -m config auto_balance                    on
-# yabai -m config window_animation_easing    ease_out_quint
-# yabai -m config normal_window_opacity      0.95            
-# yabai -m config window_animation_duration  0.5            
+yabai -m config window_animation_easing    ease_out_quint
+yabai -m config normal_window_opacity      0.95            
+yabai -m config window_animation_duration  0.2            
 # Exclude problematic apps from being managed:
-yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor)$" manage=off
-yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor|Notion)$" manage=off
+yabai -m rule --add label="Finder" app="^Finder$" manage=off
+yabai -m rule --add label="Telegram" app="^Telegram$"  manage=off
+yabai -m rule --add label="1password" app="^1Password$"  manage=off
 yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
 
 yabai -m config layout bsp
+yabai -m config --space 4 layout float
+yabai -m config --space 5 layout float
+
+
 
 echo "yabai configuration loaded.."

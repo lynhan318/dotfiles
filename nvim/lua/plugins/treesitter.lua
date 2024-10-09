@@ -14,9 +14,20 @@ local M = {
 
 function M.config()
   local ts_config = require "nvim-treesitter.configs"
-
   ts_config.setup {
-    ensure_installed = { "vim", "lua", "html", "css", "typescript", "svelte", "javascript", "c", "markdown", "rust" },
+    ensure_installed = {
+      "vim",
+      "lua",
+      "html",
+      "css",
+      "typescript",
+      "svelte",
+      "javascript",
+      "c",
+      "markdown",
+      "rust",
+      "markdown",
+    },
 
     ignore_install = {}, -- List of parsers to ignore installing
     endwise = {
@@ -81,6 +92,7 @@ function M.config()
       },
     },
   }
+  vim.treesitter.language.register("markdown", "mdx")
 end
 
 return M

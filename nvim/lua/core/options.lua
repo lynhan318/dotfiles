@@ -93,6 +93,11 @@ local disabled_built_ins = {
   "bugreport",
   "ftplugin",
 }
+vim.filetype.add {
+  extension = {
+    mdx = "mdx",
+  },
+}
 
 for _, plugin in pairs(disabled_built_ins) do
   g["loaded_" .. plugin] = 1

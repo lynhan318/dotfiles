@@ -31,6 +31,7 @@ return {
       scss = true,
       json = true,
       markdown = true,
+      mdx = true,
       ["*"] = false,
     },
     copilot_node_command = "node", -- Node.js version must be > 18.x

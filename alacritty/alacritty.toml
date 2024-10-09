@@ -1,5 +1,5 @@
 import = [
-    "~/.config/alacritty/catppuccin-macchiato.toml"
+    "~/.config/alacritty/catppuccin-frappe.toml"
 ]
 live_config_reload = true
 
@@ -14,7 +14,7 @@ unfocused_hollow = true
 TERM = "xterm-256color"
 
 [font]
-size = 13
+size = 17
 
 [font.bold]
 family = "FantasqueSansM Nerd Font"
@@ -25,12 +25,12 @@ x = 0
 y = 0
 
 [font.italic]
-family = "Agave Nerd Font"
+family = "FantasqueSansM Nerd Font"
 style = "Italic"
 
 [font.normal]
 # family = "CaskaydiaCove Nerd Font"
-family = "Agave Nerd Font"
+family = "FantasqueSansM Nerd Font"
 style = "Regular"
 
 [font.offset]
@@ -671,7 +671,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 [window]
 decorations = "buttonless"
 dynamic_padding = false
-opacity = 0.95
+opacity = 0.98
 startup_mode = "Windowed"
 
 [window.padding]

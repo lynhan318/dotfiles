@@ -46,8 +46,15 @@ return {
     enabled = vim.fn.has "nvim-0.10.0" == 1,
   },
   {
-    "mg979/vim-visual-multi",
-    branch = "master",
-    event = { "BufReadPost", "BufNewFile" },
+    "smjonas/inc-rename.nvim",
+    keys = { {
+      "<leader>rn",
+      ":IncRename ",
+      "Rename current buffer",
+      "n",
+    } },
+    config = function()
+      require("inc_rename").setup()
+    end,
   },
 }
