@@ -16,7 +16,7 @@ $HOME/.config/yabai/create_spaces.sh
 borders active_color=0xffeff1f5 width=4.0 2>/dev/null 1>&2 &
 
 yabai -m config window_gap 8
-yabai -m config top_padding 40
+yabai -m config top_padding 8
 yabai -m config bottom_padding 8
 yabai -m config left_padding 8
 yabai -m config right_padding 8

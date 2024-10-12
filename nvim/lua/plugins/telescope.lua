@@ -3,11 +3,11 @@ local M = {
   cmd = "Telescope",
   version = false,
   dependencies = {
+    "nvim-lua/plenary.nvim",
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
     },
-    "benfowler/telescope-luasnip.nvim",
     "neanias/telescope-lines.nvim",
     "molecule-man/telescope-menufacture",
     "johmsalas/text-case.nvim",
@@ -69,8 +69,8 @@ local M = {
     },
     {
       "<leader>fs",
-      "<cmd>Telescope search_history<cr>",
-      desc = "Lists recent search history",
+      "<cmd>Telescope lsp_document_symbols<cr>",
+      desc = "Search document symbol",
     },
     {
       "<leader>ft",
@@ -135,7 +135,6 @@ function M.config()
   }
 
   telescope.load_extension "fzf"
-  telescope.load_extension "luasnip"
   telescope.load_extension "menufacture"
   telescope.load_extension "textcase"
 
