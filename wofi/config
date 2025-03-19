@@ -1,0 +1,13 @@
+show=drun
+width=800
+height=400
+always_parse_args=true
+show_all=false
+term=wezterm
+hide_scroll=true
+print_command=true
+insensitive=true
+prompt=
+columns=2
+image_size=20
+allow_images=true
