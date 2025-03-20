@@ -4,6 +4,7 @@
 - **Bar**: HyprPanel
 - **Terminal**: wezterm
 - **IDE**: neovim + tmux
+- **Fonts**: FantasqueSansM Nerd Font
 - **FileManager**: yazi
 - **App Launcher**: wofi
 
