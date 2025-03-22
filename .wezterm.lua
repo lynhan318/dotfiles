@@ -18,7 +18,7 @@ return {
     -- enable_tab_bar = false,
     leader = { key = "a", mods = "CTRL" },
     window_decorations = "NONE",
-    window_background_opacity = 0.92,
+    window_background_opacity = 0.9,
     hide_tab_bar_if_only_one_tab = true,
     keys = {
         { key = "a", mods = "LEADER|CTRL", action = wezterm.action({ SendString = "\x01" }) },
