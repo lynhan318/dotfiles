@@ -19,7 +19,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int showtab            = showtab_auto;
 static const int toptab             = 1;        /* 0 means bottom tab */
 static const int floatbar           = 1;        /* 1 means the bar will float(don't have padding),0 means the bar have padding */
-static const int topbar             = 0;        /* 0 means bottom bar */
+static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 5;
 static const int vertpadbar         = 11;
 static const int vertpadtab         = 35;
@@ -66,7 +66,7 @@ static char *tags[] = {"", "", "", "", ""};
 
 static const char* eww[] = { "eww", "open" , "eww", NULL };
 static const char* night[] = { "redshift","-P","-O", "4000" , NULL };
-static const char* explorer[] = { "dolphin", NULL };
+static const char* explorer[] = { "nautilus", NULL };
 
 static const Launcher launchers[] = {
     /* command     name to display */
@@ -93,10 +93,12 @@ static const Rule rules[] = {
     { "Gimp",                               NULL,       NULL,       0,            0,           1,           -1 },
     { "Firefox",                            NULL,       NULL,       1 << 8,       0,           0,           -1 },
     { "1password",                          NULL,       NULL,       1 << 8,       1,           1,           -1 },
+    { "1Password",                          NULL,       NULL,       1 << 8,       1,           1,           -1 },
     { "telegram-desktop",                   NULL,       NULL,       1 << 8,       1,           1,           -1 },
     { "blueman-manager",                    NULL,       NULL,       1 << 8,       1,           1,           -1 },
-    { "dolphin",                            NULL,       NULL,       1 << 8,       1,           1,           -1 },
-    { "Emulator",                            NULL,       NULL,       1 << 8,       1,           1,           -1 },
+    { "org.gnome.Nautilus",                 NULL,       NULL,       1 << 8,       1,           1,           -1 },
+    { "Emulator",                           NULL,       NULL,       1 << 8,       1,           1,           -1 },  
+    { "virt-manager",                       NULL,       NULL,       1 << 8,       1,           1,           -1 },
 };
 
 /* layout(s) */
@@ -155,7 +157,7 @@ static const Key keys[] = {
     { MODKEY,                           XK_Return,  spawn,          SHCMD("wezterm")},
     { MODKEY,                           XK_d,       spawn,          SHCMD("rofi -show drun") },
     { MODKEY|ShiftMask,                 XK_s,       spawn,          SHCMD("flameshot gui") },
-    { MODKEY,                           XK_o,       spawn,          SHCMD("dolphin")},
+    { MODKEY,                           XK_o,       spawn,          SHCMD("nautilus")},
     { MODKEY,                           XK_w,       spawn,          SHCMD("google-chrome-stable")},
     // toggle stuff
     { MODKEY,                           XK_b,       togglebar,      {0} },
