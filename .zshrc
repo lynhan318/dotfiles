@@ -1,10 +1,10 @@
 source ~/.bashrc
 export EDITOR="nvim"
-export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-export ANDROID_HOME=$ANDROID_SDK_ROOT
-export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-export PATH=$ANDROID_HOME/emulator:$PATH
+# export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+# export ANDROID_HOME=$ANDROID_SDK_ROOT
+# export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+# export PATH=$ANDROID_HOME/platform-tools:$PATH
+# export PATH=$ANDROID_HOME/emulator:$PATH
 
 function v() {
     nvim $(fzf)
@@ -38,7 +38,6 @@ alias push=push
 alias v=v
 alias thanos=thanos
 alias lg="lazygit"
-alias o="lazygit"
 
 
 
@@ -51,15 +50,6 @@ export GPG_TTY=$(tty)
 eval "$(zoxide init --cmd j zsh)"
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$PATH:$HOME/.config/zide/bin"
-# bun completions
-[ -s "/home/kevin/.bun/_bun" ] && source "/home/kevin/.bun/_bun"
 
 
 source <(fzf --zsh)
@@ -69,3 +59,5 @@ SAVEHIST=10000
 setopt appendhistory
 autoload -Uz compinit
 compinit
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
