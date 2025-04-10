@@ -1,10 +1,12 @@
 source ~/.bashrc
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
 export EDITOR="nvim"
-# export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-# export ANDROID_HOME=$ANDROID_SDK_ROOT
-# export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-# export PATH=$ANDROID_HOME/platform-tools:$PATH
-# export PATH=$ANDROID_HOME/emulator:$PATH
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export ANDROID_HOME=$ANDROID_SDK_ROOT
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/emulator:$PATH
 
 function v() {
     nvim $(fzf)
@@ -24,7 +26,7 @@ function thanos(){
 }
 
 export ZSH="$HOME/.oh-my-zsh"
-plugins=(git git-open tmux zsh-autosuggestions zsh-vi-mode F-Sy-H)
+plugins=(git git-open tmux zsh-autosuggestions zsh-vi-mode F-Sy-H zsh-history-substring-search)
 source $ZSH/oh-my-zsh.sh
 
 alias vim="nvim"
@@ -61,3 +63,10 @@ autoload -Uz compinit
 compinit
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+# bun completions
+[ -s "/home/kevin/.bun/_bun" ] && source "/home/kevin/.bun/_bun"
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+
