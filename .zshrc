@@ -70,3 +70,6 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
 
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/kevin/.lmstudio/bin"
