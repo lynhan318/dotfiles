@@ -1,16 +1,10 @@
 
 after-login-command = []
-after-startup-command = [
-  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
-  'exec-and-forget sketchybar'
-]
-exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
-]
 start-at-login = true
 
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
+automatically-unhide-macos-hidden-apps = false
 
 accordion-padding = 30
 
@@ -31,7 +25,7 @@ outer.right =      4
 [mode.main.binding]
 cmd-slash = 'layout tiles horizontal vertical'
 cmd-comma = 'layout accordion horizontal vertical'
-cmd-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
+cmd-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 cmd-h = 'focus left'
@@ -51,14 +45,17 @@ cmd-1 = 'workspace 1'
 cmd-2 = 'workspace 2'
 cmd-3 = 'workspace 3'
 cmd-4 = 'workspace 4'
+cmd-5 = 'workspace 5'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 cmd-shift-1 = 'move-node-to-workspace 1'
 cmd-shift-2 = 'move-node-to-workspace 2'
 cmd-shift-3 = 'move-node-to-workspace 3'
 cmd-shift-4 = 'move-node-to-workspace 4'
+cmd-shift-5 = 'move-node-to-workspace 5'
 
 cmd-shift-f = 'fullscreen'
+cmd-space = "layout floating tiling"
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 cmd-tab = 'workspace-back-and-forth'
@@ -84,7 +81,6 @@ equal = 'resize smart +50'
 
 enter = 'mode main'
 esc = 'mode main'
-
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
@@ -99,3 +95,58 @@ cmd-shift-j = ['join-with down', 'mode main']
 cmd-shift-k = ['join-with up', 'mode main']
 cmd-shift-l = ['join-with right', 'mode main']
 
+[workspace-to-monitor-force-assignment]
+    1 = 'main'                            # Monitor sequence number from left to right. 1-based indexing
+    2 = 'main'                       # Main monitor
+    3 = 'main'                  # Non-main monitor in case when there are only two monitors
+    4 = 'main'                   # Case insensitive regex substring
+    5 = 'secondary'  # Case insensitive regex match
+
+[[on-window-detected]]
+if.workspace = '3'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.workspace = '4'
+run = 'layout floating'
+
+# [[on-window-detected]]
+# if.workspace = '5'
+# run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.notes'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.PhotoBoth'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.Photos'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.Preview'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.reminders'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.1password.1password'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.AppStore'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.tdesktop.Telegram'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.tdesktop.Telegram'
+run = 'layout floating'

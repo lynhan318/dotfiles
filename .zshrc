@@ -1,12 +1,5 @@
-source ~/.bashrc
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
+source ~/.bash_profile
 export EDITOR="nvim"
-export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-export ANDROID_HOME=$ANDROID_SDK_ROOT
-export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-export PATH=$ANDROID_HOME/emulator:$PATH
 
 function v() {
     nvim $(fzf)
@@ -26,7 +19,7 @@ function thanos(){
 }
 
 export ZSH="$HOME/.oh-my-zsh"
-plugins=(git git-open tmux zsh-autosuggestions zsh-vi-mode F-Sy-H zsh-history-substring-search)
+plugins=(git git-open tmux zsh-autosuggestions zsh-vi-mode F-Sy-H)
 source $ZSH/oh-my-zsh.sh
 
 alias vim="nvim"
@@ -65,11 +58,14 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 # bun completions
-[ -s "/home/kevin/.bun/_bun" ] && source "/home/kevin/.bun/_bun"
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+[ -s "/Users/kevin/.bun/_bun" ] && source "/Users/kevin/.bun/_bun"
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
 
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/kevin/.lmstudio/bin"
+# Created by `pipx` on 2025-04-27 15:54:28
+export PATH="$PATH:/Users/kevin/.local/bin"
