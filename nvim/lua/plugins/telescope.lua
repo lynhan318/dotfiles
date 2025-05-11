@@ -32,12 +32,22 @@ local M = {
       end,
       desc = "Searches for the word under the cursor",
     },
+    -- {
+    --   "<C-g>",
+    --   function()
+    --     require("telescope").extensions.menufacture.live_grep()
+    --   end,
+    --   desc = "Grep through the project dir",
+    -- },
     {
-      "<C-g>",
-      function()
-        require("telescope").extensions.menufacture.live_grep()
-      end,
-      desc = "Grep through the project dir",
+      "<leader>fs",
+      "<cmd>Telescope lsp_document_symbols<cr>",
+      desc = "Search document symbol",
+    },
+    {
+      "<leader>ft",
+      "<cmd>Telescope treesitter<cr>",
+      desc = "Search through treesitter tags",
     },
     {
       "<leader>fh",
@@ -74,16 +84,6 @@ local M = {
       "<cmd>Telescope resume<cr>",
       desc = "Resume last Telescope picker",
     },
-    {
-      "<leader>fs",
-      "<cmd>Telescope lsp_document_symbols<cr>",
-      desc = "Search document symbol",
-    },
-    {
-      "<leader>ft",
-      "<cmd>Telescope treesitter<cr>",
-      desc = "Search through treesitter tags",
-    },
   },
 }
 
@@ -98,6 +98,12 @@ function M.config()
         i = {
           ["<ESC>"] = actions.close,
           ["<C-U>"] = false,
+        },
+      },
+      layout_strategy = "vertical",
+      layout_config = {
+        vertical = {
+          heighhh,
         },
       },
     },
@@ -148,6 +154,7 @@ function M.config()
       })
     end,
   })
+  require("core.multigrep").setup()
 end
 
 return M
