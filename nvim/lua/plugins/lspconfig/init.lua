@@ -24,9 +24,6 @@ return {
       "nvimdev/lspsaga.nvim",
       cmd = "Lspsaga",
       config = function()
-        vim.diagnostic.config {
-          severity_sort = true,
-        }
         require("lspsaga").setup {
           lightbulb = {
             enable = false,
@@ -39,6 +36,7 @@ return {
             severity_sort = true,
             keys = {
               quit = { "q", "<ESC>" },
+              false,
             },
           },
           -- ui = {
@@ -50,9 +48,12 @@ return {
     "SmiteshP/nvim-navic",
   },
   config = function(_)
-    local nvim_lsp = require "lspconfig"
-
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
     vim.lsp.enable "rust_analyzer"
+    vim.lsp.config("rust_analyzer", {
+      capabilities,
+    })
+
     vim.lsp.enable "jsonls"
     vim.lsp.config("jsonls", {
       on_new_config = function(new_config)
@@ -60,6 +61,7 @@ return {
         vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
       end,
       settings = {
+        capabilities = capabilities,
         json = {
           format = {
             enable = true,
@@ -72,10 +74,28 @@ return {
     })
 
     vim.lsp.enable "ts_ls"
+    vim.lsp.config("ts_ls", {
+      capabilities,
+    })
+
     vim.lsp.enable "tailwindcss"
+    vim.lsp.config("tailwindcss", {
+      capabilities,
+    })
+
     vim.lsp.enable "cssls"
+    vim.lsp.config("cssls", {
+      capabilities,
+    })
+
     vim.lsp.enable "biome"
+    vim.lsp.config("biome", {
+      capabilities,
+    })
     vim.lsp.enable "svelte"
+    vim.lsp.config("svelte", {
+      capabilities,
+    })
 
     vim.diagnostic.config {
       underline = true,

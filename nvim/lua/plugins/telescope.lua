@@ -11,6 +11,12 @@ local M = {
     "neanias/telescope-lines.nvim",
     "molecule-man/telescope-menufacture",
     "johmsalas/text-case.nvim",
+    {
+      "nvim-telescope/telescope-live-grep-args.nvim",
+      -- This will not install any breaking changes.
+      -- For major updates, this must be adjusted manually.
+      version = "^1.1.0",
+    },
   },
   keys = {
     {
@@ -32,13 +38,13 @@ local M = {
       end,
       desc = "Searches for the word under the cursor",
     },
-    -- {
-    --   "<C-g>",
-    --   function()
-    --     require("telescope").extensions.menufacture.live_grep()
-    --   end,
-    --   desc = "Grep through the project dir",
-    -- },
+    {
+      "<C-g>",
+      function()
+        require("telescope").extensions.live_grep_args.live_grep_args()
+      end,
+      desc = "Grep through the project dir",
+    },
     {
       "<leader>fs",
       "<cmd>Telescope lsp_document_symbols<cr>",
@@ -101,11 +107,6 @@ function M.config()
         },
       },
       layout_strategy = "vertical",
-      layout_config = {
-        vertical = {
-          heighhh,
-        },
-      },
     },
     pickers = {
       live_grep = {
@@ -154,7 +155,6 @@ function M.config()
       })
     end,
   })
-  require("core.multigrep").setup()
 end
 
 return M
