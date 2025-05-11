@@ -19,10 +19,10 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       go = { "gofmt" },
-      svelte = { "prettierd", "biome" },
-      typescript = { "biome", "prettierd" },
-      javascript = { "biome", "prettierd" },
-      json = { "biome", "prettierd" },
+      svelte = { "prettierd" },
+      typescript = { "prettierd" },
+      javascript = { "prettierd" },
+      json = { "prettierd" },
       rust = { "rustfmt" },
     },
 

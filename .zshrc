@@ -6,7 +6,6 @@ function v() {
 }
 
 function push() {
-    pnpm fix
     git status
     git add .
     echo "New commit message set to: $1\n"
@@ -69,3 +68,8 @@ export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cm
 
 # Created by `pipx` on 2025-04-27 15:54:28
 export PATH="$PATH:/Users/kevin/.local/bin"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
