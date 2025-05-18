@@ -106,7 +106,12 @@ function M.config()
           ["<C-U>"] = false,
         },
       },
-      layout_strategy = "vertical",
+      -- layout_strategy = "vertical",
+      -- layout_config = {
+      --   vertical = {
+      --     width = 0.5,
+      --   },
+      -- },
     },
     pickers = {
       live_grep = {

@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
-		return "Catppuccin Latte (Gogh)"
+		return "Catppuccin Mocha (Gogh)"
 	else
 		return "Catppuccin Mocha (Gogh)"
 	end
@@ -13,12 +13,12 @@ return {
 	font_size = 15,
 	-- line_height = 1;
 	font = wezterm.font_with_fallback({
-		{ family = "FantasqueSansM Nerd Font", scale = 1.1, weight = "Medium" },
+		{ family = "FantasqueSansM Nerd Font", scale = 1, weight = "Medium" },
 	}),
 	-- enable_tab_bar = false,
 	leader = { key = "a", mods = "CTRL" },
 	window_decorations = "RESIZE",
-	window_background_opacity = 1,
+	window_background_opacity = 0.97,
 	hide_tab_bar_if_only_one_tab = true,
 	keys = {
 		{ key = "a", mods = "LEADER|CTRL", action = wezterm.action({ SendString = "\x01" }) },

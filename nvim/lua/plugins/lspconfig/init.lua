@@ -10,7 +10,6 @@ return {
       config = function(_, opts)
         require("mason").setup(opts)
         require("mason-lspconfig").setup {
-          automatic_enable = true,
           ensure_installed = { "lua_ls", "ts_ls", "cssls", "tailwindcss" },
         }
       end,
@@ -29,7 +28,7 @@ return {
             enable = false,
           },
           symbol_in_winbar = {
-            enable = false,
+            enable = true,
           },
           diagnostic = {
             max_height = 0.8,

@@ -30,11 +30,6 @@ return {
     config = true,
   },
   {
-    "tpope/vim-fugitive",
-    event = { "BufReadPre", "BufNewFile" },
-    version = false,
-  },
-  {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = function()
@@ -94,8 +89,8 @@ return {
       },
       config = function()
         require("statusline").setup {
-          match_colorscheme = false, -- Enable colorscheme inheritance (Default: false)
-          tabline = true, -- Enable the tabline (Default: true)
+          match_colorscheme = true, -- Enable colorscheme inheritance (Default: false)
+          tabline = false, -- Enable the tabline (Default: true)
           lsp_diagnostics = true, -- Enable Native LSP diagnostics (Default: true)
           ale_diagnostics = false, -- Enable ALE diagnostics (Default: false)
         }
@@ -112,6 +107,26 @@ return {
         show_icons = true,
         leader_key = "`", -- Recommended to be a single key
         buffer_leader_key = "m", -- Per Buffer Mappings
+      },
+    },
+    {
+      "kdheepak/lazygit.nvim",
+      lazy = true,
+      cmd = {
+        "LazyGit",
+        "LazyGitConfig",
+        "LazyGitCurrentFile",
+        "LazyGitFilter",
+        "LazyGitFilterCurrentFile",
+      },
+      -- optional for floating window border decoration
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+      },
+      -- setting the keybinding for LazyGit with 'keys' is recommended in
+      -- order to load the plugin when the command is run for the first time
+      keys = {
+        { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
       },
     },
   },

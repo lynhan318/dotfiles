@@ -5,13 +5,13 @@ return {
     float = {
       -- Padding around the floating window
       padding = 2,
-      max_width = 300,
-      max_height = 300,
-      border = "rounded",
+      max_width = 0,
+      max_height = 0,
+      -- border = "rounded",
       win_options = {
         winblend = 0,
       },
-      preview_split = "auto",
+      -- preview_split = "true",
       override = function(conf)
         return conf
       end,
@@ -23,7 +23,7 @@ return {
   },
   keys = { {
     "-",
-    "<cmd>Oil --float<cr>",
+    "<cmd>Oil --float --preview<cr>",
     desc = "OilTree",
     mode = "n",
   } },

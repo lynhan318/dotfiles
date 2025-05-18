@@ -43,7 +43,7 @@
 # resize-overlay-duration = 4s 200ms
 
 font-family = "FantasqueSansM Nerd Font"
-font-size = 17
+font-size = 15
 background-opacity = 0.95
 theme = catppuccin-macchiato
 keybind = ctrl+one=text:\x06\x31

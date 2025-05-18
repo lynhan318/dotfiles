@@ -1,5 +1,13 @@
 
 after-login-command = []
+after-startup-command = [
+"exec-and-forget borders active_color=0xffcad3f5 inactive_color=0xff494d64 width=4",
+'exec-and-forget sketchybar'
+]
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
 start-at-login = true
 
 enable-normalization-flatten-containers = true
@@ -16,16 +24,16 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = "move-mouse window-lazy-center"
 
 [gaps]
-inner.horizontal = 4
-inner.vertical =   4
-outer.left =       4
-outer.bottom =     4
-outer.top =        4
-outer.right =      4
+inner.horizontal = 10
+inner.vertical =   10
+outer.left =       10
+outer.bottom =     10
+outer.top =        10
+outer.right =      10
 [mode.main.binding]
 cmd-slash = 'layout tiles horizontal vertical'
 cmd-comma = 'layout accordion horizontal vertical'
-cmd-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
+cmd-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 cmd-h = 'focus left'
