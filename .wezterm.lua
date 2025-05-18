@@ -17,9 +17,15 @@ return {
 	}),
 	-- enable_tab_bar = false,
 	leader = { key = "a", mods = "CTRL" },
-	window_decorations = "RESIZE",
+	window_decorations = "MACOS_FORCE_SQUARE_CORNERS|RESIZE",
 	window_background_opacity = 0.97,
 	hide_tab_bar_if_only_one_tab = true,
+	window_padding = {
+		left = 0,
+		right = 0,
+		top = 0,
+		bottom = 0,
+	},
 	keys = {
 		{ key = "a", mods = "LEADER|CTRL", action = wezterm.action({ SendString = "\x01" }) },
 		{ key = "1", mods = "CTRL", action = wezterm.action({ SendString = "\x06\x31" }) },
