@@ -28,7 +28,7 @@ inner.horizontal = 4
 inner.vertical =   4
 outer.left =       4
 outer.bottom =     4
-outer.top =        8
+outer.top =        40
 outer.right =      4
 [mode.main.binding]
 cmd-slash = 'layout tiles horizontal vertical'
@@ -118,9 +118,9 @@ run = 'layout floating'
 if.workspace = '4'
 run = 'layout floating'
 
-# [[on-window-detected]]
-# if.workspace = '5'
-# run = 'layout floating'
+[[on-window-detected]]
+if.workspace = '5'
+run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
@@ -156,5 +156,11 @@ run = 'layout floating'
 if.app-id = 'com.tdesktop.Telegram'
 run = 'layout floating'
 [[on-window-detected]]
-if.app-id = 'com.tdesktop.Telegram'
+if.app-id = 'ru.keepcoder.Telegram'
 run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'dev.kdrag0n.MacVirt'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = [ 'layout floating','move-node-to-workspace 5']

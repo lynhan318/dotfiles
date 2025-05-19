@@ -10,7 +10,7 @@ end
 
 return {
 	color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
-	font_size = 15,
+	font_size = 16,
 	-- line_height = 1;
 	font = wezterm.font_with_fallback({
 		{ family = "FantasqueSansM Nerd Font", scale = 1, weight = "Medium" },

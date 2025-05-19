@@ -5,7 +5,7 @@ return {
   opts = {
     -- add any opts here
     -- for example
-    provider = "openai",
+    provider = "claude",
     openai = {
       endpoint = "https://api.openai.com/v1",
       model = "o4-mini", -- your desired model (or use gpt-4o, etc.)
@@ -17,8 +17,6 @@ return {
     claude = {
       endpoint = "https://api.anthropic.com",
       model = "claude-3-7-sonnet-20250219",
-      temperature = 0,
-      max_tokens = 4096,
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
