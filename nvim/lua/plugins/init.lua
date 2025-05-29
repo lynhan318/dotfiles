@@ -25,6 +25,11 @@ return {
     },
   },
   {
+    "tpope/vim-fugitive",
+    event = { "BufReadPre", "BufNewFile" },
+    version = false,
+  },
+  {
     "NvChad/nvim-colorizer.lua",
     event = { "BufReadPre", "BufNewFile" },
     config = true,
@@ -128,6 +133,17 @@ return {
       keys = {
         { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
       },
+    },
+  },
+  {
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = { "Outline", "OutlineOpen" },
+    keys = { -- Example mapping to toggle outline
+      { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+    },
+    opts = {
+      -- Your setup opts here
     },
   },
 }
