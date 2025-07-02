@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/kevin/.zsh/completions:"* ]]; then export FPATH="/home/kevin/.zsh/completions:$FPATH"; fi
 source ~/.bash_profile
 export EDITOR="nvim"
 
@@ -33,8 +35,6 @@ alias v=v
 alias thanos=thanos
 alias lg="lazygit"
 
-
-
 # Set Spaceship ZSH as a prompt
 
 export FZF_DEFAULT_COMMAND='rg --files'
@@ -56,20 +56,17 @@ compinit
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-# bun completions
-[ -s "/Users/kevin/.bun/_bun" ] && source "/Users/kevin/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-
-# Created by `pipx` on 2025-04-27 15:54:28
-export PATH="$PATH:/Users/kevin/.local/bin"
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export ANDROID_HOME="/home/kevin/Android/Sdk"
+export PATH="$ANDROID_HOME:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun completions
+[ -s "/home/kevin/.bun/_bun" ] && source "/home/kevin/.bun/_bun"
+. "/home/kevin/.deno/env"
