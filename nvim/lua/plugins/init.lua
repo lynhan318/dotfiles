@@ -14,17 +14,6 @@ return {
     config = true,
   },
   {
-    "folke/trouble.nvim",
-    config = true,
-    keys = {
-      {
-        "<C-t>",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
-      },
-    },
-  },
-  {
     "tpope/vim-fugitive",
     event = { "BufReadPre", "BufNewFile" },
     version = false,
@@ -135,15 +124,11 @@ return {
       },
     },
   },
-  {
-    "hedyhli/outline.nvim",
-    lazy = true,
-    cmd = { "Outline", "OutlineOpen" },
-    keys = { -- Example mapping to toggle outline
-      { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
-    },
-    opts = {
-      -- Your setup opts here
-    },
-  },
+  -- {
+  --     'andymass/vim-matchup',
+  --     config = function()
+  --         -- may set any options here
+  --         vim.g.matchup_matchparen_offscreen = { method = "popup" }
+  --     end
+  -- }
 }
