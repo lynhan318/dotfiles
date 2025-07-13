@@ -28,7 +28,8 @@ return {
             enable = false,
           },
           symbol_in_winbar = {
-            enable = true,
+            enable = false,
+            hide_keyword = true,
           },
           diagnostic = {
             enable = true,
@@ -70,11 +71,22 @@ return {
       update_in_insert = false,
       virtual_text = false,
       serverity_sort = true,
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = "",
+          [vim.diagnostic.severity.WARN] = "",
+          [vim.diagnostic.severity.INFO] = "󰋼",
+          [vim.diagnostic.severity.HINT] = "󰌵",
+        },
+        numhl = {
+          [vim.diagnostic.severity.ERROR] = "",
+          [vim.diagnostic.severity.WARN] = "",
+          [vim.diagnostic.severity.HINT] = "",
+          [vim.diagnostic.severity.INFO] = "",
+        },
+      },
     }
-    vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
-    vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
-    vim.fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
-    vim.fn.sign_define("DiagnosticSignHint", { text = "i", texthl = "DiagnosticSignHint" })
+
     local on_attach = function(client, bufnr)
       if client.name == "svelte" then
         vim.api.nvim_create_autocmd("BufWritePost", {

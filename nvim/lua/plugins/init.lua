@@ -54,8 +54,28 @@ return {
     "stevearc/quicker.nvim",
     event = "FileType qf",
     ---@module "quicker"
-    ---@type quicker.SetupOptions
     opts = {},
+    config = function()
+      vim.keymap.set("n", "<c-.>", "<cmd>cnext<CR>")
+      vim.keymap.set("n", "<c-,>", "<cmd>cprev<CR>")
+      require("quicker").setup {
+        edit = {
+          -- Enable editing the quickfix like a normal buffer
+          enabled = true,
+          -- Set to true to write buffers after applying edits.
+          -- Set to "unmodified" to only write unmodified buffers.
+          autosave = "unmodified",
+        },
+        highlight = {
+          -- Use treesitter highlighting
+          treesitter = true,
+          -- Use LSP semantic token highlighting
+          lsp = true,
+          -- Load the referenced buffers to apply more accurate highlights (may be slow)
+          load_buffers = false,
+        },
+      }
+    end,
   },
   {
     "kdheepak/lazygit.nvim",
