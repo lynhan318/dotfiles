@@ -42,8 +42,9 @@ window#waybar {
 }
 
 #workspaces button.active {
-    background-color: #a7c080;
-    color: #232a2e;
+    background-color: #4F585E;
+    color: #a7c080;
+
 }
 
 #workspaces button.urgent {
@@ -51,21 +52,20 @@ window#waybar {
     color: #f38ba8;
 }
 
-/* #pulseaudio, */
-/* #custom-logo, */
-/* #custom-power, */
-/* #custom-spotify, */
-/* #custom-notification, */
-/* #clock, */
-/* #cpu, */
-/* #memory, */
-/* #window, */
-/* #tray, */
-/* #mpris { */
-/*     padding-right: 20px; */
-/* } */
-
 /*RIGHT SECTION*/
+
+#custom-inetwork {
+    padding-right: 14px;
+    padding-left: 8px;
+    background-color: transparent;
+    color: #d3c6aa;
+    margin-right: 4px;
+}
+
+#network {
+    color: #d3c6aa;
+    margin-right: 16px;
+}
 
 #custom-icpu {
     padding-right: 14px;
@@ -77,7 +77,7 @@ window#waybar {
 
 #cpu {
     color: #d3c6aa;
-    margin-right: 28px;
+    margin-right: 24px;
 }
 
 #custom-imemory {
@@ -90,28 +90,34 @@ window#waybar {
 
 #memory {
     color: #d3c6aa;
-    margin-right: 16px;
+    margin-right: 24px;
 }
 
 
-#pulseaudio {
+#custom-ipulseaudio {
     padding-right: 13px;
     padding-left: 7px;
     background-color: #dbbc7f;
     color: #293136;
-    margin-right: 24px;
+    margin-right: 4px;
+}
+
+#pulseaudio {
+    color: #d3c6aa;
+    margin-right: 16px;
 }
 
 #custom-iclock {
     padding-right: 14px;
     padding-left: 10px;
-    background-color: #a7c080;
+    background-color: #E67E80;
     color: #293136;
     margin-right: 4px;
 }
 
 #clock {
     color: #d3c6aa;
+    margin-right: 16px;
 }
 
 #clock.simpleclock {
@@ -119,11 +125,9 @@ window#waybar {
 }
 
 #custom-launcher {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    padding-left: 10px;
+    padding-left: 14px;
     padding-right: 16px;
-    color: #cdd6f4;
+    color: #83C092;
 }
 
 #mpris.playing {
@@ -144,20 +148,15 @@ window#waybar {
     color: #d3c6aa;
 }
 
-#custom-power {
+tooltip {
+    background-color: #2D353B;
+    border: 2px solid #A7C080;
     color: #d3c6aa;
 }
 
-tooltip {
-    background-color: #181825;
-    border: 2px solid #89b4fa;
-}
-
-#custom-notification {
-    color: #f38ba8;
-}
 
 #tray {
+    padding-right: 16px;
     background-color: #2D353B;
     padding-left: 16px;
     border-radius: 0px;

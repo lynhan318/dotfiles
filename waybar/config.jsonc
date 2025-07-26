@@ -15,13 +15,15 @@
         "mpris"
     ],
     "modules-right": [
+        "custom/inetwork",
+        "network",
         "custom/icpu",
         "cpu",
         "custom/imemory",
         "memory",
         "custom/iclock",
         "clock",
-        "clock#simpleclock",
+        "custom/ipulseaudio",
         "pulseaudio",
         "tray",
     ],
@@ -67,50 +69,42 @@
         "show-passive-items": true,
         "spacing": 10,
     },
-    "clock#simpleclock": {
-        "tooltip": false,
-        "format": "[{:%H:%M}]",
-    },
     "custom/iclock": {
-        "format": "",
+        "format": "<b>󰹱</b>",
         "interval": false
     },
     "clock": {
-        "format": "{:L%a %d %b}",
-        "calendar": {
-            "format": {
-                "time": "<span weight='normal'>{}</span>",
-                "days": "<span weight='normal'>{}</span>",
-                "months": "<span color='#cdd6f4'><b>{}</b></span>",
-                "today": "<span color='#f38ba8' weight='700'><u>{}</u></span>",
-                "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-                "weeks": "<span color='#a6e3a1'><b>W{}</b></span>",
-            },
-            "mode": "month",
-            "mode-mon-col": 1,
-            "on-scroll": 1,
-        },
-        "tooltip-format": "<span color='#cdd6f4' font='Lexend 16'><tt><small>{calendar}</small></tt></span>",
+        "format": "<b>{:%I:%M %p }</b>",
+        "format-alt": "<b>{:%a.%d,%b}</b>",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "custom/icpu": {
         "format": "",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "hyprctl dispatch -- exec '[float] ghostty -e btop'"
     },
     "cpu": {
         "format": "{usage}%",
         "tooltip": true,
         "interval": 1,
+        "on-click": "hyprctl dispatch -- exec '[float] ghostty -e btop'"
     },
     "custom/imemory": {
         "format": "",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "hyprctl dispatch -- exec '[float] ghostty -e btop'"
     },
     "memory": {
         "format": "{used:0.1f}Gi",
+        "on-click": "hyprctl dispatch -- exec '[float] ghostty -e btop'"
+    },
+    "custom/ipulseaudio": {
+        "format": "",
+        "on-click": "pavucontrol",
     },
     "pulseaudio": {
-        "format": "{icon}",
-        "format-muted": "",
+        "format": "{volume}%",
+        "format-muted": "muted",
         "format-icons": {
             "headphone": "",
             "default": [
@@ -130,17 +124,14 @@
         "on-click": "wlogout -b 2",
         "format": "⏻ ",
     },
-    "custom/notification": {
-        "escape": true,
-        "exec": "swaync-client -swb",
-        "exec-if": "which swaync-client",
-        "format": "{icon}",
-        "format-icons": {
-            "none": "󰅺",
-            "notification": "󰡟",
-        },
-        "on-click": "sleep 0.1 && swaync-client -t -sw",
-        "return-type": "json",
-        "tooltip": false,
+    "custom/inetwork": {
+        "format": "󱚻",
+        "internal": false
+    },
+    "network": {
+        "format-wifi": "{bandwidthTotalBits}",
+        "format-alt": "{bandwidthTotalBits}",
+        "on-click": "nm-connection-editor",
+        "format-disconnected": "Disconnected"
     },
 }
