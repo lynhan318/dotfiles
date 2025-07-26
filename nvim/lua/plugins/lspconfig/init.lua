@@ -10,7 +10,7 @@ return {
       config = function(_, opts)
         require("mason").setup(opts)
         require("mason-lspconfig").setup {
-          ensure_installed = { "lua_ls", "ts_ls", "cssls", "tailwindcss", "jsonls", "rust_analyzer", "biome", "svelte" },
+          ensure_installed = { "lua_ls", "ts_ls", "cssls", "tailwindcss", "jsonls", "rust_analyzer", "svelte" },
         }
       end,
     },
@@ -64,7 +64,6 @@ return {
     vim.lsp.enable "ts_ls"
     vim.lsp.enable "tailwindcss"
     vim.lsp.enable "cssls"
-    vim.lsp.enable "biome"
     vim.lsp.enable "svelte"
     vim.diagnostic.config {
       underline = true,

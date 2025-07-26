@@ -14,7 +14,7 @@ return {
           css = { "biomejs" },
           json = { "biomejs" },
           svelte = { "eslint_d" },
-          -- rust = { "clippy" },
+          rust = { "clippy" },
         }
         require("lint").try_lint()
       end,

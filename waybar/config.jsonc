@@ -10,18 +10,19 @@
     "modules-left": [
         "custom/launcher",
         "hyprland/workspaces",
-        "hyprland/window"
     ],
     "modules-center": [
         "mpris"
     ],
     "modules-right": [
+        "custom/icpu",
         "cpu",
+        "custom/imemory",
         "memory",
-        "pulseaudio",
+        "custom/iclock",
         "clock",
         "clock#simpleclock",
-        "custom/notification",
+        "pulseaudio",
         "tray",
     ],
     "custom/launcher": {
@@ -31,28 +32,19 @@
         "format": "<span font-size='x-large'>󰣇</span>",
         "tooltip": false,
     },
-    "custom/spotify": {
-        "format": "  {}",
-        "return-type": "json",
-        "on-click": "playerctl -p spotify play-pause",
-        "on-click-right": "spotifatius toggle-liked",
-        "on-click-middle": "playerctl -p spotify next",
-        "exec": "spotifatius monitor",
-    },
     "mpris": {
-        "player": "spotify",
-        "dynamic-order": [
-            "artist",
-            "title"
-        ],
-        "format": "{player_icon} {dynamic}",
-        "format-paused": "{status_icon} <i>{dynamic}</i>",
-        "status-icons": {
-            "paused": "",
-        },
-        "player-icons": {
-            "default": "",
-        },
+        "format": "  {dynamic}",
+        "format-paused": "  <i>{dynamic}</i>",
+        "max-length": 40,
+        "scroll": true,
+        "scroll-speed": 0.5,
+        "on-click": "playerctl play-pause",
+        "on-click-middle": "playerctl next",
+        "on-click-right": "playerctl previous",
+        "on-scroll-up": "playerctl volume up",
+        "on-scroll-down": "playerctl volume down",
+        "tooltip-format": "<b>{title}</b>\nby {artist}\non {album}",
+        "tooltip": true
     },
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -69,6 +61,7 @@
     },
     "hyprland/window": {
         "format": " {title}",
+        "max-length": 40,
     },
     "tray": {
         "show-passive-items": true,
@@ -76,10 +69,14 @@
     },
     "clock#simpleclock": {
         "tooltip": false,
-        "format": "{:%H:%M}",
+        "format": "[{:%H:%M}]",
+    },
+    "custom/iclock": {
+        "format": "",
+        "interval": false
     },
     "clock": {
-        "format": "  {:L%a %d %b}",
+        "format": "{:L%a %d %b}",
         "calendar": {
             "format": {
                 "time": "<span weight='normal'>{}</span>",
@@ -95,23 +92,31 @@
         },
         "tooltip-format": "<span color='#cdd6f4' font='Lexend 16'><tt><small>{calendar}</small></tt></span>",
     },
+    "custom/icpu": {
+        "format": "",
+        "tooltip": false
+    },
     "cpu": {
-        "format": "  {usage}%",
+        "format": "{usage}%",
         "tooltip": true,
         "interval": 1,
     },
+    "custom/imemory": {
+        "format": "",
+        "tooltip": false
+    },
     "memory": {
-        "format": "  {used:0.1f}Gi",
+        "format": "{used:0.1f}Gi",
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "  muted",
+        "format": "{icon}",
+        "format-muted": "",
         "format-icons": {
             "headphone": "",
             "default": [
-                " ",
-                " ",
-                " "
+                "",
+                "",
+                ""
             ],
         },
         "on-click": "pavucontrol",
