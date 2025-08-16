@@ -15,6 +15,7 @@
         "mpris"
     ],
     "modules-right": [
+        "custom/record",
         "custom/inetwork",
         "network",
         "custom/icpu",
@@ -88,6 +89,13 @@
         "tooltip": true,
         "interval": 1,
         "on-click": "hyprctl dispatch -- exec '[float] ghostty -e btop'"
+    },
+    "custom/record": {
+        "format": "{}",
+        "exec": "~/.dotfiles/bin/record.sh status",
+        "on-click": "~/.dotfiles/bin/record.sh start",
+        "interval": 1,
+        "tooltip": false,
     },
     "custom/imemory": {
         "format": "",

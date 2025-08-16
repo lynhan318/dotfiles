@@ -94,6 +94,14 @@ window#waybar {
 }
 
 
+#custom-record {
+    padding-right: 13px;
+    padding-left: 7px;
+    background-color: #dbbc7f;
+    color: #293136;
+    margin-right: 4px;
+}
+
 #custom-ipulseaudio {
     padding-right: 13px;
     padding-left: 7px;
