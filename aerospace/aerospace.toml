@@ -1,0 +1,166 @@
+
+after-login-command = []
+after-startup-command = [
+# "exec-and-forget borders active_color=0xffcad3f5 inactive_color=0xff494d64 width=4 style=square",
+'exec-and-forget sketchybar'
+]
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+start-at-login = true
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+automatically-unhide-macos-hidden-apps = false
+
+accordion-padding = 30
+
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+key-mapping.preset = 'qwerty'
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focus-changed = "move-mouse window-lazy-center"
+
+[gaps]
+inner.horizontal = 4
+inner.vertical =   4
+outer.left =       4
+outer.bottom =     4
+outer.top =        8
+outer.right =      4
+[mode.main.binding]
+cmd-slash = 'layout tiles horizontal vertical'
+cmd-comma = 'layout accordion horizontal vertical'
+cmd-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#focus
+cmd-h = 'focus left'
+cmd-j = 'focus down'
+cmd-k = 'focus up'
+cmd-l = 'focus right'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#move
+cmd-shift-h = 'move left'
+cmd-shift-j = 'move down'
+cmd-shift-k = 'move up'
+cmd-shift-l = 'move right'
+
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+cmd-1 = 'workspace 1'
+cmd-2 = 'workspace 2'
+cmd-3 = 'workspace 3'
+cmd-4 = 'workspace 4'
+cmd-5 = 'workspace 5'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+cmd-shift-1 = 'move-node-to-workspace 1'
+cmd-shift-2 = 'move-node-to-workspace 2'
+cmd-shift-3 = 'move-node-to-workspace 3'
+cmd-shift-4 = 'move-node-to-workspace 4'
+cmd-shift-5 = 'move-node-to-workspace 5'
+
+cmd-shift-f = 'fullscreen'
+cmd-space = "layout floating tiling"
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+cmd-tab = 'workspace-back-and-forth'
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
+cmd-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#mode
+cmd-shift-semicolon = 'mode service'
+
+cmd-shift-r = 'mode resize'
+
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+b = 'balance-sizes'
+
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#resize
+minus = 'resize smart -50'
+equal = 'resize smart +50'
+
+enter = 'mode main'
+esc = 'mode main'
+# 'service' binding mode declaration.
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main'] # reset layout
+#s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
+f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+backspace = ['close-all-windows-but-current', 'mode main']
+
+cmd-shift-h = ['join-with left', 'mode main']
+cmd-shift-j = ['join-with down', 'mode main']
+cmd-shift-k = ['join-with up', 'mode main']
+cmd-shift-l = ['join-with right', 'mode main']
+
+[workspace-to-monitor-force-assignment]
+    1 = 'main'                            # Monitor sequence number from left to right. 1-based indexing
+    2 = 'main'                       # Main monitor
+    3 = 'main'                  # Non-main monitor in case when there are only two monitors
+    4 = 'main'                   # Case insensitive regex substring
+    5 = 'secondary'  # Case insensitive regex match
+
+[[on-window-detected]]
+if.workspace = '3'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.workspace = '4'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.workspace = '5'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.notes'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.PhotoBoth'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.Photos'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.Preview'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.reminders'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.1password.1password'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.AppStore'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.tdesktop.Telegram'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'dev.kdrag0n.MacVirt'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = [ 'layout floating','move-node-to-workspace 5']

@@ -1,0 +1,167 @@
+{
+    /**
+   * VIM Keymaps
+   */
+    // "vim.leader": "<space>", Not set due to conflict with keybinds.json chords. Using default leader "\" instead.
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<Esc>"
+            ],
+            "when": [
+                "editorFocus"
+            ],
+            "commands": [
+                ":nohl"
+            ], // Clears highlight of current search
+            "silent": true
+        }
+    ],
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-w>": false,
+    },
+    /**
+   * VIM Options
+   */
+    "vim.incsearch": true,
+    "vim.searchHighlightColor": "#f6ff0080",
+    "vim.searchHighlightTextColor": "#fff",
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.highlightedyank.enable": true,
+    "vim.smartRelativeLine": true,
+    "vim.surround": true,
+    "vim.easymotion": true, // Search with "\\f"
+    /**
+
+  /*
+   * Language Options
+   */
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.preferGoToSourceDefinition": true,
+    "typescript.preferGoToSourceDefinition": true,
+    "debug.javascript.autoAttachFilter": "onlyWithFlag",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1 // GREATLY improves vim performance
+    },
+    "gitlens.showWhatsNewAfterUpgrades": false,
+    "gitlens.defaultGravatarsStyle": "retro",
+    "gitlens.plusFeatures.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "tailwindCSS.experimental.classRegex": [
+        // Used in Shadcn UI
+        // Adds support for tailwindcss class intellisense within CVA and CX from [Class Variance Authority](https://cva.style/)
+        [
+            "cn\\(([^)]*)\\)",
+            "[\"'`]([^\"'`]*).*?[\"'`]"
+        ],
+        [
+            "cva\\(([^)]*)\\)",
+            "[\"'`]([^\"'`]*).*?[\"'`]"
+        ],
+        [
+            "cx\\(([^)]*)\\)",
+            "(?:'|\"|`)([^']*)(?:'|\"|`)"
+        ]
+    ],
+    "auto-close-tag.activationOnLanguage": [
+        "html",
+        "javascriptreact",
+        "typescriptreact"
+    ],
+    "breadcrumbs.symbolPath": "off", // Disables language symbols in breadcrumbs.
+    "breadcrumbs.icons": false,
+    "window.systemColorTheme": "dark",
+    "window.title": " ",
+    "workbench.activityBar.location": "top", // More horizontal screen space
+    "workbench.tips.enabled": false,
+    "editor.scrollbar.verticalScrollbarSize": 12,
+    "editor.cursorBlinking": "solid", // Annoying
+    "editor.fontSize": 14, // Just right :p
+    "editor.fontFamily": "FantasqueSansM Nerd Font",
+    "editor.fontLigatures": true, // Fancy === and !== type symbols
+    "editor.minimap.enabled": false,
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontFamily": "FantasqueSansM Nerd Font",
+    "workbench.colorCustomizations": {
+        // ruler colors START
+        "editorOverviewRuler.border": "#0000",
+        "editorOverviewRuler.findMatchForeground": "#f6ff0065",
+        "editorOverviewRuler.rangeHighlightForeground": "#0000",
+        "editorOverviewRuler.selectionHighlightForeground": "#0000",
+        "editorOverviewRuler.wordHighlightForeground": "#0000",
+        "editorOverviewRuler.wordHighlightStrongForeground": "#0000",
+        "editorOverviewRuler.modifiedForeground": "#16ed4f30",
+        "editorOverviewRuler.addedForeground": "#16ed4f30",
+        "editorOverviewRuler.deletedForeground": "#0000",
+        "editorOverviewRuler.infoForeground": "#0000",
+        "editorOverviewRuler.bracketMatchForeground": "#0000"
+        // ruler colors END
+    },
+    "zenMode.hideStatusBar": false, // We want the status bar for VIM commands / search / etc
+    "window.density.editorTabHeight": "compact", // Default tabs are a bit too vertically thick. Gives more vertical space
+    "workbench.editor.showTabs": "multiple", // If you find yourself constantly flipping between tabs, distracted, you can disable them here
+    /**
+   * General Options
+   */
+    "editor.linkedEditing": true,
+    "files.autoSave": "onWindowChange", // Auto-saves if window gets de-focused
+    "editor.formatOnSave": true,
+    "terminal.integrated.commandsToSkipShell": [
+        "workbench.action.closePanel"
+    ],
+    "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
+    "editor.accessibilitySupport": "off",
+    "git.openRepositoryInParentFolders": "always",
+    "extensions.ignoreRecommendations": true,
+    "settingsSync.keybindingsPerPlatform": false,
+    "telemetry.telemetryLevel": "off",
+    "security.workspace.trust.banner": "never",
+    "security.workspace.trust.untrustedFiles": "open",
+    "security.workspace.trust.startupPrompt": "never",
+    "security.workspace.trust.enabled": false,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autoStash": true,
+    "git.autofetch": true,
+    "workbench.layoutControl.enabled": false,
+    "window.commandCenter": false,
+    "zenMode.fullScreen": false,
+    "zenMode.hideLineNumbers": false,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        }
+    },
+    "terminal.integrated.env.windows": {
+        "PATH": "${env:PATH};${workspaceRoot}\\node_modules\\.bin;${env:PNPM_HOME}"
+    },
+    "explorer.confirmDragAndDrop": false,
+    "workbench.startupEditor": "welcomePageInEmptyWorkbench",
+    "explorer.confirmDelete": false,
+    "explorer.confirmPasteNative": false,
+    "terminal.integrated.scrollback": 5000,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "workbench.editor.empty.hint": "hidden",
+    "chat.agent.enabled": false,
+    "telemetry.feedback.enabled": false,
+    "inlineChat.lineNaturalLanguageHint": false,
+    "supermaven.enableJumpSuggestions": false // SHUT UP COPILOT
+}
