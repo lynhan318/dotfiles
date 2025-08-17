@@ -90,9 +90,9 @@ window#waybar {
 }
 
 #custom-notify {
-  padding-right: 13px;
+  padding-right: 0px;
   padding-left: 7px;
-  color: #dbbc7f;
+  color: #d3c6aa;
   margin-right: 4px;
 }
 #custom-record {
