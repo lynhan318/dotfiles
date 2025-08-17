@@ -14,7 +14,7 @@ toggle() {
 }
 # Function to stop recording
 stop() {
-    kill $RECORDER_PID
+    killall wf-recorder
     echo "Recording stopped. File saved to: $OUTPUT_DIR/$FILENAME"
 }
 
