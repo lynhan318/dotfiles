@@ -8,7 +8,7 @@
   "passthrough": false,
   "fixed-center": true,
   "modules-left": ["custom/launcher", "hyprland/workspaces"],
-  "modules-center": ["mpris"],
+  "modules-center": [],
   "modules-right": [
     "custom/record",
     "custom/inetwork",
