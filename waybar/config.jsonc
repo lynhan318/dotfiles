@@ -8,7 +8,7 @@
   "passthrough": false,
   "fixed-center": true,
   "modules-left": ["custom/launcher", "hyprland/workspaces"],
-  "modules-center": [],
+  "modules-center": ["clock"],
   "modules-right": [
     "custom/record",
     "custom/inetwork",
@@ -17,8 +17,6 @@
     "cpu",
     "custom/imemory",
     "memory",
-    "custom/iclock",
-    "clock",
     "custom/ipulseaudio",
     "pulseaudio",
     "custom/notify",
@@ -71,8 +69,7 @@
     "interval": false,
   },
   "clock": {
-    "format": "<b>{:%I:%M %p }</b>",
-    "format-alt": "<b>{:%a.%d,%b}</b>",
+    "format": "<b>{:%I:%M %A.%d-%m-%Y}</b>",
     "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
   },
   "custom/icpu": {
