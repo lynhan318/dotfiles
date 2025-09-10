@@ -1,4 +1,4 @@
-# I use Arch btw.
+# Linux setup for coding.
 - **Theme**: Everforest
 - **WM**: hyprland
 - **Bar**: Waybar
