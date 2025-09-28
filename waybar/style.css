@@ -139,6 +139,9 @@ window#waybar {
   color: #83c092;
 }
 
+#custom-cava {
+  color: #d3c6aa;
+}
 #mpris.playing {
   color: #d3c6aa;
 }

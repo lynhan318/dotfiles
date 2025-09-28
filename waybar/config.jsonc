@@ -30,8 +30,8 @@
     "tooltip": false,
   },
   "mpris": {
-    "format": "  {dynamic}",
-    "format-paused": "  <i>{dynamic}</i>",
+    "format": "   {dynamic}",
+    "format-paused": "   <i>{dynamic}</i>",
     "max-length": 40,
     "scroll": true,
     "scroll-speed": 0.5,
@@ -55,6 +55,21 @@
       "3": [],
       "4": [],
     },
+  },
+  "custom/cava": {
+    "format": "{}",
+    "exec": "~/.dotfiles/bin/cava.sh",
+  },
+  "custom/playerinfo": {
+    "format": "&lt; {} &gt;",
+    "exec": "~/.dotfiles/bin/playinfo.sh",
+    "escape": true,
+    "return-type": "json",
+    "interval": 1,
+    "tooltip": true,
+    "on-click-middle": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-left": "playerctl previous",
   },
   "hyprland/window": {
     "format": " {title}",
