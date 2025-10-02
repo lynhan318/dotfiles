@@ -33,7 +33,7 @@ outer.right =      4
 [mode.main.binding]
 cmd-slash = 'layout tiles horizontal vertical'
 cmd-comma = 'layout accordion horizontal vertical'
-cmd-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
+cmd-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 cmd-h = 'focus left'
