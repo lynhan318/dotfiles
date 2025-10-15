@@ -8,7 +8,7 @@ toggle() {
         echo "Recording stopped and saved."
     else
         echo "Starting a new recording..."
-        wf-recorder -g "$(slurp)" --file="/home/kevin/Videos/$(date +"%F %H:%M:%S").kmv" &
+        wf-recorder -g "$(slurp)" --file="/home/kevin/Videos/$(date +"%F %H:%M:%S").mkv" &
         echo "Recording started with PID $RECORDER_PID."
     fi
 }

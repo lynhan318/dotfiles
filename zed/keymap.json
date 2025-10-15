@@ -1,0 +1,71 @@
+[
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "-": "workspace::ToggleLeftDock",
+      "ctrl-/": "workspace::ToggleBottomDock",
+      "space p": "editor::Format",
+      "space space": "file_finder::Toggle",
+      "shift-l": "pane::ActivateNextItem",
+      "shift-h": "pane::ActivatePreviousItem",
+      "space v": "pane::SplitRight",
+      "space w": "pane::CloseActiveItem",
+      "space h": "workspace::ActivateNextPane",
+      "space l": "workspace::ActivatePreviousPane"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "alt-h": "vim::Left",
+      "alt-l": "vim::Right",
+      "alt-j": "vim::Down",
+      "alt-k": "vim::Up"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "-": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-/": "workspace::ToggleBottomDock"
+    }
+  },
+  {
+    "context": "Dock",
+
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+      // ... or other keybindings
+    }
+  }
+]
