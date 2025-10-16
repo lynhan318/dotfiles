@@ -1,12 +1,26 @@
 [
   {
-    "context": "Editor && vim_mode == insert",
+
+    "context": "ProjectPanel",
     "bindings": {
-      "j k": ["workspace::SendKeystrokes", "escape"]
+      "r":"project_panel::Rename",
+      "a":"project_panel::NewFile",
+      "c":"project_panel::Copy",
+      "m":"project_panel::Cut",
+      "p":"project_panel::Paste",
+      "d":"project_panel::Trash",
+      "v":"project_panel::OpenSplitVertical",
+      "s":"project_panel::OpenSplitHorizontal"
     }
   },
   {
-    "context": "Editor && vim_mode == normal",
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": ["workspace::SendKeystrokes", "escape"],
+    }
+  },
+  {
+    "context": "Editor",
     "bindings": {
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
@@ -20,13 +34,24 @@
       "-": "workspace::ToggleLeftDock",
       "ctrl-/": "workspace::ToggleBottomDock",
       "space p": "editor::Format",
+      "ctrl-p": "file_finder::Toggle",
       "space space": "file_finder::Toggle",
+      "ctrl-g": "pane::DeploySearch",
       "shift-l": "pane::ActivateNextItem",
       "shift-h": "pane::ActivatePreviousItem",
-      "space v": "pane::SplitRight",
+      "space v": "pane::SplitVertical",
+      "space s": "pane::SplitHorizontal",
       "space w": "pane::CloseActiveItem",
       "space h": "workspace::ActivateNextPane",
-      "space l": "workspace::ActivatePreviousPane"
+      "space l": "workspace::ActivatePreviousPane",
+
+      //language server
+      "gd":"editor::GoToDeclaration",
+      "shift-k":"editor::Hover",
+      "space r n":"editor::Rename",
+      "space c a":"editor::ToggleCodeActions",
+      "space g s":"outline::Toggle",
+      "space f r":"buffer_search::DeployReplace"
     }
   },
   {
