@@ -64,9 +64,9 @@ return {
     })
     -- vim.lsp.enable "ts_ls"
     local lspconfig = require "lspconfig"
-    vim.lsp.enable "tsgo"
-    vim.lsp.config("tsgo",{
-      cmd = { "tsgo", "--lsp", "--stdio" },
+    vim.lsp.enable "ts_ls"
+    vim.lsp.config("ts_ls",{
+      cmd = {"bunx","--bun", "typescript-language-server", "--stdio" },
       filetypes = {
         "javascript",
         "javascriptreact",
