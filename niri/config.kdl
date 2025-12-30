@@ -26,6 +26,7 @@ gestures {
 // Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 input {
+    mod-key "Alt"
     keyboard {
         xkb {
         }
