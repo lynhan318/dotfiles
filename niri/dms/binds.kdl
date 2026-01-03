@@ -6,14 +6,17 @@ binds {
 
     // === Application Launchers ===
     Mod+Return hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
-    Mod+Space hotkey-overlay-title="Application Launcher" {
+    Mod+P hotkey-overlay-title="Color Picker" {
+        spawn "dms" "color" "pick" "-a";
+    }
+    Mod+D hotkey-overlay-title="Application Launcher" {
         spawn "dms" "ipc" "call" "spotlight" "toggle";
     }
     Mod+V hotkey-overlay-title="Clipboard Manager" {
         spawn "dms" "ipc" "call" "clipboard" "toggle";
     }
     Mod+M hotkey-overlay-title="Task Manager" {
-        spawn "dms" "ipc" "call" "processlist" "focusOrToggle";
+        spawn "dms" "ipc" "call" "powermenu" "toggle";
     }
     Mod+Comma hotkey-overlay-title="Settings" {
         spawn "dms" "ipc" "call" "settings" "focusOrToggle";
@@ -59,7 +62,7 @@ binds {
     Mod+Q repeat=false { close-window; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
-    Mod+Shift+T { toggle-window-floating; }
+    Mod+Space { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
     // Mod+W { toggle-column-tabbed-display; }
 
