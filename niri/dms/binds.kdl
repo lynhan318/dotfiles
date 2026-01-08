@@ -1,10 +1,7 @@
-binds {
-    // === System & Overview ===
-    // Mod+w repeat=false { toggle-overview; }
-    Mod+Tab repeat=false { toggle-overview; }
+binds { // === System & Overview ===
+    // Mod+w repeat=false { toggle-overview; } Mod+W repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
-
-    // === Application Launchers ===
+    Mod+Tab repeat=false { toggle-overview; }
     Mod+Return hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
     Mod+P hotkey-overlay-title="Color Picker" {
         spawn "dms" "color" "pick" "-a";
@@ -23,6 +20,10 @@ binds {
     }
     Mod+Y hotkey-overlay-title="Browse Wallpapers" {
         spawn "dms" "ipc" "call" "dankdash" "wallpaper";
+    }
+    Mod+S hotkey-overlay-title="Screenshot window section" { 
+        spawn-sh "dms screenshot -q 100 -f webp --stdout | swappy -f -";
+
     }
     Mod+N hotkey-overlay-title="Notification Center" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
     Mod+Shift+N hotkey-overlay-title="Notepad" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
@@ -105,10 +106,10 @@ binds {
     // Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
     // === Workspace Navigation ===
-    // Mod+Page_Down      { focus-workspace-down; }
-    // Mod+Page_Up        { focus-workspace-up; }
-    // Mod+U              { focus-workspace-down; }
-    // Mod+I              { focus-workspace-up; }
+    Mod+Down      { focus-workspace-down; }
+    Mod+Up        { focus-workspace-up; }
+    Mod+Left              { focus-column-left; }
+    Mod+Right              { focus-column-right; }
     // Mod+Ctrl+Down { move-column-to-workspace-down; }
     // Mod+Ctrl+Up   { move-column-to-workspace-up; }
     // Mod+Ctrl+U         { move-column-to-workspace-down; }
@@ -179,13 +180,12 @@ binds {
 
     // === Screenshots ===
     XF86Launch1 { screenshot; }
-    Mod+S { screenshot; }
     Ctrl+XF86Launch1 { screenshot-screen; }
     Mod+XF86Launch1 { screenshot-window; }
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Mod+Print { screenshot-window; }
     // === System Controls ===
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    // Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+P { power-off-monitors; }
 }

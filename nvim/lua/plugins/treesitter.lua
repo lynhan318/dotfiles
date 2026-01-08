@@ -1,11 +1,12 @@
 local M = {
     "nvim-treesitter/nvim-treesitter",
-    version = false,
     build = ":TSUpdate",
+    lazy = false,
+    branch = "master",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
-        "nvim-treesitter/nvim-treesitter-refactor",
-        "nvim-treesitter/nvim-treesitter-textobjects",
+        "nvim-treesitter/nvim-treesitter-locals",
+        { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
         {
             'nvim-treesitter/nvim-treesitter-context',
             opts = {
@@ -66,7 +67,7 @@ function M.config()
         },
         highlight = {
             enable = true, -- false will disable the whole extension
-            disable = {}, -- list of language that will be disabled
+            disable = {},  -- list of language that will be disabled
             additional_vim_regex_highlighting = false,
         },
         indent = {
@@ -113,13 +114,25 @@ function M.config()
                 },
                 selection_modes = {
                     ["@parameter.outer"] = "v", -- charwise
-                    ["@function.outer"] = "V", -- linewise
+                    ["@function.outer"] = "V",  -- linewise
                     ["@class.outer"] = "<c-v>", -- blockwise
                 },
                 include_surrounding_whitespace = true,
             },
         },
     }
+    -- local toggle_inc_selection_group =
+    --     vim.api.nvim_create_augroup('mariasolos/toggle_inc_selection', { clear = true })
+    -- vim.api.nvim_create_autocmd('CmdwinEnter', {
+    --     desc = 'Disable incremental selection when entering the cmdline window',
+    --     group = toggle_inc_selection_group,
+    --     command = 'TSBufDisable incremental_selection',
+    -- })
+    -- vim.api.nvim_create_autocmd('CmdwinLeave', {
+    --     desc = 'Enable incremental selection when leaving the cmdline window',
+    --     group = toggle_inc_selection_group,
+    --     command = 'TSBufEnable incremental_selection',
+    -- })
     vim.treesitter.language.register("markdown", "mdx")
 end
 

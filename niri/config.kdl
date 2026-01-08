@@ -7,13 +7,13 @@ config-notification {
 }
 // Outputs from existing configuration
 
-output "HDMI-A-1" {
-    mode "3840x2160@60.000"
-    scale 1.4
-    transform "normal"
-    background-color "#303446"
-    position x=2740 y=0
-}
+// output "HDMI-A-1" {
+//     mode "3840x2160@60.000"
+//     scale 1.4
+//     transform "normal"
+//     background-color "#303446"
+//     position x=2740 y=0
+// }
 
 
 gestures {
@@ -52,58 +52,30 @@ input {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
-    // Set gaps around windows in logical pixels.
-    background-color "transparent"
-    // When to center a column when changing focus, options are:
-    // - "never", default behavior, focusing an off-screen column will keep at the left
-    //   or right edge of the screen.
-    // - "always", the focused column will always be centered.
-    // - "on-overflow", focusing a column will center it if it doesn't fit
-    //   together with the previously focused column.
-    center-focused-column "never"
-    // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
-    preset-column-widths {
-        // Proportion sets the width as a fraction of the output width, taking gaps into account.
-        // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
-        // The default preset widths are 1/3, 1/2 and 2/3 of the output.
-        proportion 0.33333
-        proportion 0.5
-        proportion 0.66667
-        // Fixed sets the width in logical pixels exactly.
-        // fixed 1920
-    }
-    // You can also customize the heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
-    // preset-window-heights { }
-    // You can change the default width of the new windows.
-    default-column-width { proportion 0.5; }
-    // If you leave the brackets empty, the windows themselves will decide their initial width.
-    // default-column-width {}
-    // By default focus ring and border are rendered as a solid background rectangle
-    // behind windows. That is, they will show up through semitransparent windows.
-    // This is because windows using client-side decorations can have an arbitrary shape.
-    //
-    // If you don't like that, you should uncomment `prefer-no-csd` below.
-    // Niri will draw focus ring and border *around* windows that agree to omit their
-    // client-side decorations.
-    //
-    // Alternatively, you can override it with a window rule called
-    // `draw-border-with-background`.
+    gaps 4
+
     border {
-        off
-        width 4
-        active-color   "#707070"      // Neutral gray
-        inactive-color "#d0d0d0"      // Light gray
-        urgent-color   "#cc4444"      // Softer red
+        width 0
     }
-    shadow {
-        softness 30
-        spread 5
-        offset x=0 y=5
-        color "#0007"
-    }
-    struts {
+
+    focus-ring {
+        width 2
     }
 }
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+    tiled-state true
+    draw-border-with-background false
+}
+
+window-rule {
+    geometry-corner-radius 0
+    clip-to-geometry true
+    tiled-state true
+    draw-border-with-background false
+}
+
 layer-rule {
     match namespace="^quickshell$"
     place-within-backdrop true
@@ -119,6 +91,8 @@ overview {
 // See the binds section below for more spawn examples.
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup "fcitx5"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 environment {
   XDG_CURRENT_DESKTOP "niri"
 }
@@ -164,17 +138,11 @@ animations {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
-}
+
 window-rule {
     match app-id=r#"^org\.gnome\."#
     draw-border-with-background false
-    geometry-corner-radius 12
+    geometry-corner-radius 0
     clip-to-geometry true
 }
 window-rule {
@@ -191,19 +159,21 @@ window-rule {
     match app-id=r#"^org\.gnome\.Nautilus$"#
     match app-id=r#"^steam$"#
     match app-id=r#"^xdg-desktop-portal$"#
+    match app-id=r#"^1password$"#
+    match app-id=r#"^telegram-desktop$"#
+    match app-id=r#"^slack$"#
+    match app-id=r#"^Pinentry-gtk"#
+    match app-id=r#"^org.telegram.desktop"#
+    match app-id=r#"^Emulator"#
     open-floating true
 }
 window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    match app-id="Alacritty"
-    match app-id="zen"
     match app-id="com.mitchellh.ghostty"
-    match app-id="kitty"
     draw-border-with-background false
 }
 window-rule {
     match is-active=false
-    opacity 0.9
+    opacity 1.0
 }
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
@@ -231,6 +201,10 @@ recent-windows {
 
 // Include dms files
 include "dms/colors.kdl"
-include "dms/layout.kdl"
 include "dms/alttab.kdl"
 include "dms/binds.kdl"
+include "dms/binds.kdl"
+
+include "dms/outputs.kdl"
+
+include "dms/cursor.kdl"
