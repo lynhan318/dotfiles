@@ -1,0 +1,30 @@
+[[language]]
+name = "typescript"
+scope = "source.ts"
+injection-regex = "(ts|typescript)"
+language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-react", "eslint"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json", ""]
+file-types = ["ts", "mts", "cts"]
+formatter = { command = "biome", args = ["format", "--stdin-file-path"] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "biome" ]
+formatter = { command = "prettier", args = ["--parser", "html"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "biome" ]
+formatter = { command = "prettier", args = ["--parser", "html"] }
+auto-format = true
+
+[[language]]
+name = "html"
+auto-format = true
+language-servers = ["vscode-html-language-server", "emmet-ls"]
+formatter = { command = "prettier", args = ["--parser", "html"] }
+
+[[language]]
+name = "rust"

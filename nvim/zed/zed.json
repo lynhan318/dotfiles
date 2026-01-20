@@ -1,0 +1,243 @@
+{
+  // Zed keybindings converted from Neovim config
+  "keymap": [
+    // Insert mode mappings
+    {
+      "keys": ["j", "k"],
+      "command": "editor.exitInsertMode",
+      "when": "editorTextFocus && editorLangMode == 'insert'"
+    },
+    {
+      "keys": ["w", "w"],
+      "command": "workbench.action.files.save",
+      "when": "editorTextFocus && editorLangMode == 'insert'"
+    },
+    {
+      "keys": ["Ctrl+L"],
+      "command": "cursorRight",
+      "when": "editorTextFocus && editorLangMode == 'insert'"
+    },
+    {
+      "keys": ["Ctrl+H"],
+      "command": "cursorLeft",
+      "when": "editorTextFocus && editorLangMode == 'insert'"
+    },
+
+    // Normal mode window navigation
+    {
+      "keys": ["Ctrl+H"],
+      "command": "workbench.action.focusLeftGroup",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Ctrl+L"],
+      "command": "workbench.action.focusRightGroup",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Ctrl+J"],
+      "command": "workbench.action.focusBelowGroup",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Ctrl+K"],
+      "command": "workbench.action.focusAboveGroup",
+      "when": "editorTextFocus"
+    },
+
+    // Misc normal mode mappings
+    {
+      "keys": ["Esc", "Esc"],
+      "command": "editor.action.clearHighlight",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Space", "q"],
+      "command": "workbench.action.closeActiveEditor",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": [";"],
+      "command": "workbench.action.showCommands",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["S"],
+      "command": "editor.action.startFindReplace",
+      "when": "editorTextFocus"
+    },
+
+    // LSP & navigation
+    {
+      "keys": ["g", "D"],
+      "command": "lsp.showReferences",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["K"],
+      "command": "lsp.showHover",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["g", "d"],
+      "command": "lsp.gotoDefinition",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["g", "v"],
+      "command": "workbench.action.splitEditorRight",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["g", "s"],
+      "command": "workbench.action.splitEditorDown",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["g", "i"],
+      "command": "lsp.gotoImplementation",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["g", "r"],
+      "command": "lsp.showReferences",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Space", "r", "f"],
+      "command": "lsp.rename",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Space", "c", "a"],
+      "command": "lsp.codeAction",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["[", "w"],
+      "command": "editor.action.showCursorDiagnostics",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["[", "b"],
+      "command": "editor.action.showBufferDiagnostics",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["t"],
+      "command": "workbench.action.terminal.toggleTerminal",
+      "when": "editorTextFocus"
+    },
+
+    // FZF-like navigation
+    {
+      "keys": ["Ctrl+B"],
+      "command": "workbench.action.showAllEditors",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Ctrl+P"],
+      "command": "workbench.action.quickOpen",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Ctrl+S"],
+      "command": "workbench.action.findInFiles",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Ctrl+G"],
+      "command": "workbench.action.findInProject",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Ctrl+T"],
+      "command": "workbench.action.showErrorsWarnings",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Space", "s", "w"],
+      "command": "workbench.action.showWorkspaceSymbols",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Space", "f", "s"],
+      "command": "workbench.action.showDocumentSymbols",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Space", "g", "d"],
+      "command": "git.showDiff",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Space", "g", "s"],
+      "command": "git.showStatus",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Ctrl+Q"],
+      "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor",
+      "when": "editorTextFocus"
+    },
+
+    // Completion (Blink/Copilot style)
+    {
+      "keys": ["Enter"],
+      "command": "editor.action.acceptSuggestion",
+      "when": "editorTextFocus && suggestWidgetVisible"
+    },
+    {
+      "keys": ["Tab"],
+      "command": "editor.action.nextSuggestion",
+      "when": "editorTextFocus && suggestWidgetVisible"
+    },
+    {
+      "keys": ["Shift+Tab"],
+      "command": "editor.action.previousSuggestion",
+      "when": "editorTextFocus && suggestWidgetVisible"
+    },
+    {
+      "keys": ["Ctrl+K"],
+      "command": "editor.action.triggerParameterHints",
+      "when": "editorTextFocus"
+    },
+    {
+      "keys": ["Ctrl+U"],
+      "command": "editor.action.scrollSuggestionDocsUp",
+      "when": "editorTextFocus && suggestWidgetVisible"
+    },
+    {
+      "keys": ["Ctrl+D"],
+      "command": "editor.action.scrollSuggestionDocsDown",
+      "when": "editorTextFocus && suggestWidgetVisible"
+    },
+    {
+      "keys": ["Ctrl+P"],
+      "command": "editor.action.selectPrevSuggestion",
+      "when": "editorTextFocus && suggestWidgetVisible"
+    },
+    {
+      "keys": ["Ctrl+N"],
+      "command": "editor.action.selectNextSuggestion",
+      "when": "editorTextFocus && suggestWidgetVisible"
+    },
+
+    // File explorer (Oil/MiniFiles)
+    {
+      "keys": ["Ctrl+V"],
+      "command": "explorer.openToSide",
+      "when": "explorerViewletVisible"
+    },
+    {
+      "keys": ["Ctrl+S"],
+      "command": "explorer.openToBottom",
+      "when": "explorerViewletVisible"
+    },
+    {
+      "keys": ["-"],
+      "command": "explorer.toggle",
+      "when": "editorTextFocus"
+    }
+  ]
+}

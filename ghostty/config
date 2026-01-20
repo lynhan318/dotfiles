@@ -1,0 +1,14 @@
+font-family = "FantasqueSansM Nerd Font"
+font-size = 11
+background-opacity = 1.0
+theme = dankcolors
+keybind = ctrl+one=text:\x06\x31
+keybind = ctrl+two=text:\x06\x32
+keybind = ctrl+three=text:\x06\x33
+keybind = ctrl+four=text:\x06\x34
+keybind = ctrl+five=text:\x06\x35
+# keybind = ctrl+1=text:\x06\x31
+# keybind = ctrl+two=ctrl+f+two
+# keybind = ctrl+three=ctrl+f+three
+# keybind = ctrl+four=ctrl+f+four
+# keybind = ctrl+five=ctrl+f+five

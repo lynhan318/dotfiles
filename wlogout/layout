@@ -1,0 +1,25 @@
+{
+    "label" : "lock",
+    "text" : "[L] lock",
+    "action" : "hyprlock",
+    "keybind" : "l"
+}
+{
+    "label" : "reboot",
+    "text" : "[R] reboot",
+    "action" : "systemctl reboot",
+    "keybind" : "r"
+}
+{
+    "label" : "logout",
+    "text" : "[E] logout",
+    "action" : "pkill Hyprland || pkill sway || pkill niri || loginctl terminate-user $USER",
+    "keybind" : "e"
+}
+{
+    "label" : "shutdown",
+    "text" : "[S] shutdown",
+    "action" : "systemctl poweroff",
+    "keybind" : "s"
+}
+

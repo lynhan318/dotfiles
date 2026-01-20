@@ -1,0 +1,206 @@
+// This config is in the KDL format: https://kdl.dev
+// "/-" comments out the following node.
+// Check the wiki for a full description of the configuration:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+config-notification {
+    disable-failed
+}
+// Outputs from existing configuration
+
+// output "HDMI-A-1" {
+//     mode "3840x2160@60.000"
+//     scale 1.4
+//     transform "normal"
+//     background-color "#303446"
+//     position x=2740 y=0
+// }
+
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+// Input device configuration.
+// Find the full list of options on the wiki:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+input {
+    mod-key "Alt"
+    keyboard {
+        xkb {
+        }
+        repeat-delay 370
+        repeat-rate 50
+        numlock
+    }
+    touchpad {
+    }
+    mouse {
+    }
+    trackpoint {
+    }
+}
+// You can configure outputs by their name, which you can find
+// by running `niri msg outputs` while inside a niri instance.
+// The built-in laptop monitor is usually called "eDP-1".
+// Find more information on the wiki:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
+// Remember to uncomment the node by removing "/-"!
+
+// Settings that influence how windows are positioned and sized.
+// Find more information on the wiki:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
+layout {
+    gaps 4
+
+    border {
+        width 0
+    }
+
+    focus-ring {
+        width 2
+    }
+}
+
+window-rule {
+    geometry-corner-radius 4
+    clip-to-geometry true
+    tiled-state true
+    draw-border-with-background false
+}
+
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+overview {
+    workspace-shadow {
+        off
+    }
+}
+// Add lines like this to spawn processes at startup.
+// Note that running niri as a session supports xdg-desktop-autostart,
+// which may be more convenient to use.
+// See the binds section below for more spawn examples.
+// This line starts waybar, a commonly used bar for Wayland compositors.
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup "fcitx5"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+environment {
+  XDG_CURRENT_DESKTOP "niri"
+}
+hotkey-overlay {
+    skip-at-startup
+}
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+animations {
+    workspace-switch {
+        spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
+    }
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    config-notification-open-close {
+        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
+    }
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+    overview-open-close {
+        spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
+    }
+}
+// Window rules let you adjust behavior for individual windows.
+// Find more information on the wiki:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
+// Work around WezTerm's initial configure bug
+// by setting an empty default-column-width.
+
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 0
+    clip-to-geometry true
+}
+window-rule {
+    match app-id=r#"^gnome-control-center$"#
+    match app-id=r#"^pavucontrol$"#
+    match app-id=r#"^nm-connection-editor$"#
+    default-column-width { proportion 0.5; }
+    open-floating false
+}
+window-rule {
+    match app-id=r#"^gnome-calculator$"#
+    match app-id=r#"^galculator$"#
+    match app-id=r#"^blueman-manager$"#
+    match app-id=r#"^org\.gnome\.Nautilus$"#
+    match app-id=r#"^steam$"#
+    match app-id=r#"^xdg-desktop-portal$"#
+    match app-id=r#"^1password$"#
+    match app-id=r#"^telegram-desktop$"#
+    match app-id=r#"^slack$"#
+    match app-id=r#"^Pinentry-gtk"#
+    match app-id=r#"^org.telegram.desktop"#
+    match app-id=r#"^Emulator"#
+    open-floating true
+}
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+    draw-border-with-background false
+    opacity 1.0
+}
+window-rule {
+    match is-active=false
+    opacity 1.0
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id="zoom"
+    open-floating true
+}
+// Open dms windows as floating by default
+window-rule {
+    match app-id=r#"org.quickshell$"#
+    open-floating true
+}
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+
+// Override to disable super+tab
+recent-windows {
+    binds {
+        Alt+Tab         { next-window scope="output"; }
+        Alt+Shift+Tab   { previous-window scope="output"; }
+        Alt+grave       { next-window filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+    }
+}
+
+// Include dms files
+include "dms/colors.kdl"
+include "dms/alttab.kdl"
+include "dms/binds.kdl"
+include "dms/binds.kdl"
+
+include "dms/outputs.kdl"
+
+include "dms/cursor.kdl"

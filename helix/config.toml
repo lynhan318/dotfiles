@@ -1,0 +1,87 @@
+theme = "everforest_dark"
+
+[editor]
+cursorline = true
+color-modes = true
+auto-pairs = false 
+true-color = true
+mouse = false
+scrolloff = 10
+bufferline = "multiple"
+end-of-line-diagnostics = "hint"
+
+# [editor.sticky-context]
+# enable = true
+# indicator = true
+# max-lines = 10
+
+
+# [editor.lsp]
+# display-messages = true
+# display-inlay-hints = true
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.indent-guides]
+render = true
+
+[keys.normal]
+"%" = "match_brackets"
+"*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_next"]
+"#" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_prev"]
+"$" = "goto_line_end"
+0 = "goto_line_start"
+G = "goto_file_end"
+K = "hover"
+C-e = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
+  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+]
+H = ["select_mode", "goto_line_start", "normal_mode"]
+L = ["select_mode", "goto_line_end", "normal_mode"]
+C-v = "vsplit"
+C-s = "hsplit"
+C-h = "jump_view_left"
+C-j = "jump_view_down"
+C-k = "jump_view_up"
+C-l = "jump_view_right"
+x = ["extend_line", "select_mode"] # prefer selection with movement: hjkl
+X = ["extend_line", "select_mode", "flip_selections"] # same as the above but prepare for going up
+q = { q = "wclose" }
+
+[keys.select]
+i = "select_textobject_inner"
+a = "select_textobject_around"
+j = "extend_line_down"
+k = "extend_line_up"
+"$" = "goto_line_end"
+0 = "goto_line_start"
+"esc" = "normal_mode"
+x = "extend_to_line_bounds"
+X = "extend_line"
+
+[keys.insert]
+j = { k = "normal_mode" }
+w = { w = ["normal_mode",":w" ]}
+
+
+[keys.normal.space]
+l = ":toggle lsp.display-inlay-hints"
