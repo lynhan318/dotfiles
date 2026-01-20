@@ -7,15 +7,6 @@ config-notification {
 }
 // Outputs from existing configuration
 
-// output "HDMI-A-1" {
-//     mode "3840x2160@60.000"
-//     scale 1.4
-//     transform "normal"
-//     background-color "#303446"
-//     position x=2740 y=0
-// }
-
-
 gestures {
     hot-corners {
         off
@@ -93,6 +84,12 @@ environment {
 hotkey-overlay {
     skip-at-startup
 }
+
+workspace "1: dev"
+workspace "2: web"
+workspace "3: era"
+workspace "4: message"
+
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 animations {
@@ -159,7 +156,20 @@ window-rule {
     match app-id=r#"^Pinentry-gtk"#
     match app-id=r#"^org.telegram.desktop"#
     match app-id=r#"^Emulator"#
+    match app-id=r#"^Slack"#
     open-floating true
+}
+
+
+// Chat apps always open on workspace 4
+window-rule {
+    match app-id=r#"^telegram-desktop$"#
+    match app-id=r#"^org\.telegram\.desktop$"#
+    match app-id=r#"^Slack$"#
+    match app-id=r#"^slack$"#
+    match app-id=r#"^discord$"#
+    match app-id=r#"^Discord$"#
+    open-on-workspace "Message"
 }
 window-rule {
     match app-id="com.mitchellh.ghostty"

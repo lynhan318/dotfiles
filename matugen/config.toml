@@ -1,0 +1,5 @@
+[config]
+
+[templates.tmux]
+input_path = '/home/kevin/.config/matugen/templates/tmux.conf'
+output_path = '/home/kevin/.tmux/themes/dms-dynamic.conf'

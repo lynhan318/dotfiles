@@ -10,7 +10,7 @@ return {
       config = function(_, opts)
         require("mason").setup(opts)
         require("mason-lspconfig").setup {
-          ensure_installed = { "lua_ls", "cssls", "tailwindcss", "jsonls", "rust_analyzer", "svelte" },
+          ensure_installed = { "lua_ls", "cssls", "tailwindcss", "jsonls", "rust_analyzer", "svelte", "ts_ls" },
         }
       end,
     },
