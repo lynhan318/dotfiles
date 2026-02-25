@@ -85,10 +85,21 @@ hotkey-overlay {
     skip-at-startup
 }
 
-workspace "1: dev"
-workspace "2: web"
-workspace "3: era"
-workspace "4: message"
+workspace "1: dev" {
+    open-on-output "DP-1"
+}
+workspace "2: web" {
+    open-on-output "DP-1"
+}
+workspace "3: era" {
+    open-on-output "DP-1"
+}
+workspace "4: message" {
+    open-on-output "DP-1"
+}
+workspace "5: float" {
+    open-on-output "HDMI-A-1"
+}
 
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
@@ -220,7 +231,6 @@ window-rule {
 
 include "dms/colors.kdl"
 include "dms/alttab.kdl"
-include "dms/binds.kdl"
 include "dms/binds.kdl"
 
 include "dms/outputs.kdl"

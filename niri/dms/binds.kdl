@@ -91,40 +91,36 @@ binds { // === System & Overview ===
     Mod+Ctrl+End  { move-column-to-last; }
 
     // === Monitor Navigation ===
-    // Mod+Ctrl+Left  { focus-monitor-left; }
-    //Mod+Ctrl+Down  { focus-monitor-down; }
-    //Mod+Ctrl+Up    { focus-monitor-up; }
-    // Mod+Ctrl+Right { focus-monitor-right; }
+    Mod+Ctrl+Left  { focus-monitor-left; }
+    Mod+Ctrl+Down  { focus-monitor-down; }
+    Mod+Ctrl+Up    { focus-monitor-up; }
+    Mod+Ctrl+Right { focus-monitor-right; }
     // Mod+Ctrl+H     { focus-monitor-left; }
     // Mod+Ctrl+J     { focus-monitor-down; }
     // Mod+Ctrl+K     { focus-monitor-up; }
     // Mod+Ctrl+L     { focus-monitor-right; }
 
     // === Move to Monitor ===
-    // Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    // Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-    // Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-    // Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    // Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-    // Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-    // Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-    // Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
     // === Workspace Navigation ===
     Mod+Down      { focus-workspace-down; }
     Mod+Up        { focus-workspace-up; }
-    Mod+Left              { focus-column-left; }
-    Mod+Right              { focus-column-right; }
-    // Mod+Ctrl+Down { move-column-to-workspace-down; }
-    // Mod+Ctrl+Up   { move-column-to-workspace-up; }
-    // Mod+Ctrl+U         { move-column-to-workspace-down; }
-    // Mod+Ctrl+I         { move-column-to-workspace-up; }
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
 
     // === Move Workspaces ===
-    // Mod+Shift+Page_Down { move-workspace-down; }
-    // Mod+Shift+Page_Up   { move-workspace-up; }
-    // Mod+Shift+U         { move-workspace-down; }
-    // Mod+Shift+I         { move-workspace-up; }
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+U         { move-workspace-down; }
+    Mod+Shift+I         { move-workspace-up; }
 
     // === Mouse Wheel Navigation ===
     // Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
@@ -143,11 +139,11 @@ binds { // === System & Overview ===
     // Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
     // === Numbered Workspaces ===
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace 5; }
+    Mod+1 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 1"; }
+    Mod+2 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 2"; }
+    Mod+3 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 3"; }
+    Mod+4 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 4"; }
+    Mod+5 { focus-monitor "HDMI-A-1"; }
     Mod+6 { focus-workspace 6; }
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
