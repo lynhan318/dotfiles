@@ -1,0 +1,15 @@
+// DMS Window Rules - Managed by DankMaterialShell
+// Do not edit manually - changes may be overwritten
+
+// @id=wr_1772000292262810839 @name=org.telegram.desktop
+window-rule {
+    match app-id="^org.telegram.desktop$"
+    open-floating true
+    open-on-output "HDMI-A-1"
+    open-on-workspace "1"
+    block-out-from "screencast"
+    min-width 600
+    max-width 1000
+    min-height 1000
+    max-height 1000
+}
