@@ -22,6 +22,7 @@ return {
     },
     filetypes = {
       rs = true,
+      zig = true,
       javascript = true,
       typescript = true,
       typescriptreact = true,

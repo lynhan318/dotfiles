@@ -6,6 +6,24 @@ return {
         -- add any opts here
         -- for example
         provider = "copilot",
+         acp_providers = {
+            ["gemini-cli"] = {
+              command = "gemini",
+              args = { "--experimental-acp" },
+              env = {
+                NODE_NO_WARNINGS = "1",
+                GEMINI_API_KEY = os.getenv("GEMINI_API_KEY"),
+              },
+            },
+            ["claude-code"] = {
+              command = "npx",
+              args = { "@zed-industries/claude-code-acp" },
+              env = {
+                NODE_NO_WARNINGS = "1",
+                ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY"),
+             },
+           },
+        }
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",

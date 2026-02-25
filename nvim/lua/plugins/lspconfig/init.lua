@@ -10,7 +10,7 @@ return {
       config = function(_, opts)
         require("mason").setup(opts)
         require("mason-lspconfig").setup {
-          ensure_installed = { "lua_ls", "cssls", "tailwindcss", "jsonls", "rust_analyzer", "svelte", "ts_ls" },
+          ensure_installed = { "lua_ls", "cssls", "tailwindcss", "jsonls", "rust_analyzer", "svelte", "tsgo" },
         }
       end,
     },
@@ -64,10 +64,10 @@ return {
     })
     -- vim.lsp.enable "ts_ls"
     local lspconfig = require "lspconfig"
-    vim.lsp.enable "ts_ls"
-    vim.lsp.config("ts_ls", {
-      cmd = { "bunx", "--bun", "typescript-language-server", "--stdio" },
-      -- cmd = { "tsgo", "--lsp", "--stdio" },
+    vim.lsp.enable "tsgo"
+    vim.lsp.config("tsgo", {
+      -- cmd = { "bunx", "--bun", "typescript-language-server", "--stdio" },
+      cmd = { "tsgo", "--lsp", "--stdio" },
       filetypes = {
         "javascript",
         "javascriptreact",
