@@ -150,11 +150,11 @@ binds { // === System & Overview ===
     Mod+9 { focus-workspace 9; }
 
     // === Move to Numbered Workspaces ===
-    Mod+Shift+1 { move-column-to-workspace 1; }
-    Mod+Shift+2 { move-column-to-workspace 2; }
-    Mod+Shift+3 { move-column-to-workspace 3; }
-    Mod+Shift+4 { move-column-to-workspace 4; }
-    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+1 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 1"; }
+    Mod+Shift+2 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 2"; }
+    Mod+Shift+3 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 3"; }
+    Mod+Shift+4 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 4"; }
+    Mod+Shift+5 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 5"; }
     Mod+Shift+6 { move-column-to-workspace 6; }
     Mod+Shift+7 { move-column-to-workspace 7; }
     Mod+Shift+8 { move-column-to-workspace 8; }
