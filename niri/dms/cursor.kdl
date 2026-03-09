@@ -5,6 +5,5 @@
 
 cursor {
     xcursor-theme "Pop"
-    xcursor-size 25
-    hide-when-typing
+    xcursor-size 24
 }
