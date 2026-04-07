@@ -46,7 +46,7 @@ return {
     vim.lsp.enable "rust_analyzer"
     vim.lsp.enable "jsonls"
     vim.lsp.config("jsonls", {
-      cmd = { "bunx", "--bun", "vscode-json-language-server", "--stdio" },
+      cmd = { "vscode-json-language-server", "--stdio" },
       on_new_config = function(new_config)
         new_config.settings.json.schemas = new_config.settings.json.schemas or {}
         vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
@@ -66,7 +66,7 @@ return {
     local lspconfig = require "lspconfig"
     vim.lsp.enable "ts_ls"
     vim.lsp.config("ts_ls", {
-      cmd = { "bunx", "--bun", "typescript-language-server", "--stdio" },
+      cmd = { "typescript-language-server", "--stdio" },
       -- cmd = { "tsgo", "--lsp", "--stdio" },
       filetypes = {
         "javascript",
@@ -86,15 +86,15 @@ return {
     })
     vim.lsp.enable "tailwindcss"
     vim.lsp.config("tailwindcss", {
-      cmd = { "bunx", "--bun", "tailwindcss-language-server", "--stdio" },
+      cmd = { "tailwindcss-language-server", "--stdio" },
     })
     vim.lsp.enable "cssls"
     vim.lsp.config("cssls", {
-      cmd = { "bunx", "--bun", "vscode-json-language-server", "--stdio" },
+      cmd = { "vscode-css-language-server", "--stdio" },
     })
     vim.lsp.enable "svelte"
     vim.lsp.config("svelte", {
-      cmd = { "bunx", "--bun", "svelteserver", "--stdio" },
+      cmd = { "svelteserver", "--stdio" },
     })
     vim.lsp.config("zls", {
       -- Set to 'zls' if `zls` is in your PATH
