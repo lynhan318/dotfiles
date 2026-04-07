@@ -7,12 +7,12 @@ return {
         -- try_lint without arguments runs the linters defined in `linters_by_ft`
         -- for the current filetype
         require("lint").linters_by_ft = {
-          javascript = { "eslint_d" },
-          typescript = { "eslint_d" },
-          typescriptreact = { "eslint_d" },
-          javascriptreact = { "eslint_d" },
-          css = { "eslint_d" },
-          json = { "eslint_d" },
+          javascript = { "oxlint" },
+          typescript = { "oxlint" },
+          typescriptreact = { "oxlint" },
+          javascriptreact = { "oxlint" },
+          css = { "oxlint" },
+          json = { "oxlint" },
           svelte = { "eslint_d" },
           rust = { "clippy" },
           zig = { "zlint" },

@@ -1,6 +1,6 @@
 font-family = "FantasqueSansM Nerd Font"
 font-size = 11
-background-opacity = 1.0
+background-opacity = 0.95
 theme = dankcolors
 keybind = ctrl+one=text:\x06\x31
 keybind = ctrl+two=text:\x06\x32

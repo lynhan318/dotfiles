@@ -121,7 +121,7 @@ decoration {
     }
 
     blur {
-        enabled = true
+        enabled = false
         size = 8
         passes = 3
         vibrancy = 0.1696
@@ -140,7 +140,6 @@ animations {
     bezier = niriResize, 0.22, 1.0, 0.36, 1.0
     bezier = easeOutQuint, 0.23, 1, 0.32, 1
     bezier = almostLinear, 0.5, 0.5, 0.75, 1.0
-    bezier = smoothFade, 0.23, 1, 0.32, 1
 
     animation = global, 1, 5, default
     animation = border, 1, 5, easeOutQuint
@@ -155,9 +154,9 @@ animations {
     animation = layersOut, 1, 2, almostLinear, fade
     animation = fadeLayersIn, 1, 2, almostLinear
     animation = fadeLayersOut, 1, 2, almostLinear
-    animation = workspaces, 1, 6, smoothFade, fade
-    animation = workspacesIn, 1, 6, smoothFade, fade
-    animation = workspacesOut, 1, 4, smoothFade, fade
+    animation = workspaces, 0
+    animation = workspacesIn, 0
+    animation = workspacesOut, 0
 }
 
 
@@ -408,5 +407,3 @@ bind = $mainMod+Shift, P, dpms, off
 ##############################
 
 source = ~/.config/hypr/windowrules.conf
-
-source = ./dms/cursor.conf

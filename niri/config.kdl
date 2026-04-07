@@ -80,6 +80,7 @@ spawn-at-startup "fcitx5"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 environment {
   XDG_CURRENT_DESKTOP "niri"
+  GTK_IM_MODULE ""
 }
 hotkey-overlay {
     skip-at-startup
@@ -183,6 +184,10 @@ window-rule {
     match app-id="com.mitchellh.ghostty"
     draw-border-with-background false
     opacity 1.0
+}
+window-rule {
+    match app-id="kitty"
+    draw-border-with-background false
 }
 window-rule {
     match is-active=false

@@ -3,6 +3,8 @@ return {
   cmd = "Copilot",
   event = "InsertEnter",
   opts = {
+    copilot_node_command = "node", -- Node.js version must be > 18.x
+    copilot_model = "gpt-41-copilot",
     panel = {
       enabled = true,
       auto_refresh = false,
@@ -33,9 +35,9 @@ return {
       json = true,
       markdown = true,
       mdx = true,
+      txt = true,
       ["*"] = false,
     },
-    copilot_node_command = "node", -- Node.js version must be > 18.x
     server_opts_overrides = {},
   },
 }

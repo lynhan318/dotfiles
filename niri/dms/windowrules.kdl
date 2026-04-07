@@ -1,2 +1,8 @@
 // DMS Window Rules - Managed by DankMaterialShell
 // Do not edit manually - changes may be overwritten
+
+// @id=wr_1773026363140477918 @name=Floating Auth Popup
+window-rule {
+    match app-id="^google-chrome$" title="Sign in - Google Accounts - Google Chrome"
+    open-floating true
+}
