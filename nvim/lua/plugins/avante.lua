@@ -13,7 +13,7 @@ end)
 -- render-markdown
 pcall(function()
   require("render-markdown").setup({
-    file_types = { "markdown", "Avante" },
+    file_types = { "Avante" },
   })
 end)
 

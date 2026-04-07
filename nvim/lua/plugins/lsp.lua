@@ -76,7 +76,7 @@ vim.lsp.config("ts_ls", {
 
 -- JSON (with SchemaStore)
 vim.lsp.config("jsonls", {
-  cmd = { "bunx", "--bun", "vscode-json-language-server", "--stdio" },
+  cmd = { "bunx", "--bun", "--package=vscode-langservers-extracted", "vscode-json-language-server", "--stdio" },
   filetypes = { "json", "jsonc" },
   root_markers = { ".git" },
   settings = {
@@ -93,7 +93,7 @@ vim.lsp.config("jsonls", {
 
 -- Tailwind
 vim.lsp.config("tailwindcss", {
-  cmd = { "bunx", "--bun", "tailwindcss-language-server", "--stdio" },
+  cmd = { "bunx", "--bun", "--package=@tailwindcss/language-server", "tailwindcss-language-server", "--stdio" },
   filetypes = {
     "html", "css", "scss", "javascript", "javascriptreact",
     "typescript", "typescriptreact", "svelte",
@@ -103,14 +103,14 @@ vim.lsp.config("tailwindcss", {
 
 -- CSS
 vim.lsp.config("cssls", {
-  cmd = { "bunx", "--bun", "vscode-css-language-server", "--stdio" },
+  cmd = { "bunx", "--bun", "--package=vscode-langservers-extracted", "vscode-css-language-server", "--stdio" },
   filetypes = { "css", "scss", "less" },
   root_markers = { "package.json", ".git" },
 })
 
 -- Svelte
 vim.lsp.config("svelte", {
-  cmd = { "bunx", "--bun", "svelteserver", "--stdio" },
+  cmd = { "bunx", "--bun", "--package=svelte-language-server", "svelteserver", "--stdio" },
   filetypes = { "svelte" },
   root_markers = { "package.json", ".git" },
 })
