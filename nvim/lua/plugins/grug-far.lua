@@ -1,24 +1,7 @@
--- Find and replace.
-return {
-    {
-        'MagicDuck/grug-far.nvim',
-        cmd = 'GrugFar',
-        keys = {
-            {
-                '<leader>cg',
-                function()
-                    local grug = require 'grug-far'
-                    grug.open { transient = true }
-                end,
-                desc = 'GrugFar',
-                mode = { 'n', 'v' },
-            },
-        },
-        opts = {
-            -- Disable folding.
-            folding = { enabled = false },
-            -- Don't numerate the result list.
-            resultLocation = { showNumberLabel = false },
-        },
-    },
-}
+require("grug-far").setup({
+  folding = { enabled = false },
+  resultLocation = { showNumberLabel = false },
+})
+vim.keymap.set({ "n", "v" }, "<leader>cg", function()
+  require("grug-far").open({ transient = true })
+end, { desc = "GrugFar" })

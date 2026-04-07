@@ -4,99 +4,98 @@ local g = vim.g
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
-opt.mouse = "a"                               -- Enable mouse support
-opt.clipboard = "unnamedplus"                 -- Copy/paste to system clipboard
-opt.swapfile = false                          -- Don't use swapfile
-opt.completeopt = "menuone,noinsert,noselect" -- Autocomplete options
+opt.mouse = "a"
+opt.clipboard = "unnamedplus"
+opt.swapfile = false
+opt.backup = false
+opt.writebackup = false
+opt.undofile = true                          -- persistent undo
+opt.undolevels = 10000
+opt.confirm = true                           -- prompt to save instead of failing
+opt.completeopt = "menuone,noinsert,noselect"
 
 -- Use Ripgrep
 vim.o.grepprg = "rg --vimgrep"
 vim.o.grepformat = "%f:%l:%c:%m"
 
 -----------------------------------------------------------
--- Enable fold for nvim-ufo
+-- Folding (nvim-ufo)
 -----------------------------------------------------------
--- Folding
--- Enable fold for nvim-ufo
-vim.o.foldenable = true
--- Set high foldlevel for nvim-ufo
-vim.o.foldlevel = 99
--- Start with all code unfolded
-vim.o.foldlevelstart = 99
-vim.o.foldcolumn = "0"
-vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵]]
+opt.foldenable = true
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldcolumn = "0"
+opt.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵,diff:╱]]
+
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
-opt.number = true        -- Show line number
-opt.showmatch = true     -- Highlight matching parenthesis
---opt.colorcolumn = '80' -- Line lenght marker at 80 columns
-opt.splitright = true    -- Vertical split to the right
-opt.splitbelow = true    -- Horizontal split to the bottom
-opt.ignorecase = true    -- Ignore case letters when search
-opt.smartcase = true     -- Ignore lowercase for the whole pattern
-opt.linebreak = false    -- Wrap on word boundary
-opt.termguicolors = true -- Enable 24-bit RGB colors
-opt.laststatus = 3       -- Set global statusline
-opt.signcolumn = "yes"
+opt.number = true
 opt.relativenumber = true
+opt.showmatch = true
+opt.cursorline = true                         -- highlight current line
+opt.colorcolumn = "100"                       -- ruler
+opt.signcolumn = "yes"
+opt.splitright = true
+opt.splitbelow = true
+opt.splitkeep = "screen"                      -- don't scroll on split
+opt.winminwidth = 5
+opt.ignorecase = true
+opt.smartcase = true
+opt.linebreak = false
+opt.wrap = false                              -- IDE-style: no soft wrap
+opt.termguicolors = true
+opt.laststatus = 3                            -- global statusline
+opt.scrolloff = 8
+opt.sidescrolloff = 8
+opt.pumheight = 12
+opt.pumblend = 10
+opt.inccommand = "split"                      -- live preview of :s
+opt.smoothscroll = true
+opt.jumpoptions = "view"
+opt.virtualedit = "block"
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", extends = "›", precedes = "‹" }
 
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------
-opt.expandtab = true   -- Use spaces instead of tabs
-opt.shiftwidth = 4     -- Shift 4 spaces when tab
-opt.tabstop = 4        -- 1 tab == 4 spaces
-opt.smartindent = true -- Autoindent new lines
+opt.expandtab = true
+opt.shiftwidth = 4
+opt.tabstop = 4
+opt.smartindent = true
+opt.formatoptions = "jcroqlnt"
 
 -----------------------------------------------------------
--- Memory, CPU
+-- Performance
 -----------------------------------------------------------
-opt.hidden = true     -- Enable background buffers
-opt.history = 100     -- Remember N lines in history
-opt.lazyredraw = true -- Faster scrolling
-opt.synmaxcol = 240   -- Max column for syntax highlight
-opt.updatetime = 250  -- ms to wait for trigger an event
+opt.hidden = true
+opt.history = 100
+opt.synmaxcol = 240
+opt.updatetime = 200
+opt.timeoutlen = 400
+opt.redrawtime = 1500
+-- NOTE: lazyredraw removed — conflicts with modern UI plugins
+
+-----------------------------------------------------------
+-- Session
+-----------------------------------------------------------
+opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 
 -----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------
--- Disable nvim intro
-opt.shortmess:append "sI"
--- -- Disable builtin plugins
-local disabled_built_ins = {
-    "2html_plugin",
-    "getscript",
-    "getscriptPlugin",
-    "gzip",
-    "logipat",
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "matchit",
-    "tar",
-    "tarPlugin",
-    "rrhelper",
-    "spellfile_plugin",
-    "vimball",
-    "vimballPlugin",
-    "zip",
-    "zipPlugin",
-    "tutor",
-    "rplugin",
-    "synmenu",
-    "optwin",
-    "compiler",
-    "bugreport",
-    "ftplugin",
-}
-vim.filetype.add {
-    extension = {
-        mdx = "mdx",
-    },
-}
+opt.shortmess:append("sIWcC")
 
+local disabled_built_ins = {
+  "2html_plugin", "getscript", "getscriptPlugin", "gzip", "logipat",
+  "netrw", "netrwPlugin", "netrwSettings", "netrwFileHandlers",
+  "matchit", "tar", "tarPlugin", "rrhelper", "spellfile_plugin",
+  "vimball", "vimballPlugin", "zip", "zipPlugin", "tutor",
+  "rplugin", "synmenu", "optwin", "compiler", "bugreport", "ftplugin",
+}
 for _, plugin in pairs(disabled_built_ins) do
-    g["loaded_" .. plugin] = 1
+  g["loaded_" .. plugin] = 1
 end
+
+vim.filetype.add({ extension = { mdx = "mdx" } })
