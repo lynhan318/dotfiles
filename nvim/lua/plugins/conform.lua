@@ -25,7 +25,7 @@ return {
       json = { "prettierd", "biome" },
       rust = { "rustfmt" },
       zig = { "zigfmt" },
-      ["*"] = { "prettierd" },
+      ["_"] = { "prettierd" },
     },
   },
   init = function()

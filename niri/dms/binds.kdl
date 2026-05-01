@@ -2,7 +2,7 @@ binds { // === System & Overview ===
     // Mod+w repeat=false { toggle-overview; } Mod+W repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Tab repeat=false { toggle-overview; }
-    Mod+Return hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
+    Mod+Return hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
     Mod+P hotkey-overlay-title="Color Picker" {
         spawn "dms" "color" "pick" "-a";
     }

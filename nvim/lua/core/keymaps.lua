@@ -20,13 +20,9 @@ map("i", "<C-l>", "<Right>")
 map("i", "<C-h>", "<Left>")
 
 -- Normal Mapping
-map("n", "<c-h>", "<c-w>h")
-map("n", "<c-l>", "<c-w>l")
 map("n", "t1", ":tabn 1<CR>")
 map("n", "t2", ":tabn 2<CR>")
 map("n", "t3", ":tabn 3<CR>")
-map("n", "<c-j>", "<c-w>j")
-map("n", "<c-k>", "<c-w>k")
 map("n", "<ESC><ESC>", ":nohlsearch<CR>")
 map("n", "<leader>q", ":q<CR>")
 map("n", ";", ":", {

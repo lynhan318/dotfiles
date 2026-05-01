@@ -114,7 +114,7 @@ return {
       underline = true,
       update_in_insert = false,
       virtual_text = false,
-      serverity_sort = true,
+      severity_sort = true,
       signs = {
         text = {
           [vim.diagnostic.severity.ERROR] = "",
