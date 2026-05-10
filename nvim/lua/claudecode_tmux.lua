@@ -91,15 +91,13 @@ local function send_to_pane(pane_id, content)
     vim.fn.system(string.format("tmux load-buffer -b _claude_ctx %s", vim.fn.shellescape(tmpfile)))
     vim.fn.system(string.format("tmux paste-buffer -b _claude_ctx -t %s", vim.fn.shellescape(pane_id)))
     vim.fn.delete(tmpfile)
-
-    vim.notify("[claudecode-tmux] sent to " .. pane_id, vim.log.levels.INFO)
+    vim.fn.system(string.format("tmux switch-client -t %s", vim.fn.shellescape(pane_id)))
+    vim.fn.system(string.format("tmux select-pane -t %s", vim.fn.shellescape(pane_id)))
 end
 
 local function format_message(sel)
-    local ft = sel.filetype ~= "" and sel.filetype or "text"
     local path = sel.filepath ~= "" and sel.filepath or "[unnamed]"
-    local ref = string.format("%s#L%d-%d", path, sel.start_line, sel.end_line)
-    return string.format("```%s\n# %s\n%s\n```\n", ft, ref, sel.text)
+    return string.format("%s#L%d-%d", path, sel.start_line, sel.end_line)
 end
 
 function M.send_selection()
