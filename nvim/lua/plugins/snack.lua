@@ -6,7 +6,21 @@ return {
     opts = {
         bigfile = {},
         dashboard = {},
-        picker = {},
+        picker = {
+            layout = {
+                preset = "ivy",
+                preview = true,
+            },
+            sources = {
+                explorer = {
+                    auto_close = true,
+                    layout = {
+                        preset = "ivy",
+                        preview = true,
+                    },
+                },
+            },
+        },
         zen = {},
         image = {},
         indent = {
@@ -14,7 +28,9 @@ return {
         },
         statuscolumn = {},
         words = { enabled = true },
-        explorer = {},
+        explorer = {
+            replace_netrw = true,
+        },
     },
     keys = {
         { "<leader>z", function() Snacks.zen() end,                     desc = "Toggle Zen Mode" },
