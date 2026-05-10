@@ -19,7 +19,6 @@ return {
             "b0o/SchemaStore.nvim",
             version = false,
         },
-        "SmiteshP/nvim-navic",
     },
     config = function(_)
         vim.lsp.enable "rust_analyzer"
@@ -122,9 +121,6 @@ return {
                 })
             end
 
-            -- if client.server_capabilities.documentSymbolProvider then
-            --   require("nvim-navic").attach(client, bufnr)
-            -- end
             local config = require "plugins.lspconfig.configs"
             config.setup(client, bufnr)
         end

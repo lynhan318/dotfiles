@@ -40,20 +40,20 @@ return {
         { "gD",        function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
         { "gh",        function() Snacks.picker.lsp_declarations() end, desc = "HSplit And Goto Declaration" },
         {
-            "gv",
+            "gs",
             function()
-                vim.cmd("sp")
+                vim.cmd("split")
                 vim.lsp.buf.definition()
             end,
-            desc = "Goto Declaration"
+            desc = "HSplit and Goto Definition"
         },
         {
             "gv",
             function()
-                vim.cmd("vssp")
+                vim.cmd("vsplit")
                 vim.lsp.buf.definition()
             end,
-            desc = "VSplit and Goto Declaration"
+            desc = "VSplit and Goto Definition"
         },
         { "gr",         function() Snacks.picker.lsp_references() end,        nowait = true,                     desc = "References" },
         { "gI",         function() Snacks.picker.lsp_implementations() end,   desc = "Goto Implementation" },
@@ -75,5 +75,6 @@ return {
         { "<c-s>",      function() Snacks.picker.grep_word() end,             desc = "Visual selection or word", mode = { "n", "x" } },
         { "<c-q>",      function() Snacks.picker.qflist() end,                desc = "Quickfix List" },
         { "<leader>e",  function(opts) Snacks.explorer.open(opts) end,        desc = "Reveal File Explorer" },
+        { "<leader>lg", function() Snacks.lazygit() end,                      desc = "LazyGit" },
     },
 }

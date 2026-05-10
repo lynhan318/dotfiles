@@ -2,15 +2,14 @@ local M = {}
 
 function M.setup(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    if client.server_capabilities.documentHighlightProvider then
+    if client:supports_method("textDocument/documentHighlight") then
         vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
         vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
         vim.api.nvim_create_autocmd("CursorHold", {
             callback = function()
-                -- Double check capability before calling to avoid errors
                 local clients = vim.lsp.get_clients({ bufnr = bufnr })
                 for _, c in ipairs(clients) do
-                    if c.server_capabilities.documentHighlightProvider then
+                    if c:supports_method("textDocument/documentHighlight") then
                         vim.lsp.buf.document_highlight()
                         return
                     end

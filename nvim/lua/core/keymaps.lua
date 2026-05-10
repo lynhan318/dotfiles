@@ -29,7 +29,8 @@ map("n", ";", ":", {
   silent = false,
   nowait = true,
 })
-map("n", "S", ":%s//g<Left><Left>", {
+-- Reclaim S for flash.treesitter; keep substitute-global helper on <leader>S.
+map("n", "<leader>S", ":%s//g<Left><Left>", {
   nowait = true,
   silent = false,
 })

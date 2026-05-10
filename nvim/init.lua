@@ -1,3 +1,6 @@
+-- Enable Lua bytecode cache for faster startup (Neovim 0.9+)
+vim.loader.enable()
+
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 -- Auto-install lazy.nvim if not present

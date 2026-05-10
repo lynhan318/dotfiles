@@ -14,14 +14,10 @@ vim.o.grepprg = "rg --vimgrep"
 vim.o.grepformat = "%f:%l:%c:%m"
 
 -----------------------------------------------------------
--- Enable fold for nvim-ufo
+-- Folding (native treesitter foldexpr, set per-buffer in plugins/treesitter.lua)
 -----------------------------------------------------------
--- Folding
--- Enable fold for nvim-ufo
 vim.o.foldenable = true
--- Set high foldlevel for nvim-ufo
 vim.o.foldlevel = 99
--- Start with all code unfolded
 vim.o.foldlevelstart = 99
 vim.o.foldcolumn = "0"
 vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵]]
