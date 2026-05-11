@@ -68,8 +68,7 @@ return {
             set({ "n", "x" }, "<leader>mi", mc.sequenceIncrement,     { desc = "MC sequence ++" })
             set({ "n", "x" }, "<leader>mI", mc.sequenceDecrement,     { desc = "MC sequence --" })
 
-            set({ "n", "x" }, "<C-d>", function() mc.matchAddCursor(1)  end, { desc = "MC add next occurrence" })
-            set({ "n", "x" }, "<C-n>", function() mc.matchAddCursor(-1) end, { desc = "MC add prev occurrence" })
+            set({ "n", "x" }, "<C-n>", function() mc.matchAddCursor(1) end, { desc = "MC add prev occurrence" })
             set({ "n", "x" }, "<C-x>", function() mc.matchSkipCursor(1) end, { desc = "MC skip current match" })
 
             set("n", "<Esc>", function()
