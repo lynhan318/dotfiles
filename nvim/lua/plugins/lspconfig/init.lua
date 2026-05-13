@@ -93,6 +93,12 @@ return {
             update_in_insert = false,
             virtual_text = false,
             severity_sort = true,
+            float = {
+                border = "rounded",
+                source = "if_many",
+                max_width = 100,
+                wrap = true,
+            },
             signs = {
                 text = {
                     [vim.diagnostic.severity.ERROR] = "",

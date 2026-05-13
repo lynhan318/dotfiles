@@ -5,22 +5,19 @@ return {
     opts = {
         jump = { autojump = true },
         modes = {
-            -- Enhance native f/F/t/T: first match jumps natively, additional
-            -- matches get flash labels so you can skip the ;/, dance.
-            char = { enabled = true },
-            -- Add flash labels to / and ? searches; toggle with <c-s>.
-            search = { enabled = true },
+            char = { enabled = false },
+            search = { enabled = false },
         },
     },
     keys = {
         {
-            "s",
+            "f",
             mode = { "n", "x", "o" },
             function() require("flash").jump() end,
             desc = "Flash Jump",
         },
         {
-            "S",
+            "F",
             mode = { "n", "x", "o" },
             function() require("flash").treesitter() end,
             desc = "Flash Treesitter",
@@ -37,11 +34,11 @@ return {
             function() require("flash").treesitter_search() end,
             desc = "Treesitter Search",
         },
-        {
-            "<c-s>",
-            mode = { "c" },
-            function() require("flash").toggle() end,
-            desc = "Toggle Flash Search",
-        },
+        -- {
+        --     "<c-s>",
+        --     mode = { "c" },
+        --     function() require("flash").toggle() end,
+        --     desc = "Toggle Flash Search",
+        -- },
     },
 }

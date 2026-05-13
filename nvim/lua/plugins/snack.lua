@@ -19,6 +19,14 @@ return {
                         preview = true,
                     },
                 },
+                diagnostics = {
+                    layout = { preset = "ivy", preview = false },
+                    win = { list = { wo = { wrap = true } } },
+                },
+                diagnostics_buffer = {
+                    layout = { preset = "ivy", preview = false },
+                    win = { list = { wo = { wrap = true } } },
+                },
             },
         },
         zen = {},
@@ -64,10 +72,8 @@ return {
         { "rf",         function(opts) vim.lsp.buf.rename(opts) end,          nowait = true,                     desc = "Rename symbol" },
         { "K",          function(opts) vim.lsp.buf.hover(opts) end,           nowait = true,                     desc = "Hover document" },
         { "<leader>ca", function(opts) vim.lsp.buf.code_action(opts) end,     desc = "LSP Code Action" },
-        { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
         { "<leader>bd", function() Snacks.bufdelete() end,                    desc = "Delete Buffer" },
-        { "<leader>sd", function() Snacks.picker.diagnostics() end,           desc = "Diagnostics" },
-        { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end,    desc = "Buffer Diagnostics" },
+        { "<leader>sd", function() Snacks.picker.diagnostics_buffer() end,    desc = "Buffer Diagnostics" },
 
         { "<c-p>",      function() Snacks.picker.smart() end,                 desc = "Smart Find Files" },
         { "<c-b>",      function() Snacks.picker.buffers() end,               desc = "Buffers" },

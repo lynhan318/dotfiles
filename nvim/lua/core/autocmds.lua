@@ -15,3 +15,6 @@ autocmd("BufEnter", {
   command = "set fo-=c fo-=r fo-=o",
 })
 
+vim.keymap.set("n", "]q", "<cmd>cnext<CR>", { silent = true, desc = "Next qf entry" })
+vim.keymap.set("n", "[q", "<cmd>cprev<CR>", { silent = true, desc = "Prev qf entry" })
+
