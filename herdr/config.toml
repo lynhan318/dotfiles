@@ -40,48 +40,20 @@ default_shell = "/usr/bin/zsh"
 new_cwd = "follow"
 
 [keys]
-# tmux: unbind C-b ; set -g prefix C-f
 prefix = "ctrl+f"
-
-# tmux: bind r source-file ~/.tmux.conf  (reload)
+switch_tab = "ctrl+1..9"
+switch_workspace = "prefix+1..9"
+focus_agent = "prefix+shift+1..9"
 reload_config = "prefix+r"
-# herdr uses an interactive resize MODE (then h/j/k/l / arrows), unlike tmux's
-# direct prefix+H/J/K/L resize. Moved off prefix+r so reload can live there.
 resize_mode = "prefix+shift+r"
-
-# tmux: bind-key p ... sesh connect  (session picker)
-# herdr workspaces are the equivalent of sesh sessions.
 workspace_picker = "prefix+p"
-
-# Tab navigation. next stays on prefix+n; the direct Ctrl+Shift+Left/Right
-# echo your tmux `-n C-S-Left/Right swap-window` muscle memory (herdr switches
-# tabs rather than reordering them — it has no move-tab binding).
 next_tab = ["prefix+n", "ctrl+shift+right"]
 previous_tab = "ctrl+shift+left"
-
-# tmux: bind-key h/j/k/l select-pane (same as herdr defaults; listed for clarity)
-focus_pane_left = "prefix+h"
-focus_pane_down = "prefix+j"
-focus_pane_up = "prefix+k"
-focus_pane_right = "prefix+l"
-
-# Splits. NOTE the naming differs from tmux:
-#   herdr split_vertical   = panes side-by-side (vertical divider)  == tmux split-window -h
-#   herdr split_horizontal = panes stacked      (horizontal divider) == tmux split-window -v
-# tmux: bind v split-window -h  ->
 split_vertical = "prefix+v"
-# tmux: bind s split-window -v  ->  (overrides herdr's default settings key)
 split_horizontal = "prefix+s"
-# moved herdr's settings menu off prefix+s so `s` keeps splitting
-settings = "prefix+shift+s"
-
-# tmux: bind f resize-pane -Z  (zoom/fullscreen pane)
+settings = "prefix+shift+s" 
 zoom = "prefix+f"
 
-# tmux: bind-key x kill-pane  == herdr default close_pane (prefix+x), left as-is.
-
-# tmux: bind-key C-y display-popup ... lazygit
-# herdr has no popups; a temporary pane closes when the command exits.
 [[keys.command]]
 key = "prefix+ctrl+y"
 type = "pane"
@@ -129,3 +101,6 @@ description = "navigate right (vim/herdr)"
 
 [experimental]
 pane_history = true
+
+[ui.toast]
+delivery = "off"

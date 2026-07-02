@@ -44,8 +44,8 @@ return {
         local lspconfig = require "lspconfig"
         vim.lsp.enable "ts_ls"
         vim.lsp.config("ts_ls", {
-            cmd = { "typescript-language-server", "--stdio" },
-            -- cmd = { "tsgo", "--lsp", "--stdio" },
+            -- cmd = { "typescript-language-server", "--stdio" },
+            cmd = { "tsgo", "--lsp", "--stdio" },
             filetypes = {
                 "javascript",
                 "javascriptreact",
