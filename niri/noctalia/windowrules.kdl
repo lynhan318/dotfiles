@@ -1,0 +1,10 @@
+// Noctalia-specific window rules.
+//
+// Noctalia draws its bar, launcher, control center, notifications, session
+// menu, lock screen and OSDs as wlr-layer-shell surfaces (not toplevel
+// windows), so they need no window-rule. Its Settings opens as a real window;
+// float it so it doesn't get tiled into the column layout.
+window-rule {
+    match app-id=r#"^dev\.noctalia\."#
+    open-floating true
+}

@@ -66,6 +66,11 @@ layer-rule {
     place-within-backdrop true
 }
 overview {
+    // Opaque backdrop forces niri to clear the backdrop buffer each frame,
+    // preventing ghost images of old windows leaking through the
+    // place-within-backdrop wallpaper. Hidden behind the wallpaper, so the
+    // exact color only matters if the wallpaper ever fails to cover.
+    backdrop-color "#2d353b"
     workspace-shadow {
         off
     }
@@ -76,6 +81,9 @@ overview {
 // See the binds section below for more spawn examples.
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+// Pre-paint wallpaper instantly so login isn't black while DMS/quickshell loads (~3s).
+// DMS draws its own wallpaper on top once ready; same images = no visible handoff.
+spawn-at-startup "swaybg" "-o" "DP-1" "-i" "/home/kevin/.dotfiles/wallpapers/dark.jpg" "-m" "fill" "-o" "HDMI-A-1" "-i" "/home/kevin/.dotfiles/wallpapers/4259846_91284.jpg" "-m" "fill"
 spawn-at-startup "fcitx5"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 environment {
@@ -240,3 +248,5 @@ include "dms/outputs.kdl"
 include "dms/cursor.kdl"
 
 include "dms/windowrules.kdl"
+
+include "noctalia.kdl"

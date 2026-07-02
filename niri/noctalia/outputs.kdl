@@ -1,0 +1,20 @@
+// Monitor layout — hardware-specific, identical regardless of which shell
+// (DMS or Noctalia) is running. Copied from the DMS-generated outputs so the
+// Noctalia session lights up the same screens. Adjust with `niri msg outputs`.
+
+output "DP-1" {
+    mode "3840x2160@59.997"
+    scale 1.5
+    position x=0 y=634
+    focus-at-startup
+}
+
+output "HDMI-A-1" {
+    mode "3840x2160@60.000"
+    scale 1.5
+    transform "270"
+    position x=2560 y=0
+    hot-corners {
+        off
+    }
+}

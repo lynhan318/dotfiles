@@ -45,16 +45,32 @@ local function is_claude_process(cmd, pid)
     return false
 end
 
+local function current_tmux_window()
+    if vim.env.TMUX == nil or vim.env.TMUX == "" then
+        return nil, nil
+    end
+    local out = vim.fn.system "tmux display-message -p '#{session_name}|#{window_index}'"
+    local session, win_idx = out:match "^([^|]*)|([^|\n]*)"
+    if not session or session == "" then
+        return nil, nil
+    end
+    return session, win_idx
+end
+
 local function find_claude_panes()
+    local cur_session, cur_win = current_tmux_window()
+    local scope = cur_session and "" or "-a "
     local raw = vim.fn.systemlist(
-        "tmux list-panes -a -F '#{session_name}|#{window_index}|#{pane_index}|#{pane_id}|#{pane_current_command}|#{window_name}|#{pane_title}|#{pane_pid}'"
+        "tmux list-panes " .. scope .. "-F '#{session_name}|#{window_index}|#{pane_index}|#{pane_id}|#{pane_current_command}|#{window_name}|#{pane_title}|#{pane_pid}'"
     )
 
     local panes = {}
     for _, line in ipairs(raw) do
         local session, win_idx, pane_idx, pane_id, cmd, win_name, pane_title, pid =
             line:match "^([^|]*)|([^|]*)|([^|]*)|([^|]*)|([^|]*)|([^|]*)|([^|]*)|([^|]*)$"
-        if cmd and is_claude_process(cmd, pid) then
+        local in_current_window = cur_session == nil
+            or (session == cur_session and win_idx == cur_win)
+        if cmd and in_current_window and is_claude_process(cmd, pid) then
             -- Claude Code sets pane title to "Claude Code [session-name]"
             local cc_session = pane_title and pane_title:match "%[([^%]]+)%]$"
             local label = cc_session
@@ -109,7 +125,8 @@ function M.send_selection()
 
     local panes = find_claude_panes()
     if #panes == 0 then
-        vim.notify("[claudecode-tmux] no Claude Code panes found in tmux", vim.log.levels.WARN)
+        local where = (vim.env.TMUX and vim.env.TMUX ~= "") and "in current tmux window" or "in tmux"
+        vim.notify("[claudecode-tmux] no Claude Code panes found " .. where, vim.log.levels.WARN)
         return
     end
 

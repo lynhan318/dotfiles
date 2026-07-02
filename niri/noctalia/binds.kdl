@@ -1,0 +1,181 @@
+binds { // === System & Overview ===
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Tab repeat=false { toggle-overview; }
+    Mod+Return hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
+
+    // --- Noctalia shell (IPC via `noctalia msg`) ---
+    Mod+D hotkey-overlay-title="Application Launcher" {
+        spawn "noctalia" "msg" "panel-toggle" "launcher";
+    }
+    Mod+V hotkey-overlay-title="Clipboard History" {
+        spawn "noctalia" "msg" "panel-toggle" "clipboard";
+    }
+    Mod+A hotkey-overlay-title="Control Center" {
+        spawn "noctalia" "msg" "panel-toggle" "control-center";
+    }
+    Mod+M hotkey-overlay-title="Session / Power Menu" {
+        spawn "noctalia" "msg" "panel-toggle" "session";
+    }
+    Mod+N hotkey-overlay-title="Notification Center" {
+        spawn "noctalia" "msg" "panel-toggle" "notifications";
+    }
+    Mod+Comma hotkey-overlay-title="Settings" {
+        spawn "noctalia" "msg" "settings-toggle";
+    }
+    Mod+Y hotkey-overlay-title="Browse Wallpapers" {
+        spawn "noctalia" "msg" "panel-toggle" "wallpaper";
+    }
+    Mod+S hotkey-overlay-title="Screenshot region" {
+        spawn "noctalia" "msg" "screenshot-region";
+    }
+    Mod+E hotkey-overlay-title="Cast focused window" {
+        spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg -j focused-window | jq .id)";
+    }
+    Mod+Shift+S hotkey-overlay-title="Screen recorder" { spawn "~/.dotfiles/niri/scripts/recorder.sh"; }
+
+    // Noctalia has no IPC color-picker / notepad / process-list equivalent.
+    // Re-enable these with an external tool if you want them:
+    // Mod+P hotkey-overlay-title="Color Picker" { spawn-sh "hyprpicker -a"; }
+
+    // === Security ===
+    Mod+Ctrl+L hotkey-overlay-title="Lock Screen" {
+        spawn "noctalia" "msg" "session" "lock";
+    }
+    Mod+Shift+E { quit; }
+
+    // === Audio Controls (Noctalia OSD) ===
+    XF86AudioRaiseVolume allow-when-locked=true {
+        spawn "noctalia" "msg" "volume-up" "3";
+    }
+    XF86AudioLowerVolume allow-when-locked=true {
+        spawn "noctalia" "msg" "volume-down" "3";
+    }
+    XF86AudioMute allow-when-locked=true {
+        spawn "noctalia" "msg" "volume-mute";
+    }
+    XF86AudioMicMute allow-when-locked=true {
+        spawn "noctalia" "msg" "mic-mute";
+    }
+
+    // === Media Controls ===
+    XF86AudioPlay allow-when-locked=true { spawn "noctalia" "msg" "media" "toggle"; }
+    XF86AudioNext allow-when-locked=true { spawn "noctalia" "msg" "media" "next"; }
+    XF86AudioPrev allow-when-locked=true { spawn "noctalia" "msg" "media" "previous"; }
+
+    // === Brightness Controls ===
+    XF86MonBrightnessUp allow-when-locked=true {
+        spawn "noctalia" "msg" "brightness-up";
+    }
+    XF86MonBrightnessDown allow-when-locked=true {
+        spawn "noctalia" "msg" "brightness-down";
+    }
+
+    // === Window Management ===
+    Mod+Q repeat=false { close-window; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+Space { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    // === Focus Navigation ===
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+
+    // === Window Movement ===
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+L     { move-column-right; }
+
+    // === Column Navigation ===
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    // === Monitor Navigation ===
+    Mod+Ctrl+Left  { focus-monitor-left; }
+    Mod+Ctrl+Down  { focus-monitor-down; }
+    Mod+Ctrl+Up    { focus-monitor-up; }
+    Mod+Ctrl+Right { focus-monitor-right; }
+
+    // === Move to Monitor ===
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+    // === Workspace Navigation ===
+    Mod+Down      { focus-workspace-down; }
+    Mod+Up        { focus-workspace-up; }
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
+
+    // === Move Workspaces ===
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+U         { move-workspace-down; }
+    Mod+Shift+I         { move-workspace-up; }
+
+    // === Mouse Wheel Navigation ===
+    Mod+WheelScrollDown      { focus-column-right; }
+    Mod+WheelScrollUp       { focus-column-left; }
+
+    // === Numbered Workspaces ===
+    Mod+1 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 1"; }
+    Mod+2 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 2"; }
+    Mod+3 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 3"; }
+    Mod+4 { focus-monitor "HDMI-A-1";}
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    // === Move to Numbered Workspaces ===
+    Mod+Shift+1 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 1"; }
+    Mod+Shift+2 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 2"; }
+    Mod+Shift+3 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 3"; }
+    Mod+Shift+4 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 4"; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    // === Column Management ===
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+Period { expel-window-from-column; }
+
+    // === Sizing & Layout ===
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+C { center-column; }
+    Mod+Ctrl+C { center-visible-columns; }
+
+    // === Manual Sizing ===
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // === Screenshots (niri-native) ===
+    XF86Launch1 { screenshot; }
+    Ctrl+XF86Launch1 { screenshot-screen; }
+    Mod+XF86Launch1 { screenshot-window; }
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Mod+Print { screenshot-window; }
+
+    // === System Controls ===
+    Mod+Shift+P { power-off-monitors; }
+}

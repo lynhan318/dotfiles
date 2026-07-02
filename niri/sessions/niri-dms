@@ -1,0 +1,13 @@
+#!/bin/sh
+# Session wrapper: niri + DankMaterialShell.
+# Selected from the login greeter via niri-dms.desktop. The greeter launches
+# this script's absolute path as the user, so $HOME resolves to the user home.
+#
+# NIRI_SHELL is the per-session selector read by the dms.service gate
+# (~/.config/systemd/user/dms.service.d/combo.conf). NIRI_CONFIG picks the niri
+# config. niri-session re-imports the environment into the systemd --user
+# manager, but we import here too so the gate is set before niri.service starts.
+export NIRI_SHELL=dms
+export NIRI_CONFIG="$HOME/.dotfiles/niri/config.kdl"
+systemctl --user import-environment NIRI_SHELL NIRI_CONFIG 2>/dev/null || true
+exec niri-session

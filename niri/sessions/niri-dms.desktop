@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=niri + DMS
+Comment=Scrollable-tiling niri with DankMaterialShell
+Exec=/home/kevin/.dotfiles/niri/sessions/niri-dms
+Type=Application
+DesktopNames=niri

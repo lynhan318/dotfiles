@@ -1,0 +1,4 @@
+onboarding = false
+
+[theme]
+name = "terminal"

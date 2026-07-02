@@ -1,0 +1,235 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "wN",
+      "custom_name": "canvize",
+      "identity_cwd": "/home/kevin/canvize",
+      "public_pane_numbers": {
+        "4": 2,
+        "1": 1,
+        "2": 6,
+        "7": 7,
+        "5": 4,
+        "6": 3,
+        "3": 5
+      },
+      "next_public_pane_number": 8,
+      "public_tab_numbers": [
+        1,
+        2,
+        3
+      ],
+      "next_public_tab_number": 4,
+      "tabs": [
+        {
+          "custom_name": "web",
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5423729,
+              "first": {
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.5,
+                  "first": {
+                    "Pane": 1
+                  },
+                  "second": {
+                    "Pane": 2
+                  }
+                }
+              },
+              "second": {
+                "Pane": 3
+              }
+            }
+          },
+          "panes": {
+            "1": {
+              "cwd": "/home/kevin/canvize"
+            },
+            "2": {
+              "cwd": "/home/kevin/.config"
+            },
+            "3": {
+              "cwd": "/home/kevin/canvize/web",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "6a9c3702-4094-4f07-b287-71f934b2cd99"
+              }
+            }
+          },
+          "zoomed": false,
+          "focused": 2,
+          "root_pane": 1
+        },
+        {
+          "custom_name": "api",
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.55,
+              "first": {
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.55,
+                  "first": {
+                    "Pane": 4
+                  },
+                  "second": {
+                    "Pane": 5
+                  }
+                }
+              },
+              "second": {
+                "Pane": 6
+              }
+            }
+          },
+          "panes": {
+            "5": {
+              "cwd": "/home/kevin/canvize"
+            },
+            "4": {
+              "cwd": "/home/kevin/.canvize"
+            },
+            "6": {
+              "cwd": "/home/kevin/canvize"
+            }
+          },
+          "zoomed": false,
+          "focused": 6,
+          "root_pane": 4
+        },
+        {
+          "custom_name": "misc",
+          "layout": {
+            "Pane": 7
+          },
+          "panes": {
+            "7": {
+              "cwd": "/home/kevin/.config/herdr",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "79deb355-cd44-41c7-bf5e-973fe867d0cd"
+              }
+            }
+          },
+          "zoomed": false,
+          "focused": 7,
+          "root_pane": 7
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "wP",
+      "custom_name": "server",
+      "identity_cwd": "/home/kevin",
+      "public_pane_numbers": {
+        "11": 3,
+        "10": 2,
+        "9": 4,
+        "8": 1
+      },
+      "next_public_pane_number": 5,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5,
+              "first": {
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.5,
+                  "first": {
+                    "Pane": 8
+                  },
+                  "second": {
+                    "Pane": 9
+                  }
+                }
+              },
+              "second": {
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.5,
+                  "first": {
+                    "Pane": 10
+                  },
+                  "second": {
+                    "Pane": 11
+                  }
+                }
+              }
+            }
+          },
+          "panes": {
+            "11": {
+              "cwd": "/home/kevin"
+            },
+            "8": {
+              "cwd": "/home/kevin"
+            },
+            "9": {
+              "cwd": "/home/kevin"
+            },
+            "10": {
+              "cwd": "/home/kevin"
+            }
+          },
+          "zoomed": false,
+          "focused": 8,
+          "root_pane": 8
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "wQ",
+      "custom_name": "rust",
+      "identity_cwd": "/home/kevin",
+      "public_pane_numbers": {
+        "12": 1
+      },
+      "next_public_pane_number": 2,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 12
+          },
+          "panes": {
+            "12": {
+              "cwd": "/home/kevin"
+            }
+          },
+          "zoomed": false,
+          "focused": 12,
+          "root_pane": 12
+        }
+      ],
+      "active_tab": 0
+    }
+  ],
+  "active": 0,
+  "selected": 0,
+  "sidebar_width": 24,
+  "sidebar_section_split": 0.5,
+  "collapsed_space_keys": []
+}

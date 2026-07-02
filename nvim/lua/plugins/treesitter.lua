@@ -45,6 +45,13 @@ return {
                 return vim.treesitter.get_node()
             end
             vim.keymap.set("n", "<CR>", function()
+                -- In special buffers (quickfix, help, etc.) keep the native <CR>:
+                -- e.g. in the quickfix list, Enter must jump to the item.
+                if vim.bo.buftype ~= "" then
+                    local cr = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
+                    vim.api.nvim_feedkeys(cr, "n", false)
+                    return
+                end
                 local n = tsnode_under_cursor(); if not n then return end
                 local r1, c1, r2, c2 = n:range()
                 vim.fn.setpos("'<", { 0, r1 + 1, c1 + 1, 0 })

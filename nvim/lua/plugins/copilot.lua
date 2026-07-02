@@ -4,7 +4,8 @@ return {
   event = "InsertEnter",
   opts = {
     copilot_node_command = "node", -- Node.js version must be > 18.x
-    copilot_model = "gpt-41-copilot",
+    -- copilot_model left unset: the Copilot LSP server picks its best default
+    -- completion model. Pin one only after `:Copilot model list` shows valid ids.
     panel = {
       enabled = true,
       auto_refresh = false,

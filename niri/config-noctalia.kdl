@@ -1,0 +1,214 @@
+// ============================================================================
+//  niri + Noctalia session config
+// ----------------------------------------------------------------------------
+//  Drop-in alternative to config.kdl (which drives DMS). This boots niri with
+//  Noctalia (https://noctalia.dev) as the shell instead of DankMaterialShell.
+//
+//  Activate it by pointing niri's config at this file, e.g.:
+//      ln -sf ~/.dotfiles/niri/config-noctalia.kdl ~/.config/niri/config.kdl
+//  Then restart niri. See noctalia/README.md for details and how to switch back.
+//
+//  KDL format: https://kdl.dev   |   niri wiki: https://github.com/YaLTeR/niri/wiki
+// ============================================================================
+config-notification {
+    disable-failed
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+input {
+    mod-key "Alt"
+    keyboard {
+        xkb {
+        }
+        repeat-delay 370
+        repeat-rate 50
+        numlock
+    }
+    touchpad {
+    }
+    mouse {
+    }
+    trackpoint {
+    }
+}
+
+// Place Noctalia's wallpaper/backdrop layer behind the overview backdrop so the
+// wallpaper shows through the overview (DMS used the "quickshell" namespace;
+// Noctalia's single-binary build uses "noctalia-backdrop").
+layer-rule {
+    match namespace="^noctalia-backdrop$"
+    place-within-backdrop true
+}
+overview {
+    // Opaque backdrop forces niri to clear the backdrop buffer each frame,
+    // preventing ghost images of old windows leaking through the
+    // place-within-backdrop wallpaper.
+    backdrop-color "#2d353b"
+    workspace-shadow {
+        off
+    }
+}
+
+// === Startup ===
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup "fcitx5"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+// Launch the Noctalia shell (bar, launcher, control center, notifications,
+// lock screen, OSDs). --daemon matches its .desktop Exec.
+spawn-at-startup "noctalia" "--daemon"
+
+environment {
+  XDG_CURRENT_DESKTOP "niri"
+  GTK_IM_MODULE ""
+}
+hotkey-overlay {
+    skip-at-startup
+}
+
+workspace "1: dev" {
+    open-on-output "DP-1"
+}
+workspace "2: web" {
+    open-on-output "DP-1"
+}
+workspace "3: message" {
+    open-on-output "DP-1"
+}
+workspace "4: float" {
+    open-on-output "HDMI-A-1"
+}
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    workspace-switch {
+        spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
+    }
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    config-notification-open-close {
+        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
+    }
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+    overview-open-close {
+        spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
+    }
+}
+
+// === Window rules ===
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 0
+    clip-to-geometry true
+}
+window-rule {
+    match app-id=r#"^gnome-control-center$"#
+    match app-id=r#"^pavucontrol$"#
+    match app-id=r#"^nm-connection-editor$"#
+    default-column-width { proportion 0.5; }
+    open-floating false
+}
+window-rule {
+    match app-id=r#"^gnome-calculator$"#
+    match app-id=r#"^galculator$"#
+    match app-id=r#"^blueman-manager$"#
+    match app-id=r#"^org\.gnome\.Nautilus$"#
+    match app-id=r#"^steam$"#
+    match app-id=r#"^xdg-desktop-portal$"#
+    match app-id=r#"^1password$"#
+    match app-id=r#"^telegram-desktop$"#
+    match app-id=r#"^slack$"#
+    match app-id=r#"^Pinentry-gtk"#
+    match app-id=r#"^org.telegram.desktop"#
+    match app-id=r#"^Emulator"#
+    match app-id=r#"^Slack"#
+    match app-id=r#"^chrome-kjgfgldnnfoeklkmfkjfagphfepbbdan-Profile_1"#
+    open-floating true
+}
+
+// Chat apps always open on workspace 4
+window-rule {
+    match app-id=r#"^telegram-desktop$"#
+    match app-id=r#"^org\.telegram\.desktop$"#
+    match app-id=r#"^Slack$"#
+    match app-id=r#"^slack$"#
+    match app-id=r#"^discord$"#
+    match app-id=r#"^Discord$"#
+    open-on-workspace "Message"
+}
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+    draw-border-with-background false
+    opacity 1.0
+}
+window-rule {
+    match app-id="kitty"
+    draw-border-with-background false
+}
+window-rule {
+    match is-active=false
+    opacity 1.0
+}
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id="zoom"
+    open-floating true
+}
+
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+
+// Override to disable super+tab
+recent-windows {
+    binds {
+        Alt+Tab         { next-window scope="output"; }
+        Alt+Shift+Tab   { previous-window scope="output"; }
+        Alt+grave       { next-window filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+    }
+}
+
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-gradient from="#f38ba8ee" to="#cc241dee" angle=45
+    }
+}
+window-rule {
+    match app-id=r#"^1password$"#
+    block-out-from "screencast"
+}
+
+// === Noctalia session includes (mirror of the dms/ split) ===
+include "noctalia/colors.kdl"
+include "noctalia/layout.kdl"
+include "noctalia/binds.kdl"
+include "noctalia/outputs.kdl"
+include "noctalia/cursor.kdl"
+include "noctalia/windowrules.kdl"

@@ -12,6 +12,7 @@ local function map(mode, lhs, rhs, opts)
 end
 
 g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
+g.maplocalleader = ' '
 
 -- Insert Mapping
 map("i", "jk", "<Esc>")

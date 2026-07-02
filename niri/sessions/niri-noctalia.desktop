@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=niri + Noctalia
+Comment=Scrollable-tiling niri with the Noctalia shell
+Exec=/home/kevin/.dotfiles/niri/sessions/niri-noctalia
+Type=Application
+DesktopNames=niri

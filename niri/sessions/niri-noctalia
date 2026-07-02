@@ -1,0 +1,11 @@
+#!/bin/sh
+# Session wrapper: niri + Noctalia.
+# Selected from the login greeter via niri-noctalia.desktop.
+#
+# NIRI_SHELL=noctalia trips the dms.service gate so DMS does NOT start in this
+# session. Noctalia itself is launched by config-noctalia.kdl's
+# `spawn-at-startup "noctalia" "--daemon"`.
+export NIRI_SHELL=noctalia
+export NIRI_CONFIG="$HOME/.dotfiles/niri/config-noctalia.kdl"
+systemctl --user import-environment NIRI_SHELL NIRI_CONFIG 2>/dev/null || true
+exec niri-session

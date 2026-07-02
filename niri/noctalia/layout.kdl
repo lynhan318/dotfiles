@@ -1,0 +1,27 @@
+// Layout sizing for the Noctalia session. Slightly rounded corners to match
+// Noctalia's rounded UI (DMS used 0). Color values live in colors.kdl.
+
+layout {
+    gaps 4
+
+    border {
+        width 2
+    }
+
+    focus-ring {
+        width 2
+    }
+}
+
+window-rule {
+    geometry-corner-radius 0
+    clip-to-geometry true
+    tiled-state true
+    draw-border-with-background false
+}
+
+recent-windows {
+    highlight {
+        corner-radius 12
+    }
+}

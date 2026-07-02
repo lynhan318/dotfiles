@@ -1,0 +1,131 @@
+# herdr configuration — ported from ~/.tmux.conf
+# Reload after editing with: herdr server reload-config  (or prefix+r below)
+
+onboarding = false
+
+[theme]
+# Everforest Dark (medium) — sainnhe's warm, low-contrast green palette.
+# herdr ships no built-in "everforest", so we take catppuccin as the base
+# (same semantic token names) and override every token to Everforest values
+# in [theme.custom] below.
+name = "catppuccin"
+auto_switch = false
+
+# Override individual color tokens on top of the base theme.
+# Accepts: hex (#rrggbb), named colors, rgb(r,g,b), or panel_bg = "reset".
+[theme.custom]
+# Backgrounds
+panel_bg    = "#2d353b"  # bg0    — main background
+surface_dim = "#232a2e"  # bg_dim — dimmer surface (sidebar / inactive)
+surface0    = "#343f44"  # bg1    — elevated surface
+surface1    = "#3d484d"  # bg2    — selection / higher elevation
+overlay0    = "#7a8478"  # grey0  — muted borders / comments
+overlay1    = "#859289"  # grey1  — brighter muted
+# Foreground
+text        = "#d3c6aa"  # fg
+subtext0    = "#9da9a0"  # grey2  — secondary text
+# Accents (Everforest palette)
+accent      = "#a7c080"  # green  — Everforest signature highlight
+red         = "#e67e80"
+green       = "#a7c080"
+yellow      = "#dbbc7f"
+blue        = "#7fbbb3"
+teal        = "#83c092"  # aqua
+mauve       = "#d699b6"  # purple
+peach       = "#e69875"  # orange
+[terminal]
+# tmux: set-option -g default-shell /usr/bin/zsh
+default_shell = "/usr/bin/zsh"
+# tmux split-window used -c '#{pane_current_path}' -> inherit source pane cwd
+new_cwd = "follow"
+
+[keys]
+# tmux: unbind C-b ; set -g prefix C-f
+prefix = "ctrl+f"
+
+# tmux: bind r source-file ~/.tmux.conf  (reload)
+reload_config = "prefix+r"
+# herdr uses an interactive resize MODE (then h/j/k/l / arrows), unlike tmux's
+# direct prefix+H/J/K/L resize. Moved off prefix+r so reload can live there.
+resize_mode = "prefix+shift+r"
+
+# tmux: bind-key p ... sesh connect  (session picker)
+# herdr workspaces are the equivalent of sesh sessions.
+workspace_picker = "prefix+p"
+
+# Tab navigation. next stays on prefix+n; the direct Ctrl+Shift+Left/Right
+# echo your tmux `-n C-S-Left/Right swap-window` muscle memory (herdr switches
+# tabs rather than reordering them — it has no move-tab binding).
+next_tab = ["prefix+n", "ctrl+shift+right"]
+previous_tab = "ctrl+shift+left"
+
+# tmux: bind-key h/j/k/l select-pane (same as herdr defaults; listed for clarity)
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# Splits. NOTE the naming differs from tmux:
+#   herdr split_vertical   = panes side-by-side (vertical divider)  == tmux split-window -h
+#   herdr split_horizontal = panes stacked      (horizontal divider) == tmux split-window -v
+# tmux: bind v split-window -h  ->
+split_vertical = "prefix+v"
+# tmux: bind s split-window -v  ->  (overrides herdr's default settings key)
+split_horizontal = "prefix+s"
+# moved herdr's settings menu off prefix+s so `s` keeps splitting
+settings = "prefix+shift+s"
+
+# tmux: bind f resize-pane -Z  (zoom/fullscreen pane)
+zoom = "prefix+f"
+
+# tmux: bind-key x kill-pane  == herdr default close_pane (prefix+x), left as-is.
+
+# tmux: bind-key C-y display-popup ... lazygit
+# herdr has no popups; a temporary pane closes when the command exits.
+[[keys.command]]
+key = "prefix+ctrl+y"
+type = "pane"
+command = "lazygit"
+
+# tmux: bind-key C-t display-popup  (scratch shell in current path)
+[[keys.command]]
+key = "prefix+ctrl+t"
+type = "pane"
+command = "/usr/bin/zsh"
+
+[ui]
+# tmux: set -g mouse on
+mouse_capture = true
+
+show_agent_labels_on_pane_borders = true
+agent_panel_sort = "spaces"
+[advanced]
+# tmux: set -g history-limit 1000000 (lines). herdr counts bytes; ~100MB here.
+scrollback_limit_bytes = 100000000
+
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "vim-herdr-navigation.left"
+description = "navigate left (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "vim-herdr-navigation.down"
+description = "navigate down (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "vim-herdr-navigation.up"
+description = "navigate up (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "vim-herdr-navigation.right"
+description = "navigate right (vim/herdr)"
+
+[experimental]
+pane_history = true

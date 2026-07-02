@@ -1,0 +1,5 @@
+// Cursor theme. Static (Noctalia does not rewrite this the way DMS did).
+cursor {
+    xcursor-theme "Pop"
+    xcursor-size 24
+}

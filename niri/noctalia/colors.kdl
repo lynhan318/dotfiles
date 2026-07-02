@@ -1,0 +1,44 @@
+// Niri border / focus-ring colors for the Noctalia session.
+//
+// Unlike DMS, Noctalia does NOT auto-generate this file. These are static
+// Everforest values matching the previous DMS look. If you want Noctalia to
+// drive these from the active wallpaper palette, add a niri template under
+// Noctalia Settings -> Templates that writes this file, then run
+// `noctalia msg templates-apply`.
+
+layout {
+    background-color "transparent"
+
+    focus-ring {
+        active-color   "#a7c080"
+        inactive-color "#9da9a0"
+        urgent-color   "#e57e80"
+    }
+
+    border {
+        active-color   "#a7c080"
+        inactive-color "#9da9a0"
+        urgent-color   "#e57e80"
+    }
+
+    shadow {
+        color "#00000070"
+    }
+
+    tab-indicator {
+        active-color   "#a7c080"
+        inactive-color "#9da9a0"
+        urgent-color   "#e57e80"
+    }
+
+    insert-hint {
+        color "#a7c08080"
+    }
+}
+
+recent-windows {
+    highlight {
+        active-color   "#a7c080"
+        urgent-color   "#e57e80"
+    }
+}
