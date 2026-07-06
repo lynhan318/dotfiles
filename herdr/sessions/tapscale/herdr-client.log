@@ -1,0 +1,6 @@
+2026-07-06T11:52:05.980598Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=134967
+2026-07-06T11:52:05.980615Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/sessions/tapscale/herdr-client.sock
+2026-07-06T11:52:06.215058Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-06T14:28:42.796863Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=206217
+2026-07-06T14:28:42.796886Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/sessions/tapscale/herdr-client.sock
+2026-07-06T14:28:42.810266Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame

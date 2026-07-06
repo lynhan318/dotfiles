@@ -1,0 +1,12 @@
+{
+  "name": "nvim-bun-dap",
+  "private": true,
+  "type": "module",
+  "description": "Standalone stdio Debug Adapter that bridges nvim-dap <-> Bun's WebKit inspector, using Bun's own (unpublished) bun-debug-adapter-protocol vendored under packages/.",
+  "dependencies": {
+    "@vscode/debugadapter": "^1.68.0",
+    "semver": "^7.5.4",
+    "source-map-js": "^1.0.2",
+    "ws": "^8.18.3"
+  }
+}

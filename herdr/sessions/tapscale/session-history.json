@@ -1,0 +1,17 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "tabs": [
+        {
+          "panes": {
+            "1": {
+              "ansi": "\r\n\u001b[0m\u001b[1m\u001b[38;2;131;192;146m~/tapscale\u001b[0m on \u001b[0m\u001b[1m\u001b[38;2;127;187;179m lynhan@canvize.ai\u001b[0m \r\n\u001b[0m\u001b[1m\u001b[38;2;167;192;128m❯\u001b[0m ",
+              "lines": 3
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -4,34 +4,44 @@
     {
       "id": "wN",
       "custom_name": "canvize",
-      "identity_cwd": "/home/kevin/canvize",
+      "identity_cwd": "/home/kevin/canvize/web",
       "public_pane_numbers": {
-        "4": 2,
+        "7": 24,
+        "8": 26,
+        "15": 37,
         "1": 1,
-        "2": 6,
-        "7": 7,
-        "5": 4,
-        "6": 3,
-        "3": 5
+        "2": 42,
+        "3": 41,
+        "39": 69,
+        "47": 75,
+        "12": 28,
+        "11": 27,
+        "10": 39,
+        "13": 31,
+        "51": 79,
+        "40": 70,
+        "9": 34,
+        "14": 32
       },
-      "next_public_pane_number": 8,
+      "next_public_pane_number": 80,
       "public_tab_numbers": [
         1,
         2,
-        3
+        4,
+        5
       ],
-      "next_public_tab_number": 4,
+      "next_public_tab_number": 9,
       "tabs": [
         {
           "custom_name": "web",
           "layout": {
             "Split": {
               "direction": "Horizontal",
-              "ratio": 0.5423729,
+              "ratio": 0.5,
               "first": {
                 "Split": {
                   "direction": "Vertical",
-                  "ratio": 0.5,
+                  "ratio": 0.62650603,
                   "first": {
                     "Pane": 1
                   },
@@ -41,29 +51,47 @@
                 }
               },
               "second": {
-                "Pane": 3
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.5,
+                  "first": {
+                    "Pane": 3
+                  },
+                  "second": {
+                    "Pane": 47
+                  }
+                }
               }
             }
           },
           "panes": {
             "1": {
-              "cwd": "/home/kevin/canvize"
-            },
-            "2": {
-              "cwd": "/home/kevin/.config"
+              "cwd": "/home/kevin/canvize/web"
             },
             "3": {
+              "cwd": "/home/kevin/canvize",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "e198a839-476a-48bc-a74b-88b4a95c35a6"
+              }
+            },
+            "2": {
+              "cwd": "/home/kevin/canvize/web"
+            },
+            "47": {
               "cwd": "/home/kevin/canvize/web",
               "agent_session": {
                 "source": "herdr:claude",
                 "agent": "claude",
                 "kind": "id",
-                "value": "6a9c3702-4094-4f07-b287-71f934b2cd99"
+                "value": "2b2bdf6e-fc21-4e73-9a0b-48a416476261"
               }
             }
           },
           "zoomed": false,
-          "focused": 2,
+          "focused": 3,
           "root_pane": 1
         },
         {
@@ -71,80 +99,109 @@
           "layout": {
             "Split": {
               "direction": "Horizontal",
-              "ratio": 0.55,
+              "ratio": 0.5,
               "first": {
                 "Split": {
                   "direction": "Vertical",
-                  "ratio": 0.55,
+                  "ratio": 0.74999994,
                   "first": {
-                    "Pane": 4
+                    "Pane": 7
                   },
                   "second": {
-                    "Pane": 5
+                    "Pane": 40
                   }
                 }
               },
               "second": {
-                "Pane": 6
+                "Pane": 39
               }
             }
           },
           "panes": {
-            "5": {
-              "cwd": "/home/kevin/canvize"
+            "40": {
+              "cwd": "/home/kevin/canvize/api"
             },
-            "4": {
-              "cwd": "/home/kevin/.canvize"
-            },
-            "6": {
-              "cwd": "/home/kevin/canvize"
-            }
-          },
-          "zoomed": false,
-          "focused": 6,
-          "root_pane": 4
-        },
-        {
-          "custom_name": "misc",
-          "layout": {
-            "Pane": 7
-          },
-          "panes": {
-            "7": {
-              "cwd": "/home/kevin/.config/herdr",
+            "39": {
+              "cwd": "/home/kevin/canvize/api",
               "agent_session": {
                 "source": "herdr:claude",
                 "agent": "claude",
                 "kind": "id",
-                "value": "79deb355-cd44-41c7-bf5e-973fe867d0cd"
+                "value": "0b1cf69b-ddc1-4ef7-8e41-2b4b4f055467"
               }
+            },
+            "7": {
+              "cwd": "/home/kevin/canvize/api"
             }
           },
           "zoomed": false,
-          "focused": 7,
+          "focused": 40,
           "root_pane": 7
-        }
-      ],
-      "active_tab": 0
-    },
-    {
-      "id": "wP",
-      "custom_name": "server",
-      "identity_cwd": "/home/kevin",
-      "public_pane_numbers": {
-        "11": 3,
-        "10": 2,
-        "9": 4,
-        "8": 1
-      },
-      "next_public_pane_number": 5,
-      "public_tab_numbers": [
-        1
-      ],
-      "next_public_tab_number": 2,
-      "tabs": [
+        },
         {
-          "custom_name": null,
+          "custom_name": "review-generated-app",
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5,
+              "first": {
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.74698794,
+                  "first": {
+                    "Pane": 8
+                  },
+                  "second": {
+                    "Split": {
+                      "direction": "Horizontal",
+                      "ratio": 0.5,
+                      "first": {
+                        "Pane": 9
+                      },
+                      "second": {
+                        "Pane": 10
+                      }
+                    }
+                  }
+                }
+              },
+              "second": {
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.72289157,
+                  "first": {
+                    "Pane": 11
+                  },
+                  "second": {
+                    "Pane": 12
+                  }
+                }
+              }
+            }
+          },
+          "panes": {
+            "8": {
+              "cwd": "/home/kevin/.canvize/projects/blog-hoan-tien-5c45241f/app"
+            },
+            "9": {
+              "cwd": "/home/kevin/canvize/api"
+            },
+            "10": {
+              "cwd": "/home/kevin/canvize/api"
+            },
+            "11": {
+              "cwd": "/home/kevin"
+            },
+            "12": {
+              "cwd": "/home/kevin/.canvize/projects/blog-hoan-tien-5c45241f/app"
+            }
+          },
+          "zoomed": false,
+          "focused": 8,
+          "root_pane": 8
+        },
+        {
+          "custom_name": "bevize",
           "layout": {
             "Split": {
               "direction": "Horizontal",
@@ -154,54 +211,66 @@
                   "direction": "Vertical",
                   "ratio": 0.5,
                   "first": {
-                    "Pane": 8
+                    "Pane": 13
                   },
                   "second": {
-                    "Pane": 9
+                    "Pane": 51
                   }
                 }
               },
               "second": {
                 "Split": {
                   "direction": "Vertical",
-                  "ratio": 0.5,
+                  "ratio": 0.18072289,
                   "first": {
-                    "Pane": 10
+                    "Pane": 14
                   },
                   "second": {
-                    "Pane": 11
+                    "Pane": 15
                   }
                 }
               }
             }
           },
           "panes": {
-            "11": {
-              "cwd": "/home/kevin"
+            "15": {
+              "cwd": "/home/kevin/canvize",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "4450216b-4846-4f44-a2ce-74632070cf30"
+              }
             },
-            "8": {
-              "cwd": "/home/kevin"
+            "14": {
+              "cwd": "/home/kevin/canvize/packages/bevize"
             },
-            "9": {
-              "cwd": "/home/kevin"
+            "51": {
+              "cwd": "/home/kevin/.dotfiles"
             },
-            "10": {
-              "cwd": "/home/kevin"
+            "13": {
+              "cwd": "/home/kevin/.dotfiles/niri/noctalia",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "bdd8cb95-dcd4-4420-b4d5-01c55c75db27"
+              }
             }
           },
           "zoomed": false,
-          "focused": 8,
-          "root_pane": 8
+          "focused": 51,
+          "root_pane": 13
         }
       ],
-      "active_tab": 0
+      "active_tab": 3
     },
     {
       "id": "wQ",
       "custom_name": "rust",
-      "identity_cwd": "/home/kevin",
+      "identity_cwd": "/home/kevin/canvize",
       "public_pane_numbers": {
-        "12": 1
+        "16": 1
       },
       "next_public_pane_number": 2,
       "public_tab_numbers": [
@@ -212,16 +281,52 @@
         {
           "custom_name": null,
           "layout": {
-            "Pane": 12
+            "Pane": 16
           },
           "panes": {
-            "12": {
-              "cwd": "/home/kevin"
+            "16": {
+              "cwd": "/home/kevin/canvize"
             }
           },
           "zoomed": false,
-          "focused": 12,
-          "root_pane": 12
+          "focused": 16,
+          "root_pane": 16
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "wR",
+      "custom_name": "infra",
+      "identity_cwd": "/home/kevin/canvize",
+      "public_pane_numbers": {
+        "45": 1
+      },
+      "next_public_pane_number": 3,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 45
+          },
+          "panes": {
+            "45": {
+              "cwd": "/home/kevin/canvize",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "8488a35f-f2fa-4f4b-92cd-d69eb345eb86"
+              }
+            }
+          },
+          "zoomed": false,
+          "focused": 45,
+          "root_pane": 45
         }
       ],
       "active_tab": 0

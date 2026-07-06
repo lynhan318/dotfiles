@@ -28,10 +28,15 @@ binds { // === System & Overview ===
     Mod+S hotkey-overlay-title="Screenshot region" {
         spawn "noctalia" "msg" "screenshot-region";
     }
-    Mod+E hotkey-overlay-title="Cast focused window" {
+    Mod+E hotkey-overlay-title="Open Files" {
+        spawn "nautilus";
+    }
+    Mod+Shift+C hotkey-overlay-title="Cast focused window" {
         spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg -j focused-window | jq .id)";
     }
-    Mod+Shift+S hotkey-overlay-title="Screen recorder" { spawn "~/.dotfiles/niri/scripts/recorder.sh"; }
+    Mod+G hotkey-overlay-title="Toggle screen recording" {
+        spawn "noctalia" "msg" "plugin" "noctalia/screen_recorder:service" "all" "toggle";
+    }
 
     // Noctalia has no IPC color-picker / notepad / process-list equivalent.
     // Re-enable these with an external tool if you want them:

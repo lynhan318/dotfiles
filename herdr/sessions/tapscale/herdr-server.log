@@ -1,0 +1,36 @@
+2026-07-06T11:52:05.930657Z  INFO herdr::api::server: api server listening path=/home/kevin/.config/herdr/sessions/tapscale/herdr.sock
+2026-07-06T11:52:05.931448Z  INFO herdr::app: using pane scrollback configuration pane_scrollback_limit_bytes=100000000
+2026-07-06T11:52:05.962789Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-06T11:52:05.962896Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=1 rows=24 cols=80 scrollback_limit_bytes=100000000
+2026-07-06T11:52:05.963649Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=1 pid=134997
+2026-07-06T11:52:05.963749Z  INFO herdr::logging: workspace created event="workspace.create" subsystem="workspace" outcome="ok" workspace_id="w1" pane_id=1
+2026-07-06T11:52:05.963753Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="w1"
+2026-07-06T11:52:05.963763Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-06T11:52:05.963767Z  INFO herdr::server::headless: created startup workspace cwd=/home/kevin
+2026-07-06T11:52:05.963806Z  INFO herdr::server::headless: client protocol socket listening path=/home/kevin/.config/herdr/sessions/tapscale/herdr-client.sock
+2026-07-06T11:52:05.963826Z  INFO herdr::server::headless: herdr server started api_socket=/home/kevin/.config/herdr/sessions/tapscale/herdr.sock client_socket=/home/kevin/.config/herdr/sessions/tapscale/herdr-client.sock
+2026-07-06T11:52:05.963845Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="server" outcome="started" pid=134968
+2026-07-06T11:52:06.215075Z  INFO herdr::server::headless: client connected client_id=2 cols=159 rows=84 cell_width_px=0 cell_height_px=0 render_encoding=SemanticFrame
+2026-07-06T11:52:10.965603Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/tapscale/session.json workspaces=1
+2026-07-06T11:52:31.307315Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=2 rows=83 cols=133 scrollback_limit_bytes=100000000
+2026-07-06T11:52:31.308172Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=2 pid=135676
+2026-07-06T11:52:33.735569Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=3 rows=83 cols=133 scrollback_limit_bytes=100000000
+2026-07-06T11:52:33.736622Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=3 pid=135842
+2026-07-06T11:52:37.702040Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=3 status="ExitStatus { code: 130, signal: None }"
+2026-07-06T11:52:37.702083Z  INFO herdr::pane: pane session terminated pane=3 pid=135842 signal=Hangup
+2026-07-06T11:52:40.301329Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=2 status="ExitStatus { code: 0, signal: None }"
+2026-07-06T11:52:40.301372Z  INFO herdr::pane: pane session terminated pane=2 pid=135676 signal=Hangup
+2026-07-06T11:52:42.954239Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-06T11:52:47.557793Z  INFO herdr::logging: tab renamed event="tab.rename" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-06T11:52:52.559787Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/tapscale/session.json workspaces=1
+2026-07-06T11:53:04.869321Z  INFO herdr::server::headless: client disconnected client_id=2
+2026-07-06T12:22:05.963757Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-06T12:52:05.965046Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-06T13:22:05.966903Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-06T13:52:05.967147Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-06T14:22:05.968542Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-06T14:28:42.810287Z  INFO herdr::server::headless: client connected client_id=4 cols=159 rows=84 cell_width_px=0 cell_height_px=0 render_encoding=SemanticFrame
+2026-07-06T14:29:08.604651Z  INFO herdr::server::headless: client disconnected client_id=4
+2026-07-06T14:52:05.969492Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-06T15:22:05.970641Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-06T15:52:05.971530Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"

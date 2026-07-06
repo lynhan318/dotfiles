@@ -19,8 +19,8 @@ if [ -f "$PID_FILE" ]; then
     stop_recording
 fi
 
-# Chọn vùng (Slurp)
-GEOMETRY=$(slurp -b "#282828bb" -c "#8ec07c" -p)
+# Chọn vùng (Slurp) — drag a region; do NOT use -p (that selects a single point)
+GEOMETRY=$(slurp -b "#282828bb" -c "#8ec07c")
 [ -z "$GEOMETRY" ] && exit 1
 
 FILE_PATH="$SAVE_DIR/rec_$(date +'%y%m%d_%H%M%S').mp4"

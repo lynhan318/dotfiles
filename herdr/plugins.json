@@ -5,8 +5,8 @@
     "version": "0.1.0",
     "min_herdr_version": "0.7.0",
     "description": "Seamless Ctrl+h/j/k/l navigation across herdr panes and Vim/Neovim splits",
-    "manifest_path": "/home/kevin/.config/herdr/plugins/github/vim-herdr-navigation-a8bf42123d81/herdr-plugin.toml",
-    "plugin_root": "/home/kevin/.config/herdr/plugins/github/vim-herdr-navigation-a8bf42123d81",
+    "manifest_path": "/home/kevin/.dotfiles/herdr/plugins/github/vim-herdr-navigation-a8bf42123d81/herdr-plugin.toml",
+    "plugin_root": "/home/kevin/.dotfiles/herdr/plugins/github/vim-herdr-navigation-a8bf42123d81",
     "enabled": true,
     "platforms": [
       "linux",

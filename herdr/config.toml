@@ -6,9 +6,7 @@ onboarding = false
 [theme]
 # Everforest Dark (medium) — sainnhe's warm, low-contrast green palette.
 # herdr ships no built-in "everforest", so we take catppuccin as the base
-# (same semantic token names) and override every token to Everforest values
-# in [theme.custom] below.
-name = "catppuccin"
+# (same semantic token nam
 auto_switch = false
 
 # Override individual color tokens on top of the base theme.
@@ -52,7 +50,8 @@ previous_tab = "ctrl+shift+left"
 split_vertical = "prefix+v"
 split_horizontal = "prefix+s"
 settings = "prefix+shift+s" 
-zoom = "prefix+f"
+zoom = "prefix+z"
+rename_tab = "prefix+comma"
 
 [[keys.command]]
 key = "prefix+ctrl+y"
@@ -65,10 +64,19 @@ key = "prefix+ctrl+t"
 type = "pane"
 command = "/usr/bin/zsh"
 
+[[keys.command]]              # open in a split beside your work
+key = "prefix+f"
+type = "pane"
+command = "yazi"
+
+[[keys.command]]              # …or in its own tab
+key = "prefix+shift+f"
+type = "shell"
+command = "herdr plugin action invoke open-file-viewer-tab --plugin herdr-file-viewer"
+
 [ui]
 # tmux: set -g mouse on
 mouse_capture = true
-
 show_agent_labels_on_pane_borders = true
 agent_panel_sort = "spaces"
 [advanced]
