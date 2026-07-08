@@ -21,10 +21,35 @@ return {
         },
     },
     config = function(_)
+        -- On large monorepos, servers (tailwindcss, rust_analyzer, ...) register
+        -- `workspace/didChangeWatchedFiles` with broad globs. Neovim then walks the
+        -- whole tree (incl. every node_modules) synchronously to set up watchers,
+        -- freezing the UI for ~15s on the first file open. Opt out of client-side
+        -- file watching so servers do their own watching instead of blocking us.
+        -- Set per-server (not on "*") because blink.cmp's "*" capabilities would
+        -- otherwise clobber it; per-server config always wins the merge.
+        for _, name in ipairs { "rust_analyzer", "jsonls", "ts_ls", "tailwindcss", "cssls", "svelte", "zls" } do
+            vim.lsp.config(name, {
+                capabilities = {
+                    workspace = {
+                        didChangeWatchedFiles = { dynamicRegistration = false },
+                    },
+                },
+            })
+        end
+
+        -- Run the Node-based language servers with Bun instead of Node: faster
+        -- cold start and lower memory (helps the tailwindcss server most). Native
+        -- servers (tsgo, rust_analyzer, zls) are left on their own binaries.
+        local mason_bin = vim.fn.stdpath "data" .. "/mason/bin/"
+        local function bun_cmd(server, ...)
+            return { "bun", "run", mason_bin .. server, ... }
+        end
+
         vim.lsp.enable "rust_analyzer"
         vim.lsp.enable "jsonls"
         vim.lsp.config("jsonls", {
-            cmd = { "vscode-json-language-server", "--stdio" },
+            cmd = bun_cmd("vscode-json-language-server", "--stdio"),
             on_new_config = function(new_config)
                 new_config.settings.json.schemas = new_config.settings.json.schemas or {}
                 vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
@@ -64,15 +89,15 @@ return {
         })
         vim.lsp.enable "tailwindcss"
         vim.lsp.config("tailwindcss", {
-            cmd = { "tailwindcss-language-server", "--stdio" },
+            cmd = bun_cmd("tailwindcss-language-server", "--stdio"),
         })
         vim.lsp.enable "cssls"
         vim.lsp.config("cssls", {
-            cmd = { "vscode-css-language-server", "--stdio" },
+            cmd = bun_cmd("vscode-css-language-server", "--stdio"),
         })
         vim.lsp.enable "svelte"
         vim.lsp.config("svelte", {
-            cmd = { "svelteserver", "--stdio" },
+            cmd = bun_cmd("svelteserver", "--stdio"),
         })
         vim.lsp.config("zls", {
             -- Set to 'zls' if `zls` is in your PATH
