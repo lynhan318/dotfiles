@@ -67,6 +67,9 @@ return {
     },
     {
         "otavioschwanck/arrow.nvim",
+        -- Load on first bookmark keypress (its leader / buffer-leader keys)
+        -- instead of eagerly at startup.
+        keys = { "`", "m" },
         dependencies = {
             { "nvim-tree/nvim-web-devicons" },
         },

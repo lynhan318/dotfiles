@@ -21,13 +21,6 @@ return {
         },
     },
     config = function(_)
-        -- On large monorepos, servers (tailwindcss, rust_analyzer, ...) register
-        -- `workspace/didChangeWatchedFiles` with broad globs. Neovim then walks the
-        -- whole tree (incl. every node_modules) synchronously to set up watchers,
-        -- freezing the UI for ~15s on the first file open. Opt out of client-side
-        -- file watching so servers do their own watching instead of blocking us.
-        -- Set per-server (not on "*") because blink.cmp's "*" capabilities would
-        -- otherwise clobber it; per-server config always wins the merge.
         for _, name in ipairs { "rust_analyzer", "jsonls", "ts_ls", "tailwindcss", "cssls", "svelte", "zls" } do
             vim.lsp.config(name, {
                 capabilities = {
@@ -40,10 +33,10 @@ return {
 
         -- Run the Node-based language servers with Bun instead of Node: faster
         -- cold start and lower memory (helps the tailwindcss server most). Native
-        -- servers (tsgo, rust_analyzer, zls) are left on their own binaries.
+        -- servers (tsc, rust_analyzer, zls) are left on their own binaries.
         local mason_bin = vim.fn.stdpath "data" .. "/mason/bin/"
         local function bun_cmd(server, ...)
-            return { "bun", "run", mason_bin .. server, ... }
+            return { "bun", "run", '--bun', mason_bin .. server, ... }
         end
 
         vim.lsp.enable "rust_analyzer"
@@ -65,12 +58,17 @@ return {
                 },
             },
         })
-        -- vim.lsp.enable "ts_ls"
-        local lspconfig = require "lspconfig"
         vim.lsp.enable "ts_ls"
         vim.lsp.config("ts_ls", {
-            -- cmd = { "typescript-language-server", "--stdio" },
-            cmd = { "tsgo", "--lsp", "--stdio" },
+            cmd = bun_cmd("typescript-language-server", "--stdio"),
+            -- While tsserver loads a big project, its syntax server answers
+            -- definition requests with the local re-export alias instead of the
+            -- real target; Snacks filters that self-reference out and shows an
+            -- empty picker. Disable the syntax server so requests queue until
+            -- real semantics are available.
+            init_options = {
+                tsserver = { useSyntaxServer = "never" },
+            },
             filetypes = {
                 "javascript",
                 "javascriptreact",

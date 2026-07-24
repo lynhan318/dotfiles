@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="blue" x1="0.15" y1="0.35" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#5b3ff0"/>
+      <stop offset="1" stop-color="#3a1fb0"/>
+    </linearGradient>
+    <linearGradient id="blueShade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a1a7a"/>
+      <stop offset="1" stop-color="#1c1156"/>
+    </linearGradient>
+    <linearGradient id="pink" x1="0.4" y1="0" x2="0.9" y2="0.8">
+      <stop offset="0" stop-color="#f472b6"/>
+      <stop offset="1" stop-color="#d81b7a"/>
+    </linearGradient>
+    <linearGradient id="pinkShade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a11259"/>
+      <stop offset="1" stop-color="#7a0e43"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Isometric hexagon vertices:
+       V0 top (256,56)  V1 ur (429,156)  V2 lr (429,356)
+       V3 bottom (256,456)  V4 ll (83,356)  V5 ul (83,156) -->
+
+  <!-- 3D extruded side faces (behind, offset down) -->
+  <g stroke-width="66" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(0,20)">
+    <path d="M 83 156 L 256 56 L 429 156 L 429 356" stroke="url(#pinkShade)"/>
+    <path d="M 429 356 L 256 456 L 83 356 L 83 156" stroke="url(#blueShade)"/>
+  </g>
+
+  <!-- Top faces -->
+  <g stroke-width="66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- blue bracket: left + bottom -->
+    <path d="M 429 356 L 256 456 L 83 356 L 83 156" stroke="url(#blue)"/>
+    <!-- pink bracket: top + right -->
+    <path d="M 83 156 L 256 56 L 429 156 L 429 356" stroke="url(#pink)"/>
+    <!-- layered lighter-pink ribbon (double-line look) -->
+    <path d="M 256 56 L 429 156 L 429 356" stroke="#f9a8d4" stroke-width="15" opacity="0.6"/>
+  </g>
+</svg>

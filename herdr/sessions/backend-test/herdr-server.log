@@ -1,0 +1,371 @@
+2026-07-15T11:00:40.459173Z  INFO herdr::api::server: api server listening path=/home/kevin/.config/herdr/sessions/backend-test/herdr.sock
+2026-07-15T11:00:40.459988Z  INFO herdr::app: using pane scrollback configuration pane_scrollback_limit_bytes=100000000
+2026-07-15T11:00:40.500125Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-15T11:00:40.505751Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=1 rows=24 cols=80 scrollback_limit_bytes=100000000
+2026-07-15T11:00:40.506320Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=1 pid=317566
+2026-07-15T11:00:40.506416Z  INFO herdr::logging: workspace created event="workspace.create" subsystem="workspace" outcome="ok" workspace_id="w1" pane_id=1
+2026-07-15T11:00:40.506420Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="w1"
+2026-07-15T11:00:40.506424Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:00:40.506428Z  INFO herdr::server::headless: created startup workspace cwd=/home/kevin
+2026-07-15T11:00:40.506465Z  INFO herdr::server::headless: client protocol socket listening path=/home/kevin/.config/herdr/sessions/backend-test/herdr-client.sock
+2026-07-15T11:00:40.506481Z  INFO herdr::server::headless: herdr server started api_socket=/home/kevin/.config/herdr/sessions/backend-test/herdr.sock client_socket=/home/kevin/.config/herdr/sessions/backend-test/herdr-client.sock
+2026-07-15T11:00:40.506493Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="server" outcome="started" pid=317531
+2026-07-15T11:00:40.699480Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="maki"
+2026-07-15T11:00:40.757768Z  INFO herdr::server::headless: client connected client_id=2 cols=319 rows=84 cell_width_px=0 cell_height_px=0 render_encoding=SemanticFrame
+2026-07-15T11:00:45.507897Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:01:08.363847Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=2 rows=83 cols=293 scrollback_limit_bytes=100000000
+2026-07-15T11:01:08.364796Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=2 pid=318612
+2026-07-15T11:01:08.364937Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:01:10.612759Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:01:15.620486Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:01:28.925732Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:01:29.445950Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:01:29.838534Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:01:34.846065Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:02:21.594975Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:21.595038Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:21.595047Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:21.595099Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:21.738700Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:21.738737Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:21.738745Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:21.738781Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:22.085117Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:22.085161Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:22.085169Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:22.085198Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:22.171752Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:22.171791Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:22.171799Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:22.171835Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:22.294587Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:22.294623Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:22.294630Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:22.294663Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:22.364846Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:22.364877Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:22.364886Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:22.364918Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:23.882630Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:23.882669Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:23.882677Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:23.882713Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:25.474951Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:25.474990Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:25.475003Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:25.475044Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:25.570346Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:25.570392Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:25.570406Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:25.570444Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:25.722751Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:25.722798Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:25.722808Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:25.722842Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:26.618299Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:26.618342Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:26.618351Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:26.618396Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:30.216552Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:30.216608Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:30.216619Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:30.216666Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:30.376297Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:30.376329Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:30.376342Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:30.376379Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:34.319653Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=3 rows=83 cols=147 scrollback_limit_bytes=100000000
+2026-07-15T11:02:34.320603Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=3 pid=321512
+2026-07-15T11:02:34.320705Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:35.676727Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:02:35.676770Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:35.676782Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:35.676816Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:02:41.593428Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:43.670039Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="w1"
+2026-07-15T11:02:43.670066Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:43.670108Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:46.032939Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="w1"
+2026-07-15T11:02:46.032954Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:46.032981Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:47.909955Z  INFO herdr::logging: tab renamed event="tab.rename" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:02:52.911165Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:02:56.970554Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=4 rows=42 cols=147 scrollback_limit_bytes=100000000
+2026-07-15T11:02:56.971436Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=4 pid=322408
+2026-07-15T11:02:56.971564Z  INFO herdr::logging: tab renamed event="tab.rename" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t2"
+2026-07-15T11:02:56.971574Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t2"
+2026-07-15T11:03:01.979241Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:03:02.569614Z  INFO herdr::pane: agent changed pane=4 previous_agent=None agent=Some(Claude) process=claude pgid=Some(322866)
+2026-07-15T11:03:09.247379Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:08:17.001671Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:08:19.443844Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:08:19.860572Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:08:24.868971Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:09:16.544237Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:09:21.545501Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:10:23.017307Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:10:23.510272Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t2"
+2026-07-15T11:10:28.512984Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:10:38.478718Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:10:39.419119Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:10:42.036622Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t2"
+2026-07-15T11:10:46.893349Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:10:47.677395Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t2"
+2026-07-15T11:10:52.679315Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:15:51.425985Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:15:53.872158Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t2"
+2026-07-15T11:15:58.873797Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:17:22.579291Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:25.101026Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:17:25.101082Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:25.101097Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:25.101154Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:17:26.739508Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=5 rows=42 cols=147 scrollback_limit_bytes=100000000
+2026-07-15T11:17:26.740483Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=5 pid=336073
+2026-07-15T11:17:26.740613Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:27.391089Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:17:27.391133Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:27.391153Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:27.391209Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:17:32.392842Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:17:34.105685Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:17:34.105727Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:34.105740Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:34.105795Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:17:34.475041Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:17:34.475086Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:34.475100Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:34.475153Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:17:39.476861Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:17:47.048596Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:47.281903Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:47.423356Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t2"
+2026-07-15T11:17:48.092849Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:49.178280Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:17:54.187518Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:20:59.083843Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:00.153243Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:00.153290Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:00.153298Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:00.153342Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:04.417733Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:04.417772Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:04.417786Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:04.417825Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:09.420241Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:21:10.300125Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:10.300179Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:10.300188Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:10.300231Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:10.470723Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:10.470759Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:10.470768Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:10.470809Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:10.804718Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:10.804760Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:10.804769Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:10.804817Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:11.511047Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:11.511086Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:11.511095Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:11.511137Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:13.510956Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:13.510999Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:13.511007Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:13.511047Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:18.512560Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:21:29.993353Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:29.993391Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:29.993399Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:29.993441Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:30.465744Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:30.465782Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:30.465791Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:30.465831Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:31.529975Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:31.530018Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:31.530027Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:31.530069Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:31.637744Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:31.637780Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:31.637789Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:31.637829Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:31.922659Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:31.922694Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:31.922703Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:31.922747Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:34.285997Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:34.286035Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:34.286044Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:34.286093Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:36.258119Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:36.258162Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:36.258176Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:36.258228Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:41.260417Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:21:49.558432Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:49.558472Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:49.558487Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:49.558554Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:50.178350Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T11:21:50.178392Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:50.178406Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:21:50.178455Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T11:21:55.181132Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:22:35.687366Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:25:39.207549Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T11:25:44.215487Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:28:54.660021Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t2"
+2026-07-15T11:28:59.662742Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T11:30:40.500747Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-15T11:30:40.705610Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="maki"
+2026-07-15T12:00:40.502129Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-15T12:00:40.706130Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="maki"
+2026-07-15T12:30:40.502901Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-15T12:30:40.793220Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="maki"
+2026-07-15T13:00:40.503580Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-15T13:00:40.948428Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="maki"
+2026-07-15T13:30:40.505247Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-15T13:30:40.800052Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="maki"
+2026-07-15T13:43:38.354434Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:43:43.356921Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T13:43:46.851544Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t2"
+2026-07-15T13:43:51.854430Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T13:44:06.611754Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:07.966082Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T13:44:07.966124Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:07.966133Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:07.966193Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T13:44:12.647102Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T13:44:12.647151Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:12.647165Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:12.647231Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T13:44:13.027849Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T13:44:13.027901Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:13.027915Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:13.027977Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T13:44:13.814806Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T13:44:13.814853Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:13.814869Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:13.814931Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T13:44:13.905423Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T13:44:13.905462Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:13.905477Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:13.905537Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T13:44:17.326427Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T13:44:17.326474Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:17.326487Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:17.326551Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T13:44:17.462184Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T13:44:17.462234Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:17.462248Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:17.462306Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T13:44:22.465378Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T13:44:42.247152Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T13:44:42.247202Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:42.247215Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:42.247278Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T13:44:42.591978Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T13:44:42.592020Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:42.592034Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:42.592088Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T13:44:43.110072Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T13:44:43.110111Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:43.110119Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:44:43.110162Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T13:44:44.264380Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T13:44:44.264456Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T13:44:48.116201Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T13:45:08.604092Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:45:13.614269Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T13:46:13.543858Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:46:18.552729Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T13:46:18.792734Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T13:46:22.366310Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t2"
+2026-07-15T13:46:27.369085Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T13:58:11.214977Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t2"
+2026-07-15T13:58:13.302928Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t2"
+2026-07-15T13:58:18.305393Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T14:00:40.506019Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-15T14:00:41.411307Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="maki"
+2026-07-15T14:03:39.010626Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=6 rows=83 cols=293 scrollback_limit_bytes=100000000
+2026-07-15T14:03:39.011875Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=6 pid=466187
+2026-07-15T14:03:39.011989Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:39.977532Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=7 rows=83 cols=293 scrollback_limit_bytes=100000000
+2026-07-15T14:03:39.978826Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=7 pid=466408
+2026-07-15T14:03:39.978946Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:40.165951Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T14:03:40.165992Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:40.166005Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:40.166038Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T14:03:45.168148Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T14:03:45.720523Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T14:03:45.720569Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:45.720578Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:45.720603Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T14:03:45.873693Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T14:03:45.873742Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:45.873756Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:45.873785Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T14:03:46.040428Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T14:03:46.040473Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:46.040487Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:46.040516Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T14:03:46.976071Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T14:03:46.976128Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:46.976145Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:46.976176Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T14:03:47.089155Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T14:03:47.089196Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:47.089211Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:47.089242Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T14:03:47.715466Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T14:03:47.715514Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:47.715532Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:47.715566Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T14:03:48.597226Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T14:03:48.597273Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:48.597287Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:48.597321Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T14:03:48.709653Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T14:03:48.709692Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:48.709707Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t3"
+2026-07-15T14:03:48.709734Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T14:03:53.711904Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T14:03:59.406861Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=6 status="ExitStatus { code: 130, signal: None }"
+2026-07-15T14:03:59.406910Z  INFO herdr::pane: pane session terminated pane=6 pid=466187 signal=Hangup
+2026-07-15T14:04:04.409370Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T14:20:55.140030Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T14:20:56.431623Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T14:20:56.431659Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T14:20:56.431668Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T14:20:56.431700Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T14:20:57.452273Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T14:20:57.452318Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T14:20:57.452327Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T14:20:57.452356Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T14:21:02.455174Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T14:30:40.507190Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-15T14:30:40.710870Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="maki"
+2026-07-15T15:00:40.507779Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-15T15:00:40.913405Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="maki"
+2026-07-15T15:03:49.424694Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T15:03:49.424763Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T15:03:49.424781Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T15:03:49.424831Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T15:03:49.939253Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T15:03:49.939298Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T15:03:49.939311Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T15:03:49.939348Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T15:03:50.234674Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="cli:pane:focus" method="pane.focus_direction" changes_ui=true
+2026-07-15T15:03:50.234719Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T15:03:50.234732Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-07-15T15:03:50.234774Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="cli:pane:focus" method="pane.focus_direction"
+2026-07-15T15:03:55.237506Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/sessions/backend-test/session.json workspaces=1
+2026-07-15T15:30:40.508911Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-15T15:30:40.742974Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="maki"
+2026-07-15T16:00:40.509900Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-15T16:00:40.772532Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="maki"
+2026-07-15T16:30:40.511038Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-15T16:30:40.792079Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="maki"
+2026-07-15T16:40:46.212938Z  INFO herdr::server::headless: client disconnected client_id=2

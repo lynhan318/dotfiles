@@ -104,3 +104,58 @@
 2026-07-06T14:29:06.862096Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=206845
 2026-07-06T14:29:06.862479Z  INFO herdr::client: connecting to server path=/tmp/herdr-remote-206797-canvize-default.sock
 2026-07-06T14:29:10.668629Z  INFO herdr::client: handshake succeeded version=14 encoding=TerminalAnsi
+2026-07-07T05:31:24.945592Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=3444
+2026-07-07T05:31:24.946001Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/herdr-client.sock
+2026-07-07T05:31:24.949129Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-08T02:23:14.484593Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=2715
+2026-07-08T02:23:14.484777Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/herdr-client.sock
+2026-07-08T02:23:14.721718Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-08T03:40:51.004116Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=56056
+2026-07-08T03:40:51.004137Z  INFO herdr::client: connecting to server path=/tmp/herdr-remote-55963-canvize-default.sock
+2026-07-08T03:40:53.409334Z  INFO herdr::client: handshake succeeded version=14 encoding=TerminalAnsi
+2026-07-08T03:43:10.080855Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=56056
+2026-07-08T06:25:51.358503Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=2715
+2026-07-08T06:39:52.586609Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=177559
+2026-07-08T06:39:52.586646Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/herdr-client.sock
+2026-07-08T06:39:52.589261Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-08T18:26:15.434634Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=177559
+2026-07-11T07:02:10.169368Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=56611
+2026-07-11T07:02:10.170750Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/herdr-client.sock
+2026-07-11T07:02:10.187390Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-11T10:19:20.913275Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=395379
+2026-07-11T10:19:20.913634Z  INFO herdr::client: connecting to server path=/tmp/herdr-remote-395247-canvize-default.sock
+2026-07-11T10:19:21.436448Z  INFO herdr::client: handshake succeeded version=16 encoding=TerminalAnsi
+2026-07-11T10:20:09.565152Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=395379
+2026-07-11T16:54:51.763779Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=56611
+2026-07-12T02:10:46.497819Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=7325
+2026-07-12T02:10:46.498121Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/herdr-client.sock
+2026-07-12T02:10:46.502536Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T03:06:17.989094Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=7414
+2026-07-13T03:06:17.989441Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/herdr-client.sock
+2026-07-13T03:06:17.991985Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T14:45:45.597743Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=3143
+2026-07-13T14:45:45.597942Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/herdr-client.sock
+2026-07-13T14:45:45.607214Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-14T00:56:52.424327Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=3067
+2026-07-14T00:56:52.427994Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/herdr-client.sock
+2026-07-14T00:56:52.435300Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-14T16:06:58.707729Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=859934
+2026-07-14T16:06:58.707890Z  INFO herdr::client: connecting to server path=/tmp/herdr-remote-859816-canvize-default.sock
+2026-07-14T16:06:59.130330Z  INFO herdr::client: handshake succeeded version=16 encoding=TerminalAnsi
+2026-07-14T16:12:39.527395Z  INFO herdr::client: clipboard image paste trigger received, but local clipboard has no image
+2026-07-14T16:30:13.252580Z  INFO herdr::client: clipboard image paste trigger received, but local clipboard has no image
+2026-07-15T04:37:24.854161Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=27837
+2026-07-15T04:37:24.854399Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/herdr-client.sock
+2026-07-15T04:37:24.869473Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-15T04:55:33.099709Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=50028
+2026-07-15T04:55:33.099721Z  INFO herdr::client: connecting to server path=/tmp/herdr-remote-49963-canvize-default.sock
+2026-07-15T04:55:33.336795Z  INFO herdr::client: handshake succeeded version=16 encoding=TerminalAnsi
+2026-07-21T02:44:54.703936Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=17223
+2026-07-21T02:44:54.705120Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/herdr-client.sock
+2026-07-21T02:44:54.734940Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-23T14:32:09.929627Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=3685
+2026-07-23T14:32:09.930649Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/herdr-client.sock
+2026-07-23T14:32:09.933981Z  INFO herdr::client: handshake succeeded version=17 encoding=SemanticFrame
+2026-07-24T01:59:45.938635Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=2911
+2026-07-24T01:59:45.938882Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/herdr-client.sock
+2026-07-24T01:59:46.178699Z  INFO herdr::client: handshake succeeded version=17 encoding=SemanticFrame

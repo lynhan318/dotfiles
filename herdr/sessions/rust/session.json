@@ -1,0 +1,72 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "w1",
+      "custom_name": null,
+      "identity_cwd": "/home/kevin/.dotfiles/herdr",
+      "public_pane_numbers": {
+        "4": 4,
+        "2": 2,
+        "3": 3
+      },
+      "next_public_pane_number": 5,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5,
+              "first": {
+                "Pane": 4
+              },
+              "second": {
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.5,
+                  "first": {
+                    "Pane": 2
+                  },
+                  "second": {
+                    "Pane": 3
+                  }
+                }
+              }
+            }
+          },
+          "panes": {
+            "2": {
+              "cwd": "/home/kevin/rust/rust-lifetime",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "c60c3701-0aac-4d3d-9b8c-95cec30a31d7"
+              }
+            },
+            "4": {
+              "cwd": "/home/kevin/.dotfiles/herdr"
+            },
+            "3": {
+              "cwd": "/home/kevin/.claude"
+            }
+          },
+          "zoomed": false,
+          "focused": 4,
+          "root_pane": 4
+        }
+      ],
+      "active_tab": 0
+    }
+  ],
+  "active": 0,
+  "selected": 0,
+  "sidebar_width": 26,
+  "sidebar_section_split": 0.5,
+  "collapsed_space_keys": []
+}

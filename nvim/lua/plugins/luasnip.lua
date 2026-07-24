@@ -1,6 +1,10 @@
 local M = {
   "L3MON4D3/LuaSnip",
   version = "~2.2.0",
+  -- Snippets are only needed in insert mode; defer off the startup path.
+  -- `cmd = "Neogen"` keeps `:Neogen` working before entering insert.
+  event = "InsertEnter",
+  cmd = "Neogen",
   dependencies = {
     "rafamadriz/friendly-snippets",
     {

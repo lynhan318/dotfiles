@@ -1,30 +1,181 @@
-[[language]]
-name = "typescript"
-scope = "source.ts"
-injection-regex = "(ts|typescript)"
-language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-react", "eslint"]
-roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json", ""]
-file-types = ["ts", "mts", "cts"]
-formatter = { command = "biome", args = ["format", "--stdin-file-path"] }
-auto-format = true
+# Ported from nvim (lspconfig + conform + nvim-lint + nvim-dap).
+# Node-based servers reuse the Mason installs and run under Bun (faster cold
+# start / lower memory), exactly like the nvim config did.
+
+# ---------------------------------------------------------------------------
+# Language servers
+# ---------------------------------------------------------------------------
+
+# nvim: ts_ls with cmd = tsc --lsp --stdio (TypeScript 7 native compiler)
+[language-server.tsc]
+command = "tsc"
+args = ["--lsp", "--stdio"]
+
+[language-server.tailwindcss]
+command = "bun"
+args = ["run", "/home/kevin/.local/share/nvim/mason/bin/tailwindcss-language-server", "--stdio"]
+
+[language-server.vscode-json]
+command = "bun"
+args = ["run", "/home/kevin/.local/share/nvim/mason/bin/vscode-json-language-server", "--stdio"]
+config = { provideFormatter = false, json = { validate = { enable = true } } }
+
+[language-server.vscode-css]
+command = "bun"
+args = ["run", "/home/kevin/.local/share/nvim/mason/bin/vscode-css-language-server", "--stdio"]
+config = { provideFormatter = false, css = { validate = { enable = true } } }
+
+[language-server.svelteserver]
+command = "bun"
+args = ["run", "/home/kevin/.local/share/nvim/mason/bin/svelteserver", "--stdio"]
+
+[language-server.lua-language-server]
+command = "/home/kevin/.local/share/nvim/mason/bin/lua-language-server"
+
+# nvim-lint: clippy on save -> rust-analyzer runs clippy instead of check
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[language-server.zls]
+command = "zls"
+
+# nvim: zls settings
+[language-server.zls.config]
+enable_inlay_hints = true
+enable_snippets = true
+warn_style = true
+
+# nvim: copilot.lua — Helix has no ghost-text; nearest equivalent is
+# helix-gpt exposing Copilot through LSP completions. To enable:
+#   bun add -g helix-gpt   (then export COPILOT auth via `helix-gpt --authCopilot`)
+# [language-server.gpt]
+# command = "helix-gpt"
+# args = ["--handler", "copilot"]
+# ...and add "gpt" to the language-servers lists below.
+
+# ---------------------------------------------------------------------------
+# Languages
+# ---------------------------------------------------------------------------
+
+# conform: typescript/javascript/json -> prettierd; svelte -> prettier; lua ->
+# stylua (not installed, LSP fallback); rust -> rustfmt (via rust-analyzer);
+# zig -> zig fmt (helix default)
 
 [[language]]
-name = "jsx"
-language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "biome" ]
-formatter = { command = "prettier", args = ["--parser", "html"] }
+name = "typescript"
+roots = ["tsconfig.json", "jsconfig.json", "package.json", "tsconfig.base.json", "tailwind.config.js", "tailwind.config.cjs"]
+language-servers = [{ name = "tsc", except-features = ["format"] }, "tailwindcss"]
+formatter = { command = "prettierd", args = ["%{buffer_name}"] }
 auto-format = true
+
+[language.debugger]
+name = "bun"
+transport = "stdio"
+command = "bun"
+args = ["run", "/home/kevin/.dotfiles/nvim/dap/bun/adapter.ts"]
+
+[[language.debugger.templates]]
+name = "launch current file"
+request = "launch"
+completion = [{ name = "program", completion = "filename" }]
+args = { program = "{0}", runtime = "bun" }
+
+[[language.debugger.templates]]
+name = "attach (ws://localhost:6499/dap)"
+request = "attach"
+completion = []
+args = { url = "ws://localhost:6499/dap" }
 
 [[language]]
 name = "tsx"
-language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "biome" ]
-formatter = { command = "prettier", args = ["--parser", "html"] }
+language-servers = [{ name = "tsc", except-features = ["format"] }, "tailwindcss"]
+formatter = { command = "prettierd", args = ["%{buffer_name}"] }
+auto-format = true
+
+[language.debugger]
+name = "bun"
+transport = "stdio"
+command = "bun"
+args = ["run", "/home/kevin/.dotfiles/nvim/dap/bun/adapter.ts"]
+
+[[language.debugger.templates]]
+name = "launch current file"
+request = "launch"
+completion = [{ name = "program", completion = "filename" }]
+args = { program = "{0}", runtime = "bun" }
+
+[[language]]
+name = "javascript"
+language-servers = [{ name = "tsc", except-features = ["format"] }, "tailwindcss"]
+formatter = { command = "prettierd", args = ["%{buffer_name}"] }
+auto-format = true
+
+[language.debugger]
+name = "bun"
+transport = "stdio"
+command = "bun"
+args = ["run", "/home/kevin/.dotfiles/nvim/dap/bun/adapter.ts"]
+
+[[language.debugger.templates]]
+name = "launch current file"
+request = "launch"
+completion = [{ name = "program", completion = "filename" }]
+args = { program = "{0}", runtime = "bun" }
+
+[[language.debugger.templates]]
+name = "attach (ws://localhost:6499/dap)"
+request = "attach"
+completion = []
+args = { url = "ws://localhost:6499/dap" }
+
+[[language]]
+name = "jsx"
+language-servers = [{ name = "tsc", except-features = ["format"] }, "tailwindcss"]
+formatter = { command = "prettierd", args = ["%{buffer_name}"] }
+auto-format = true
+
+[[language]]
+name = "json"
+language-servers = [{ name = "vscode-json", except-features = ["format"] }]
+formatter = { command = "prettierd", args = ["%{buffer_name}"] }
+auto-format = true
+
+[[language]]
+name = "css"
+language-servers = ["vscode-css", "tailwindcss"]
+formatter = { command = "prettierd", args = ["%{buffer_name}"] }
+auto-format = true
+
+[[language]]
+name = "scss"
+language-servers = ["vscode-css", "tailwindcss"]
+formatter = { command = "prettierd", args = ["%{buffer_name}"] }
+auto-format = true
+
+[[language]]
+name = "svelte"
+language-servers = [{ name = "svelteserver", except-features = ["format"] }, "tailwindcss"]
+formatter = { command = "prettierd", args = ["%{buffer_name}"] }
 auto-format = true
 
 [[language]]
 name = "html"
+formatter = { command = "prettierd", args = ["%{buffer_name}"] }
 auto-format = true
-language-servers = ["vscode-html-language-server", "emmet-ls"]
-formatter = { command = "prettier", args = ["--parser", "html"] }
 
 [[language]]
 name = "rust"
+auto-format = true
+
+[[language]]
+name = "zig"
+auto-format = true
+
+[[language]]
+name = "lua"
+auto-format = false
+
+# nvim: vim.filetype mdx -> markdown (treesitter registered markdown for mdx)
+[[language]]
+name = "markdown"
+file-types = ["md", "markdown", "mdx", "mkd", "mdwn", "mdown", "markdn"]

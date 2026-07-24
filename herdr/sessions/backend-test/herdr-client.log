@@ -1,0 +1,3 @@
+2026-07-15T11:00:40.508621Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=317530
+2026-07-15T11:00:40.508632Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/sessions/backend-test/herdr-client.sock
+2026-07-15T11:00:40.757743Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame

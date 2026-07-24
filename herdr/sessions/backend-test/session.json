@@ -1,0 +1,117 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "w1",
+      "custom_name": null,
+      "identity_cwd": "/home/kevin/.canvize/projects/nong-san-online-a5f8f65d/app",
+      "public_pane_numbers": {
+        "4": 4,
+        "7": 7,
+        "3": 3,
+        "2": 2,
+        "5": 5,
+        "1": 1
+      },
+      "next_public_pane_number": 8,
+      "public_tab_numbers": [
+        1,
+        2,
+        3
+      ],
+      "next_public_tab_number": 4,
+      "tabs": [
+        {
+          "custom_name": "app",
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5,
+              "first": {
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.67469877,
+                  "first": {
+                    "Pane": 1
+                  },
+                  "second": {
+                    "Pane": 3
+                  }
+                }
+              },
+              "second": {
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.67469877,
+                  "first": {
+                    "Pane": 2
+                  },
+                  "second": {
+                    "Pane": 5
+                  }
+                }
+              }
+            }
+          },
+          "panes": {
+            "5": {
+              "cwd": "/home/kevin/.canvize/projects/nong-san-online-a5f8f65d/app/server"
+            },
+            "2": {
+              "cwd": "/home/kevin/.canvize/projects/nong-san-online-a5f8f65d/app/server"
+            },
+            "3": {
+              "cwd": "/home/kevin/.canvize/projects/nong-san-online-a5f8f65d/app"
+            },
+            "1": {
+              "cwd": "/home/kevin/.canvize/projects/nong-san-online-a5f8f65d/app"
+            }
+          },
+          "zoomed": false,
+          "focused": 2,
+          "root_pane": 1
+        },
+        {
+          "custom_name": "claude",
+          "layout": {
+            "Pane": 4
+          },
+          "panes": {
+            "4": {
+              "cwd": "/home/kevin/.canvize/projects/nong-san-online-a5f8f65d/app",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "83a092a1-9282-4f77-af27-7eab0d9a674a"
+              }
+            }
+          },
+          "zoomed": false,
+          "focused": 4,
+          "root_pane": 4
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 7
+          },
+          "panes": {
+            "7": {
+              "cwd": "/home/kevin/.canvize/projects/nong-san-online-a5f8f65d/app"
+            }
+          },
+          "zoomed": false,
+          "focused": 7,
+          "root_pane": 7
+        }
+      ],
+      "active_tab": 0
+    }
+  ],
+  "active": 0,
+  "selected": 0,
+  "sidebar_width": 26,
+  "sidebar_section_split": 0.5,
+  "collapsed_space_keys": []
+}

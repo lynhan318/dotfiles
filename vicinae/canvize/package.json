@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/vicinaehq/vicinae/refs/heads/main/extra/schemas/extension.json",
+  "name": "canvize",
+  "title": "Canvize",
+  "description": "Browse all repositories in the canvize GitHub organization",
+  "categories": ["Developer Tools"],
+  "license": "MIT",
+  "platforms": ["Linux"],
+  "author": "kevin",
+  "icon": "extension_icon.png",
+  "commands": [
+    {
+      "name": "canvize",
+      "title": "Canvize Repositories",
+      "subtitle": "canvize org",
+      "description": "List all repositories in the canvize GitHub organization",
+      "mode": "view",
+      "keywords": ["canvize", "github", "repos", "repositories", "org"]
+    }
+  ],
+  "preferences": [
+    {
+      "name": "githubToken",
+      "title": "GitHub Token",
+      "description": "Optional. If empty, the extension uses your GitHub CLI auth (`gh auth token`) automatically. Set a personal access token here to override it. Needs 'repo' + 'read:org' scopes to see private repos.",
+      "type": "password",
+      "required": false
+    }
+  ],
+  "scripts": {
+    "build": "vici build",
+    "dev": "vici develop",
+    "lint": "vici lint"
+  },
+  "dependencies": {
+    "@vicinae/api": "^0.23.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

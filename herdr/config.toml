@@ -78,7 +78,7 @@ command = "herdr plugin action invoke open-file-viewer-tab --plugin herdr-file-v
 # tmux: set -g mouse on
 mouse_capture = true
 show_agent_labels_on_pane_borders = true
-agent_panel_sort = "spaces"
+agent_panel_sort = "priority"
 [advanced]
 # tmux: set -g history-limit 1000000 (lines). herdr counts bytes; ~100MB here.
 scrollback_limit_bytes = 100000000

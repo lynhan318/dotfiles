@@ -4,7 +4,13 @@ binds { // === System & Overview ===
     Mod+Return hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
 
     // --- Noctalia shell (IPC via `noctalia msg`) ---
-    Mod+D hotkey-overlay-title="Application Launcher" {
+    // Default application launcher: Vicinae (https://vicinae.com).
+    // Server runs via the `vicinae.service` systemd user unit.
+    Mod+D hotkey-overlay-title="Application Launcher (Vicinae)" {
+        spawn "vicinae" "toggle";
+    }
+    // Old Noctalia launcher, kept on Mod+Shift+D as a fallback.
+    Mod+Shift+D hotkey-overlay-title="Noctalia Launcher" {
         spawn "noctalia" "msg" "panel-toggle" "launcher";
     }
     Mod+V hotkey-overlay-title="Clipboard History" {
@@ -30,6 +36,9 @@ binds { // === System & Overview ===
     }
     Mod+E hotkey-overlay-title="Open Files" {
         spawn "nautilus";
+    }
+    Mod+C hotkey-overlay-title="Open Browser" {
+        spawn "google-chrome-stable";
     }
     Mod+Shift+C hotkey-overlay-title="Cast focused window" {
         spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg -j focused-window | jq .id)";
@@ -164,8 +173,8 @@ binds { // === System & Overview ===
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+Ctrl+F { expand-column-to-available-width; }
-    Mod+C { center-column; }
     Mod+Ctrl+C { center-visible-columns; }
+    // Mod+C { center-column; }
 
     // === Manual Sizing ===
     Mod+Minus { set-column-width "-10%"; }

@@ -34,3 +34,6 @@
 2026-07-06T14:52:05.969492Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
 2026-07-06T15:22:05.970641Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
 2026-07-06T15:52:05.971530Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-06T16:22:05.972184Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-06T16:52:05.973623Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-06T17:22:05.974403Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"

@@ -1,0 +1,7 @@
+2026-07-08T06:17:50.943306Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=158492
+2026-07-08T06:17:50.943322Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/sessions/rust/herdr-client.sock
+2026-07-08T06:17:51.005148Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-08T06:25:45.930841Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=158492
+2026-07-08T06:26:03.399614Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=167507
+2026-07-08T06:26:03.399629Z  INFO herdr::client: connecting to server path=/home/kevin/.config/herdr/sessions/rust/herdr-client.sock
+2026-07-08T06:26:03.429477Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame

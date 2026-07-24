@@ -2,6 +2,9 @@ return {
   "saghen/blink.cmp",
   dependencies = "rafamadriz/friendly-snippets",
   version = "1.*",
+  -- Defer off the startup path. blink is also an lsp dependency, so it still
+  -- loads (before the lsp) on BufReadPre; capabilities/completion unaffected.
+  event = { "InsertEnter", "CmdlineEnter" },
   opts = {
     -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept, C-n/C-p for up/down)
     -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys for up/down)

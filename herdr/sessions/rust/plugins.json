@@ -1,0 +1,74 @@
+[
+  {
+    "plugin_id": "vim-herdr-navigation",
+    "name": "Vim Herdr Navigation",
+    "version": "0.1.0",
+    "min_herdr_version": "0.7.0",
+    "description": "Seamless Ctrl+h/j/k/l navigation across herdr panes and Vim/Neovim splits",
+    "manifest_path": "/home/kevin/.dotfiles/herdr/sessions/rust/plugins/github/vim-herdr-navigation-a8bf42123d81/herdr-plugin.toml",
+    "plugin_root": "/home/kevin/.dotfiles/herdr/sessions/rust/plugins/github/vim-herdr-navigation-a8bf42123d81",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "actions": [
+      {
+        "id": "down",
+        "title": "Navigate down (Vim/herdr)",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "bash",
+          "navigate.sh",
+          "down"
+        ]
+      },
+      {
+        "id": "left",
+        "title": "Navigate left (Vim/herdr)",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "bash",
+          "navigate.sh",
+          "left"
+        ]
+      },
+      {
+        "id": "right",
+        "title": "Navigate right (Vim/herdr)",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "bash",
+          "navigate.sh",
+          "right"
+        ]
+      },
+      {
+        "id": "up",
+        "title": "Navigate up (Vim/herdr)",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "bash",
+          "navigate.sh",
+          "up"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "paulbkim-dev",
+      "repo": "vim-herdr-navigation",
+      "resolved_commit": "53e318c772c4d3b7fbd904ac43bcf3e5b5d8b244",
+      "managed_path": "/home/kevin/.config/herdr/sessions/rust/plugins/github/vim-herdr-navigation-a8bf42123d81",
+      "installed_unix_ms": 1783492681932
+    }
+  }
+]

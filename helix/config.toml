@@ -3,25 +3,30 @@ theme = "everforest_dark"
 [editor]
 cursorline = true
 color-modes = true
-auto-pairs = false 
+auto-pairs = true                 # nvim: nvim-autopairs
 true-color = true
 mouse = false
 scrolloff = 10
 bufferline = "multiple"
 end-of-line-diagnostics = "hint"
+line-number = "relative"          # nvim: number + relativenumber
+default-yank-register = "+"       # nvim: clipboard = unnamedplus
+continue-comments = false         # nvim: fo-=c fo-=r fo-=o (no comment continuation)
+popup-border = "all"              # nvim: rounded floats
+idle-timeout = 250                # nvim: updatetime = 250
+insert-final-newline = true
 
-# [editor.sticky-context]
+# [editor.sticky-context]         # nvim: treesitter-context — not merged upstream yet
 # enable = true
 # indicator = true
 # max-lines = 10
 
-
-# [editor.lsp]
-# display-messages = true
-# display-inlay-hints = true
+[editor.lsp]
+display-inlay-hints = false       # nvim: inlay hints disabled on attach; toggle with <space>ll
+display-color-swatches = true     # nvim: nvim-colorizer.lua (LSP documentColor)
 
 [editor.inline-diagnostics]
-cursor-line = "hint"
+cursor-line = "hint"              # nvim: vim.diagnostic float on cursor line
 
 [editor.cursor-shape]
 insert = "bar"
@@ -38,7 +43,7 @@ mode.insert = "INSERT"
 mode.select = "SELECT"
 
 [editor.indent-guides]
-render = true
+render = true                     # nvim: snacks.indent
 
 [keys.normal]
 "%" = "match_brackets"
@@ -47,7 +52,7 @@ render = true
 "$" = "goto_line_end"
 0 = "goto_line_start"
 G = "goto_file_end"
-K = "hover"
+K = "hover"                       # nvim: K = vim.lsp.buf.hover
 C-e = [
   ':sh rm -f /tmp/unique-file',
   ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
@@ -59,13 +64,28 @@ H = ["select_mode", "goto_line_start", "normal_mode"]
 L = ["select_mode", "goto_line_end", "normal_mode"]
 C-v = "vsplit"
 C-s = "hsplit"
-C-h = "jump_view_left"
+C-h = "jump_view_left"            # nvim: vim-tmux-navigator (herdr handles the outer hop)
 C-j = "jump_view_down"
 C-k = "jump_view_up"
 C-l = "jump_view_right"
 x = ["extend_line", "select_mode"] # prefer selection with movement: hjkl
 X = ["extend_line", "select_mode", "flip_selections"] # same as the above but prepare for going up
 q = { q = "wclose" }
+
+# nvim: snacks.picker
+C-p = "file_picker"               # nvim: <C-p> Snacks.picker.files
+C-b = "buffer_picker"             # nvim: <C-b> Snacks.picker.buffers
+C-g = "global_search"             # nvim: <C-g> Snacks.picker.grep
+
+# Steel-plugin keybindings ("-" oil, "`" streal, <space>cg scooter) live in
+# init.scm — stable helix rejects TOML bindings to commands it doesn't know.
+
+[keys.normal.g]
+s = ["hsplit", "goto_definition"] # nvim: gs = hsplit + goto def
+v = ["vsplit", "goto_definition"] # nvim: gv = vsplit + goto def
+# native equivalents of the other snacks LSP keys:
+#   gd definition · gD declaration · gr references · gi implementation
+#   gy type-definition · gw = flash.nvim-style word jump labels
 
 [keys.select]
 i = "select_textobject_inner"
@@ -79,9 +99,30 @@ x = "extend_to_line_bounds"
 X = "extend_line"
 
 [keys.insert]
-j = { k = "normal_mode" }
-w = { w = ["normal_mode",":w" ]}
-
+j = { k = "normal_mode" }         # nvim: jk -> <Esc>
+w = { w = ["normal_mode", ":w"] } # nvim: ww -> <Esc>:w
+C-l = "move_char_right"           # nvim: <C-l> -> <Right>
+C-h = "move_char_left"            # nvim: <C-h> -> <Left>
 
 [keys.normal.space]
+q = ":quit"                       # nvim: <leader>q
+
+[keys.normal.space.l]             # nvim: <leader>l*
 l = ":toggle lsp.display-inlay-hints"
+g = [                             # nvim: <leader>lg Snacks.lazygit
+  ":write-all",
+  ":insert-output lazygit >/dev/tty",
+  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ":redraw",
+  ":reload-all",
+]
+
+[keys.normal.space.c]             # nvim: <leader>c*
+c = "toggle_comments"             # native <space>c moved here (also on C-c)
+a = "code_action"                 # nvim: <leader>ca (also native <space>a)
+f = ":format"                     # nvim: <leader>p conform format
+# g = scooter (grug-far) — bound in init.scm, steel build only
+
+[keys.normal.space.b]             # nvim: <leader>b*
+b = "buffer_picker"               # native <space>b moved here
+d = ":buffer-close"               # nvim: <leader>bd Snacks.bufdelete

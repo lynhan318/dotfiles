@@ -2,6 +2,12 @@ return {
     -- Core Debugging Client
     {
         "mfussenegger/nvim-dap",
+        -- Lazy-load on first debug keypress; the real keymaps are (re)defined in
+        -- `config` once the plugin loads, and lazy.nvim replays the triggering key.
+        keys = {
+            "<F5>", "<F10>", "<F11>", "<F12>",
+            "<leader>db", "<leader>dB", "<leader>dr", "<leader>dl",
+        },
         dependencies = {
             -- Fancy UI for debugging
             { "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },

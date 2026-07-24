@@ -73,14 +73,18 @@ local function path_for(agent)
 end
 
 local function send_to_agent(agent, start_line, end_line)
-    local target = agent.terminal_id or agent.pane_id
     local message = string.format("%s#L%d-%d", path_for(agent), start_line, end_line)
-    local _, err = herdr { "agent", "send", target, message }
+    -- `agent send` no longer exists: its replacements either send named keys
+    -- (`agent send-keys`) or submit a whole prompt (`agent prompt`). We want
+    -- the text typed into the composer WITHOUT submitting, so the user can
+    -- finish the prompt themselves — that's `pane send-text`. Agent commands
+    -- also only accept agent names/pane ids now, not terminal ids.
+    local _, err = herdr { "pane", "send-text", agent.pane_id, message }
     if err then
         vim.notify("[herdr-claude] send failed: " .. err, vim.log.levels.ERROR)
         return
     end
-    herdr { "agent", "focus", target }
+    herdr { "agent", "focus", agent.pane_id }
 end
 
 function M.send_selection()
