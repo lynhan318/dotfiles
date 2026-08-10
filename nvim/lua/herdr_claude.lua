@@ -59,6 +59,17 @@ local function claude_agents_in_tab(tab_id)
     return agents
 end
 
+-- Pane names (`label`) only come back from `pane list`/`pane get`, not
+-- `agent list`, so join them in by pane_id.
+local function pane_labels()
+    local res = herdr { "pane", "list" }
+    local labels = {}
+    for _, p in ipairs(res and res.result and res.result.panes or {}) do
+        labels[p.pane_id] = p.label
+    end
+    return labels
+end
+
 -- Prefer a path the agent can resolve from its own cwd.
 local function path_for(agent)
     local abs = vim.api.nvim_buf_get_name(0)
@@ -122,12 +133,14 @@ function M.send_selection()
         return
     end
 
+    local labels = pane_labels()
     vim.ui.select(agents, {
         prompt = "Send to Claude agent:",
         format_item = function(a)
+            local name = labels[a.pane_id] or a.terminal_title_stripped or a.agent
             return string.format(
-                "%-8s %s  [%s]",
-                a.agent,
+                "%-28s %s  [%s]",
+                name,
                 vim.fn.fnamemodify(a.cwd or "", ":~"),
                 a.agent_status or "unknown"
             )

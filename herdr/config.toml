@@ -79,6 +79,11 @@ command = "herdr plugin action invoke open-file-viewer-tab --plugin herdr-file-v
 mouse_capture = true
 show_agent_labels_on_pane_borders = true
 agent_panel_sort = "priority"
+pane_gaps = false
+
+[ui.toast]
+delivery = "off"
+
 [advanced]
 # tmux: set -g history-limit 1000000 (lines). herdr counts bytes; ~100MB here.
 scrollback_limit_bytes = 100000000
@@ -110,5 +115,3 @@ description = "navigate right (vim/herdr)"
 [experimental]
 pane_history = true
 
-[ui.toast]
-delivery = "off"

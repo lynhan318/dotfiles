@@ -13,72 +13,75 @@
         "is_linked_worktree": false
       },
       "public_pane_numbers": {
-        "10": 147,
+        "17": 325,
+        "7": 322,
+        "3": 316,
+        "6": 290,
         "1": 1,
-        "11": 180,
-        "7": 31,
-        "2": 195,
-        "12": 188,
-        "9": 136,
-        "5": 191,
-        "4": 24,
-        "3": 41,
-        "8": 138,
-        "19": 199,
-        "6": 103
+        "5": 218,
+        "11": 258,
+        "4": 281,
+        "16": 312,
+        "18": 324,
+        "14": 284,
+        "9": 300,
+        "13": 291,
+        "12": 269,
+        "10": 147,
+        "15": 287
       },
-      "next_public_pane_number": 200,
+      "next_public_pane_number": 326,
       "public_tab_numbers": [
         1,
         2,
-        5,
         13,
-        14
+        17,
+        18
       ],
-      "next_public_tab_number": 15,
+      "next_public_tab_number": 19,
       "tabs": [
         {
           "custom_name": "web",
           "layout": {
             "Split": {
               "direction": "Horizontal",
-              "ratio": 0.6338983,
+              "ratio": 0.5,
               "first": {
                 "Split": {
                   "direction": "Vertical",
-                  "ratio": 0.78313255,
+                  "ratio": 0.75000006,
                   "first": {
                     "Pane": 1
                   },
                   "second": {
-                    "Pane": 2
+                    "Pane": 3
                   }
                 }
               },
               "second": {
-                "Pane": 3
+                "Pane": 4
               }
             }
           },
           "panes": {
-            "1": {
+            "3": {
               "cwd": "/home/kevin/canvize/web"
             },
-            "2": {
-              "cwd": "/home/kevin/canvize"
-            },
-            "3": {
+            "4": {
               "cwd": "/home/kevin/canvize",
               "agent_session": {
                 "source": "herdr:claude",
                 "agent": "claude",
                 "kind": "id",
-                "value": "ea6c8990-30bc-4b40-8084-17056e250710"
+                "value": "3df85f7c-8c76-4777-9322-3df228641db7"
               }
+            },
+            "1": {
+              "cwd": "/home/kevin/canvize/web"
             }
           },
           "zoomed": false,
-          "focused": 2,
+          "focused": 1,
           "root_pane": 1
         },
         {
@@ -86,72 +89,25 @@
           "layout": {
             "Split": {
               "direction": "Horizontal",
-              "ratio": 0.5457627,
+              "ratio": 0.61904764,
               "first": {
                 "Split": {
                   "direction": "Vertical",
-                  "ratio": 0.73493975,
+                  "ratio": 0.5301205,
                   "first": {
-                    "Pane": 4
+                    "Pane": 5
                   },
                   "second": {
                     "Split": {
                       "direction": "Horizontal",
-                      "ratio": 0.54658383,
+                      "ratio": 0.5538462,
                       "first": {
-                        "Pane": 5
+                        "Pane": 6
                       },
                       "second": {
-                        "Pane": 19
+                        "Pane": 7
                       }
                     }
-                  }
-                }
-              },
-              "second": {
-                "Pane": 6
-              }
-            }
-          },
-          "panes": {
-            "4": {
-              "cwd": "/home/kevin/canvize/api/src/mastra"
-            },
-            "5": {
-              "cwd": "/home/kevin/canvize/api"
-            },
-            "6": {
-              "cwd": "/home/kevin/canvize/api",
-              "agent_session": {
-                "source": "herdr:claude",
-                "agent": "claude",
-                "kind": "id",
-                "value": "3a15a0f7-131b-4872-8a88-00930a0d1df9"
-              }
-            },
-            "19": {
-              "cwd": "/home/kevin/canvize"
-            }
-          },
-          "zoomed": false,
-          "focused": 4,
-          "root_pane": 4
-        },
-        {
-          "custom_name": "test-zalo-agent",
-          "layout": {
-            "Split": {
-              "direction": "Horizontal",
-              "ratio": 0.4644068,
-              "first": {
-                "Split": {
-                  "direction": "Vertical",
-                  "ratio": 0.7590361,
-                  "first": {
-                    "Pane": 7
-                  },
-                  "second": {
-                    "Pane": 8
                   }
                 }
               },
@@ -161,28 +117,56 @@
             }
           },
           "panes": {
-            "9": {
-              "cwd": "/home/kevin/canvize"
-            },
-            "8": {
-              "cwd": "/home/kevin"
+            "5": {
+              "cwd": "/home/kevin/canvize/api"
             },
             "7": {
-              "cwd": "/home/kevin"
+              "cwd": "/home/kevin/canvize"
+            },
+            "9": {
+              "cwd": "/home/kevin/canvize/api",
+              "label": "backend-claude",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "78eb3f30-9b89-47d9-98d4-18af8aef6e28"
+              }
+            },
+            "6": {
+              "cwd": "/home/kevin/canvize/api"
             }
           },
           "zoomed": false,
           "focused": 7,
-          "root_pane": 7
+          "root_pane": 5
         },
         {
-          "custom_name": "redesign",
+          "custom_name": "template",
           "layout": {
-            "Pane": 10
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.4915254,
+              "first": {
+                "Pane": 10
+              },
+              "second": {
+                "Pane": 11
+              }
+            }
           },
           "panes": {
+            "11": {
+              "cwd": "/home/kevin/canvize/api/src/mastra/templates/zalo-miniapp",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "20bfa03a-e083-471b-8948-cefa216bd1a8"
+              }
+            },
             "10": {
-              "cwd": "/home/kevin"
+              "cwd": "/home/kevin/canvize/api/src/mastra/templates/zalo-miniapp"
             }
           },
           "zoomed": false,
@@ -190,154 +174,63 @@
           "root_pane": 10
         },
         {
-          "custom_name": "fix neovim",
+          "custom_name": "prompt",
           "layout": {
             "Split": {
               "direction": "Horizontal",
-              "ratio": 0.5,
+              "ratio": 0.54915255,
               "first": {
-                "Pane": 11
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.72289157,
+                  "first": {
+                    "Pane": 12
+                  },
+                  "second": {
+                    "Pane": 13
+                  }
+                }
               },
               "second": {
-                "Pane": 12
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.6626506,
+                  "first": {
+                    "Pane": 14
+                  },
+                  "second": {
+                    "Pane": 15
+                  }
+                }
               }
             }
           },
           "panes": {
-            "11": {
-              "cwd": "/home/kevin/.dotfiles/nvim/lua/plugins",
+            "13": {
+              "cwd": "/home/kevin/.canvize/projects/at-lich-spa-nhanh-54897615/app"
+            },
+            "14": {
+              "cwd": "/home/kevin/.canvize/projects/at-lich-spa-nhanh-54897615/app",
               "agent_session": {
                 "source": "herdr:claude",
                 "agent": "claude",
                 "kind": "id",
-                "value": "70040745-f49e-484e-b505-10ff40c5b11a"
+                "value": "a22fb3e5-0719-4efe-9903-3c2aba34ea14"
               }
             },
             "12": {
-              "cwd": "/home/kevin/.dotfiles"
+              "cwd": "/home/kevin/.canvize/projects/at-lich-spa-nhanh-54897615"
+            },
+            "15": {
+              "cwd": "/home/kevin/.canvize/projects/at-lich-spa-nhanh-54897615/app/server"
             }
           },
           "zoomed": false,
           "focused": 12,
-          "root_pane": 11
-        }
-      ],
-      "active_tab": 4
-    },
-    {
-      "id": "wQ",
-      "custom_name": "rust",
-      "identity_cwd": "/home/kevin/canvize",
-      "public_pane_numbers": {
-        "13": 1
-      },
-      "next_public_pane_number": 2,
-      "public_tab_numbers": [
-        1
-      ],
-      "next_public_tab_number": 2,
-      "tabs": [
+          "root_pane": 12
+        },
         {
-          "custom_name": null,
-          "layout": {
-            "Pane": 13
-          },
-          "panes": {
-            "13": {
-              "cwd": "/home/kevin/canvize"
-            }
-          },
-          "zoomed": false,
-          "focused": 13,
-          "root_pane": 13
-        }
-      ],
-      "active_tab": 0
-    },
-    {
-      "id": "wR",
-      "custom_name": "infra",
-      "identity_cwd": "/home/kevin/canvize",
-      "public_pane_numbers": {
-        "14": 1
-      },
-      "next_public_pane_number": 3,
-      "public_tab_numbers": [
-        1
-      ],
-      "next_public_tab_number": 2,
-      "tabs": [
-        {
-          "custom_name": null,
-          "layout": {
-            "Pane": 14
-          },
-          "panes": {
-            "14": {
-              "cwd": "/home/kevin/canvize"
-            }
-          },
-          "zoomed": false,
-          "focused": 14,
-          "root_pane": 14
-        }
-      ],
-      "active_tab": 0
-    },
-    {
-      "id": "wT",
-      "custom_name": "Canvize Repository",
-      "identity_cwd": "/home/kevin/canvize-projects/pre-login-67baf485",
-      "public_pane_numbers": {
-        "15": 1
-      },
-      "next_public_pane_number": 2,
-      "public_tab_numbers": [
-        1
-      ],
-      "next_public_tab_number": 2,
-      "tabs": [
-        {
-          "custom_name": null,
-          "layout": {
-            "Pane": 15
-          },
-          "panes": {
-            "15": {
-              "cwd": "/home/kevin/canvize-projects/pre-login-67baf485"
-            }
-          },
-          "zoomed": false,
-          "focused": 15,
-          "root_pane": 15
-        }
-      ],
-      "active_tab": 0
-    },
-    {
-      "id": "wW",
-      "custom_name": null,
-      "identity_cwd": "/home/kevin/.herdr/worktrees/canvize/worktree-brave-meadow-c168/web",
-      "worktree_space": {
-        "key": "/home/kevin/canvize/.git",
-        "label": "canvize",
-        "repo_root": "/home/kevin/canvize",
-        "checkout_path": "/home/kevin/.herdr/worktrees/canvize/worktree-brave-meadow-c168",
-        "is_linked_worktree": true
-      },
-      "public_pane_numbers": {
-        "18": 2,
-        "17": 3,
-        "16": 1
-      },
-      "next_public_pane_number": 5,
-      "public_tab_numbers": [
-        1
-      ],
-      "next_public_tab_number": 2,
-      "tabs": [
-        {
-          "custom_name": null,
+          "custom_name": "portfolio-ca-nhan-chuyen-1af0202e",
           "layout": {
             "Split": {
               "direction": "Horizontal",
@@ -360,25 +253,115 @@
             }
           },
           "panes": {
-            "16": {
-              "cwd": "/home/kevin/.herdr/worktrees/canvize/worktree-brave-meadow-c168/web"
-            },
             "17": {
-              "cwd": "/home/kevin/.herdr/worktrees/canvize/worktree-brave-meadow-c168/web"
+              "cwd": "/home/kevin/.canvize/projects/portfolio-ca-nhan-chuyen-55c53aaa/app"
+            },
+            "16": {
+              "cwd": "/home/kevin/.canvize/projects/ho-so-nang-luc-fccf2346/app"
             },
             "18": {
-              "cwd": "/home/kevin/.herdr/worktrees/canvize/worktree-brave-meadow-c168/web",
+              "cwd": "/home/kevin/.canvize/projects/portfolio-ca-nhan-chuyen-55c53aaa/app",
               "agent_session": {
                 "source": "herdr:claude",
                 "agent": "claude",
                 "kind": "id",
-                "value": "32374fdb-236a-47ff-b405-b6bc54145c0c"
+                "value": "9c56c594-e6f6-4a8e-97fe-4a7824d4b951"
               }
             }
           },
           "zoomed": false,
           "focused": 18,
           "root_pane": 16
+        }
+      ],
+      "active_tab": 1
+    },
+    {
+      "id": "wQ",
+      "custom_name": "rust",
+      "identity_cwd": "/home/kevin/canvize",
+      "public_pane_numbers": {
+        "19": 1
+      },
+      "next_public_pane_number": 2,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 19
+          },
+          "panes": {
+            "19": {
+              "cwd": "/home/kevin/canvize"
+            }
+          },
+          "zoomed": false,
+          "focused": 19,
+          "root_pane": 19
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "wR",
+      "custom_name": "infra",
+      "identity_cwd": "/home/kevin/canvize",
+      "public_pane_numbers": {
+        "20": 1
+      },
+      "next_public_pane_number": 3,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 20
+          },
+          "panes": {
+            "20": {
+              "cwd": "/home/kevin/canvize"
+            }
+          },
+          "zoomed": false,
+          "focused": 20,
+          "root_pane": 20
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "wT",
+      "custom_name": "Canvize Repository",
+      "identity_cwd": "/home/kevin/canvize-projects/pre-login-67baf485",
+      "public_pane_numbers": {
+        "21": 1
+      },
+      "next_public_pane_number": 2,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 21
+          },
+          "panes": {
+            "21": {
+              "cwd": "/home/kevin/canvize-projects/pre-login-67baf485"
+            }
+          },
+          "zoomed": false,
+          "focused": 21,
+          "root_pane": 21
         }
       ],
       "active_tab": 0
