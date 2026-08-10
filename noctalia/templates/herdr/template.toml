@@ -1,0 +1,11 @@
+[catalog.herdr]
+name = "Herdr"
+category = "terminal"
+
+[templates.herdr]
+input_path = "herdr.toml"
+# Rendered to a side file, then spliced into config.toml by the hook — herdr
+# has no include mechanism and no themes directory, so its colors can only live
+# inside the same config.toml that holds keybindings, terminal and UI settings.
+output_path = "$XDG_CONFIG_HOME/herdr/noctalia-theme.toml"
+post_hook = "bash '{{ config_dir }}/apply.sh'"

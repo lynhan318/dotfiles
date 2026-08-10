@@ -1,19 +1,40 @@
-// Monitor layout — hardware-specific, identical regardless of which shell
-// (DMS or Noctalia) is running. Copied from the DMS-generated outputs so the
-// Noctalia session lights up the same screens. Adjust with `niri msg outputs`.
+// Monitor layout — hardware-specific. Adjust with `niri msg outputs`.
+//
+// Two-screen desk setup, laid out left-to-right:
+//
+//     x=0                1715              4275
+//     +----------------+ +--------------------+
+//     | Yoga (eDP-1)   | | Samsung (HDMI-A-1) |  <- main, focused at startup
+//     | 1714x1072      | | 2560x1440          |
+//     +----------------+ +--------------------+
+//
+// Bottom edges align (the Yoga sits lower on the desk than the monitor), hence
+// eDP-1's y=368 = 1440 - 1072. Logical sizes are the mode divided by scale;
+// eDP-1 is really 1714.29 wide (3000 / 1.75), so the Samsung starts at 1715
+// rather than 1714 — at 1714 niri detects the fractional overlap and nudges it
+// right by a pixel anyway.
+//
+// Unplugging the Samsung needs no config change: niri ignores output blocks for
+// disconnected screens, everything falls back onto eDP-1, and the workspace
+// scripts check whether HDMI-A-1 is connected before reaching for it.
 
-output "DP-1" {
-    mode "3840x2160@59.997"
-    scale 1.5
-    position x=0 y=634
-    focus-at-startup
+// Built-in panel — secondary, on the left. 60 Hz here is the battery-safe
+// default; scripts/refresh-rate.sh raises it to 120 Hz while on AC. Keep this
+// at 60 — a config reload discards niri's temporary mode overrides, so
+// whatever is set here is the fallback.
+output "eDP-1" {
+    mode "3000x1876@60.000"
+    scale 1.75
+    position x=0 y=368
 }
 
+// Samsung LS27D80xU — the main screen.
 output "HDMI-A-1" {
     mode "3840x2160@60.000"
     scale 1.5
-    transform "270"
-    position x=2560 y=0
+    transform "normal"
+    position x=1715 y=0
+    focus-at-startup
     hot-corners {
         off
     }

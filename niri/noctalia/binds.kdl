@@ -92,9 +92,15 @@ binds { // === System & Overview ===
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     // === Focus Navigation ===
+    // hjkl works the same in the overview (Mod+Tab) as it does normally —
+    // niri's overview is not a separate mode, so these binds stay live and the
+    // zoomed-out view follows the focus.
+    //
+    // J/K fall through to the neighbouring workspace once you hit the bottom /
+    // top of a column, so you can hold j to walk down through everything.
     Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
+    Mod+J     { focus-window-or-workspace-down; }
+    Mod+K     { focus-window-or-workspace-up; }
     Mod+L     { focus-column-right; }
 
     // === Window Movement ===
@@ -126,6 +132,11 @@ binds { // === System & Overview ===
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
     // === Workspace Navigation ===
+    // U/I jump a whole workspace regardless of where you are in a column —
+    // the focus counterpart of the Ctrl+U/I "move column to workspace" pair
+    // below. Handy in the overview for hopping straight between workspaces.
+    Mod+U         { focus-workspace-down; }
+    Mod+I         { focus-workspace-up; }
     Mod+Down      { focus-workspace-down; }
     Mod+Up        { focus-workspace-up; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }
@@ -142,11 +153,18 @@ binds { // === System & Overview ===
     Mod+WheelScrollUp       { focus-column-left; }
 
     // === Numbered Workspaces ===
+    // 1-4 live on the main screen, so the script hops there first. Workspace
+    // indices are per-output in niri, which is why plain `focus-workspace N`
+    // isn't enough when the focus is on the secondary screen.
     Mod+1 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 1"; }
     Mod+2 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 2"; }
     Mod+3 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 3"; }
-    Mod+4 { focus-monitor "HDMI-A-1";}
-    Mod+5 { focus-workspace 5; }
+    Mod+4 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 4"; }
+    // 5 is the secondary screen's workspace — the floating scratch space. By
+    // name, not `focus-monitor "eDP-1"`: that lands on whichever workspace was
+    // last active on that screen, which is usually the empty one niri keeps at
+    // the end of every output.
+    Mod+5 { focus-workspace "5: float"; }
     Mod+6 { focus-workspace 6; }
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
@@ -157,7 +175,7 @@ binds { // === System & Overview ===
     Mod+Shift+2 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 2"; }
     Mod+Shift+3 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 3"; }
     Mod+Shift+4 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 4"; }
-    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+5 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 5"; }
     Mod+Shift+6 { move-column-to-workspace 6; }
     Mod+Shift+7 { move-column-to-workspace 7; }
     Mod+Shift+8 { move-column-to-workspace 8; }

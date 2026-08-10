@@ -1,0 +1,56 @@
+{
+	"$schema": "https://raw.githubusercontent.com/vicinaehq/vicinae/refs/heads/main/extra/schemas/extension.json",
+	"name": "herdr",
+	"title": "Herdr",
+	"description": "List Herdr sessions and open one in a new kitty window",
+	"categories": ["Developer Tools"],
+	"license": "MIT",
+	"platforms": ["Linux"],
+	"author": "kevin",
+	"icon": "icon.png",
+	"commands": [
+		{
+			"name": "herdr-sessions",
+			"title": "Search Herdr Sessions",
+			"subtitle": "Herdr",
+			"description": "List Herdr sessions and attach to one in a new kitty window",
+			"mode": "view"
+		},
+		{
+			"name": "herdr-new-session",
+			"title": "New Herdr Session",
+			"subtitle": "Herdr",
+			"description": "Create a named Herdr session and open it in a new kitty window",
+			"mode": "view"
+		}
+	],
+	"preferences": [
+		{
+			"name": "herdrPath",
+			"title": "Herdr Binary",
+			"description": "Path to the herdr executable, or just its name to look it up on PATH.",
+			"type": "textfield",
+			"required": false,
+			"default": "herdr"
+		},
+		{
+			"name": "terminal",
+			"title": "Terminal",
+			"description": "Terminal used to host the session. It is invoked as <terminal> -e <herdr ...>.",
+			"type": "textfield",
+			"required": false,
+			"default": "kitty"
+		}
+	],
+	"scripts": {
+		"build": "vici build",
+		"dev": "vici develop"
+	},
+	"dependencies": {
+		"@vicinae/api": "^0.25.0"
+	},
+	"devDependencies": {
+		"@types/react": "^19.1.17",
+		"typescript": "^5.9.2"
+	}
+}

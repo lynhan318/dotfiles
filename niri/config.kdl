@@ -1,11 +1,18 @@
-// This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+// ============================================================================
+//  niri + Noctalia
+// ----------------------------------------------------------------------------
+//  The one and only niri config. ~/.config/niri is a symlink to this folder,
+//  so niri loads this file directly. The shell is Noctalia
+//  (https://noctalia.dev); the old DankMaterialShell setup has been removed.
+//
+//  Shell-specific and machine-specific bits live in noctalia/*.kdl (see the
+//  includes at the bottom) — see noctalia/README.md.
+//
+//  KDL format: https://kdl.dev   |   niri wiki: https://github.com/YaLTeR/niri/wiki
+// ============================================================================
 config-notification {
     disable-failed
 }
-// Outputs from existing configuration
 
 gestures {
     hot-corners {
@@ -13,13 +20,12 @@ gestures {
     }
 }
 
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 input {
     mod-key "Alt"
     keyboard {
         xkb {
+            // Caps Lock acts as an extra Ctrl (no Caps Lock toggle at all).
+            options "ctrl:nocaps"
         }
         repeat-delay 370
         repeat-rate 50
@@ -32,60 +38,35 @@ input {
     trackpoint {
     }
 }
-// You can configure outputs by their name, which you can find
-// by running `niri msg outputs` while inside a niri instance.
-// The built-in laptop monitor is usually called "eDP-1".
-// Find more information on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
 
-// Settings that influence how windows are positioned and sized.
-// Find more information on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
-// layout {
-//     gaps 4
-//
-//     border {
-//         width 0
-//     }
-//
-//     focus-ring {
-//         width 2
-//     }
-// }
-
-// window-rule {
-//     geometry-corner-radius 4
-//     clip-to-geometry true
-//     tiled-state true
-//     draw-border-with-background false
-// }
-
+// Draw Noctalia's wallpaper into niri's backdrop, so the overview (Mod+Tab)
+// shows the wallpaper behind the workspace thumbnails instead of a flat color.
+// Verify the namespace with `niri msg layers` if a Noctalia update renames it.
 layer-rule {
-    match namespace="^quickshell$"
+    match namespace="^noctalia-wallpaper$"
     place-within-backdrop true
 }
 overview {
-    // Opaque backdrop forces niri to clear the backdrop buffer each frame,
-    // preventing ghost images of old windows leaking through the
-    // place-within-backdrop wallpaper. Hidden behind the wallpaper, so the
-    // exact color only matters if the wallpaper ever fails to cover.
+    // Fallback color, visible only where the wallpaper layer isn't drawn (e.g.
+    // an output Noctalia hasn't painted yet). Opaque so niri clears the
+    // backdrop buffer each frame — a transparent value leaves ghost images of
+    // old windows behind the wallpaper.
     backdrop-color "#2d353b"
     workspace-shadow {
         off
     }
 }
-// Add lines like this to spawn processes at startup.
-// Note that running niri as a session supports xdg-desktop-autostart,
-// which may be more convenient to use.
-// See the binds section below for more spawn examples.
-// This line starts waybar, a commonly used bar for Wayland compositors.
+
+// === Startup ===
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-// Pre-paint wallpaper instantly so login isn't black while DMS/quickshell loads (~3s).
-// DMS draws its own wallpaper on top once ready; same images = no visible handoff.
-spawn-at-startup "swaybg" "-o" "DP-1" "-i" "/home/kevin/.dotfiles/wallpapers/dark.jpg" "-m" "fill" "-o" "HDMI-A-1" "-i" "/home/kevin/.dotfiles/wallpapers/4259846_91284.jpg" "-m" "fill"
 spawn-at-startup "fcitx5"
-spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "noctalia" "--daemon"
+spawn-at-startup "vicinae" "server"
+// Floats anything that lands on the secondary screen's workspace ("5: float").
+// A window rule can't express this — niri rules can't match on output or
+// workspace — so this watches the event stream instead.
+spawn-at-startup "bash" "/home/kevin/.dotfiles/niri/scripts/float-on-secondary.sh"
+
 environment {
   XDG_CURRENT_DESKTOP "niri"
   GTK_IM_MODULE ""
@@ -94,20 +75,31 @@ hotkey-overlay {
     skip-at-startup
 }
 
+// Workspaces 1-4 live on the main screen (Samsung); the Yoga panel holds
+// exactly one, workspace 5, used as the floating scratch space. niri falls back
+// to the only connected output when the Samsung is unplugged.
+//
+// Note: open-on-output only applies when a workspace is first created, so
+// reordering these takes effect on the next niri restart — a config reload
+// leaves already-open workspaces where they are.
 workspace "1: dev" {
-    open-on-output "DP-1"
+    open-on-output "HDMI-A-1"
 }
 workspace "2: web" {
-    open-on-output "DP-1"
+    open-on-output "HDMI-A-1"
 }
 workspace "3: message" {
-    open-on-output "DP-1"
-}
-workspace "4: float" {
     open-on-output "HDMI-A-1"
+}
+workspace "4: misc" {
+    open-on-output "HDMI-A-1"
+}
+workspace "5: float" {
+    open-on-output "eDP-1"
 }
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
 animations {
     workspace-switch {
         spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
@@ -140,12 +132,8 @@ animations {
         spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
     }
 }
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
 
+// === Window rules ===
 window-rule {
     match app-id=r#"^org\.gnome\."#
     draw-border-with-background false
@@ -177,7 +165,6 @@ window-rule {
     open-floating true
 }
 
-
 // Chat apps always open on workspace 4
 window-rule {
     match app-id=r#"^telegram-desktop$"#
@@ -186,7 +173,7 @@ window-rule {
     match app-id=r#"^slack$"#
     match app-id=r#"^discord$"#
     match app-id=r#"^Discord$"#
-    open-on-workspace "Message"
+    open-on-workspace "3: message"
 }
 window-rule {
     match app-id="com.mitchellh.ghostty"
@@ -201,17 +188,12 @@ window-rule {
     match is-active=false
     opacity 1.0
 }
-
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id="zoom"
     open-floating true
 }
-// Open dms windows as floating by default
-window-rule {
-    match app-id=r#"org.quickshell$"#
-    open-floating true
-}
+
 debug {
     honor-xdg-activation-with-invalid-serial
 }
@@ -236,17 +218,14 @@ window-rule {
 window-rule {
     match app-id=r#"^1password$"#
     block-out-from "screencast"
-}// Include dms files
+}
 
-include "dms/colors.kdl"
-include "dms/alttab.kdl"
-include "dms/binds.kdl"
-include "dms/layout.kdl"
-
-include "dms/outputs.kdl"
-
-include "dms/cursor.kdl"
-
-include "dms/windowrules.kdl"
+// === Includes ===
+include "noctalia/colors.kdl"
+include "noctalia/layout.kdl"
+include "noctalia/binds.kdl"
+include "noctalia/outputs.kdl"
+include "noctalia/cursor.kdl"
+include "noctalia/windowrules.kdl"
 
 include "noctalia.kdl"

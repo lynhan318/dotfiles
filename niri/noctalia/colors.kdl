@@ -1,8 +1,8 @@
 // Niri border / focus-ring colors for the Noctalia session.
 //
-// Unlike DMS, Noctalia does NOT auto-generate this file. These are static
-// Everforest values matching the previous DMS look. If you want Noctalia to
-// drive these from the active wallpaper palette, add a niri template under
+// Noctalia does NOT auto-generate this file — these are static Everforest
+// values. If you want Noctalia to drive these from the active wallpaper
+// palette, add a niri template under
 // Noctalia Settings -> Templates that writes this file, then run
 // `noctalia msg templates-apply`.
 

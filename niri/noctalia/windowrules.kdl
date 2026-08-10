@@ -8,3 +8,13 @@ window-rule {
     match app-id=r#"^dev\.noctalia\."#
     open-floating true
 }
+
+// Carried over from the old DMS-managed rule list.
+window-rule {
+    match app-id="^google-chrome$" title="Sign in - Google Accounts - Google Chrome"
+    open-floating true
+}
+window-rule {
+    match app-id="^org.gnome.Loupe$"
+    open-floating true
+}

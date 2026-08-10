@@ -1,5 +1,4 @@
-// Layout sizing for the Noctalia session. Slightly rounded corners to match
-// Noctalia's rounded UI (DMS used 0). Color values live in colors.kdl.
+// Layout sizing. Color values live in colors.kdl.
 
 layout {
     gaps 4

@@ -1,0 +1,40 @@
+#!/bin/sh
+# Work around the Intel BE200 (Gale Peak) failing to come back from sleep.
+#
+# Symptom, straight from the journal on resume:
+#
+#   iwlwifi 0000:01:00.0: 0xFFFFFFFF | ADVANCED_SYSASSERT
+#   Hardware became unavailable upon resume. This could be a software issue
+#     prior to suspend or a hardware issue.
+#   WARNING: net/mac80211/util.c:1957 at ieee80211_reconfig+0x199/0x2040
+#
+# Every register reads 0xFFFFFFFF, i.e. the card is not answering on the PCI
+# bus at all — the firmware is gone and mac80211 can't reconfigure it. Nothing
+# in userspace recovers that; NetworkManager just sees wlan0 go unavailable.
+#
+# So: tear the driver down *before* sleeping (leaving the device fully
+# powered off rather than in a firmware state it can't resume from) and load it
+# again afterwards, which re-runs the normal PCI enable + firmware load path.
+#
+# Costs: no wake-on-WLAN, and a few seconds of reconnect after resume.
+#
+# iwlmld is the op_mode module for this card and holds a reference to iwlwifi,
+# so it has to go first; loading iwlwifi alone pulls it back in automatically.
+#
+# Install (needs root — systemd only runs hooks it owns):
+#   sudo install -Dm755 ~/.dotfiles/system/system-sleep/iwlwifi-be200 \
+#       /usr/lib/systemd/system-sleep/iwlwifi-be200
+#
+# Uninstall:
+#   sudo rm /usr/lib/systemd/system-sleep/iwlwifi-be200
+#
+# systemd calls this as: <script> pre|post suspend|hibernate|hybrid-sleep|...
+
+case "$1" in
+    pre)
+        /usr/bin/modprobe -r iwlmld iwlwifi || true
+        ;;
+    post)
+        /usr/bin/modprobe iwlwifi || true
+        ;;
+esac
