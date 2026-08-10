@@ -14264,3 +14264,8 @@
 2026-08-10T09:49:07.181458Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
 2026-08-10T09:56:09.928417Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wN" tab_id="wN:t2"
 2026-08-10T09:56:14.933125Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/kevin/.config/herdr/session.json workspaces=4
+2026-08-10T10:19:07.182776Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-08-10T10:49:07.183183Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-08-10T11:02:44.222691Z  INFO herdr::server::headless: client resize client_id=2 cols=80 rows=24 cell_width_px=0 cell_height_px=0
+2026-08-10T11:02:44.239980Z  INFO herdr::server::headless: client detached client_id=2
+2026-08-10T11:02:44.240049Z  INFO herdr::server::headless: client disconnected client_id=2
