@@ -27,8 +27,8 @@ input {
             // Caps Lock acts as an extra Ctrl (no Caps Lock toggle at all).
             options "ctrl:nocaps"
         }
-        repeat-delay 370
-        repeat-rate 50
+        repeat-delay 300
+        repeat-rate 40
         numlock
     }
     // Tuned to feel like a macOS trackpad. The four settings that actually
@@ -61,7 +61,7 @@ input {
         // Scrolling is already pixel-precise; this only scales the distance.
         // Below 1.0 it takes more finger to move the same content, which is
         // what makes it feel smooth rather than jumpy.
-        scroll-factor 0.8
+        scroll-factor 0.6
 
         // Tap, then tap-and-hold to drag — and drag-lock keeps the drag alive
         // across a finger lift, so a long drag can be done in several strokes.
@@ -69,7 +69,12 @@ input {
         drag-lock
 
         // Palm rejection while typing, including after the trackpad's own
-        // physical click (dwtp).
+        // physical click (dwtp). Note these only cover typing and clicking —
+        // a hand resting on the edge *while scrolling* is not their job.
+        // That case is handled one layer down, in
+        // ../system/libinput/local-overrides.quirks, because this pad's
+        // firmware retracts its own palm flag mid-gesture and libinput
+        // believes it. niri has no palm knob of its own.
         dwt
         dwtp
     }

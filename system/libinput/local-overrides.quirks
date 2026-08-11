@@ -1,0 +1,36 @@
+# Install to: /etc/libinput/local-overrides.quirks
+#
+# Lenovo Yoga Pro 14 IAH10 (83KF) — Synaptics 06CB:CFD8, 132x77 mm.
+#
+# The firmware's palm reporting is unreliable and, worse, *retracts*.
+# Recorded with `libinput record`, a left hand resting at x=3.4 mm:
+#
+#   15.134  slot0  TOOL_TYPE -> 2 (PALM)     correctly rejected on landing
+#   15.488  slot1  DOWN at x=72.9 mm         second finger arrives
+#   15.543  slot0  TOOL_TYPE -> 0 (FINGER)   confidence collapses
+#   15.550  slot0  TOOL_TYPE -> 2 (PALM)
+#   15.557  slot0  TOOL_TYPE -> 0 (FINGER)   ...and stays a "finger"
+#
+# libinput honours that retraction (tp_palm_detect_tool_triggered un-sets
+# PALM_TOOL_PALM when tool_type leaves MT_TOOL_PALM), so the resting hand
+# is promoted back to a real finger. Slot 1 then swept 72.9 -> 46.3 mm,
+# collapsing the gap 61.7 -> 45.2 mm in 70 ms: a textbook pinch, so apps
+# zoom instead of scrolling.
+#
+# This pad reports no pressure and no touch-size axis, so every
+# AttrPalm*/AttrThumb*/AttrTouchSizeRange quirk is inapplicable. The one
+# lever left is to stop trusting the firmware bit entirely. With
+# ABS_MT_TOOL_TYPE gone, libinput falls back to its own geometric edge
+# zone, which is sticky: a touch that starts in the zone stays a palm
+# unless it travels out. The resting hand above never left 3.2-4.2 mm.
+#
+# Trade-off: palm contacts in the *middle* of the pad lose firmware
+# rejection. dwt/dwtp in niri already cover the typing case, which is
+# when that happens.
+
+[Lenovo Yoga Pro 14 IAH10 Touchpad]
+MatchUdevType=touchpad
+MatchBus=i2c
+MatchVendor=0x06CB
+MatchProduct=0xCFD8
+AttrEventCode=-ABS_MT_TOOL_TYPE
