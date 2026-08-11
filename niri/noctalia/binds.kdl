@@ -116,6 +116,12 @@ binds { // === System & Overview ===
     Mod+Ctrl+End  { move-column-to-last; }
 
     // === Monitor Navigation ===
+    // Mod+` cycles monitors — with two screens it is simply "the other one",
+    // and it keeps working whether they are side by side or stacked, unlike the
+    // directional binds below.
+    Mod+grave repeat=false hotkey-overlay-title="Focus Other Monitor" { focus-monitor-next; }
+    Mod+Shift+grave repeat=false { focus-monitor-previous; }
+
     Mod+Ctrl+Left  { focus-monitor-left; }
     Mod+Ctrl+Down  { focus-monitor-down; }
     Mod+Ctrl+Up    { focus-monitor-up; }

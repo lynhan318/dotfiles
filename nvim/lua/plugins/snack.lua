@@ -70,7 +70,7 @@ return {
         { "gao",        function() Snacks.picker.lsp_outgoing_calls() end,   desc = "C[a]lls Outgoing" },
         { "<leader>ss", function() Snacks.picker.lsp_symbols() end,          desc = "LSP Symbols" },
         { "rf",         function(opts) vim.lsp.buf.rename(opts) end,         nowait = true,                     desc = "Rename symbol" },
-        { "K",          function(opts) vim.lsp.buf.hover(opts) end,          nowait = true,                     desc = "Hover document" },
+        { "K",          function() vim.lsp.buf.hover { border = "single" } end, nowait = true,                  desc = "Hover document" },
         { "<leader>ca", function(opts) vim.lsp.buf.code_action(opts) end,    desc = "LSP Code Action" },
         { "<leader>bd", function() Snacks.bufdelete() end,                   desc = "Delete Buffer" },
         { "<leader>sd", function() Snacks.picker.diagnostics_buffer() end,   desc = "Buffer Diagnostics" },

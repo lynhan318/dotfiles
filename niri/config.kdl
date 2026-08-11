@@ -31,7 +31,47 @@ input {
         repeat-rate 50
         numlock
     }
+    // Tuned to feel like a macOS trackpad. The four settings that actually
+    // matter for that are click-method, natural-scroll, accel-profile and
+    // scroll-factor; the rest is polish.
     touchpad {
+        // Tap-to-click, and the gesture map macOS uses: 1 finger = left,
+        // 2 = right, 3 = middle. Without `tap` a two-finger tap does nothing.
+        tap
+        tap-button-map "left-right-middle"
+
+        // macOS has no click zones — the whole surface is one button and a
+        // two-finger press is the right click. That is exactly clickfinger.
+        // (libinput's default, button-areas, reserves the bottom-right corner
+        // instead, which is the non-Mac feel.)
+        click-method "clickfinger"
+
+        // Content follows the fingers, as on macOS.
+        natural-scroll
+        scroll-method "two-finger"
+
+        // Pointer feel. "adaptive" is the accelerating curve — slow fingers
+        // stay precise, fast fingers cross the screen — which is what macOS
+        // does; "flat" is 1:1 and feels dead by comparison. accel-speed is
+        // -1..1 around the default of 0; a small positive value matches the
+        // shorter travel a Mac needs.
+        accel-profile "adaptive"
+        accel-speed 0.3
+
+        // Scrolling is already pixel-precise; this only scales the distance.
+        // Below 1.0 it takes more finger to move the same content, which is
+        // what makes it feel smooth rather than jumpy.
+        scroll-factor 0.8
+
+        // Tap, then tap-and-hold to drag — and drag-lock keeps the drag alive
+        // across a finger lift, so a long drag can be done in several strokes.
+        drag true
+        drag-lock
+
+        // Palm rejection while typing, including after the trackpad's own
+        // physical click (dwtp).
+        dwt
+        dwtp
     }
     mouse {
     }
@@ -203,8 +243,10 @@ recent-windows {
     binds {
         Alt+Tab         { next-window scope="output"; }
         Alt+Shift+Tab   { previous-window scope="output"; }
-        Alt+grave       { next-window filter="app-id"; }
-        Alt+Shift+grave { previous-window filter="app-id"; }
+        // Mod+grave is the monitor switcher (see binds.kdl), so it is not an
+        // app-id window-cycling chord any more. niri accepts the same chord in
+        // both blocks without complaining and then silently picks one, so the
+        // duplicate is removed rather than left to chance.
     }
 }
 

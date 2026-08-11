@@ -1,0 +1,12 @@
+{
+  "settings": {
+    "generated_config": {
+      "label": "Generated config path",
+      "description": "KDL file the panel writes display settings to. Include it from your niri config with: include \"displays-generated.kdl\""
+    },
+    "persist": {
+      "label": "Save changes to the niri config",
+      "description": "niri's IPC output changes are temporary and are forgotten on the next config reload. With this on, every change is also written to the generated KDL file so it survives a reload or reboot."
+    }
+  }
+}

@@ -1,0 +1,49 @@
+# Displays — a macOS-style Displays panel for niri.
+#
+# Reads live output state from `niri msg -j outputs` (which, unlike
+# noctalia.outputs(), carries the full mode list with refresh rates), applies
+# changes immediately over niri's IPC, and writes them to a generated KDL file
+# so they survive a config reload or a reboot.
+#
+# Outputs are keyed by their make/model/serial description rather than the
+# connector name: a USB-C dock hands the same monitor a different connector
+# (DP-2 today, HDMI-A-1 yesterday), which is exactly what breaks a hand-written
+# config.
+
+id = "kevin/displays"
+name = "Displays"
+version = "1.0.0"
+plugin_api = 5
+author = "kevin"
+license = "MIT"
+dependencies = ["niri"]
+tags = ["display", "monitor", "niri"]
+icon = "device-desktop"
+description = "List, configure and reorder displays: resolution, refresh rate, scale and layout."
+
+[[setting]]
+key = "generated_config"
+type = "string"
+label_key = "settings.generated_config.label"
+description_key = "settings.generated_config.description"
+default = "~/.config/niri/displays-generated.kdl"
+
+[[setting]]
+key = "persist"
+type = "bool"
+label_key = "settings.persist.label"
+description_key = "settings.persist.description"
+default = true
+
+[[panel]]
+id = "panel"
+entry = "panel.luau"
+width = 560
+height = 560
+placement = "attached"
+position = "auto"
+open_near_click = true
+
+[[shortcut]]
+id = "open"
+entry = "shortcut.luau"
