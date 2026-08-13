@@ -1,14 +1,31 @@
-font-family = "FantasqueSansM Nerd Font"
-font-size = 12
-background-opacity = 0.97
+# Ghostty — ported from ../kitty/kitty.conf
+# Validate any change with: ghostty +validate-config
+#
+# Colours live in themes/noctalia, mirroring how kitty splits them out.
+
 theme = noctalia
-keybind = ctrl+one=text:\x06\x31
-keybind = ctrl+two=text:\x06\x32
-keybind = ctrl+three=text:\x06\x33
-keybind = ctrl+four=text:\x06\x34
-keybind = ctrl+five=text:\x06\x35
-# keybind = ctrl+1=text:\x06\x31
-# keybind = ctrl+two=ctrl+f+two
-# keybind = ctrl+three=ctrl+f+three
-# keybind = ctrl+four=ctrl+f+four
-# keybind = ctrl+five=ctrl+f+five
+
+font-family = FantasqueSansM Nerd Font
+font-size = 12
+
+# kitty: background_opacity 0.97
+background-opacity = 0.97
+# kitty: background_blur 1. Ghostty takes a radius here just like kitty, so
+# unlike the Rio port this keeps the actual strength rather than just on/off.
+background-blur = 1
+
+# kitty: clipboard_control write-clipboard read-clipboard — i.e. programs may
+# both read and write the clipboard via OSC 52. Ghostty defaults reads to
+# "ask", which would prompt where kitty simply allowed it.
+clipboard-read = allow
+clipboard-write = allow
+
+# kitty does not prompt when closing a window that is only running a shell.
+confirm-close-surface = false
+
+# kitty's font-zoom maps. ctrl+plus and ctrl+equal are both bound because the
+# unshifted key is "=" on a US layout — same reason kitty.conf binds both.
+keybind = ctrl+plus=increase_font_size:1
+keybind = ctrl+equal=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
+keybind = ctrl+zero=reset_font_size

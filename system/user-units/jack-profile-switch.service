@@ -1,0 +1,16 @@
+[Unit]
+Description=Follow the 3.5 mm jack with the ALSA card profile
+Documentation=file:%h/.dotfiles/system/audio/jack-profile-switch.sh
+After=wireplumber.service
+Wants=wireplumber.service
+
+[Service]
+Type=simple
+ExecStart=%h/.dotfiles/system/audio/jack-profile-switch.sh
+# The script exits non-zero when PipeWire is not up yet, so a restart loop is
+# also how it waits for the socket on a cold boot.
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

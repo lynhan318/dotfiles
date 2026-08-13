@@ -27,7 +27,7 @@ input {
             // Caps Lock acts as an extra Ctrl (no Caps Lock toggle at all).
             options "ctrl:nocaps"
         }
-        repeat-delay 300
+        repeat-delay 280
         repeat-rate 40
         numlock
     }
@@ -54,9 +54,10 @@ input {
         // stay precise, fast fingers cross the screen — which is what macOS
         // does; "flat" is 1:1 and feels dead by comparison. accel-speed is
         // -1..1 around the default of 0; a small positive value matches the
-        // shorter travel a Mac needs.
+        // shorter travel a Mac needs. 0.3 read as too fast on this 132 mm pad,
+        // so this sits at libinput's neutral default; nudge in 0.05 steps.
         accel-profile "adaptive"
-        accel-speed 0.3
+        accel-speed 0.0
 
         // Scrolling is already pixel-precise; this only scales the distance.
         // Below 1.0 it takes more finger to move the same content, which is
@@ -107,10 +108,6 @@ spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "fcitx5"
 spawn-at-startup "noctalia" "--daemon"
 spawn-at-startup "vicinae" "server"
-// Floats anything that lands on the secondary screen's workspace ("5: float").
-// A window rule can't express this — niri rules can't match on output or
-// workspace — so this watches the event stream instead.
-spawn-at-startup "bash" "/home/kevin/.dotfiles/niri/scripts/float-on-secondary.sh"
 
 environment {
   XDG_CURRENT_DESKTOP "niri"
@@ -121,8 +118,8 @@ hotkey-overlay {
 }
 
 // Workspaces 1-4 live on the main screen (Samsung); the Yoga panel holds
-// exactly one, workspace 5, used as the floating scratch space. niri falls back
-// to the only connected output when the Samsung is unplugged.
+// exactly one, workspace 5. niri falls back to the only connected output when
+// the Samsung is unplugged.
 //
 // Note: open-on-output only applies when a workspace is first created, so
 // reordering these takes effect on the next niri restart — a config reload
@@ -210,6 +207,20 @@ window-rule {
     open-floating true
 }
 
+// The screenshot annotator (see scripts/screenshot-edit.sh). It is a shutter
+// confirmation rather than a window to manage — it opens, gets marked up, and
+// closes on the first save — so tiling it would reshuffle the column layout
+// for a couple of seconds every screenshot.
+//
+// Sized explicitly because satty otherwise asks for a window as large as the
+// image, which for a full 3840x2160 shot is the whole screen.
+window-rule {
+    match app-id=r#"^com\.gabm\.satty$"#
+    open-floating true
+    default-column-width { proportion 0.75; }
+    default-window-height { proportion 0.75; }
+}
+
 // Chat apps always open on workspace 4
 window-rule {
     match app-id=r#"^telegram-desktop$"#
@@ -224,10 +235,6 @@ window-rule {
     match app-id="com.mitchellh.ghostty"
     draw-border-with-background false
     opacity 1.0
-}
-window-rule {
-    match app-id="kitty"
-    draw-border-with-background false
 }
 window-rule {
     match is-active=false

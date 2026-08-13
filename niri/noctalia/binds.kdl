@@ -1,7 +1,7 @@
 binds { // === System & Overview ===
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Tab repeat=false { toggle-overview; }
-    Mod+Return hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
+    Mod+Return hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
 
     // --- Noctalia shell (IPC via `noctalia msg`) ---
     // Default application launcher: Vicinae (https://vicinae.com).
@@ -9,12 +9,12 @@ binds { // === System & Overview ===
     Mod+D hotkey-overlay-title="Application Launcher (Vicinae)" {
         spawn "vicinae" "toggle";
     }
-    // Old Noctalia launcher, kept on Mod+Shift+D as a fallback.
-    Mod+Shift+D hotkey-overlay-title="Noctalia Launcher" {
-        spawn "noctalia" "msg" "panel-toggle" "launcher";
-    }
+    // Vicinae keeps its own clipboard history (~/.local/share/vicinae/clipboard.db),
+    // so this is its built-in `clipboard:history` command rather than Noctalia's
+    // panel. `vicinae cmd ls` lists the ids; `clipboard:clear-history` is the
+    // other useful one.
     Mod+V hotkey-overlay-title="Clipboard History" {
-        spawn "noctalia" "msg" "panel-toggle" "clipboard";
+        spawn "vicinae" "cmd" "launch" "clipboard:history";
     }
     Mod+A hotkey-overlay-title="Control Center" {
         spawn "noctalia" "msg" "panel-toggle" "control-center";
@@ -31,8 +31,11 @@ binds { // === System & Overview ===
     Mod+Y hotkey-overlay-title="Browse Wallpapers" {
         spawn "noctalia" "msg" "panel-toggle" "wallpaper";
     }
+    // Was `noctalia msg screenshot-region`, which also just copied and left no
+    // way to mark anything up. Same script as Print below, so every screenshot
+    // chord ends in the editor.
     Mod+S hotkey-overlay-title="Screenshot region" {
-        spawn "noctalia" "msg" "screenshot-region";
+        spawn-sh "~/.dotfiles/niri/scripts/screenshot-edit.sh region";
     }
     Mod+E hotkey-overlay-title="Open Files" {
         spawn "nautilus";
@@ -159,29 +162,24 @@ binds { // === System & Overview ===
     Mod+WheelScrollUp       { focus-column-left; }
 
     // === Numbered Workspaces ===
-    // 1-4 live on the main screen, so the script hops there first. Workspace
-    // indices are per-output in niri, which is why plain `focus-workspace N`
-    // isn't enough when the focus is on the secondary screen.
-    Mod+1 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 1"; }
-    Mod+2 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 2"; }
-    Mod+3 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 3"; }
-    Mod+4 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-switch.sh 4"; }
-    // 5 is the secondary screen's workspace — the floating scratch space. By
-    // name, not `focus-monitor "eDP-1"`: that lands on whichever workspace was
-    // last active on that screen, which is usually the empty one niri keeps at
-    // the end of every output.
-    Mod+5 { focus-workspace "5: float"; }
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
     Mod+6 { focus-workspace 6; }
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
 
     // === Move to Numbered Workspaces ===
-    Mod+Shift+1 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 1"; }
-    Mod+Shift+2 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 2"; }
-    Mod+Shift+3 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 3"; }
-    Mod+Shift+4 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 4"; }
-    Mod+Shift+5 { spawn-sh "bash ~/.dotfiles/niri/scripts/workspace-move.sh 5"; }
+    // Per-output, mirroring Mod+1..4 above: the column lands on workspace N of
+    // the screen it is already on, rather than being thrown to another monitor.
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
     Mod+Shift+6 { move-column-to-workspace 6; }
     Mod+Shift+7 { move-column-to-workspace 7; }
     Mod+Shift+8 { move-column-to-workspace 8; }
@@ -206,13 +204,16 @@ binds { // === System & Overview ===
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
-    // === Screenshots (niri-native) ===
-    XF86Launch1 { screenshot; }
-    Ctrl+XF86Launch1 { screenshot-screen; }
-    Mod+XF86Launch1 { screenshot-window; }
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Mod+Print { screenshot-window; }
+    // === Screenshots ===
+    // niri still draws the picker — the script only passes --path so the shot
+    // lands somewhere it can hand to satty, rather than being copied and
+    // forgotten. See ../scripts/screenshot-edit.sh.
+    XF86Launch1 { spawn-sh "~/.dotfiles/niri/scripts/screenshot-edit.sh region"; }
+    Ctrl+XF86Launch1 { spawn-sh "~/.dotfiles/niri/scripts/screenshot-edit.sh screen"; }
+    Mod+XF86Launch1 { spawn-sh "~/.dotfiles/niri/scripts/screenshot-edit.sh window"; }
+    Print { spawn-sh "~/.dotfiles/niri/scripts/screenshot-edit.sh region"; }
+    Ctrl+Print { spawn-sh "~/.dotfiles/niri/scripts/screenshot-edit.sh screen"; }
+    Mod+Print { spawn-sh "~/.dotfiles/niri/scripts/screenshot-edit.sh window"; }
 
     // === System Controls ===
     Mod+Shift+P { power-off-monitors; }

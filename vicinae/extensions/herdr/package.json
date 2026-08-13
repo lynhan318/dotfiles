@@ -2,7 +2,7 @@
 	"$schema": "https://raw.githubusercontent.com/vicinaehq/vicinae/refs/heads/main/extra/schemas/extension.json",
 	"name": "herdr",
 	"title": "Herdr",
-	"description": "List Herdr sessions and open one in a new kitty window",
+	"description": "List Herdr sessions and open one in a new ghostty window",
 	"categories": ["Developer Tools"],
 	"license": "MIT",
 	"platforms": ["Linux"],
@@ -13,14 +13,14 @@
 			"name": "herdr-sessions",
 			"title": "Search Herdr Sessions",
 			"subtitle": "Herdr",
-			"description": "List Herdr sessions and attach to one in a new kitty window",
+			"description": "List Herdr sessions and attach to one in a new ghostty window",
 			"mode": "view"
 		},
 		{
 			"name": "herdr-new-session",
 			"title": "New Herdr Session",
 			"subtitle": "Herdr",
-			"description": "Create a named Herdr session and open it in a new kitty window",
+			"description": "Create a named Herdr session and open it in a new ghostty window",
 			"mode": "view"
 		}
 	],
@@ -36,10 +36,10 @@
 		{
 			"name": "terminal",
 			"title": "Terminal",
-			"description": "Terminal used to host the session. It is invoked as <terminal> -e <herdr ...>.",
+			"description": "Terminal used to host the session, invoked as <terminal> -e <herdr ...>. The other flags are ghostty-specific, so a different terminal needs src/lib/herdr.ts adjusted too.",
 			"type": "textfield",
 			"required": false,
-			"default": "kitty"
+			"default": "ghostty"
 		}
 	],
 	"scripts": {

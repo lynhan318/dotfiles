@@ -1,0 +1,19 @@
+# greetd — installs to /etc/greetd/config.toml (root-owned, so it is copied
+# rather than symlinked; see README.md in this folder).
+#
+# Replaces sddm. The greeter is Noctalia's, which ships its own bundled wlroots
+# compositor, so it does not need niri running to draw itself.
+
+[terminal]
+# vt 1 is where the login prompt belongs. This is greetd's own default, so
+# stating it changes nothing — it is here to make the recovery path obvious:
+# greetd only ever claims vt 1, so if it fails to draw, Ctrl+Alt+F2 is still a
+# plain getty to log into and re-enable sddm from.
+vt = 1
+
+[default_session]
+# Packaged installs land in /usr/bin. The upstream docs say /usr/local/bin,
+# which is the from-source path — verify with `which noctalia-greeter-session`
+# if a future release moves it.
+command = "/usr/bin/noctalia-greeter-session"
+user = "greeter"

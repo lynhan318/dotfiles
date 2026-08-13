@@ -19,7 +19,7 @@ export function preferences(): { herdr: string; term: string } {
 	const { herdrPath, terminal } = getPreferenceValues<Preferences>();
 	return {
 		herdr: herdrPath?.trim() || "herdr",
-		term: terminal?.trim() || "kitty",
+		term: terminal?.trim() || "ghostty",
 	};
 }
 
@@ -82,13 +82,19 @@ export async function openSession(
 	options: { directory?: string } = {},
 ): Promise<void> {
 	const { herdr, term } = preferences();
+	// Ghostty's flags, not kitty's. Three differences that all fail quietly if
+	// you get them wrong:
+	//   - values attach with `=`; a space-separated `--class herdr` is not parsed
+	//   - the cwd flag is --working-directory, not --directory
+	//   - the class goes straight to GTK, which only accepts reverse-DNS
+	//     application IDs. A bare "herdr" is dropped with `invalid 'class' in
+	//     config, ignoring` and the window silently falls back to the default
+	//     app-id, which would break any window rule matching on it.
 	const args = [
 		// A dedicated app-id keeps niri window rules addressable.
-		"--class",
-		"herdr",
-		"--title",
-		`herdr: ${session.name}`,
-		...(options.directory ? ["--directory", options.directory] : []),
+		"--class=com.herdr.Herdr",
+		`--title=herdr: ${session.name}`,
+		...(options.directory ? [`--working-directory=${options.directory}`] : []),
 		"-e",
 		herdr,
 		...herdrArgs(session),
