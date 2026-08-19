@@ -1,0 +1,59 @@
+# Herdr Sessions — list herdr sessions and attach to one in a new terminal.
+#
+# Live state comes from `herdr session list --json`. Clicking a session spawns
+# a terminal running `herdr` attached to it, then closes the panel.
+#
+# No `dependencies = ["herdr"]` on purpose. Noctalia is started from niri's
+# spawn-at-startup, whose PATH has no ~/.local/bin — which is exactly where
+# herdr installs itself — so a dependency check on the bare name would fail and
+# disable the plugin on a machine where herdr is installed and working. The
+# panel resolves the binary itself instead (see herdr_path below).
+
+id = "kevin/herdr"
+name = "Herdr Sessions"
+version = "1.0.0"
+# 9, not 5: ui.scroll is not available at 5 — a panel using it renders as a 0x0
+# surface with nothing logged, which is a miserable thing to debug. mini-docker
+# declares 9 and uses ui.scroll on this host, so this is a level known to work.
+plugin_api = 9
+author = "kevin"
+license = "MIT"
+tags = ["terminal", "session", "herdr", "development"]
+icon = "terminal-2"
+description = "List herdr sessions and attach to one in a new terminal window."
+
+[[setting]]
+key = "herdr_path"
+type = "string"
+label_key = "settings.herdr_path.label"
+description_key = "settings.herdr_path.description"
+default = "~/.local/bin/herdr"
+
+[[setting]]
+key = "terminal"
+type = "string"
+label_key = "settings.terminal.label"
+description_key = "settings.terminal.description"
+default = "ghostty"
+
+[[setting]]
+key = "app_id"
+type = "string"
+label_key = "settings.app_id.label"
+description_key = "settings.app_id.description"
+default = "local.maximized.herdr"
+
+# Anchored to whatever was clicked, so right-clicking the bar widget drops the
+# list directly under it rather than in the middle of the screen.
+[[panel]]
+id = "panel"
+entry = "panel.luau"
+width = 380
+height = 420
+placement = "attached"
+position = "auto"
+open_near_click = true
+
+[[shortcut]]
+id = "open"
+entry = "shortcut.luau"

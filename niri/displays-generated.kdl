@@ -3,15 +3,55 @@
 //
 // Outputs are keyed by make/model/serial where the monitor reports one, so a
 // dock handing it a different connector does not lose these settings.
-
-output "Xiaomi Corporation Mi Monitor 6638000003067" {
-    mode "3840x2160@60.000"
-    scale 1.5
-    position x=0 y=0
-}
+//
+// Blocks for monitors that are not currently connected are carried over
+// verbatim, so unplugging a screen does not wipe its saved geometry.
+//
+// `focus-at-startup` and any other hand-added line inside a block is preserved
+// across regeneration; the plugin only rewrites mode/scale/position/transform.
+// That is why per-output `layout` overrides can live here — and they have to,
+// because niri lets the first matching output block win outright instead of
+// merging, so they cannot be split into a second file.
+//
+// Edit this file atomically (write a temp file and `mv` it into place). niri
+// watches it and will happily read a half-written truncated copy, see no
+// positions, and fall back to automatic placement — which this plugin then
+// saves back over the top.
 
 output "eDP-1" {
-    mode "3000x1876@120.001"
     scale 1.75
-    position x=0 y=1440
+    position x=0 y=368
+    // No `mode` line: niri-refresh-rate.service owns this panel's mode and
+    // swaps 120 Hz / 60 Hz on AC state. A mode here would win on every config
+    // reload and undo it.
+
+    // 1714x1072 logical. A third of that is 571 px, which is too narrow for
+    // real work, so this screen gets halves and full-width only.
+    layout {
+        gaps 2
+        preset-column-widths {
+            proportion 0.5
+            proportion 1.0
+        }
+        default-column-width { proportion 1.0; }
+    }
+}
+
+output "Samsung Electric Company LS27D80xU HNAX900140" {
+    mode "3840x2160@60.000"
+    scale 1.5
+    position x=1715 y=0
+    focus-at-startup
+
+    // 2560x1440 logical — wide enough for thirds, and for a fourth preset that
+    // fills the screen without leaving the tiling layout.
+    layout {
+        preset-column-widths {
+            proportion 0.33333
+            proportion 0.5
+            proportion 0.66667
+            proportion 1.0
+        }
+        default-column-width { proportion 0.5; }
+    }
 }

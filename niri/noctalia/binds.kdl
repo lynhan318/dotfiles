@@ -1,6 +1,9 @@
 binds { // === System & Overview ===
     Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+Tab repeat=false { toggle-overview; }
+    // NOT Mod+Tab: mod-key is "Alt", so Mod+Tab is literally Alt+Tab and would
+    // shadow the recent-windows switcher (see config.kdl). Regular binds win
+    // over recent-windows binds and niri gives no warning about the clash.
+    Mod+Escape repeat=false { toggle-overview; }
     Mod+Return hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
 
     // --- Noctalia shell (IPC via `noctalia msg`) ---
@@ -92,6 +95,12 @@ binds { // === System & Overview ===
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
     Mod+Space { toggle-window-floating; }
+    // maximize-column fills the working area; maximize-window-to-edges (26.04)
+    // also eats the gaps and struts, for when you want every pixel.
+    Mod+Shift+M { maximize-window-to-edges; }
+    // Fullscreen without leaving the layout — the window covers its own tile
+    // rather than the whole output, so the bar and neighbours stay visible.
+    Mod+Shift+Ctrl+F { toggle-windowed-fullscreen; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     // === Focus Navigation ===
@@ -105,6 +114,8 @@ binds { // === System & Overview ===
     Mod+J     { focus-window-or-workspace-down; }
     Mod+K     { focus-window-or-workspace-up; }
     Mod+L     { focus-column-right; }
+    // Jump back to the window you were on before this one, like vim's Ctrl-O.
+    Mod+O     { focus-window-previous; }
 
     // === Window Movement ===
     Mod+Shift+H     { move-column-left; }
@@ -148,6 +159,7 @@ binds { // === System & Overview ===
     Mod+I         { focus-workspace-up; }
     Mod+Down      { focus-workspace-down; }
     Mod+Up        { focus-workspace-up; }
+    Mod+Shift+O   { focus-workspace-previous; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }
     Mod+Ctrl+I         { move-column-to-workspace-up; }
 
@@ -189,6 +201,13 @@ binds { // === System & Overview ===
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
     Mod+Period { expel-window-from-column; }
+    // Trade places with the neighbouring window inside the column, rather than
+    // moving the whole column as Mod+Shift+H/L do.
+    Mod+Shift+BracketLeft  { swap-window-left; }
+    Mod+Shift+BracketRight { swap-window-right; }
+    // Stack the column into tabs — one window visible at a time, the rest
+    // shown by the tab-indicator that layout.kdl and noctalia.kdl style.
+    Mod+W { toggle-column-tabbed-display; }
 
     // === Sizing & Layout ===
     Mod+R { switch-preset-column-width; }
@@ -196,6 +215,9 @@ binds { // === System & Overview ===
     Mod+Ctrl+R { reset-window-height; }
     Mod+Ctrl+F { expand-column-to-available-width; }
     Mod+Ctrl+C { center-visible-columns; }
+    Mod+Shift+Ctrl+C { center-window; }
+    // Cycle the width presets backwards, for when you overshoot with Mod+R.
+    Mod+Shift+Ctrl+R { switch-preset-column-width-back; }
     // Mod+C { center-column; }
 
     // === Manual Sizing ===

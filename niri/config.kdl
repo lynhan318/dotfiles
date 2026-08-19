@@ -10,10 +10,6 @@
 //
 //  KDL format: https://kdl.dev   |   niri wiki: https://github.com/YaLTeR/niri/wiki
 // ============================================================================
-config-notification {
-    disable-failed
-}
-
 gestures {
     hot-corners {
         off
@@ -22,6 +18,12 @@ gestures {
 
 input {
     mod-key "Alt"
+
+    // Mod+` switches monitors; without this the pointer stays behind on the
+    // old screen. center-xy moves it toward the middle of the newly focused
+    // window rather than the nearest edge. Drop this line if the cursor
+    // jumping around during keyboard navigation is more annoying than useful.
+    warp-mouse-to-focus mode="center-xy"
     keyboard {
         xkb {
             // Caps Lock acts as an extra Ctrl (no Caps Lock toggle at all).
@@ -92,6 +94,37 @@ layer-rule {
     match namespace="^noctalia-wallpaper$"
     place-within-backdrop true
 }
+
+// Background blur, new in niri 26.04. This block is tuning only — blur is
+// opt-in per window/layer rule below, via `background-effect`. The values are
+// niri's own defaults, spelled out so they are visible to tune: `passes` and
+// `offset` together set the radius, `noise` hides banding, `saturation` lifts
+// the colour of what shows through.
+blur {
+    passes 3
+    offset 3.0
+    noise 0.02
+    saturation 1.5
+}
+
+// Noctalia draws its bars and panels at background_opacity 0.88, so there is
+// something to see through and blur is worth paying for.
+//
+// The namespaces are matched exactly, not by a `^noctalia-` prefix, because two
+// of its surfaces must NOT be blurred: `noctalia-wallpaper` is the wallpaper
+// itself (see above), and `noctalia-panel-click-shield` is a transparent
+// full-screen click catcher — blurring that one would blur the whole screen.
+//
+// Add `xray true` here to sample the wallpaper instead of the live scene. It is
+// much cheaper, but a bar sitting over a window would then show blurred
+// wallpaper rather than the window, so it is off by default.
+layer-rule {
+    match namespace="^noctalia-bar-"
+    match namespace="^noctalia-panel$"
+    background-effect {
+        blur true
+    }
+}
 overview {
     // Fallback color, visible only where the wallpaper layer isn't drawn (e.g.
     // an output Noctalia hasn't painted yet). Opaque so niri clears the
@@ -125,16 +158,16 @@ hotkey-overlay {
 // reordering these takes effect on the next niri restart — a config reload
 // leaves already-open workspaces where they are.
 workspace "1: dev" {
-    open-on-output "HDMI-A-1"
+    open-on-output "Samsung Electric Company LS27D80xU HNAX900140"
 }
 workspace "2: web" {
-    open-on-output "HDMI-A-1"
+    open-on-output "Samsung Electric Company LS27D80xU HNAX900140"
 }
 workspace "3: message" {
-    open-on-output "HDMI-A-1"
+    open-on-output "Samsung Electric Company LS27D80xU HNAX900140"
 }
 workspace "4: misc" {
-    open-on-output "HDMI-A-1"
+    open-on-output "Samsung Electric Company LS27D80xU HNAX900140"
 }
 workspace "5: float" {
     open-on-output "eDP-1"
@@ -234,11 +267,31 @@ window-rule {
 window-rule {
     match app-id="com.mitchellh.ghostty"
     draw-border-with-background false
-    opacity 1.0
+}
+
+// === Opt-in window behaviour by app-id convention ===
+//
+// Anything launched with an app-id of `local.<behaviour>.<name>` gets that
+// behaviour, so a bar button, launcher entry or one-off script can ask for it
+// without earning its own window-rule here:
+//
+//     ghostty --class=local.maximized.herdr  -e some-command
+//     ghostty --class=local.fullscreen.btop  -e btop
+//
+// Both halves of the shape are load-bearing. The `local.` prefix plus a
+// trailing name is what makes it a valid app-id at all — GTK requires at least
+// one dot and silently drops a bare word like "fullscreen", leaving the window
+// with the app's normal id and no rule match to show for it. The trailing name
+// keeps windows distinguishable from each other for anything more specific.
+//
+// Terminals mostly spell this --class; check the app if it differs.
+window-rule {
+    match app-id=r#"^local\.maximized\."#
+    open-maximized true
 }
 window-rule {
-    match is-active=false
-    opacity 1.0
+    match app-id=r#"^local\.fullscreen\."#
+    open-fullscreen true
 }
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
@@ -250,15 +303,22 @@ debug {
     honor-xdg-activation-with-invalid-serial
 }
 
-// Override to disable super+tab
+// The Alt-Tab switcher (niri 25.11+).
+//
+// Nothing here may collide with a chord in the main `binds` block: regular
+// binds take priority over recent-windows binds, and niri does NOT warn about
+// it — the config validates and the switcher just never opens. That is exactly
+// what used to happen here. `mod-key "Alt"` makes Mod == Alt, so the old
+// `Mod+Tab { toggle-overview; }` *was* Alt+Tab and swallowed next-window,
+// leaving only the Shift direction working. The overview now lives on
+// Mod+Escape (binds.kdl) so both directions are reachable again.
+//
+// Mod+grave is the monitor switcher, so the default Alt+grave app-id cycling
+// bind is deliberately not restored.
 recent-windows {
     binds {
         Alt+Tab         { next-window scope="output"; }
         Alt+Shift+Tab   { previous-window scope="output"; }
-        // Mod+grave is the monitor switcher (see binds.kdl), so it is not an
-        // app-id window-cycling chord any more. niri accepts the same chord in
-        // both blocks without complaining and then silently picks one, so the
-        // duplicate is removed rather than left to chance.
     }
 }
 
@@ -278,8 +338,20 @@ window-rule {
 include "noctalia/colors.kdl"
 include "noctalia/layout.kdl"
 include "noctalia/binds.kdl"
-include "noctalia/outputs.kdl"
 include "noctalia/cursor.kdl"
 include "noctalia/windowrules.kdl"
 
 include "noctalia.kdl"
+
+// Output geometry — written by the Noctalia "displays" plugin, which keys each
+// monitor by its make/model/serial so a dock renaming the connector (DP-2 one
+// day, HDMI-A-1 the next) does not lose its settings.
+//
+// This is the ONLY place outputs are configured. niri resolves an output with
+// `.iter().find()` — the first matching block wins outright and later ones are
+// ignored, never merged — so a second hand-written block for the same monitor
+// would silently shadow everything here, not add to it.
+//
+// optional=true (niri 26.04) because the file does not exist until the plugin
+// has saved once, e.g. on a fresh clone.
+include optional=true "displays-generated.kdl"

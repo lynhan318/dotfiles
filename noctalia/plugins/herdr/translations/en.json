@@ -1,0 +1,16 @@
+{
+  "settings": {
+    "herdr_path": {
+      "label": "Herdr binary",
+      "description": "Path to the herdr executable. ~ is expanded. A bare name works too — the panel puts ~/.local/bin back on PATH, which Noctalia does not inherit from niri."
+    },
+    "terminal": {
+      "label": "Terminal",
+      "description": "Terminal used to host the session, invoked as <terminal> --class=… --title=… -e herdr …. Those flags are ghostty's, so another terminal may need panel.luau adjusted."
+    },
+    "app_id": {
+      "label": "Window app-id",
+      "description": "app-id given to the terminal window. The niri config maximizes anything under local.maximized.*, so the default opens the session full-width without a herdr-specific window rule."
+    }
+  }
+}

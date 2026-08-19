@@ -31,12 +31,36 @@ apply() {
     fi
 }
 
+# niri throws away IPC mode overrides on every config reload — "If the output
+# configuration subsequently changes in the config file, these temporary changes
+# will be forgotten" — and displays-generated.kdl deliberately carries no mode
+# line for this panel, so a reload drops it back to the preferred 60 Hz. Watch
+# for ConfigLoaded and re-assert the AC-appropriate mode.
+watch_config_reloads() {
+    while :; do
+        if find_socket; then
+            /usr/bin/niri msg --json event-stream 2>/dev/null | while read -r line; do
+                case "$line" in
+                    *'"ConfigLoaded"'*) apply ;;
+                esac
+            done
+        fi
+        # Stream ended: niri restarted or is not up yet. Its socket name carries
+        # the PID, so back off and let find_socket pick up the new one.
+        sleep 5
+    done
+}
+
 if [ "$1" = "once" ]; then
     apply
     exit $?
 fi
 
 apply
+
+watch_config_reloads &
+CONFIG_WATCHER=$!
+trap 'kill "$CONFIG_WATCHER" 2>/dev/null' EXIT INT TERM
 
 # Each plug/unplug emits several events across ACAD and the USB-C PD ports.
 # Block for the first one, drain the rest of the burst, then switch once.

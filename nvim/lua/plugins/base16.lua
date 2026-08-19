@@ -1,6 +1,55 @@
 -- Created once by Noctalia's neovim template (its apply.sh only writes this
 -- file when it is missing, so edits here stick). lua/matugen.lua *is*
 -- regenerated on every palette change — don't edit that one.
+
+-- Groups whose background base16-nvim paints with base00/base01 and which we
+-- want to let the terminal show through instead. base16-nvim has no
+-- `transparent` option (its config table only toggles per-plugin highlights),
+-- so this is a post-pass over what setup() just wrote.
+--
+-- Deliberately NOT in this list, because each one is a contrast element that
+-- stops being readable without its own background:
+--   CursorLine / CursorLineNr / ColorColumn — the "you are here" band
+--   Visual, Search, IncSearch, Diff*        — selection and match feedback
+--   Pmenu / PmenuSel                        — blink.cmp's menu (BlinkCmpMenu
+--                                             links here) floats over code
+local TRANSPARENT = {
+    'Normal',
+    'NormalNC',
+    'NormalFloat',
+    'FloatBorder',
+    'FloatTitle',
+    'SignColumn',
+    'LineNr',
+    'FoldColumn',
+    'EndOfBuffer',
+    'VertSplit',
+    'WinSeparator',
+    'StatusLine',
+    'StatusLineNC',
+    'TabLine',
+    'TabLineFill',
+    'TabLineSel',
+    'MsgArea',
+}
+
+local function make_transparent()
+    for _, group in ipairs(TRANSPARENT) do
+        -- Read-modify-write rather than a fixed `{ fg = ..., bg = 'NONE' }`,
+        -- so the foreground keeps whatever the current palette gave it —
+        -- matugen rewrites those colours whenever the wallpaper changes.
+        --
+        -- No `link = false` here on purpose: a linked group comes back as
+        -- `{ link = '...' }`, which we write straight back and leave the link
+        -- intact, instead of flattening its target's attributes onto it.
+        local hl = vim.api.nvim_get_hl(0, { name = group })
+        if not vim.tbl_isempty(hl) then
+            hl.bg, hl.ctermbg = nil, nil
+            vim.api.nvim_set_hl(0, group, hl)
+        end
+    end
+end
+
 return {
     'RRethy/base16-nvim',
     -- The palette must be applied before any plugin that derives its own
@@ -14,5 +63,21 @@ return {
     config = function()
         local ok, matugen = pcall(require, 'matugen')
         if ok then matugen.setup() end
+        make_transparent()
+
+        -- matugen.lua listens for SIGUSR1 and re-runs its own setup() on a
+        -- palette change, which repaints every background we just cleared.
+        -- Re-apply after it.
+        --
+        -- A timer rather than a second `schedule_wrap` handler: matugen.lua
+        -- registers a *fresh* uv signal handle on every reload (it clears
+        -- package.loaded and re-requires, and the handle is created at module
+        -- scope), so after the first palette change there are several of its
+        -- callbacks queued ahead of ours in an order we cannot pin down.
+        -- Deferring puts this on the far side of all of them.
+        local signal = vim.uv.new_signal()
+        signal:start('sigusr1', function()
+            vim.defer_fn(make_transparent, 100)
+        end)
     end,
 }

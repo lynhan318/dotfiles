@@ -1,20 +1,3 @@
-# Everforest dark — ported from ../../kitty/themes/noctalia.conf
-#
-# Ghostty theme files live in themes/ next to the config and are selected by
-# filename, so this one is `theme = noctalia`. Themes may only set appearance
-# keys; anything behavioural has to go in ../config.
-
-background = #2d353b
-foreground = #d3c6aa
-
-cursor-color = #d3c6aa
-# kitty: cursor_text_color
-cursor-text = #2d353b
-
-selection-background = #475258
-selection-foreground = #d3c6aa
-
-# kitty color0-7
 palette = 0=#4f585e
 palette = 1=#e67e80
 palette = 2=#a7c080
@@ -23,8 +6,6 @@ palette = 4=#7fbbb3
 palette = 5=#d699b6
 palette = 6=#83c092
 palette = 7=#d3c6aa
-
-# kitty color8-15 (bright)
 palette = 8=#7a8478
 palette = 9=#e67e80
 palette = 10=#a7c080
@@ -33,3 +14,9 @@ palette = 12=#7fbbb3
 palette = 13=#d699b6
 palette = 14=#83c092
 palette = 15=#e4dcc5
+background = #2d353b
+foreground = #d3c6aa
+cursor-color = #d3c6aa
+cursor-text = #2d353b
+selection-background = #475258
+selection-foreground = #d3c6aa

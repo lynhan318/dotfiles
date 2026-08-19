@@ -40,9 +40,23 @@ local function config()
   if type(path) ~= "string" or path == "" then
     path = "~/.config/niri/displays-generated.kdl"
   end
+  -- Outputs whose `mode` belongs to something else. The built-in panel is the
+  -- usual case here: niri-refresh-rate.service swaps it 120/60 Hz on AC state,
+  -- and a mode line in the generated file would win on the next config reload
+  -- and quietly undo that.
+  local raw = noctalia.getConfig("unmanaged_modes")
+  if type(raw) ~= "string" then
+    raw = ""
+  end
+  local unmanaged = {}
+  for name in string.gmatch(raw, "[^,%s]+") do
+    unmanaged[name] = true
+  end
+
   return {
     path = noctalia.expandPath(path),
     persist = noctalia.getConfig("persist") ~= false,
+    unmanaged = unmanaged,
   }
 end
 
@@ -239,10 +253,98 @@ local function outputKey(output)
   return output.name
 end
 
+--- Properties this plugin owns. Everything else inside a block — comments,
+--- focus-at-startup, variable-refresh-rate, hot-corners — is hand-written and
+--- must survive regeneration, so it is copied through untouched.
+local MANAGED = { mode = true, scale = true, position = true, transform = true }
+
+local function isManaged(line)
+  local word = string.match(line, "^%s*([%w-]+)")
+  return word ~= nil and MANAGED[word] == true
+end
+
+local function splitLines(text)
+  local out = {}
+  for line in string.gmatch(text .. "\n", "(.-)\n") do
+    out[#out + 1] = line
+  end
+  if #out > 0 and out[#out] == "" and string.sub(text, -1) == "\n" then
+    out[#out] = nil
+  end
+  return out
+end
+
+--- Net brace depth a line contributes, ignoring `//` comments so that a brace
+--- inside prose does not shift the nesting level.
+local function braceDelta(line)
+  local code = string.gsub(line, "//.*$", "")
+  local _, opens = string.gsub(code, "{", "")
+  local _, closes = string.gsub(code, "}", "")
+  return opens - closes
+end
+
+--- Pull `output "key" { ... }` blocks out of a previously generated file.
+--- Returns key -> array of inner lines, plus the order they appeared in.
+---
+--- Depth is tracked rather than stopping at the first `}`, because a block may
+--- legitimately contain nested ones — `layout { … }` per-output overrides,
+--- `hot-corners { … }` — and closing early would truncate the block and drop
+--- everything after it.
+local function parseBlocks(text)
+  local blocks, order = {}, {}
+  local key, inner, depth = nil, nil, 0
+  for _, line in ipairs(splitLines(text)) do
+    if key == nil then
+      local found = string.match(line, '^%s*output%s+"(.-)"%s*{%s*$')
+      if found ~= nil then
+        key, inner, depth = found, {}, 1
+      end
+    else
+      depth = depth + braceDelta(line)
+      if depth <= 0 then
+        blocks[key] = inner
+        order[#order + 1] = key
+        key, inner, depth = nil, nil, 0
+      else
+        inner[#inner + 1] = line
+      end
+    end
+  end
+  return blocks, order
+end
+
+--- Everything this plugin does not own, copied through untouched. Only lines at
+--- the block's own level are tested against MANAGED: inside a nested block a
+--- `scale` or `mode` line belongs to that block, not to the output.
+local function preserved(inner)
+  local out, depth = {}, 0
+  for _, line in ipairs(inner) do
+    if depth > 0 or not isManaged(line) then
+      out[#out + 1] = line
+    end
+    depth = depth + braceDelta(line)
+    if depth < 0 then
+      depth = 0
+    end
+  end
+  return out
+end
+
 function persist()
   local cfg = config()
   if not cfg.persist then
     return
+  end
+
+  -- Read back what is already on disk. `outputs` only ever holds the monitors
+  -- that are plugged in right now, so without this a save made while the
+  -- external screen is unplugged would erase that screen's saved geometry.
+  local previous, previousOrder = {}, {}
+  if noctalia.fileExists(cfg.path) then
+    local text = noctalia.readFile(cfg.path)
+    if type(text) == "string" then
+      previous, previousOrder = parseBlocks(text)
+    end
   end
 
   local lines = {
@@ -251,28 +353,65 @@ function persist()
     "//",
     "// Outputs are keyed by make/model/serial where the monitor reports one, so a",
     "// dock handing it a different connector does not lose these settings.",
+    "//",
+    "// Blocks for monitors that are not currently connected are carried over",
+    "// verbatim, so unplugging a screen does not wipe its saved geometry.",
+    "//",
+    "// `focus-at-startup` and any other hand-added line inside a block is preserved",
+    "// across regeneration; the plugin only rewrites mode/scale/position/transform.",
+    "// That is why per-output `layout` overrides can live here — and they have to,",
+    "// because niri lets the first matching output block win outright instead of",
+    "// merging, so they cannot be split into a second file.",
+    "//",
+    "// Edit this file atomically (write a temp file and `mv` it into place). niri",
+    "// watches it and will happily read a half-written truncated copy, see no",
+    "// positions, and fall back to automatic placement — which this plugin then",
+    "// saves back over the top.",
     "",
   }
 
+  local function emit(key, inner)
+    lines[#lines + 1] = string.format("output %q {", key)
+    for _, line in ipairs(inner) do
+      lines[#lines + 1] = line
+    end
+    lines[#lines + 1] = "}"
+    lines[#lines + 1] = ""
+  end
+
+  local written = {}
+
   for _, output in ipairs(outputs) do
+    local key = outputKey(output)
+    local inner = {}
+
     local mode = currentMode(output)
-    lines[#lines + 1] = string.format('output %q {', outputKey(output))
-    if mode ~= nil then
-      lines[#lines + 1] = string.format("    mode %q", modeKey(mode))
+    if mode ~= nil and not cfg.unmanaged[output.name] and not cfg.unmanaged[key] then
+      inner[#inner + 1] = string.format("    mode %q", modeKey(mode))
     end
     if output.logical ~= nil then
-      lines[#lines + 1] = string.format("    scale %s", tostring(output.logical.scale))
-      lines[#lines + 1] = string.format("    position x=%d y=%d", output.logical.x, output.logical.y)
+      inner[#inner + 1] = string.format("    scale %s", tostring(output.logical.scale))
+      inner[#inner + 1] = string.format("    position x=%d y=%d", output.logical.x, output.logical.y)
       -- niri reports the transform capitalised ("Normal", "_90") but only
       -- accepts it lowercase in the config.
       local transform = string.lower(output.logical.transform or "normal")
       transform = string.gsub(transform, "^_", "")
       if transform ~= "normal" then
-        lines[#lines + 1] = string.format("    transform %q", transform)
+        inner[#inner + 1] = string.format("    transform %q", transform)
       end
     end
-    lines[#lines + 1] = "}"
-    lines[#lines + 1] = ""
+    for _, line in ipairs(preserved(previous[key] or {})) do
+      inner[#inner + 1] = line
+    end
+
+    emit(key, inner)
+    written[key] = true
+  end
+
+  for _, key in ipairs(previousOrder) do
+    if not written[key] then
+      emit(key, previous[key])
+    end
   end
 
   local ok, err = noctalia.writeFile(cfg.path, table.concat(lines, "\n"))

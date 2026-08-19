@@ -91,8 +91,11 @@ export async function openSession(
 	//     config, ignoring` and the window silently falls back to the default
 	//     app-id, which would break any window rule matching on it.
 	const args = [
-		// A dedicated app-id keeps niri window rules addressable.
-		"--class=com.herdr.Herdr",
+		// `local.<behaviour>.<name>` is the opt-in convention in niri/config.kdl:
+		// a prefix rule maximizes anything under local.maximized.*, so this gets
+		// a full-width window without needing a herdr-specific window rule. Same
+		// app-id the bar button uses, so both entry points open identically.
+		"--class=local.maximized.herdr",
 		`--title=herdr: ${session.name}`,
 		...(options.directory ? [`--working-directory=${options.directory}`] : []),
 		"-e",

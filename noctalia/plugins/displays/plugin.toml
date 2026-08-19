@@ -35,6 +35,13 @@ label_key = "settings.persist.label"
 description_key = "settings.persist.description"
 default = true
 
+[[setting]]
+key = "unmanaged_modes"
+type = "string"
+label_key = "settings.unmanaged_modes.label"
+description_key = "settings.unmanaged_modes.description"
+default = "eDP-1"
+
 [[panel]]
 id = "panel"
 entry = "panel.luau"

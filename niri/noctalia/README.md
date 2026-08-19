@@ -12,11 +12,26 @@ niri config and pulls in the files here.
 | `binds.kdl`      | Keybinds (Noctalia IPC)                  |
 | `colors.kdl`     | Border / focus-ring colors (static)      |
 | `layout.kdl`     | Gaps, border widths, corner radius       |
-| `outputs.kdl`    | Monitor layout (hardware-bound)          |
 | `cursor.kdl`     | Cursor theme                             |
 | `windowrules.kdl`| Noctalia + misc window rules             |
 
-Unlike DMS, nothing here is auto-generated — these are all hand-edited.
+Everything in this folder is hand-edited. Two files outside it are *generated*
+and must not be edited by hand:
+
+| File                          | Written by                                    |
+| ----------------------------- | --------------------------------------------- |
+| `../noctalia.kdl`             | Noctalia's niri color template                |
+| `../displays-generated.kdl`   | the Noctalia `kevin/displays` plugin          |
+
+`displays-generated.kdl` is the **only** place outputs are configured. niri
+resolves an output with `.iter().find()`, so the first matching block wins
+outright and later ones are ignored rather than merged — a second hand-written
+block for the same monitor silently shadows the generated one instead of adding
+to it. That is why the old `outputs.kdl` is gone.
+
+The built-in panel's `mode` is deliberately absent from the generated file:
+`niri-refresh-rate.service` owns it and swaps 120 Hz / 60 Hz on AC state. The
+plugin's `unmanaged_modes` setting (default `eDP-1`) is what keeps it out.
 
 ## Activate
 

@@ -10,6 +10,21 @@ layout {
     focus-ring {
         width 2
     }
+
+    // Fallback presets. Both current screens override these in
+    // displays-generated.kdl — a third of the 1714 px laptop panel is 571 px,
+    // which is too narrow to work in, while the 2560 px Samsung wants thirds —
+    // so what is left here is what an unrecognised monitor gets.
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    default-column-width { proportion 0.5; }
+
+    // A lone column sits centred rather than pinned to the left edge. No-op on
+    // any output whose default column width is 1.0.
+    always-center-single-column
 }
 
 window-rule {

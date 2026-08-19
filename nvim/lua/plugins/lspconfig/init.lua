@@ -10,7 +10,11 @@ return {
             config = function(_, opts)
                 require("mason").setup(opts)
                 require("mason-lspconfig").setup {
-                    ensure_installed = { "lua_ls", "cssls", "tailwindcss", "jsonls", "rust_analyzer", "svelte", "ts_ls" },
+                    ensure_installed = { "lua_ls", "cssls", "tailwindcss", "jsonls", "rust_analyzer", "svelte" },
+                    -- TypeScript is served by the native TS 7 binary (see
+                    -- plugins.lspconfig.typescript), so keep Mason from enabling
+                    -- typescript-language-server alongside it.
+                    automatic_enable = { exclude = { "ts_ls" } },
                 }
             end,
         },
@@ -21,28 +25,20 @@ return {
         },
     },
     config = function(_)
-        for _, name in ipairs { "rust_analyzer", "jsonls", "ts_ls", "tailwindcss", "cssls", "svelte", "zls" } do
-            vim.lsp.config(name, {
-                capabilities = {
-                    workspace = {
-                        didChangeWatchedFiles = { dynamicRegistration = false },
-                    },
+        -- Baseline for every server: no dynamic file watching. Servers that ask
+        -- for it make Neovim watch the whole project (node_modules included) and
+        -- re-send changes the server already sees through didOpen/didChange.
+        vim.lsp.config("*", {
+            capabilities = {
+                workspace = {
+                    didChangeWatchedFiles = { dynamicRegistration = false },
                 },
-            })
-        end
-
-        -- Run the Node-based language servers with Bun instead of Node: faster
-        -- cold start and lower memory (helps the tailwindcss server most). Native
-        -- servers (tsc, rust_analyzer, zls) are left on their own binaries.
-        local mason_bin = vim.fn.stdpath "data" .. "/mason/bin/"
-        local function bun_cmd(server, ...)
-            return { "bun", "run", '--bun', mason_bin .. server, ... }
-        end
+            },
+        })
 
         vim.lsp.enable "rust_analyzer"
         vim.lsp.enable "jsonls"
         vim.lsp.config("jsonls", {
-            cmd = bun_cmd("vscode-json-language-server", "--stdio"),
             on_new_config = function(new_config)
                 new_config.settings.json.schemas = new_config.settings.json.schemas or {}
                 vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
@@ -58,45 +54,30 @@ return {
                 },
             },
         })
-        vim.lsp.enable "ts_ls"
-        vim.lsp.config("ts_ls", {
-            cmd = bun_cmd("typescript-language-server", "--stdio"),
-            -- While tsserver loads a big project, its syntax server answers
-            -- definition requests with the local re-export alias instead of the
-            -- real target; Snacks filters that self-reference out and shows an
-            -- empty picker. Disable the syntax server so requests queue until
-            -- real semantics are available.
-            init_options = {
-                tsserver = { useSyntaxServer = "never" },
-            },
-            filetypes = {
-                "javascript",
-                "javascriptreact",
-                "javascript.jsx",
-                "typescript",
-                "typescriptreact",
-                "typescript.tsx",
-            },
-            root_markers = {
-                "tsconfig.json",
-                "jsconfig.json",
-                "package.json",
-                ".git",
-                "tsconfig.base.json",
-            },
+        -- TypeScript 7's compiler binary is itself the language server, replacing
+        -- typescript-language-server and the Node tsserver it drove: one Go
+        -- process per project root, no JS heap to blow out.
+        local typescript = require "plugins.lspconfig.typescript"
+        vim.lsp.config("tsc", {
+            cmd = typescript.cmd,
+            root_dir = typescript.root_dir,
+            filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        })
+        vim.lsp.enable "tsc"
+        -- Rooted at the nearest package that actually uses Tailwind, never at the
+        -- repository, so a monorepo does not hand the server every app at once.
+        local tailwind = require "plugins.lspconfig.tailwind"
+        vim.lsp.config("tailwindcss", {
+            root_dir = tailwind.root_dir,
+            settings = tailwind.settings,
+            -- Tailwind claims 50 filetypes, plain `typescript`/`javascript` among
+            -- them, so any .ts buffer in a Tailwind package starts the server.
+            -- Markup only; .tsx/.jsx keep their class completion.
+            filetypes = tailwind.filetypes(vim.lsp.config.tailwindcss.filetypes),
         })
         vim.lsp.enable "tailwindcss"
-        vim.lsp.config("tailwindcss", {
-            cmd = bun_cmd("tailwindcss-language-server", "--stdio"),
-        })
         vim.lsp.enable "cssls"
-        vim.lsp.config("cssls", {
-            cmd = bun_cmd("vscode-css-language-server", "--stdio"),
-        })
         vim.lsp.enable "svelte"
-        vim.lsp.config("svelte", {
-            cmd = bun_cmd("svelteserver", "--stdio"),
-        })
         vim.lsp.config("zls", {
             -- Set to 'zls' if `zls` is in your PATH
             cmd = { "zls" },
@@ -154,13 +135,37 @@ return {
             config.setup(client, bufnr)
         end
 
+        -- A single bundled or generated file is enough to pin a server at 100%
+        -- CPU, re-parsing and re-tokenising on every keystroke. Semantic tokens
+        -- go first (treesitter still highlights); past a megabyte the server has
+        -- nothing useful to say about the file at all.
+        local NO_SEMANTIC_TOKENS_BYTES = 256 * 1024
+        local NO_LSP_BYTES = 1024 * 1024
+
         vim.api.nvim_create_autocmd("LspAttach", {
             callback = function(args)
                 local buffer = args.buf
                 local client = vim.lsp.get_client_by_id(args.data.client_id)
+                if not client then
+                    return
+                end
+
+                local size = vim.api.nvim_buf_get_offset(buffer, vim.api.nvim_buf_line_count(buffer))
+                if size > NO_LSP_BYTES then
+                    vim.schedule(function()
+                        if vim.api.nvim_buf_is_valid(buffer) then
+                            vim.lsp.buf_detach_client(buffer, client.id)
+                        end
+                    end)
+                    return
+                end
+                if size > NO_SEMANTIC_TOKENS_BYTES then
+                    vim.lsp.semantic_tokens.enable(false, { bufnr = buffer, client_id = client.id })
+                end
+
                 on_attach(client, buffer)
 
-                vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
+                vim.lsp.inlay_hint.enable(false, { bufnr = buffer })
             end,
         })
     end,

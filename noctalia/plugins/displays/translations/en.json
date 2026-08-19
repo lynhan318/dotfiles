@@ -2,11 +2,15 @@
   "settings": {
     "generated_config": {
       "label": "Generated config path",
-      "description": "KDL file the panel writes display settings to. Include it from your niri config with: include \"displays-generated.kdl\""
+      "description": "KDL file the panel writes display settings to. Include it from your niri config with: include optional=true \"displays-generated.kdl\" — and make sure no other output block exists for the same monitor, because niri lets the first matching block win outright instead of merging them."
     },
     "persist": {
       "label": "Save changes to the niri config",
       "description": "niri's IPC output changes are temporary and are forgotten on the next config reload. With this on, every change is also written to the generated KDL file so it survives a reload or reboot."
+    },
+    "unmanaged_modes": {
+      "label": "Outputs with an externally managed mode",
+      "description": "Comma-separated connector names whose resolution and refresh rate are owned by something else, such as a script that switches the built-in panel between 120 Hz and 60 Hz on AC power. Their mode is still applied live from this panel, but is left out of the generated file so it cannot win on the next config reload."
     }
   }
 }
