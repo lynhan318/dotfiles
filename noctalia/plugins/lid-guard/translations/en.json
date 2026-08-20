@@ -1,0 +1,38 @@
+{
+  "title": "Lid Guard",
+  "tooltip": {
+    "on": "Lid guard is on — closing the lid does nothing",
+    "off": "Lid guard is off — closing the lid suspends"
+  },
+  "notify": {
+    "on": "Closing the lid now does nothing.",
+    "off": "Closing the lid now suspends again."
+  },
+  "shortcut": {
+    "on": "Lid: ignored",
+    "off": "Lid: suspends"
+  },
+  "error": {
+    "unavailable": "Lid guard is unavailable",
+    "not_installed": "{unit} is not installed — link it from ~/.dotfiles/system/user-units and run `systemctl --user daemon-reload`",
+    "no_systemctl": "systemctl --user is not answering"
+  },
+  "settings": {
+    "active_color": {
+      "label": "Active color",
+      "description": "Color of the icon while the lid switch is being ignored."
+    },
+    "inactive_color": {
+      "label": "Inactive color",
+      "description": "Color of the icon while the lid behaves normally."
+    }
+  },
+  "colors": {
+    "default": "Default",
+    "muted": "Muted",
+    "primary": "Primary",
+    "secondary": "Secondary",
+    "tertiary": "Tertiary",
+    "error": "Error"
+  }
+}

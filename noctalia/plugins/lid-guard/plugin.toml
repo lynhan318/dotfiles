@@ -1,0 +1,62 @@
+# Lid Guard — a bar toggle for "close the lid, nothing happens".
+#
+# Shaped like Noctalia's own caffeine widget, one layer down: caffeine holds an
+# `idle` inhibitor so the session never times out, this holds a
+# `handle-lid-switch` one so logind ignores the lid. They are independent and
+# compose — see the README.
+#
+# The [[service]] owns the state and does all the talking to systemd; the
+# [[widget]] and [[shortcut]] are thin clients over the "status"/"command"
+# channels, the same split the official screen_recorder plugin uses. That is
+# what lets the control-center tile work with no widget placed on a bar, and
+# what keeps exactly one poller running no matter how many places show it.
+#
+# No `dependencies` key: everything this needs (systemctl, systemd-inhibit) is
+# part of systemd itself, so a dependency check could only ever produce a false
+# negative.
+
+id = "kevin/lid-guard"
+name = "Lid Guard"
+version = "1.0.0"
+plugin_api = 9
+author = "kevin"
+license = "MIT"
+icon = "device-laptop"
+tags = ["bar", "power", "laptop", "system", "utility"]
+description = "Toggle whether closing the laptop lid does anything at all."
+
+[[service]]
+id = "service"
+entry = "service.luau"
+
+[[widget]]
+id = "lid-guard"
+entry = "widget.luau"
+
+  [[widget.setting]]
+  key = "active_color"
+  type = "select"
+  label_key = "settings.active_color.label"
+  description_key = "settings.active_color.description"
+  default = "primary"
+  options = [
+    { value = "primary", label_key = "colors.primary" },
+    { value = "secondary", label_key = "colors.secondary" },
+    { value = "tertiary", label_key = "colors.tertiary" },
+    { value = "error", label_key = "colors.error" }
+  ]
+
+  [[widget.setting]]
+  key = "inactive_color"
+  type = "select"
+  label_key = "settings.inactive_color.label"
+  description_key = "settings.inactive_color.description"
+  default = "on_surface"
+  options = [
+    { value = "on_surface", label_key = "colors.default" },
+    { value = "on_surface_variant", label_key = "colors.muted" }
+  ]
+
+[[shortcut]]
+id = "toggle"
+entry = "shortcut.luau"

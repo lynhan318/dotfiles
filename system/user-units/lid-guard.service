@@ -1,0 +1,39 @@
+# Close the lid and nothing happens.
+#
+# logind's default HandleLidSwitch is `suspend`, and the documented way to stop
+# that for a while — rather than editing logind.conf and rebooting into a new
+# permanent default — is to take a `handle-lid-switch` inhibitor lock. A lock
+# lives exactly as long as the process holding it, so this unit is nothing but
+# systemd-inhibit wrapped around a sleep: start it and the lid is ignored, stop
+# it and the lock is released the same instant.
+#
+# Toggled from the Noctalia "Lid Guard" bar widget
+# (~/.dotfiles/noctalia/plugins/lid-guard), which is only a client of this unit
+# — the unit is the state. That is deliberate: the guard has to outlive the
+# shell, because restarting Noctalia with the lid already shut must not quietly
+# start suspending the machine again.
+#
+# niri handles the lid separately and independently: it blanks the laptop panel
+# on close, which no inhibitor affects. That is the wanted behaviour for a
+# closed lid; see the plugin README for the one-line niri debug flag that keeps
+# the panel lit instead.
+
+[Unit]
+Description=Ignore the laptop lid switch (close the lid, nothing happens)
+Documentation=man:systemd-inhibit(1)
+Documentation=file:%h/.dotfiles/noctalia/plugins/lid-guard/README.md
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/systemd-inhibit --what=handle-lid-switch --who="Lid Guard" --why="Lid handling is turned off from the Noctalia bar" --mode=block sleep infinity
+
+# Not restarted on failure: a guard that silently comes back after dying is
+# worse than one that is visibly off, and the widget polls the unit's real
+# state rather than assuming.
+Restart=no
+
+# No [Install] section on purpose. This is a thing you switch on for an
+# afternoon, not a thing that runs from boot — `systemctl --user enable` on it
+# would make "the lid does nothing" the permanent default without the widget
+# ever showing you why. If that really is what you want, HandleLidSwitch=ignore
+# in logind.conf is the honest way to say it.

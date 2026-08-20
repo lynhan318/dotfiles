@@ -304,8 +304,40 @@ window-rule {
     open-floating true
 }
 
+// === Lid ===
+//
+// Closing the lid drops the panel to 5% and the CPU to power-saver, and
+// opening it puts both back exactly as they were. Nothing else moves — no
+// suspend, no blank, no reshuffled columns.
+//
+// Two halves, because the lid is handled in two places that do not know about
+// each other:
+//
+//   logind suspends the machine. That is switched off at runtime by the
+//   "Lid Guard" bar toggle, which holds a handle-lid-switch inhibitor for as
+//   long as it is on (see ../noctalia/plugins/lid-guard/README.md). It is a
+//   toggle rather than HandleLidSwitch=ignore here so the normal
+//   close-the-lid-and-it-sleeps behaviour is still one click away.
+//
+//   niri blanks the laptop panel, which no inhibitor reaches — it reads
+//   logind's LidClosed property directly. The debug flag below is what stops
+//   that, and it is what makes the 5% worth setting at all: dimming a
+//   backlight that niri already switched off would only show up as a flash of
+//   5% on the way back open.
+//
+// spawn, not spawn-sh: switch-events does not accept spawn-sh, so the path is
+// absolute rather than ~-relative like the binds in noctalia/binds.kdl.
+switch-events {
+    lid-close { spawn "/home/kevin/.dotfiles/niri/scripts/lid-power.sh" "close"; }
+    lid-open  { spawn "/home/kevin/.dotfiles/niri/scripts/lid-power.sh" "open"; }
+}
+
 debug {
     honor-xdg-activation-with-invalid-serial
+    // Keep the panel lit with the lid shut; see the switch-events note above.
+    // niri allows exactly one debug block, so this cannot be moved out into a
+    // generated include and toggled at runtime — it is a static choice.
+    keep-laptop-panel-on-when-lid-is-closed
 }
 
 // The Alt-Tab switcher (niri 25.11+).
