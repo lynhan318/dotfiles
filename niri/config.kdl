@@ -277,6 +277,7 @@ window-rule {
 //
 //     ghostty --class=local.maximized.herdr  -e some-command
 //     ghostty --class=local.fullscreen.btop  -e btop
+//     ghostty --class=local.floating.terminal
 //
 // Both halves of the shape are load-bearing. The `local.` prefix plus a
 // trailing name is what makes it a valid app-id at all — GTK requires at least
@@ -292,6 +293,10 @@ window-rule {
 window-rule {
     match app-id=r#"^local\.fullscreen\."#
     open-fullscreen true
+}
+window-rule {
+    match app-id=r#"^local\.floating\."#
+    open-floating true
 }
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"

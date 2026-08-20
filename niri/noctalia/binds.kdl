@@ -5,6 +5,12 @@ binds { // === System & Overview ===
     // over recent-windows binds and niri gives no warning about the clash.
     Mod+Escape repeat=false { toggle-overview; }
     Mod+Return hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
+    // Floating rather than tiled: a scratch terminal that sits over the column
+    // layout instead of reshuffling it. This needs no window-rule of its own —
+    // `local.floating.*` is the opt-in app-id convention in config.kdl.
+    Mod+Shift+Return hotkey-overlay-title="Open Floating Terminal" {
+        spawn "ghostty" "--class=local.floating.terminal";
+    }
 
     // --- Noctalia shell (IPC via `noctalia msg`) ---
     // Default application launcher: Vicinae (https://vicinae.com).
