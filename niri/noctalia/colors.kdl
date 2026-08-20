@@ -26,6 +26,10 @@ layout {
     }
 
     tab-indicator {
+        // Draw inside the column. The default outside-left placement sits at
+        // x = gaps - gap - width = 4 - 5 - 4 = -5 for the leftmost column, i.e.
+        // entirely off-screen, so its indicator never appeared.
+        place-within-column
         active-color   "#a7c080"
         inactive-color "#9da9a0"
         urgent-color   "#e57e80"
