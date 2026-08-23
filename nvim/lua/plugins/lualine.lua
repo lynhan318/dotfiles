@@ -1,15 +1,31 @@
 -- LazyVim's statusline, ported to stand on its own.
 --
--- Left : mode | branch | root dir | diagnostics | filetype icon + path | code context
--- Right: dap | pending plugin updates | git diff | progress + location | clock
+-- Left : root dir | diagnostics | filetype icon + path | code context
+-- Right: dap | pending plugin updates | git diff | progress + location
 --
 -- LazyVim builds this from its own runtime (LazyVim.lualine.*, LazyVim.root,
 -- LazyVim.config.icons), none of which exists here, so the pieces that matter
 -- are reimplemented below.
 
+-- Every glyph the statusline draws, in one place. Each carries its own padding,
+-- so the components below concatenate instead of padding at the call site.
+--
+-- Written out here rather than inline because the whole set was silently lost
+-- once already: these are private-use codepoints, and the four-byte ones
+-- (\u{f126d}, \u{f033e}) survived a round-trip that flattened every three-byte
+-- one to a bare space. If the bar ever goes back to showing counts with no
+-- symbol in front of them, this table is what to check.
 local icons = {
-    diagnostics = { Error = " ", Warn = " ", Hint = " ", Info = " " },
-    git = { added = " ", modified = " ", removed = " " },
+    -- The gutter's diagnostic signs, reused verbatim from
+    -- lua/plugins/lspconfig/init.lua, so a count up here and a sign out in the
+    -- margin are recognisably the same thing.
+    diagnostics = { Error = " ", Warn = " ", Info = "󰋼 ", Hint = "󰌵 " },
+    git = { added = " ", modified = " ", removed = " " },
+    misc = {
+        root = "󱉭  ",
+        readonly = " 󰌾 ",
+        debug = "  ",
+    },
 }
 
 -- Foreground of a highlight group, resolved on each redraw so it keeps up with
@@ -82,7 +98,7 @@ local function pretty_path(opts)
         filename_hl = "Bold",
         directory_hl = "",
         modified_sign = "",
-        readonly_icon = " 󰌾 ",
+        readonly_icon = icons.misc.readonly,
         length = 3,
     }, opts or {})
 
@@ -137,12 +153,62 @@ local function root_dir()
 
     return {
         function()
-            return "󱉭  " .. (get() or "")
+            return icons.misc.root .. (get() or "")
         end,
         cond = function()
             return type(get()) == "string"
         end,
         color = fg("Special"),
+    }
+end
+
+-- lualine ships no theme for this colourscheme, and `theme = "auto"` cannot
+-- stand in for one: auto derives its sections from Normal and StatusLine, and
+-- lua/plugins/base16.lua deliberately strips the background off both so the
+-- terminal shows through. With no bg to read, auto falls back to #000000 --
+-- the black slab that used to fill the middle of the bar while the buffer above
+-- it stayed translucent.
+--
+-- So build the theme from the palette directly. base16-nvim keeps the active
+-- colours on its own module table, and lua/matugen.lua rewrites them on every
+-- wallpaper change, which is what lets the statusline follow the desktop.
+local function palette_theme()
+    local ok, base16 = pcall(require, "base16-colorscheme")
+    if not ok or type(base16.colors) ~= "table" or not base16.colors.base00 then
+        return "auto"
+    end
+    local c = base16.colors
+
+    -- a and z carry the mode colour, b and y sit on the palette's raised
+    -- background, and c and x stay transparent so the middle of the bar is the
+    -- same terminal background as the buffer above it. lualine mirrors x onto
+    -- c, y onto b and z onto a, so three entries cover all six sections.
+    --
+    -- Only c, x and y are filled below, so in practice the mode colours never
+    -- reach the screen. They stay defined so that putting `"mode"` back in
+    -- lualine_a is a one-word change rather than a re-theming job.
+    local function mode(accent)
+        return {
+            a = { fg = c.base00, bg = accent, gui = "bold" },
+            b = { fg = c.base05, bg = c.base01 },
+            c = { fg = c.base04, bg = "NONE" },
+        }
+    end
+
+    -- Normal mode takes base0B, the palette's green, because that is the slot
+    -- matugen fills with the accent Noctalia uses for the bar and herdr.
+    return {
+        normal = mode(c.base0B),
+        insert = mode(c.base0D),
+        visual = mode(c.base0E),
+        replace = mode(c.base08),
+        command = mode(c.base0A),
+        terminal = mode(c.base0C),
+        inactive = {
+            a = { fg = c.base03, bg = "NONE" },
+            b = { fg = c.base03, bg = "NONE" },
+            c = { fg = c.base03, bg = "NONE" },
+        },
     }
 end
 
@@ -168,13 +234,17 @@ return {
 
         local opts = {
             options = {
-                theme = "auto",
+                theme = palette_theme(),
                 globalstatus = vim.o.laststatus == 3,
                 disabled_filetypes = { statusline = { "snacks_dashboard", "dashboard", "alpha" } },
             },
             sections = {
-                lualine_a = { "mode" },
-                lualine_b = { "branch" },
+                -- Deliberately bare on the left. The mode is already obvious
+                -- from the cursor, the branch is one `:G` away, and the
+                -- Noctalia bar overhead carries the time and date -- none of
+                -- the three earns permanent space down here.
+                lualine_a = {},
+                lualine_b = {},
                 lualine_c = {
                     root_dir(),
                     {
@@ -192,7 +262,7 @@ return {
                 lualine_x = {
                     {
                         function()
-                            return "  " .. require("dap").status()
+                            return icons.misc.debug .. require("dap").status()
                         end,
                         cond = function()
                             return package.loaded["dap"] and require("dap").status() ~= ""
@@ -217,11 +287,7 @@ return {
                     { "progress", separator = " ", padding = { left = 1, right = 0 } },
                     { "location", padding = { left = 0, right = 1 } },
                 },
-                lualine_z = {
-                    function()
-                        return " " .. os.date("%R")
-                    end,
-                },
+                lualine_z = {},
             },
             extensions = { "lazy", "quickfix", "fugitive", "nvim-dap-ui", "oil", "trouble" },
         }
@@ -247,5 +313,20 @@ return {
         end
 
         return opts
+    end,
+    config = function(_, opts)
+        require("lualine").setup(opts)
+
+        -- matugen rewrites the palette in place and never runs `:colorscheme`,
+        -- so lualine's own ColorScheme hook never fires and the theme built
+        -- above would keep the colours of whatever wallpaper was up at startup.
+        -- base16.lua announces the change instead. Re-setting only `options`
+        -- merges over the stored config, so the sections survive untouched.
+        vim.api.nvim_create_autocmd("User", {
+            pattern = "PaletteChanged",
+            callback = function()
+                require("lualine").setup({ options = { theme = palette_theme() } })
+            end,
+        })
     end,
 }

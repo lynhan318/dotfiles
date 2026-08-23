@@ -61,9 +61,19 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
+        -- One repaint step, so everything downstream of a palette change has a
+        -- single thing to hang off. base16-nvim rewrites highlights in place
+        -- without ever running `:colorscheme`, so ColorScheme never fires and
+        -- this User event is the only announcement a palette change makes.
+        -- lua/plugins/lualine.lua listens for it to rebuild its theme.
+        local function repaint()
+            make_transparent()
+            vim.api.nvim_exec_autocmds('User', { pattern = 'PaletteChanged', modeline = false })
+        end
+
         local ok, matugen = pcall(require, 'matugen')
         if ok then matugen.setup() end
-        make_transparent()
+        repaint()
 
         -- matugen.lua listens for SIGUSR1 and re-runs its own setup() on a
         -- palette change, which repaints every background we just cleared.
@@ -77,7 +87,7 @@ return {
         -- Deferring puts this on the far side of all of them.
         local signal = vim.uv.new_signal()
         signal:start('sigusr1', function()
-            vim.defer_fn(make_transparent, 100)
+            vim.defer_fn(repaint, 100)
         end)
     end,
 }
