@@ -84,6 +84,143 @@ return {
             for _, ft in ipairs({ 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' }) do
                 dap.configurations[ft] = bun_configs
             end
+
+            -- Zig / native: `lldb-dap` (pacman package `lldb`) when present,
+            -- otherwise codelldb installed by Mason (`:MasonInstall codelldb`),
+            -- which bundles its own LLDB and needs no root.
+            local lldb_dap = vim.fn.exepath('lldb-dap')
+            local codelldb = vim.fn.stdpath('data') .. '/mason/bin/codelldb'
+            dap.adapters.lldb = {
+                type = 'executable',
+                command = lldb_dap,
+                name = 'lldb',
+            }
+            dap.adapters.codelldb = {
+                type = 'server',
+                port = '${port}',
+                executable = { command = codelldb, args = { '--port', '${port}' } },
+            }
+            local zig_adapter = lldb_dap ~= '' and 'lldb' or 'codelldb'
+
+            local function zig_root()
+                return vim.fs.root(0, { 'build.zig' }) or vim.fn.getcwd()
+            end
+
+            -- `zig build` (Debug by default, so debug info is present) and then
+            -- the freshly installed binary under zig-out/bin; ask when the
+            -- project installs several.
+            local function zig_program()
+                local root = zig_root()
+                local res = vim.system({ 'zig', 'build' }, { cwd = root }):wait()
+                if res.code ~= 0 then
+                    vim.notify('zig build failed:\n' .. (res.stderr or ''), vim.log.levels.ERROR)
+                    return dap.ABORT
+                end
+                local bins = vim.tbl_filter(function(path)
+                    return vim.fn.executable(path) == 1
+                end, vim.fn.glob(root .. '/zig-out/bin/*', true, true))
+                if #bins == 1 then return bins[1] end
+                return vim.fn.input('Executable: ', root .. '/zig-out/bin/', 'file')
+            end
+
+            local function zig_args()
+                return vim.split(vim.fn.input('Args: '), ' ', { trimempty = true })
+            end
+
+            dap.configurations.zig = {
+                {
+                    type = zig_adapter,
+                    request = 'launch',
+                    name = 'Zig: zig build, then debug zig-out/bin/<exe>',
+                    program = zig_program,
+                    args = zig_args,
+                    cwd = zig_root,
+                    stopOnEntry = false,
+                },
+                {
+                    type = zig_adapter,
+                    request = 'launch',
+                    name = 'Zig: debug an existing executable',
+                    program = function()
+                        return vim.fn.input('Executable: ', zig_root() .. '/zig-out/bin/', 'file')
+                    end,
+                    args = zig_args,
+                    cwd = zig_root,
+                    stopOnEntry = false,
+                },
+            }
+
+            -- Rust: always codelldb, even when lldb-dap exists — it bundles
+            -- Rust formatters, so String/Vec render as values instead of raw
+            -- (ptr, cap, len) handles.
+            local function cargo_root()
+                return vim.fs.root(0, { 'Cargo.toml' }) or vim.fn.getcwd()
+            end
+
+            -- `cargo build --message-format=json` names each produced binary in
+            -- the `executable` field of its compiler-artifact messages (test
+            -- binaries too, under --tests). Globbing target/debug/ instead
+            -- would surface build scripts and stale hashes in deps/.
+            local function cargo_program(build_args)
+                return function()
+                    local root = cargo_root()
+                    local cmd = { 'cargo', 'build', '--message-format=json' }
+                    vim.list_extend(cmd, build_args)
+                    local res = vim.system(cmd, { cwd = root }):wait()
+                    if res.code ~= 0 then
+                        vim.notify('cargo build failed:\n' .. (res.stderr or ''), vim.log.levels.ERROR)
+                        return dap.ABORT
+                    end
+                    local bins = {}
+                    for line in vim.gsplit(res.stdout or '', '\n', { trimempty = true }) do
+                        local ok, msg = pcall(vim.json.decode, line)
+                        if ok and msg.reason == 'compiler-artifact' and type(msg.executable) == 'string' then
+                            table.insert(bins, msg.executable)
+                        end
+                    end
+                    if #bins == 0 then
+                        vim.notify('cargo build produced no executable (library-only crate? try the --tests config)',
+                            vim.log.levels.ERROR)
+                        return dap.ABORT
+                    end
+                    if #bins == 1 then return bins[1] end
+                    local choices = { 'Executable:' }
+                    for i, bin in ipairs(bins) do
+                        table.insert(choices, string.format('%d: %s', i, vim.fn.fnamemodify(bin, ':t')))
+                    end
+                    local idx = vim.fn.inputlist(choices)
+                    if idx < 1 or idx > #bins then return dap.ABORT end
+                    return bins[idx]
+                end
+            end
+
+            local function rust_args()
+                return vim.split(vim.fn.input('Args: '), ' ', { trimempty = true })
+            end
+
+            dap.configurations.rust = {
+                {
+                    type = 'codelldb',
+                    request = 'launch',
+                    name = 'Rust: cargo build, then debug the binary',
+                    program = cargo_program {},
+                    args = rust_args,
+                    cwd = cargo_root,
+                    stopOnEntry = false,
+                },
+                {
+                    -- The test binary accepts a name filter as its argument, so
+                    -- answering the Args prompt with e.g. `bai02` stops only in
+                    -- those tests.
+                    type = 'codelldb',
+                    request = 'launch',
+                    name = 'Rust: cargo build --tests, then debug a test binary',
+                    program = cargo_program { '--tests' },
+                    args = rust_args,
+                    cwd = cargo_root,
+                    stopOnEntry = false,
+                },
+            }
         end
     }
 }

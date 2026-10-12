@@ -36,6 +36,22 @@ return {
             },
         })
 
+        -- Clippy on save through the server instead of a second `cargo clippy`
+        -- from nvim-lint: one cargo process on the target-dir lock, and the
+        -- lints arrive with quick-fixes (code actions) attached.
+        vim.lsp.config("rust_analyzer", {
+            settings = {
+                ["rust-analyzer"] = {
+                    check = { command = "clippy" },
+                    cargo = { features = "all" },
+                    inlayHints = {
+                        chainingHints = { enable = true },
+                        closureReturnTypeHints = { enable = "with_block" },
+                        lifetimeElisionHints = { enable = "skip_trivial", useParameterNames = true },
+                    },
+                },
+            },
+        })
         vim.lsp.enable "rust_analyzer"
         vim.lsp.enable "jsonls"
         vim.lsp.config("jsonls", {
@@ -78,16 +94,39 @@ return {
         vim.lsp.enable "tailwindcss"
         vim.lsp.enable "cssls"
         vim.lsp.enable "svelte"
+        -- Deno, for packages/bevize. Kept apart from tsc by root, not by luck:
+        -- denols needs a deno.json above the file, and tsc declines any buffer
+        -- that has one (see plugins.lspconfig.typescript).
+        vim.lsp.config("denols", {
+            root_markers = { "deno.json", "deno.jsonc" },
+            settings = { deno = { enable = true } },
+        })
+        vim.lsp.enable "denols"
+        -- zls must match Zig's minor version (Zig 0.16.0 -> zls 0.16.0). The
+        -- pacman package is 0.15.1, so the binary in ~/.local/bin comes from
+        -- builds.zigtools.org. Filetypes/root markers (build.zig, zls.json,
+        -- .git) come from lspconfig; nvim treats .zig.zon as filetype zig too.
+        -- Keys are the zls 0.16 schema (`zls --version` / schema.json);
+        -- `enable_inlay_hints` is gone, hints are toggled client-side below.
         vim.lsp.config("zls", {
-            -- Set to 'zls' if `zls` is in your PATH
             cmd = { "zls" },
-            filetypes = { "zig" },
-            root_markers = { "build.zig" },
             settings = {
                 zls = {
-                    enable_inlay_hints = true,
                     enable_snippets = true,
+                    enable_argument_placeholders = true,
+                    semantic_tokens = "full",
                     warn_style = true,
+                    -- Compile errors as diagnostics: zls runs `zig build check
+                    -- --watch` when build.zig has a "check" step, otherwise the
+                    -- install step. Plain ast-check only reports syntax/unused.
+                    enable_build_on_save = true,
+                    inlay_hints_show_variable_type_hints = true,
+                    inlay_hints_show_struct_literal_field_type = true,
+                    inlay_hints_show_parameter_name = true,
+                    inlay_hints_show_builtin = true,
+                    inlay_hints_exclude_single_argument = true,
+                    inlay_hints_hide_redundant_param_names = true,
+                    inlay_hints_hide_redundant_param_names_last_token = true,
                 },
             },
         })
@@ -153,9 +192,21 @@ return {
                 local size = vim.api.nvim_buf_get_offset(buffer, vim.api.nvim_buf_line_count(buffer))
                 if size > NO_LSP_BYTES then
                     vim.schedule(function()
-                        if vim.api.nvim_buf_is_valid(buffer) then
-                            vim.lsp.buf_detach_client(buffer, client.id)
+                        if not vim.api.nvim_buf_is_valid(buffer) then
+                            return
                         end
+                        vim.lsp.buf_detach_client(buffer, client.id)
+                        -- Say so. A buffer that silently loses every LSP feature
+                        -- is indistinguishable from a broken server.
+                        vim.notify(
+                            ("%s: detached %s, %.1f MB exceeds the %d MB LSP limit"):format(
+                                vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buffer), ":t"),
+                                client.name,
+                                size / 1048576,
+                                NO_LSP_BYTES / 1048576
+                            ),
+                            vim.log.levels.WARN
+                        )
                     end)
                     return
                 end
@@ -165,7 +216,17 @@ return {
 
                 on_attach(client, buffer)
 
-                vim.lsp.inlay_hint.enable(false, { bufnr = buffer })
+                -- Inlay hints stay off by default; zls's and rust-analyzer's
+                -- (types, parameter names, chaining) are worth it while
+                -- learning those languages. <leader>ih toggles.
+                local hint_languages = { zls = true, rust_analyzer = true }
+                vim.lsp.inlay_hint.enable(hint_languages[client.name] == true, { bufnr = buffer })
+                if client:supports_method("textDocument/inlayHint") then
+                    vim.keymap.set("n", "<leader>ih", function()
+                        local enabled = vim.lsp.inlay_hint.is_enabled { bufnr = buffer }
+                        vim.lsp.inlay_hint.enable(not enabled, { bufnr = buffer })
+                    end, { buffer = buffer, desc = "LSP: Toggle inlay hints" })
+                end
             end,
         })
     end,

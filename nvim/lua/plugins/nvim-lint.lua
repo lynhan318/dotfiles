@@ -11,14 +11,10 @@ return {
       css = { "oxlint" },
       json = { "oxlint" },
       svelte = { "eslint_d" },
-      rust = { "clippy" },
+      -- rust: clippy runs through rust-analyzer (`check.command = "clippy"`),
+      -- a second cargo process here would fight it for the target-dir lock.
       zig = { "zlint" },
     }
-
-    -- `cargo clippy` exits 1 whenever the crate has errors or denied warnings,
-    -- but it still emits diagnostics as JSON on stdout. Ignore the exit code so
-    -- nvim-lint stops spamming "Linter command `cargo` exited with code: 1".
-    lint.linters.clippy.ignore_exitcode = true
 
     vim.api.nvim_create_autocmd({ "BufWritePost" }, {
       callback = function()

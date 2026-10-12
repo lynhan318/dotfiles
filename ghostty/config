@@ -3,7 +3,7 @@ theme = noctalia
 font-family = FantasqueSansM Nerd Font
 font-size = 12
 
-background-opacity = 0.98
+background-opacity = 1.0
 background-blur = 1
 
 clipboard-read = allow
@@ -15,3 +15,5 @@ keybind = ctrl+plus=increase_font_size:1
 keybind = ctrl+equal=increase_font_size:1
 keybind = ctrl+minus=decrease_font_size:1
 keybind = ctrl+zero=reset_font_size
+
+shell-integration-features = cursor,no-sudo,title,ssh-env,ssh-terminfo,path

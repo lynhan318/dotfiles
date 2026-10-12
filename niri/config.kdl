@@ -14,10 +14,33 @@ gestures {
     hot-corners {
         off
     }
+
+    // Push the cursor against the left/right edge *while dragging* and the view
+    // scrolls that way, so a window can be dropped into a column that is
+    // currently off-screen.
+    //
+    // This is drag-only -- it fires during an interactive window move or an
+    // ordinary DnD (a file out of a file manager), never on a bare hover. niri
+    // has no hover-only edge scroll at all; `hot-corners` above is the only
+    // other edge gesture and it toggles the overview rather than scrolling.
+    //
+    // delay-ms is raised from the default 100: at 100 ms the view starts
+    // creeping while you are still crossing the edge on the way somewhere else.
+    dnd-edge-view-scroll {
+        trigger-width 30
+        delay-ms 300
+        max-speed 1500
+    }
 }
 
 input {
     mod-key "Alt"
+
+    // The closest thing niri has to hover-to-scroll: moving onto the sliver of
+    // a column poking in at the edge focuses it, and niri scrolls it into view.
+    // max-scroll-amount caps how far that scroll may jump, so brushing past a
+    // window cannot fling the view across the workspace.
+    focus-follows-mouse max-scroll-amount="25%"
 
     // Mod+` switches monitors; without this the pointer stays behind on the
     // old screen. center-xy moves it toward the middle of the newly focused
@@ -115,14 +138,28 @@ blur {
 // itself (see above), and `noctalia-panel-click-shield` is a transparent
 // full-screen click catcher — blurring that one would blur the whole screen.
 //
-// Add `xray true` here to sample the wallpaper instead of the live scene. It is
-// much cheaper, but a bar sitting over a window would then show blurred
-// wallpaper rather than the window, so it is off by default.
+// niri turns xray on by default whenever blur is on: it samples a blurred copy
+// of the wallpaper instead of the live scene. That is much cheaper, but a panel
+// opened over a window would show blurred wallpaper rather than the window, so
+// it is switched off here. niri calls non-xray experimental — it drops out
+// during open/close animations. Delete the `xray false` lines to go back.
 layer-rule {
     match namespace="^noctalia-bar-"
     match namespace="^noctalia-panel$"
     background-effect {
         blur true
+        xray false
+    }
+}
+
+// Noctalia asks for blur on its other surfaces itself (via ext-background-effect,
+// shaped to the visible toast/popup rather than the whole surface), so this rule
+// only turns xray off for them and does not add `blur true`. Namespaces are the
+// ones Noctalia's niri docs list; check `niri msg layers` while one is open.
+layer-rule {
+    match namespace="^noctalia-(notification|dock|attached-panel|osd|window-switcher)$"
+    background-effect {
+        xray false
     }
 }
 overview {
@@ -230,6 +267,7 @@ window-rule {
     match app-id=r#"^steam$"#
     match app-id=r#"^xdg-desktop-portal$"#
     match app-id=r#"^1password$"#
+    match app-id=r#"^com\.onepassword\.OnePassword$"#
     match app-id=r#"^telegram-desktop$"#
     match app-id=r#"^slack$"#
     match app-id=r#"^Pinentry-gtk"#
@@ -237,6 +275,7 @@ window-rule {
     match app-id=r#"^Emulator"#
     match app-id=r#"^Slack"#
     match app-id=r#"^chrome-kjgfgldnnfoeklkmfkjfagphfepbbdan-Profile_1"#
+    match app-id=r#"^org\.mozilla\.Thunderbird$"#
     open-floating true
 }
 
@@ -245,10 +284,12 @@ window-rule {
 // closes on the first save — so tiling it would reshuffle the column layout
 // for a couple of seconds every screenshot.
 //
-// Sized explicitly because satty otherwise asks for a window as large as the
-// image, which for a full 3840x2160 shot is the whole screen.
+// Sized explicitly because tensaku otherwise asks for a window as large as the
+// image, which for a full 3840x2160 shot is the whole screen. (tensaku also
+// offers --resize smart for this, but sizing it here keeps the decision with
+// the compositor, which is the one that actually has the final say.)
 window-rule {
-    match app-id=r#"^com\.gabm\.satty$"#
+    match app-id=r#"^dev\.tensaku\.Tensaku$"#
     open-floating true
     default-column-width { proportion 0.75; }
     default-window-height { proportion 0.75; }
@@ -304,40 +345,8 @@ window-rule {
     open-floating true
 }
 
-// === Lid ===
-//
-// Closing the lid drops the panel to 5% and the CPU to power-saver, and
-// opening it puts both back exactly as they were. Nothing else moves — no
-// suspend, no blank, no reshuffled columns.
-//
-// Two halves, because the lid is handled in two places that do not know about
-// each other:
-//
-//   logind suspends the machine. That is switched off at runtime by the
-//   "Lid Guard" bar toggle, which holds a handle-lid-switch inhibitor for as
-//   long as it is on (see ../noctalia/plugins/lid-guard/README.md). It is a
-//   toggle rather than HandleLidSwitch=ignore here so the normal
-//   close-the-lid-and-it-sleeps behaviour is still one click away.
-//
-//   niri blanks the laptop panel, which no inhibitor reaches — it reads
-//   logind's LidClosed property directly. The debug flag below is what stops
-//   that, and it is what makes the 5% worth setting at all: dimming a
-//   backlight that niri already switched off would only show up as a flash of
-//   5% on the way back open.
-//
-// spawn, not spawn-sh: switch-events does not accept spawn-sh, so the path is
-// absolute rather than ~-relative like the binds in noctalia/binds.kdl.
-switch-events {
-    lid-close { spawn "/home/kevin/.dotfiles/niri/scripts/lid-power.sh" "close"; }
-    lid-open  { spawn "/home/kevin/.dotfiles/niri/scripts/lid-power.sh" "open"; }
-}
-
 debug {
     honor-xdg-activation-with-invalid-serial
-    // Keep the panel lit with the lid shut; see the switch-events note above.
-    // niri allows exactly one debug block, so this cannot be moved out into a
-    // generated include and toggled at runtime — it is a static choice.
-    keep-laptop-panel-on-when-lid-is-closed
 }
 
 // The Alt-Tab switcher (niri 25.11+).
@@ -368,6 +377,7 @@ window-rule {
 }
 window-rule {
     match app-id=r#"^1password$"#
+    match app-id=r#"^com\.onepassword\.OnePassword$"#
     block-out-from "screencast"
 }
 
@@ -379,6 +389,10 @@ include "noctalia/cursor.kdl"
 include "noctalia/windowrules.kdl"
 
 include "noctalia.kdl"
+
+// Must come after noctalia.kdl: that file is generated and would otherwise
+// win the colour properties it declares.
+include "noctalia/colors-override.kdl"
 
 // Output geometry — written by the Noctalia "displays" plugin, which keys each
 // monitor by its make/model/serial so a dock renaming the connector (DP-2 one

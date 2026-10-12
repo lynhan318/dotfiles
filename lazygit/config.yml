@@ -1,0 +1,106 @@
+# lazygit — see /usr/share/doc/lazygit/Config.md and Custom_DiffRenderers.md
+
+os:
+  # `nvim-remote` is the only preset that is correct in *both* places lazygit
+  # gets launched from here:
+  #
+  #   tmux popup (prefix C-y) / `lg`  ->  $NVIM is unset, so it runs plain
+  #                                       `nvim -- <file>` inside the popup.
+  #   <leader>lg (Snacks.lazygit)     ->  $NVIM points at the parent Neovim's
+  #                                       socket, so it closes the lazygit
+  #                                       terminal and opens the file as a tab
+  #                                       in the Neovim that spawned it —
+  #                                       no editor nested inside an editor.
+  #
+  # The preset expands to a shell conditional on $NVIM, which is why one value
+  # covers both. Setting it explicitly also drops this repo's dependency on
+  # $EDITOR being "nvim" in .zshrc for the standalone case.
+  editPreset: nvim-remote
+
+gui:
+  # Two columns need horizontal room. The default 0.3333 leaves the diff panel
+  # too narrow to split in half without ugly wrapping; the lazygit docs
+  # recommend shrinking the side panel for exactly this reason. Raise it back
+  # if the branch/commit lists feel too cramped.
+  sidePanelWidth: 0.2
+
+git:
+  # 0.64 replaced the single `paging` block with a list you cycle at runtime
+  # with `|`. The first entry is what you get on open; `name` is what the
+  # status-bar toast shows as you cycle. The plain-git entry at the end is the
+  # escape hatch for diffs where two columns hurt more than they help — long
+  # lines, or a minified file.
+  #
+  # Everforest theming, in two halves:
+  #
+  #   Syntax colors come from `--syntax-theme=noctalia`, the .tmTheme that
+  #   matugen writes to ~/.config/bat/themes/. delta reads bat's built cache,
+  #   so this is the same palette nvim and ghostty are on and it re-tracks
+  #   automatically on a palette change — no hex to keep in sync here.
+  #
+  #   Diff colors are spelled out, because a +/- background has to be a muted
+  #   wash that no syntax theme provides. These are Everforest Dark Medium's
+  #   own diff backgrounds: bg_red #514045 and bg_green #425047, over
+  #   `syntax` so the highlighting survives inside changed lines. The -emph
+  #   pair (intra-line word highlight) is the one thing Everforest doesn't
+  #   specify, so those two are brightened by hand from the same hues.
+  diffRenderers:
+    # type defaults to `stdinFilter`, which is what delta is.
+    - name: delta (side-by-side)
+      # `--paging=never` is required — lazygit does its own scrolling and a
+      # pager inside it would swallow the keys.
+      #
+      # `--hyperlinks` + the lazygit-edit format turns the line numbers in the
+      # left margin into clickable links that jump to that exact line in
+      # Neovim, routed through the os.editPreset above.
+      #
+      # Folded scalar: YAML joins these lines with spaces into one command,
+      # and does not treat `#` as a comment inside a block scalar, so the hex
+      # colors below survive as written.
+      command: >-
+        delta --dark --paging=never --side-by-side --line-numbers
+        --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+        --syntax-theme=noctalia
+        --minus-style='syntax #514045'
+        --minus-emph-style='syntax #6b5057'
+        --plus-style='syntax #425047'
+        --plus-emph-style='syntax #566b52'
+        --zero-style=syntax
+        --line-numbers-minus-style='#e67e80'
+        --line-numbers-plus-style='#a7c080'
+        --line-numbers-zero-style='#7a8478'
+        --line-numbers-left-style='#4f585e'
+        --line-numbers-right-style='#4f585e'
+        --file-style='#a7c080 bold'
+        --file-decoration-style='#475258 ul'
+        --hunk-header-style='file line-number syntax'
+        --hunk-header-file-style='#7fbbb3'
+        --hunk-header-line-number-style='#dbbc7f'
+        --hunk-header-decoration-style='#475258 box'
+        --whitespace-error-style='#e67e80 reverse'
+
+    - name: delta (unified)
+      command: >-
+        delta --dark --paging=never --line-numbers
+        --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+        --syntax-theme=noctalia
+        --minus-style='syntax #514045'
+        --minus-emph-style='syntax #6b5057'
+        --plus-style='syntax #425047'
+        --plus-emph-style='syntax #566b52'
+        --zero-style=syntax
+        --line-numbers-minus-style='#e67e80'
+        --line-numbers-plus-style='#a7c080'
+        --line-numbers-zero-style='#7a8478'
+        --line-numbers-left-style='#4f585e'
+        --line-numbers-right-style='#4f585e'
+        --file-style='#a7c080 bold'
+        --file-decoration-style='#475258 ul'
+        --hunk-header-style='file line-number syntax'
+        --hunk-header-file-style='#7fbbb3'
+        --hunk-header-line-number-style='#dbbc7f'
+        --hunk-header-decoration-style='#475258 box'
+        --whitespace-error-style='#e67e80 reverse'
+
+    - type: rawGit # git's own diff, no pager involved
+      name: plain git

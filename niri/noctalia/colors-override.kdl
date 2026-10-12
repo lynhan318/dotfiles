@@ -1,0 +1,22 @@
+// Tab-indicator colours, included AFTER noctalia.kdl on purpose.
+//
+// Three files set tab-indicator: colors.kdl (static), layout.kdl (sizing) and
+// the generated noctalia.kdl. niri merges them per-property rather than
+// letting the last whole block win -- the width set in layout.kdl survives
+// even though noctalia.kdl declares a tab-indicator of its own without one --
+// so the only way to beat a generated colour is to set it from a file included
+// later. Editing noctalia.kdl directly would be undone by the next
+// `noctalia msg templates-apply`.
+//
+// Why these values: the colour did not change, the area did. At the old 4 px
+// the full-strength accent read as a hairline; at 12 px the same #a7c080 is
+// three times the ink and shouts. Alpha trims the weight without giving up the
+// Everforest identity, and the inactive tabs drop back to a near-background
+// grey so only the focused one carries colour.
+layout {
+    tab-indicator {
+        active-color   "#a7c080cc"
+        inactive-color "#56635f66"
+        urgent-color   "#e67e80cc"
+    }
+}

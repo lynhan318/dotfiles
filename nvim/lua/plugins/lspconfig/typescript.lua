@@ -116,15 +116,31 @@ function M.cmd(dispatchers, config)
     return vim.lsp.rpc.start(argv, dispatchers)
 end
 
---- One server per package-manager root: TS 7 handles monorepos itself, picking
---- the right tsconfig per file, so splitting per workspace only wastes memory.
---- Buffers whose root has no reachable server are left unattached.
+--- Deno owns its own subtrees (packages/bevize). It registers the same four
+--- filetypes as tsc with a completely different module resolver, so tsc has to
+--- decline those buffers rather than race denols for them. Without this, tsc
+--- wins the buffer and reports `Deno` as an unknown name.
+local function deno_owned(bufnr)
+    return vim.fs.root(bufnr, { "deno.json", "deno.jsonc" }) ~= nil
+end
+
+--- One server for the whole repository.
+---
+--- TS 7 resolves the nearest tsconfig per file, so a single root already serves
+--- every workspace: rooted at the repo, agents' `~/*` aliases -- declared in
+--- agents/tsconfig.json, not the root one -- still resolve.
+---
+--- Rooting on lockfiles instead splits the repo wherever someone once ran
+--- `bun install`, which is not a statement about how the code is organised. In
+--- canvize that split five ways, three of them beside an empty node_modules,
+--- and a stray `bun install` would silently repartition the editor again.
+--- `.git` is the one boundary that cannot drift.
 function M.root_dir(bufnr, on_dir)
-    local dir = vim.fs.root(bufnr, {
-        { "package-lock.json", "bun.lock", "bun.lockb", "pnpm-lock.yaml", "yarn.lock" },
-        { "tsconfig.json", "jsconfig.json", "package.json" },
-        { ".git" },
-    })
+    if deno_owned(bufnr) then
+        return
+    end
+    local dir = vim.fs.root(bufnr, { ".git" })
+        or vim.fs.root(bufnr, { "tsconfig.json", "jsconfig.json", "package.json" })
     if not dir then
         return
     end

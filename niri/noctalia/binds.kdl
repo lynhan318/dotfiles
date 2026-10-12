@@ -8,8 +8,19 @@ binds { // === System & Overview ===
     // Floating rather than tiled: a scratch terminal that sits over the column
     // layout instead of reshuffling it. This needs no window-rule of its own —
     // `local.floating.*` is the opt-in app-id convention in config.kdl.
-    Mod+Shift+Return hotkey-overlay-title="Open Floating Terminal" {
-        spawn "ghostty" "--class=local.floating.terminal";
+    //
+    // Opens straight into the `computer` Herdr session rather than a bare
+    // shell, so the scratch terminal picks up the same panes every time.
+    //
+    // `--session` rather than `session attach`: attach fails when the session
+    // is stopped, while --session attaches to a running one and creates it
+    // otherwise, so the key never does nothing.
+    //
+    // Absolute path on purpose. niri's PATH comes from the session it was
+    // started in and does NOT contain ~/.local/bin, so a bare `herdr` here
+    // resolves to nothing and the window closes instantly.
+    Mod+Shift+Return hotkey-overlay-title="Floating Terminal (herdr: computer)" {
+        spawn "ghostty" "--class=local.floating.terminal" "-e" "/home/kevin/.local/bin/herdr" "--session" "computer";
     }
 
     // --- Noctalia shell (IPC via `noctalia msg`) ---
@@ -179,6 +190,16 @@ binds { // === System & Overview ===
     Mod+WheelScrollDown      { focus-column-right; }
     Mod+WheelScrollUp       { focus-column-left; }
 
+    // === Mouse Side Buttons ===
+    //
+    // Bound bare, with no modifier, so the thumb buttons scroll the column
+    // layout on their own. The cost is that niri swallows them compositor-wide:
+    // back/forward navigation in Firefox, Chrome and Obsidian stops working,
+    // because the button never reaches the application at all. Put `Mod+` in
+    // front of both lines to hand them back to apps and keep the gesture.
+    MouseBack    { focus-column-left; }
+    MouseForward { focus-column-right; }
+
     // === Numbered Workspaces ===
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -234,7 +255,7 @@ binds { // === System & Overview ===
 
     // === Screenshots ===
     // niri still draws the picker — the script only passes --path so the shot
-    // lands somewhere it can hand to satty, rather than being copied and
+    // lands somewhere it can hand to tensaku, rather than being copied and
     // forgotten. See ../scripts/screenshot-edit.sh.
     XF86Launch1 { spawn-sh "~/.dotfiles/niri/scripts/screenshot-edit.sh region"; }
     Ctrl+XF86Launch1 { spawn-sh "~/.dotfiles/niri/scripts/screenshot-edit.sh screen"; }

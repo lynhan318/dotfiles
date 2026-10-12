@@ -25,6 +25,21 @@ layout {
     // A lone column sits centred rather than pinned to the left edge. No-op on
     // any output whose default column width is 1.0.
     always-center-single-column
+
+    // Tab indicator. The default 4 px strip is a hard mouse target -- the only
+    // pointer gesture niri puts on it is interactive resize (drag it to resize
+    // the column), and 4 px is thinner than most people can hit on purpose.
+    //
+    // width is the thickness; length is how far it runs along the column, and
+    // the default total-proportion=0.5 covers only half the window height, so
+    // widening alone would still leave half the edge dead. Both are raised.
+    tab-indicator {
+        width 12
+        length total-proportion=1.0
+        gap 5
+        gaps-between-tabs 2
+        corner-radius 0
+    }
 }
 
 window-rule {
